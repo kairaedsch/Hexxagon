@@ -1,0 +1,20 @@
+name: hexxagon
+description: An absolute bare-bones web app.
+version: 0.0.1
+#homepage: https://www.example.com
+#author: Kai <email@example.com>
+
+environment:
+  sdk: '>=1.20.1 <2.0.0'
+
+#dependencies:
+#  path: ^1.4.1
+
+dev_dependencies:
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.1
+  over_react: ^1.6.0
+
+transformers:
+- over_react
+- dart_to_js_script_rewriter

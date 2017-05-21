@@ -1,0 +1,86 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0px;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tileGrid {
+    background-color: #333333;
+    padding-top: 54px;
+    padding-bottom: 3px;
+}
+
+.tileRow {
+    clear: left;
+}
+
+.tileRow:nth-child(odd) {
+    margin-left: -64px;
+}
+.tileRow:nth-child(even) {
+    margin-left: 30px;
+}
+
+.hexagon {
+    margin-left: 68px;
+    margin-top: -50px;
+    float: left;
+    transition: all 0.2s linear;
+}
+
+.hexagon:hover {
+    transform: rotate(60deg) scale(1.5);
+}
+.hexagon:hover .hexagonMiddle {
+    background-color: red;
+}
+
+.hexagonLeft,
+.hexagonRight,
+.hexagonMiddle {
+    float: left;
+    border: 0 solid #64C7CC;
+    transition: all 0.2s linear;
+}
+
+.hexagonLeft {
+    border-right-width: 30px;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+
+.hexagon:hover .hexagonLeft {
+    border-right-color: red;
+}
+
+.hexagonMiddle {
+    width: 60px;
+    height: 104px;
+    background-color: #64C7CC;
+}
+
+.hexagonRight {
+    border-left-width: 30px;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+
+.hexagon:hover .hexagonRight {
+    border-left-color: red;
+}
