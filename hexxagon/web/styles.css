@@ -41,6 +41,8 @@ html, body {
     margin-left: 68px;
     margin-top: -50px;
     float: left;
+    width: 120px;
+    height: 104px;
     transition: all 0.2s linear;
 }
 
@@ -60,9 +62,10 @@ html, body {
 }
 
 .hexagonLeft {
-    border-right-width: 30px;
+    border-right-width: 31px;
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
+    margin-right: -1px;
 }
 
 .hexagon:hover .hexagonLeft {
@@ -76,9 +79,10 @@ html, body {
 }
 
 .hexagonRight {
-    border-left-width: 30px;
+    border-left-width: 31px;
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
+    margin-left: -1px;
 }
 
 .hexagon:hover .hexagonRight {

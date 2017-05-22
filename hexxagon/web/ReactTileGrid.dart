@@ -1,3 +1,4 @@
+import 'Move.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
 import 'package:react/react_dom.dart' as react_dom;
@@ -12,24 +13,41 @@ UiFactory<ReactTileGridProps> ReactTileGrid;
 @Props()
 class ReactTileGridProps extends UiProps
 {
-  int width;
+  int coloumCount;
   int height;
 }
 
+
+@Props()
+class ReactTileGridState extends UiState
+{
+  List<Move> moves;
+}
+
 @Component()
-class ReactTileGridComponent extends UiComponent<ReactTileGridProps>
+class ReactTileGridComponent
+    extends UiStatefulComponent<ReactTileGridProps, ReactTileGridState>
 {
   ReactElement render()
   {
     List<ReactElement> tiles = [];
-    for (int h = 0; h < props.height; h++)
+    for (int y = 0; y < props.height; y++)
     {
-      tiles.add((ReactTileRow()..width = props.width)());
+      tiles.add((ReactTileRow()
+        ..coloumCount = props.coloumCount
+        ..moves = state.moves
+        ..y = y
+      )());
     }
     return (Dom.div()
       ..className = "tileGrid clearfix"
     )(
         tiles
     );
+  }
+
+  void setMoves(List<Move> moves)
+  {
+    setState({"moves": moves});
   }
 }

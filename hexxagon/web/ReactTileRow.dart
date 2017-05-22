@@ -1,3 +1,4 @@
+import 'Move.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
 import 'package:react/react_dom.dart' as react_dom;
@@ -11,7 +12,9 @@ UiFactory<ReactTileRowProps> ReactTileRow;
 @Props()
 class ReactTileRowProps extends UiProps
 {
-  int width;
+  int coloumCount;
+  int y;
+  List<Move> moves;
 }
 
 @Component()
@@ -20,9 +23,9 @@ class ReactTileRowComponent extends UiComponent<ReactTileRowProps>
   ReactElement render()
   {
     List<ReactElement> tiles = [];
-    for (int i = 0; i < props.width; i++)
+    for (int x = 0; x < props.coloumCount; x++)
     {
-      tiles.add((ReactTile()..width = "10%")());
+      tiles.add((ReactTile())());
     }
     return (Dom.div()
       ..className = "tileRow"

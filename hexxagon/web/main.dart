@@ -13,8 +13,8 @@ void main()
   // Mount / render your component.
   react_dom.render(
       (ReactTileGrid()
-        ..width = 5
-        ..height = 20
+        ..coloumCount = 2
+        ..height = 5
       )(),
       querySelector('#react_mount_point')
   );

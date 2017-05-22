@@ -1,3 +1,7 @@
+import 'Move.dart';
+import 'TilePosition.dart';
+import 'TileType.dart';
+import 'ReactTileGrid.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
 import 'package:react/react_dom.dart' as react_dom;
@@ -10,7 +14,10 @@ UiFactory<ReactTileProps> ReactTile;
 @Props()
 class ReactTileProps extends UiProps
 {
-  String width;
+  TileType tileType;
+  bool playAble;
+  List<Move> moves;
+  ReactTileGridComponent tileGrid;
 }
 
 @Component()
@@ -20,11 +27,19 @@ class ReactTileComponent extends UiComponent<ReactTileProps>
   {
     return (Dom.div()
       ..className = "hexagon"
-      //..style = {"width": props.width}
+      ..onMouseEnter = this.onMouseEnter
     )(
-        (Dom.div()..className = "hexagonLeft")( ),
-        (Dom.div()..className = "hexagonMiddle")(),
-        (Dom.div()..className = "hexagonRight")( ),
+      (Dom.div()
+        ..className = "hexagonLeft")(),
+      (Dom.div()
+        ..className = "hexagonMiddle")(),
+      (Dom.div()
+        ..className = "hexagonRight")(),
     );
+  }
+
+  void onMouseEnter(SyntheticMouseEvent event)
+  {
+    props.tileGrid.setMoves(props.moves);
   }
 }
