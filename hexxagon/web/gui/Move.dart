@@ -1,4 +1,4 @@
-import 'TilePosition.dart';
+import '../general/TilePosition.dart';
 
 class Move
 {

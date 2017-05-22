@@ -12,6 +12,10 @@
     height: 0px;
 }
 
+svg {
+    overflow: visible;
+}
+
 html, body {
     width: 100%;
     height: 100%;
@@ -33,6 +37,7 @@ html, body {
 .tileRow:nth-child(odd) {
     margin-left: -64px;
 }
+
 .tileRow:nth-child(even) {
     margin-left: 30px;
 }
@@ -43,12 +48,26 @@ html, body {
     float: left;
     width: 120px;
     height: 104px;
-    transition: all 0.2s linear;
 }
 
-.hexagon:hover {
-    transform: rotate(60deg) scale(1.5);
+.hexagon:Hover
+{
+    transform: rotate(0deg);
 }
+
+.hexagonInner {
+    transition: all 0.2s linear;
+    transform: rotate(0deg) scale(1);
+    transform-origin: 50% 50%;
+    fill: #88f0ff;
+}
+
+.hexagonInner:hover {
+    transform: rotate(60deg) scale(1.5);
+    fill: white;
+    z-index: 0;
+}
+
 .hexagon:hover .hexagonMiddle {
     background-color: red;
 }

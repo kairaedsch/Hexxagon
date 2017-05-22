@@ -1,3 +1,5 @@
+import '../game/Hexxagon.dart';
+import '../general/TilePosition.dart';
 import 'Move.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
@@ -13,31 +15,22 @@ UiFactory<ReactTileGridProps> ReactTileGrid;
 @Props()
 class ReactTileGridProps extends UiProps
 {
-  int coloumCount;
-  int height;
-}
-
-
-@Props()
-class ReactTileGridState extends UiState
-{
-  List<Move> moves;
+  Hexxagon hexxagon;
 }
 
 @Component()
-class ReactTileGridComponent
-    extends UiStatefulComponent<ReactTileGridProps, ReactTileGridState>
+class ReactTileGridComponent extends UiComponent<ReactTileGridProps>
 {
   ReactElement render()
   {
-    List<ReactElement> tiles = [];
-    for (int y = 0; y < props.height; y++)
+    List<ReactElement> tiles = new List(props.hexxagon.height);
+    for (int y = 0; y < props.hexxagon.height; y++)
     {
-      tiles.add((ReactTileRow()
-        ..coloumCount = props.coloumCount
-        ..moves = state.moves
+      tiles[y] = (ReactTileRow()
         ..y = y
-      )());
+        ..tileGrid = this
+        ..hexxagon = props.hexxagon
+      )();
     }
     return (Dom.div()
       ..className = "tileGrid clearfix"
@@ -46,8 +39,9 @@ class ReactTileGridComponent
     );
   }
 
-  void setMoves(List<Move> moves)
+  void setSelected(TilePosition tileposition)
   {
-    setState({"moves": moves});
+    props.children.forEach((row)
+    => row.setSelected(props.hexxagon.getPossibleMoves(tileposition)));
   }
 }

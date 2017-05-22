@@ -1,3 +1,4 @@
+import '../game/Hexxagon.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
 import 'package:react/react_dom.dart' as react_dom;
@@ -13,8 +14,7 @@ void main()
   // Mount / render your component.
   react_dom.render(
       (ReactTileGrid()
-        ..coloumCount = 2
-        ..height = 5
+        ..hexxagon = new Hexxagon(2, 5)
       )(),
       querySelector('#react_mount_point')
   );
