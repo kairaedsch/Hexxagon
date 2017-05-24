@@ -4,8 +4,12 @@ import 'TileType.dart';
 
 abstract class Board
 {
-  void move(TilePosition from, TilePosition to);
-  List<Move> getPossibleMoves(TilePosition tilePosition);
+  int get width;
+  int get height;
+  void move(TileType player, TilePosition from, TilePosition to);
+  List<Move> getPossibleMoves(TileType player, TilePosition tilePosition);
   bool couldBeMoved(TilePosition tilePosition);
   TileType get(TilePosition tilePosition);
+  TileType getCurrentPlayer();
+  TileType getNotCurrentPlayer();
 }

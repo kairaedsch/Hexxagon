@@ -5,6 +5,7 @@
       <value>
         <option name="RIGHT_MARGIN" value="200" />
         <codeStyleSettings language="Dart">
+          <option name="RIGHT_MARGIN" value="300" />
           <option name="BRACE_STYLE" value="2" />
           <option name="METHOD_BRACE_STYLE" value="2" />
         </codeStyleSettings>

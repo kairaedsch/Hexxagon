@@ -1,9 +1,11 @@
 import '../game/Hexxagon.dart';
+import 'BoardGUI.dart';
 import 'Move.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import 'ReactTileGrid.dart';
 import 'dart:html';
+import 'package:optional/optional_internal.dart';
 import 'package:react/react.dart' as react;
 import 'package:react/react_dom.dart' as react_dom;
 import 'package:react/react_client.dart' as react_client;
@@ -17,35 +19,39 @@ class ReactTileProps extends UiProps
 {
   ReactTileGridComponent tileGrid;
   TilePosition position;
-  Hexxagon hexxagon;
-}
-
-@State()
-class ReactTileState extends UiState
-{
-  TileType tileType;
-  bool playAble;
-  bool playAbleNow;
-  Move move;
+  BoardGUI boardGUI;
 }
 
 @Component()
-class ReactTileComponent
-    extends UiStatefulComponent<ReactTileProps, ReactTileState>
+class ReactTileComponent extends UiComponent<ReactTileProps>
 {
-  @override
-  void componentDidMount() {
-    state.tileType = props.hexxagon.get(props.position);
-    state.playAble = false;
-    state.playAbleNow = false;
-    state.move = null;
-  }
-
   ReactElement render()
   {
+    TileType tileType = props.boardGUI.get(props.position);
+    bool playAble = props.boardGUI.couldBeMoved(props.position);
+    bool playAbleOfNotCurrentPlayer = !playAble && tileType == props.boardGUI.getNotCurrentPlayer();
+
+    bool playAbleNow;
+    bool isSelected;
+    Optional<Move> move;
+    if (props.boardGUI.isSomethingSelected)
+    {
+      move = new Optional.ofNullable(props.boardGUI.possibleMoves.firstWhere((Move move)
+      => move.tilePosition.equals(props.position), orElse: ()
+      => null));
+      playAbleNow = move.isPresent;
+      isSelected = props.boardGUI.selectedPosition.equals(props.position);
+    }
+    else
+    {
+      move = new Optional.empty();
+      playAbleNow = move.isPresent;
+      isSelected = false;
+    }
+
     return (Dom.div()
-      ..className = "hexagon ${state.move != null ? state.move.kindOf : ""}"
-      ..onMouseEnter = this.select
+      ..className = "hexagon ${move.isPresent ? move.value.kindOf : ""} ${playAble ? "playAble" : (playAbleOfNotCurrentPlayer ? "notPlayAble" : "")} ${playAbleNow ? "playAbleNow" : ""} ${tileType.toString().replaceAll(".", " ")} ${isSelected ? "selected" : ""}"
+      ..onClick = this.select
     )(
         (Dom.svg()
           ..version = "1.1"
@@ -63,29 +69,25 @@ class ReactTileComponent
 
   void select(SyntheticMouseEvent event)
   {
-    if (state.playAbleNow)
+    Optional<Move> move;
+    if (props.boardGUI.isSomethingSelected)
     {
-      props.hexxagon.move(state.move.tilePosition, props.position);
+      move = new Optional.ofNullable(props.boardGUI.possibleMoves.firstWhere((Move move)
+      => move.tilePosition.equals(props.position), orElse: ()
+      => null));
     }
     else
     {
-      props.tileGrid.setSelected(props.position);
+      move = new Optional.empty();
     }
-  }
 
-  void setSelected(List<Move> possibleMoves)
-  {
-    var move = possibleMoves.firstWhere((move)
-    => move.tilePosition.equals(props.position), orElse: ()
-    => null);
-
-    if (move != null)
+    if (move.isPresent)
     {
-      setState({"tileType": props.hexxagon.get(props.position), "playAbleNow": true, "move": move});
+      props.boardGUI.move(props.position);
     }
     else
     {
-      setState({"tileType": props.hexxagon.get(props.position), "playAbleNow": false});
+      props.boardGUI.select(props.position);
     }
   }
 }

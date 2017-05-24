@@ -1,5 +1,6 @@
 import '../game/Hexxagon.dart';
 import '../general/TilePosition.dart';
+import 'BoardGUI.dart';
 import 'Move.dart';
 import 'ReactTileGrid.dart';
 import '../general/TileType.dart';
@@ -17,7 +18,7 @@ UiFactory<ReactTileRowProps> ReactTileRow;
 class ReactTileRowProps extends UiProps
 {
   int y;
-  Hexxagon hexxagon;
+  BoardGUI boardGUI;
   ReactTileGridComponent tileGrid;
 }
 
@@ -26,14 +27,15 @@ class ReactTileRowComponent extends UiComponent<ReactTileRowProps>
 {
   ReactElement render()
   {
-    List<ReactElement> tiles = new List(props.hexxagon.width);
-    for (int x = 0; x < props.hexxagon.width; x++)
+    List<ReactElement> tiles = new List(props.boardGUI.width);
+    for (int x = 0; x < props.boardGUI.width; x++)
     {
       tiles[x] =
           (ReactTile()
+            ..key = x
             ..tileGrid = props.tileGrid
             ..position = new TilePosition(x, props.y)
-            ..hexxagon = props.hexxagon
+            ..boardGUI = props.boardGUI
           )();
     }
     return (Dom.div()
@@ -41,10 +43,5 @@ class ReactTileRowComponent extends UiComponent<ReactTileRowProps>
     )(
         tiles
     );
-  }
-
-  void setSelected(List<Move> possibleMoves)
-  {
-    props.children.forEach((tile) => tile.setSelected(possibleMoves));
   }
 }

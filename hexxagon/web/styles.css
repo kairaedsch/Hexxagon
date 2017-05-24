@@ -25,9 +25,10 @@ html, body {
 }
 
 .tileGrid {
-    background-color: #333333;
+    background-color: #FFF;
     padding-top: 54px;
     padding-bottom: 3px;
+    width: 800px;
 }
 
 .tileRow {
@@ -50,22 +51,67 @@ html, body {
     height: 104px;
 }
 
-.hexagon:Hover
+.hexagonInner {
+    transition: all 0.2s linear;
+    transform-origin: 50% 50%;
+    fill: #88f0ff;
+    opacity: 0.75;
+    transform: rotate(0deg);
+}
+
+.hexagon.PLAYER_ONE .hexagonInner {
+    fill: blue;
+}
+
+.hexagon.PLAYER_TWO .hexagonInner {
+    fill: red;
+}
+
+.hexagon.FORBIDDEN .hexagonInner {
+    fill: transparent;
+}
+
+.hexagon.playAble .hexagonInner {
+    opacity: 1;
+}
+
+.hexagon.notPlayAble .hexagonInner {
+    opacity: 0.4;
+}
+.hexagon.playAbleNow .hexagonInner {
+    opacity: 0.75;
+}
+
+.tileRow:nth-child(even) .hexagon.playAbleNow .hexagonInner {
+    transform: rotate(60deg);
+}
+
+.tileRow:nth-child(odd) .hexagon.playAbleNow .hexagonInner {
+    transform: rotate(-60deg);
+}
+
+.hexagon.playAbleNow.copy .hexagonInner {
+    fill: #00a900;
+}
+
+.hexagon.playAbleNow.jump .hexagonInner {
+    fill: #71f97f;
+}
+
+.hexagon.selected .hexagonInner {
+    opacity: 1;
+    transform: scale(1.25);
+    stroke: white;
+    stroke-width: 37px;
+}
+
+.hexagon.selected
 {
     transform: rotate(0deg);
 }
 
-.hexagonInner {
-    transition: all 0.2s linear;
-    transform: rotate(0deg) scale(1);
-    transform-origin: 50% 50%;
-    fill: #88f0ff;
-}
-
 .hexagonInner:hover {
-    transform: rotate(60deg) scale(1.5);
-    fill: white;
-    z-index: 0;
+    opacity: 0.9;
 }
 
 .hexagon:hover .hexagonMiddle {
