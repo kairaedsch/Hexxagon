@@ -2,7 +2,7 @@ import '../general/Array2D.dart';
 import '../general/Board.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
-import '../gui/Move.dart';
+import '../general/Move.dart';
 
 class Hexxagon extends Board
 {
@@ -91,7 +91,7 @@ class Hexxagon extends Board
         if (isVaidMove(player, from, to))
         {
           possibleMoves.add(
-              new Move(to, from.getMaxDistanceTo(to) == 1 ? "copy" : "jump"));
+              new Move(from, to, from.getMaxDistanceTo(to) == 1 ? "copy" : "jump"));
         }
       }
     }

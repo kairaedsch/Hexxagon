@@ -1,7 +1,7 @@
 import '../game/Hexxagon.dart';
 import '../general/TilePosition.dart';
-import 'BoardGUI.dart';
-import 'Move.dart';
+import 'GameGUI.dart';
+import '../general/Move.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
 import 'package:react/react_dom.dart' as react_dom;
@@ -16,7 +16,7 @@ UiFactory<ReactTileGridProps> ReactTileGrid;
 @Props()
 class ReactTileGridProps extends UiProps
 {
-  BoardGUI boardGUI;
+  GameGUI gameGUI;
 }
 
 @State()
@@ -31,19 +31,19 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
   void componentWillMount()
   {
     super.componentWillMount();
-    props.boardGUI.changeListener = () => setState(state);
+    props.gameGUI.changeListener = () => setState(state);
   }
 
   ReactElement render()
   {
-    List<ReactElement> tiles = new List(props.boardGUI.height);
-    for (int y = 0; y < props.boardGUI.height; y++)
+    List<ReactElement> tiles = new List(props.gameGUI.height);
+    for (int y = 0; y < props.gameGUI.height; y++)
     {
       tiles[y] = (ReactTileRow()
         ..key = y
         ..y = y
         ..tileGrid = this
-        ..boardGUI = props.boardGUI
+        ..gameGUI = props.gameGUI
       )();
     }
     return (Dom.div()

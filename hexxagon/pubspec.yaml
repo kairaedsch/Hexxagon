@@ -15,6 +15,7 @@ dev_dependencies:
   dart_to_js_script_rewriter: ^1.0.1
   over_react: ^1.6.0
   optional: "^1.2.3+1"
+  tuple: "^1.0.1"
 
 transformers:
 - over_react

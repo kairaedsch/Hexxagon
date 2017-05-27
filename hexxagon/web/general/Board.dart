@@ -1,4 +1,4 @@
-import '../gui/Move.dart';
+import 'Move.dart';
 import 'TilePosition.dart';
 import 'TileType.dart';
 

@@ -1,5 +1,6 @@
 import '../game/Hexxagon.dart';
-import 'BoardGUI.dart';
+import '../general/Game.dart';
+import 'GameGUI.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
 import 'package:react/react_dom.dart' as react_dom;
@@ -15,7 +16,7 @@ void main()
   // Mount / render your component.
   react_dom.render(
       (ReactTileGrid()
-        ..boardGUI = new BoardGUI(new Hexxagon(4, 10))
+        ..gameGUI = new GameGUI(new Game(new Hexxagon(4, 10)))
       )(),
       querySelector('#react_mount_point')
   );

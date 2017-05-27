@@ -1,7 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 
 *, *:before, *:after {
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #000;
 }
 
 .clearfix:after {
@@ -21,7 +25,6 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
 }
 
 .tileGrid {
@@ -29,6 +32,11 @@ html, body {
     padding-top: 54px;
     padding-bottom: 3px;
     width: 800px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .tileRow {
@@ -49,107 +57,208 @@ html, body {
     float: left;
     width: 120px;
     height: 104px;
+    pointer-events: none;
+}
+
+.hexagon.dragging {
+    transition: none;
+}
+
+.hexagon svg {
+    transition: transform 0.2s cubic-bezier(0.75, -1.35, 0.61, 1);
 }
 
 .hexagonInner {
-    transition: all 0.2s linear;
+    transition: fill 0.2s linear, stroke-width 0.2s linear;
     transform-origin: 50% 50%;
-    fill: #88f0ff;
-    opacity: 0.75;
+    fill: #A6F4FF;
+    opacity: 1;
     transform: rotate(0deg);
+    stroke: white;
+    stroke-width: 0;
+    pointer-events: all;
 }
 
-.hexagon.PLAYER_ONE .hexagonInner {
-    fill: blue;
+.hexagon.PLAYER_ONE .hexagonInner, .hexagon.playAbleNow.playAbleNowPLAYER_ONE.mouseIsOver .hexagonInner {
+    fill: #2073FF;
 }
 
-.hexagon.PLAYER_TWO .hexagonInner {
-    fill: red;
+.hexagon.PLAYER_TWO .hexagonInner, .hexagon.playAbleNow.playAbleNowPLAYER_TWO.mouseIsOver .hexagonInner {
+    fill: #FF4E36;
+}
+
+.hexagon.playAble .hexagonInner {
+    cursor: pointer;
+    animation-name: playAble;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.hexagon.dragging .hexagonInner {
+    pointer-events: none;
+}
+
+@keyframes playAble {
+    0% {
+        opacity: 1;
+    }
+    45% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    55% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hexagon.playAble.posy_0 .hexagonInner {
+    animation-delay: 0s;
+}
+
+.hexagon.playAble.posy_1 .hexagonInner {
+    animation-delay: 0.15s;
+}
+
+.hexagon.playAble.posy_2 .hexagonInner {
+    animation-delay: 0.3s;
+}
+
+.hexagon.playAble.posy_3 .hexagonInner {
+    animation-delay: 0.45s;
+}
+
+.hexagon.playAble.posy_4 .hexagonInner {
+    animation-delay: 0.60s;
+}
+
+.hexagon.playAble.posy_5 .hexagonInner {
+    animation-delay: 0.75s;
+}
+
+.hexagon.playAble.posy_6 .hexagonInner {
+    animation-delay: 0.90s;
+}
+
+.hexagon.playAble.posy_7 .hexagonInner {
+    animation-delay: 1.05s;
+}
+
+.hexagon.playAble.posy_8 .hexagonInner {
+    animation-delay: 1.20s;
+}
+
+.hexagon.playAble.posy_9 .hexagonInner {
+    animation-delay: 1.35s;
 }
 
 .hexagon.FORBIDDEN .hexagonInner {
     fill: transparent;
 }
 
-.hexagon.playAble .hexagonInner {
-    opacity: 1;
-}
-
-.hexagon.notPlayAble .hexagonInner {
-    opacity: 0.4;
-}
 .hexagon.playAbleNow .hexagonInner {
-    opacity: 0.75;
-}
-
-.tileRow:nth-child(even) .hexagon.playAbleNow .hexagonInner {
-    transform: rotate(60deg);
-}
-
-.tileRow:nth-child(odd) .hexagon.playAbleNow .hexagonInner {
-    transform: rotate(-60deg);
+    cursor: pointer;
+    transition: fill 0.1s linear, stroke-width 0.1s linear;
 }
 
 .hexagon.playAbleNow.copy .hexagonInner {
-    fill: #00a900;
+    fill: #40BE40;
 }
 
 .hexagon.playAbleNow.jump .hexagonInner {
-    fill: #71f97f;
+    fill: #94FA9F;
+    transition-delay: 0.075s;
+}
+
+.hexagon.playAbleNow {
+    animation-name: playAbleNow;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.56, 0.16, 0.37, 0.7);
+}
+
+.hexagon.playAbleNow.jump {
+    animation-delay: 0.075s;
+}
+
+@keyframes playAbleNow {
+    0% {
+        transform: none;
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+.hexagon.playAbleNow.mouseIsOver .hexagonInner {
+    stroke-width: 75px;
 }
 
 .hexagon.selected .hexagonInner {
-    opacity: 1;
-    transform: scale(1.25);
-    stroke: white;
     stroke-width: 37px;
+    animation-name: selected;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.56, 0.16, 0.37, 0.7);
+    animation-delay: 0s !important;
 }
 
-.hexagon.selected
-{
-    transform: rotate(0deg);
+@keyframes selected {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
-.hexagonInner:hover {
-    opacity: 0.9;
+.hexagon.selected svg {
+    transform: scale(1.25);
 }
 
-.hexagon:hover .hexagonMiddle {
-    background-color: red;
+.hexagon.dragging svg {
+    transform: scale(0.85);
 }
 
-.hexagonLeft,
-.hexagonRight,
-.hexagonMiddle {
-    float: left;
-    border: 0 solid #64C7CC;
-    transition: all 0.2s linear;
+.hexagonInnerText {
+    display: none;
 }
 
-.hexagonLeft {
-    border-right-width: 31px;
-    border-top: 52px solid transparent;
-    border-bottom: 52px solid transparent;
-    margin-right: -1px;
+.hexagon.lastMoveSource .hexagonInnerText {
+    display: block;
 }
 
-.hexagon:hover .hexagonLeft {
-    border-right-color: red;
+.hexagon.lastMoveTarget .hexagonInnerText {
+    display: block;
 }
 
-.hexagonMiddle {
-    width: 60px;
-    height: 104px;
-    background-color: #64C7CC;
+.hexagon.playAbleNow .hexagonInnerText {
+    display: none;
 }
 
-.hexagonRight {
-    border-left-width: 31px;
-    border-top: 52px solid transparent;
-    border-bottom: 52px solid transparent;
-    margin-left: -1px;
-}
-
-.hexagon:hover .hexagonRight {
-    border-left-color: red;
+.hexagonInnerText {
+    margin-top: -104px;
+    width: 120px;
+    height: 103px;
+    padding-top: 33px;
+    text-align: center;
+    font-weight: 800;
+    color: #FFF;
 }
