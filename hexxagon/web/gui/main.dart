@@ -1,5 +1,7 @@
 import '../game/Hexxagon.dart';
+import '../game/RandomHexxagonPlayer.dart';
 import '../general/Game.dart';
+import '../general/HumanPlayer.dart';
 import 'GameGUI.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
@@ -14,9 +16,11 @@ void main()
   react_client.setClientConfiguration();
 
   // Mount / render your component.
+  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon(4, 10), new HumanPlayer(), new RandomHexxagonPlayer()));
+
   react_dom.render(
       (ReactTileGrid()
-        ..gameGUI = new GameGUI(new Game(new Hexxagon(4, 10)))
+        ..gameGUI = gameGUI
       )(),
       querySelector('#react_mount_point')
   );

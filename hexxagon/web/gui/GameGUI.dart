@@ -1,6 +1,7 @@
 import '../general/Board.dart';
 import '../general/Game.dart';
 import '../general/Move.dart';
+import '../general/Player.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import 'package:optional/optional.dart';
@@ -34,6 +35,7 @@ class GameGUI
   GameGUI(this._game)
   {
     changeListener = () => {};
+    _game.changeListener = () => changeListener();
     _selectedPosition = new Optional.empty();
   }
 
@@ -81,4 +83,7 @@ class GameGUI
   {
     return _game.getNotCurrentPlayer();
   }
+
+  Player get currentPlayer
+  => _game.currentPlayer;
 }

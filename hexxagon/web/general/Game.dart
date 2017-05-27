@@ -1,15 +1,26 @@
 import 'Move.dart';
 import 'Board.dart';
+import 'Player.dart';
 import 'TilePosition.dart';
 import 'TileType.dart';
 import 'package:optional/optional.dart';
 
-class Game
+class Game<B extends Board>
 {
-  Board _board;
-  Board get board => _board;
+  B _board;
+
+  B get board
+  => _board;
+
+  Function changeListener;
+
+  Player _playerOne, _playerTwo;
+
+  Player get currentPlayer
+  => _board.getCurrentPlayer() == TileType.PLAYER_ONE ? _playerOne : _playerTwo;
 
   List<Move> _history;
+
   Optional<Move> get lastMove
   => _history.isNotEmpty ? new Optional.of(_history.last) : new Optional.empty();
 
@@ -19,15 +30,23 @@ class Game
   int get height
   => _board.height;
 
-  Game(this._board)
+  Game(this._board, this._playerOne, this._playerTwo)
   {
     _history = [];
+    next();
+  }
+
+  void next()
+  {
+    currentPlayer.move(_board, board.getCurrentPlayer(), move);
   }
 
   void move(Move move)
   {
     _board.move(_board.getCurrentPlayer(), move.source, move.target);
     _history.add(move);
+    changeListener();
+    next();
   }
 
   List<Move> getPossibleMoves(TileType player, TilePosition tilePosition)

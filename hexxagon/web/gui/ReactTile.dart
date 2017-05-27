@@ -41,24 +41,24 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   bool get isPlayAbleNow
   {
     return props.boardGUI.isSomethingSelected
-          && props.boardGUI.possibleMoves.any((Move move)
-      => move.target.equals(props.position));
+        && props.boardGUI.possibleMoves.any((Move move)
+        => move.target.equals(props.position));
   }
 
   bool get isDragging
   {
-    return (state.delta.x.abs() > 5 || state.delta.y.abs() > 5);
+    return (state.delta.x.abs() > 20 || state.delta.y.abs() > 20);
   }
 
   @override
   getInitialState()
   {
     return (newState()
-        ..lastMouseDownPos = new Optional.empty()
-        ..delta = new Point(0, 0)
-        ..firstTimeUp = false
-        ..mouseIsOver = false
-      );
+      ..lastMouseDownPos = new Optional.empty()
+      ..delta = new Point(0, 0)
+      ..firstTimeUp = false
+      ..mouseIsOver = false
+    );
   }
 
   @override
@@ -78,7 +78,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   ReactElement render()
   {
     TileType tileType = props.boardGUI.get(props.position);
-    bool playAble = props.boardGUI.couldBeMoved(props.position);
+    bool playAble = props.boardGUI.couldBeMoved(props.position) && props.boardGUI.currentPlayer.isHuman;
     bool playAbleOfNotCurrentPlayer = !playAble && tileType == props.boardGUI.getNotCurrentPlayer();
 
     bool isSelected = false;
@@ -182,22 +182,25 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
   startDrag(SyntheticMouseEvent event)
   {
-    print("startDrag");
-    bool firstTimeUp = false;
-    if (!props.boardGUI.isSomethingSelected || !props.boardGUI.selectedPosition.equals(props.position))
+    if (props.boardGUI.currentPlayer.isHuman)
     {
-      select(null);
-      firstTimeUp = true;
-    }
-    if (props.boardGUI.isSomethingSelected && props.boardGUI.selectedPosition.equals(props.position))
-    {
-      l1.resume();
-      l2.resume();
-      setState((newState()
-        ..lastMouseDownPos = new Optional.of(new Point(event.screenX, event.screenY))
-        ..delta = new Point(0, 0)
-        ..firstTimeUp = firstTimeUp
-      ));
+      print("startDrag");
+      bool firstTimeUp = false;
+      if (!props.boardGUI.isSomethingSelected || !props.boardGUI.selectedPosition.equals(props.position))
+      {
+        select(null);
+        firstTimeUp = true;
+      }
+      if (props.boardGUI.isSomethingSelected && props.boardGUI.selectedPosition.equals(props.position))
+      {
+        l1.resume();
+        l2.resume();
+        setState((newState()
+          ..lastMouseDownPos = new Optional.of(new Point(event.screenX, event.screenY))
+          ..delta = new Point(0, 0)
+          ..firstTimeUp = firstTimeUp
+        ));
+      }
     }
   }
 

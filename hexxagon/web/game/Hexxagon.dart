@@ -105,6 +105,24 @@ class Hexxagon extends Board
   }
 
   @override
+  List<TilePosition> canBeMoved(TileType player)
+  {
+    List<TilePosition> possibleMoves = [];
+    for (int x = 0; x < _width; x++)
+    {
+      for (int y = 0; y < _height; y++)
+      {
+        TilePosition from = new TilePosition(x, y);
+        if (getPossibleMoves(player, from).isNotEmpty)
+        {
+          possibleMoves.add(from);
+        }
+      }
+    }
+    return possibleMoves;
+  }
+
+  @override
   TileType get(TilePosition position)
   {
     return _tiles.array[position.x][position.y];
