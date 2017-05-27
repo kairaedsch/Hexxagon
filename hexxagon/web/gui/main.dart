@@ -1,4 +1,5 @@
 import '../game/Hexxagon.dart';
+import '../game/MonteCarloHexxagonPlayer.dart';
 import '../game/RandomHexxagonPlayer.dart';
 import '../general/Game.dart';
 import '../general/HumanPlayer.dart';
@@ -16,7 +17,7 @@ void main()
   react_client.setClientConfiguration();
 
   // Mount / render your component.
-  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon(4, 10), new HumanPlayer(), new RandomHexxagonPlayer()));
+  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon(4, 10), new RandomHexxagonPlayer(), new MonteCarloHexxagonPlayer()));
 
   react_dom.render(
       (ReactTileGrid()

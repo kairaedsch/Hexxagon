@@ -25,6 +25,21 @@ class Hexxagon extends Board
     _set(pos, TileType.FORBIDDEN);
   }
 
+  Hexxagon.clone(Hexxagon hexxagon) {
+    _width = hexxagon.width;
+    _height = hexxagon.height;
+    _tiles = new Array2D(_width, _height, TileType.EMPTY);
+    for (int x = 0; x < _width; x++)
+    {
+      for (int y = 0; y < _height; y++)
+      {
+        TilePosition pos = new TilePosition(x, y);
+        _tiles[x][y] = hexxagon.get(pos);
+      }
+    }
+    _currentPlayer = hexxagon.getCurrentPlayer();
+  }
+
   int get width
   => _width;
 
@@ -138,5 +153,32 @@ class Hexxagon extends Board
   TileType getNotCurrentPlayer()
   {
     return (_currentPlayer == TileType.PLAYER_ONE ? TileType.PLAYER_TWO : TileType.PLAYER_ONE);
+  }
+
+  @override
+  bool get isOver
+  => canBeMoved(getCurrentPlayer()).isEmpty;
+
+  @override
+  TileType get betterPlayer
+  {
+    int playerOne = 0,
+        playerTwo = 0;
+    for (int x = 0; x < _width; x++)
+    {
+      for (int y = 0; y < _height; y++)
+      {
+        TileType type = get(new TilePosition(x, y));
+        if (type == TileType.PLAYER_ONE)
+        {
+          playerOne++;
+        }
+        else if (type == TileType.PLAYER_TWO)
+        {
+          playerTwo++;
+        }
+      }
+    }
+    return playerOne > playerTwo ? TileType.PLAYER_ONE : playerOne < playerTwo ? TileType.PLAYER_TWO : TileType.EMPTY;
   }
 }

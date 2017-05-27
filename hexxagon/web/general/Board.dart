@@ -12,4 +12,6 @@ abstract class Board
   TileType get(TilePosition tilePosition);
   TileType getCurrentPlayer();
   TileType getNotCurrentPlayer();
+  bool get isOver;
+  TileType get betterPlayer;
 }

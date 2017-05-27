@@ -13,10 +13,18 @@ class RandomHexxagonPlayer extends Player<Hexxagon>
   {
     List<TilePosition> canBeMoved = hexxagon.canBeMoved(player);
     TilePosition position = (canBeMoved..shuffle())[0];
-    new Timer(new Duration(seconds: 1), ()
+    new Timer(new Duration(milliseconds: 25), ()
     {
       moveCallback((hexxagon.getPossibleMoves(player, position)
         ..shuffle())[0]);
     });
+  }
+
+  void move2(Hexxagon hexxagon, TileType player)
+  {
+    List<TilePosition> canBeMoved = hexxagon.canBeMoved(player);
+    TilePosition position = (canBeMoved..shuffle())[0];
+    Move move = (hexxagon.getPossibleMoves(player, position)..shuffle())[0];
+    hexxagon.move(player, move.source, move.target);
   }
 }
