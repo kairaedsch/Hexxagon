@@ -211,6 +211,10 @@ html, body {
     animation-delay: 0s !important;
 }
 
+.hexagon.dragging .hexagonInner {
+    animation: none;
+}
+
 @keyframes selected {
     0% {
         transform: rotate(0deg);

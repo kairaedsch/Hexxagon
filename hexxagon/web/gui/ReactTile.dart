@@ -77,7 +77,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
   ReactElement render()
   {
-    TileType tileType = props.boardGUI.get(props.position);
+    int tileType = props.boardGUI.get(props.position);
     bool playAble = props.boardGUI.couldBeMoved(props.position) && props.boardGUI.currentPlayer.isHuman;
     bool playAbleOfNotCurrentPlayer = !playAble && tileType == props.boardGUI.getNotCurrentPlayer();
 
@@ -105,12 +105,12 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " ${isLastMoveTarget ? "lastMoveTarget" : ""}"
           " ${move.isPresent ? move.value.kindOf : ""}"
           " ${playAble ? "playAble" : (playAbleOfNotCurrentPlayer ? "notPlayAble" : "")}"
-          " ${isPlayAbleNow ? "playAbleNow playAbleNow${props.boardGUI.getCurrentPlayer().toString().split(".")[1]}" : ""}"
-          " ${tileType.toString().split(".")[1]}"
+          " ${isPlayAbleNow ? "playAbleNow playAbleNow${TileType.toName(props.boardGUI.getCurrentPlayer())}" : ""}"
+          " ${TileType.toName(tileType)}"
           " ${isSelected ? "selected" : ""}"
           " ${state.mouseIsOver ? "mouseIsOver" : ""}"
           " ${isDragging ? "dragging" : ""}"
-          " posy_${props.position.getMaxDistanceTo(new TilePosition(0, 0))}"
+          " posy_${props.position.getMaxDistanceTo(new TilePosition.normal(0, 0))}"
       ..style = (state.delta.x != 0 || state.delta.y != 0) ? {"transform": "translate(${state.delta.x}px, ${state.delta.y}px)"} : {"transform": "none"}
     )(
         (Dom.svg()

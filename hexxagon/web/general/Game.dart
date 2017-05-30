@@ -3,6 +3,7 @@ import 'Board.dart';
 import 'Player.dart';
 import 'TilePosition.dart';
 import 'TileType.dart';
+import 'dart:async';
 import 'package:optional/optional.dart';
 
 class Game<B extends Board>
@@ -33,6 +34,7 @@ class Game<B extends Board>
   Game(this._board, this._playerOne, this._playerTwo)
   {
     _history = [];
+    changeListener = () => {};
     next();
   }
 
@@ -45,11 +47,13 @@ class Game<B extends Board>
   {
     _board.move(_board.getCurrentPlayer(), move.source, move.target);
     _history.add(move);
-    changeListener();
-    next();
+    new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : 200), () {
+      changeListener();
+      new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : 200), next);
+    });
   }
 
-  List<Move> getPossibleMoves(TileType player, TilePosition tilePosition)
+  List<Move> getPossibleMoves(int player, TilePosition tilePosition)
   {
     return _board.getPossibleMoves(player, tilePosition);
   }
@@ -59,17 +63,17 @@ class Game<B extends Board>
     return _board.couldBeMoved(tilePosition);
   }
 
-  TileType get(TilePosition tilePosition)
+  int get(TilePosition tilePosition)
   {
     return _board.get(tilePosition);
   }
 
-  TileType getCurrentPlayer()
+  int getCurrentPlayer()
   {
     return _board.getCurrentPlayer();
   }
 
-  TileType getNotCurrentPlayer()
+  int getNotCurrentPlayer()
   {
     return _board.getNotCurrentPlayer();
   }

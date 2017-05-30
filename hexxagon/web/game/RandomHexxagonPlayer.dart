@@ -1,3 +1,4 @@
+import 'ComputerPlayer.dart';
 import '../general/Move.dart';
 import '../general/Player.dart';
 import '../general/TilePosition.dart';
@@ -5,22 +6,22 @@ import '../general/TileType.dart';
 import 'Hexxagon.dart';
 import 'dart:async';
 
-class RandomHexxagonPlayer extends Player<Hexxagon>
-{
-  get isHuman => false;
+import 'package:dartson/dartson.dart';
 
-  void move(Hexxagon hexxagon, TileType player, MoveCallback moveCallback)
+@Entity()
+class RandomHexxagonPlayer extends ComputerPlayer
+{
+  String get name => "Random Player";
+
+  Move CalculateMove(Hexxagon hexxagon, int player)
   {
     List<TilePosition> canBeMoved = hexxagon.canBeMoved(player);
     TilePosition position = (canBeMoved..shuffle())[0];
-    new Timer(new Duration(milliseconds: 25), ()
-    {
-      moveCallback((hexxagon.getPossibleMoves(player, position)
-        ..shuffle())[0]);
-    });
+    return (hexxagon.getPossibleMoves(player, position)
+        ..shuffle())[0];
   }
 
-  void move2(Hexxagon hexxagon, TileType player)
+  void move2(Hexxagon hexxagon, int player)
   {
     List<TilePosition> canBeMoved = hexxagon.canBeMoved(player);
     TilePosition position = (canBeMoved..shuffle())[0];

@@ -1,3 +1,4 @@
+import 'ComputerPlayer.dart';
 import '../general/Move.dart';
 import '../general/Player.dart';
 import '../general/TilePosition.dart';
@@ -6,14 +7,17 @@ import 'Hexxagon.dart';
 import 'RandomHexxagonPlayer.dart';
 import 'dart:async';
 
+import 'package:dartson/dartson.dart';
 import 'package:tuple/tuple.dart';
 
-class MonteCarloHexxagonPlayer extends Player<Hexxagon>
+@Entity()
+class MonteCarloHexxagonPlayer extends ComputerPlayer
 {
-  get isHuman
-  => false;
+  get isHuman => false;
 
-  void move(Hexxagon hexxagon, TileType player, MoveCallback moveCallback)
+  String get name => "MonteCarlo Player";
+
+  Move CalculateMove(Hexxagon hexxagon, int player)
   {
     List<TilePosition> canBeMoved = hexxagon.canBeMoved(player);
 
@@ -27,12 +31,13 @@ class MonteCarloHexxagonPlayer extends Player<Hexxagon>
     DateTime start = new DateTime.now();
     RandomHexxagonPlayer randomHexxagonPlayer = new RandomHexxagonPlayer();
     int rounds = 0;
-    while(new DateTime.now().difference(start).inMilliseconds < 2000)
+    while(rounds < 10)
     {
       for (int i = 0; i < possibleMoves.length; i++)
       {
         Tuple2<int, Move> t = possibleMoves[i];
         Hexxagon clone = new Hexxagon.clone(hexxagon);
+        clone.move(player, t.item2.source, t.item2.target);
         while (!clone.isOver)
         {
           randomHexxagonPlayer.move2(clone, clone.getCurrentPlayer());
@@ -50,13 +55,11 @@ class MonteCarloHexxagonPlayer extends Player<Hexxagon>
     }
     print(rounds);
 
+    possibleMoves.shuffle();
     Move move = possibleMoves
         .reduce((t1, t2)
     => t1.item1 >= t2.item1 ? t1 : t2)
         .item2;
-    new Timer(new Duration(milliseconds: 25), ()
-    {
-      moveCallback(move);
-    });
+    return move;
   }
 }

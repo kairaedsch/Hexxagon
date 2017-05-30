@@ -1,12 +1,17 @@
 import 'dart:math';
 
+import 'package:dartson/dartson.dart';
+
+@Entity()
 class TilePosition
 {
   static final List<List<int>> neighbourDeltasOdd = [[0, -2], [1, -1], [1, 1], [0, 2], [0, -1], [0, 1]];
   static final List<List<int>> neighbourDeltasEven = [[0, -2], [0, -1], [0, 1], [0, 2], [-1, 1], [-1, -1]];
-  final int x, y;
+  int x, y;
 
-  TilePosition(this.x, this.y);
+  TilePosition();
+
+  TilePosition.normal(this.x, this.y);
 
   int getMaxDistanceTo(TilePosition other)
   {
@@ -25,7 +30,7 @@ class TilePosition
       {
         if (neighbourDelta[1].isOdd)
         {
-          TilePosition position = new TilePosition(neighbourDelta[0] + x, neighbourDelta[1] + y);
+          TilePosition position = new TilePosition.normal(neighbourDelta[0] + x, neighbourDelta[1] + y);
           int distance = position.getMaxDistanceTo(other);
           if (distance < minDistance)
           {

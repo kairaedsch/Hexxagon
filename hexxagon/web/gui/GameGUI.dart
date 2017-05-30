@@ -69,17 +69,17 @@ class GameGUI
     return _game.couldBeMoved(tilePosition);
   }
 
-  TileType get(TilePosition tilePosition)
+  int get(TilePosition tilePosition)
   {
     return _game.get(tilePosition);
   }
 
-  TileType getCurrentPlayer()
+  int getCurrentPlayer()
   {
     return _game.getCurrentPlayer();
   }
 
-  TileType getNotCurrentPlayer()
+  int getNotCurrentPlayer()
   {
     return _game.getNotCurrentPlayer();
   }

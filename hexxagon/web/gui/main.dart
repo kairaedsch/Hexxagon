@@ -17,7 +17,7 @@ void main()
   react_client.setClientConfiguration();
 
   // Mount / render your component.
-  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon(4, 10), new RandomHexxagonPlayer(), new MonteCarloHexxagonPlayer()));
+  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon.normal(4, 10), new MonteCarloHexxagonPlayer(), new RandomHexxagonPlayer()));
 
   react_dom.render(
       (ReactTileGrid()

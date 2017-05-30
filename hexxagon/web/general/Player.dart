@@ -1,3 +1,5 @@
+import '../game/MonteCarloHexxagonPlayer.dart';
+import '../game/RandomHexxagonPlayer.dart';
 import 'Board.dart';
 import 'Move.dart';
 import 'TilePosition.dart';
@@ -7,7 +9,9 @@ typedef void MoveCallback(Move move);
 
 abstract class Player<B extends Board>
 {
-  get isHuman;
+  bool get isHuman;
 
-  void move(B board, TileType player, MoveCallback moveCallback);
+  String get name;
+
+  void move(B board, int player, MoveCallback moveCallback);
 }

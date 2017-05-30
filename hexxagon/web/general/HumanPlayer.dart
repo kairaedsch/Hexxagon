@@ -8,13 +8,11 @@ typedef void Callback();
 
 class HumanPlayer<B extends Board> extends Player<B>
 {
-  get isHuman => true;
+  bool get isHuman => true;
 
-  Callback callback;
+  String get name => "Human Player";
 
-  HumanPlayer();
-
-  void move(B board, TileType player, MoveCallback moveCallback)
+  void move(B board, int player, MoveCallback moveCallback)
   {
 
   }
