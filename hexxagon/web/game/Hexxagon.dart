@@ -3,6 +3,7 @@ import '../general/Board.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import '../general/Move.dart';
+import 'GameResult.dart';
 import 'dart:math';
 
 class Hexxagon extends Board
@@ -121,6 +122,20 @@ class Hexxagon extends Board
     return possibleMoves;
   }
 
+  List<Move> getAllPossibleMoves()
+  {
+    List<Move> possibleMoves = [];
+    for (int x = 0; x < _width; x++)
+    {
+      for (int y = 0; y < _height; y++)
+      {
+        TilePosition from = TilePosition.get(x, y);
+        possibleMoves.addAll(getPossibleMoves(from));
+      }
+    }
+    return possibleMoves;
+  }
+
   @override
   bool couldBeMoved(TilePosition position)
   {
@@ -222,5 +237,22 @@ class Hexxagon extends Board
       }
     }
     return playerOne > playerTwo ? TileType.PLAYER_ONE : playerOne < playerTwo ? TileType.PLAYER_TWO : TileType.EMPTY;
+  }
+
+  GameResult getResult(int player)
+  {
+    int betterPlayer = this.betterPlayer;
+    if (betterPlayer == player)
+    {
+      return GameResult.WIN;
+    }
+    else if (betterPlayer == TileType.EMPTY)
+    {
+      return GameResult.DRAW;
+    }
+    else
+    {
+      return GameResult.LOST;
+    }
   }
 }

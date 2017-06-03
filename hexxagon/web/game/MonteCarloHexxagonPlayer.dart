@@ -28,7 +28,7 @@ class MonteCarloHexxagonPlayer extends ComputerPlayer
     DateTime start = new DateTime.now();
     Random rng = new Random();
     int rounds = 0;
-    while(rounds < 500)
+    while(rounds < 100)
     {
       for (int i = 0; i < possibleMoves.length; i++)
       {
