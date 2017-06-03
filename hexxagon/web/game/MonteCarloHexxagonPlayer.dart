@@ -13,8 +13,6 @@ import 'package:tuple/tuple.dart';
 @Entity()
 class MonteCarloHexxagonPlayer extends ComputerPlayer
 {
-  get isHuman => false;
-
   String get name => "MonteCarlo Player";
 
   Move CalculateMove(Hexxagon hexxagon, int player)
@@ -31,7 +29,7 @@ class MonteCarloHexxagonPlayer extends ComputerPlayer
     DateTime start = new DateTime.now();
     RandomHexxagonPlayer randomHexxagonPlayer = new RandomHexxagonPlayer();
     int rounds = 0;
-    while(rounds < 10)
+    while(rounds < 25)
     {
       for (int i = 0; i < possibleMoves.length; i++)
       {

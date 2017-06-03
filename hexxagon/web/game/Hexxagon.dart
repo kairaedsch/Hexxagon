@@ -3,6 +3,7 @@ import '../general/Board.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import '../general/Move.dart';
+import 'dart:math';
 import 'package:dartson/dartson.dart';
 
 @Entity()
@@ -117,7 +118,25 @@ class Hexxagon extends Board
     return get(position) == currentPlayer;
   }
 
-  @override
+  Move getRandomMove(int player)
+  {
+    var rng = new Random();
+    TilePosition start = new TilePosition.normal(rng.nextInt(width), rng.nextInt(height));
+
+    TilePosition loop = start.next(width, height);
+    while (!loop.equals(start))
+    {
+      loop = loop.next(width, height);
+      List<Move> possibleMoves = getPossibleMoves(player, loop);
+      if (possibleMoves.isNotEmpty)
+      {
+        return possibleMoves[rng.nextInt(possibleMoves.length)];
+      }
+    }
+
+    return null;
+  }
+
   List<TilePosition> canBeMoved(int player)
   {
     List<TilePosition> possibleMoves = [];

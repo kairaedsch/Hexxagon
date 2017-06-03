@@ -22,13 +22,17 @@ abstract class ComputerPlayer extends Player<Hexxagon>
 
   void move(Hexxagon board, int player, MoveCallback moveCallback)
   {
+    /*
     var dson = new Dartson.JSON();
+    DateTime start = new DateTime.now();
     ReceivePort receivePort = new ReceivePort();
     receivePort.listen((move)
     {
+      print("${new DateTime.now().difference(start).inMilliseconds}ms");
       moveCallback(dson.decode(move, new Move()));
     });
     Isolate.spawnUri(Uri.parse(identical(1, 1.0) ? "game/AsyncAI.dart.js" : "../game/AsyncAI.dart"), [dson.encode(this), dson.encode(board), player.toString()], receivePort.sendPort);
+    */
   }
 
   Move CalculateMove(Hexxagon board, int player);

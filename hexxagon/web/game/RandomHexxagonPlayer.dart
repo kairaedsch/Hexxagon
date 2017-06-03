@@ -15,17 +15,12 @@ class RandomHexxagonPlayer extends ComputerPlayer
 
   Move CalculateMove(Hexxagon hexxagon, int player)
   {
-    List<TilePosition> canBeMoved = hexxagon.canBeMoved(player);
-    TilePosition position = (canBeMoved..shuffle())[0];
-    return (hexxagon.getPossibleMoves(player, position)
-        ..shuffle())[0];
+    return hexxagon.getRandomMove(player);
   }
 
   void move2(Hexxagon hexxagon, int player)
   {
-    List<TilePosition> canBeMoved = hexxagon.canBeMoved(player);
-    TilePosition position = (canBeMoved..shuffle())[0];
-    Move move = (hexxagon.getPossibleMoves(player, position)..shuffle())[0];
+    Move move = hexxagon.getRandomMove(player);
     hexxagon.move(player, move.source, move.target);
   }
 }

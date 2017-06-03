@@ -11,7 +11,7 @@ void main(List<String> args, SendPort sendPort)
 {
   var dson = new Dartson.JSON();
 
-  ComputerPlayer computerPlayer = dson.decode(args[0], new RandomHexxagonPlayer());
+  ComputerPlayer computerPlayer = dson.decode(args[0], new MonteCarloHexxagonPlayer());
   Hexxagon hexxagon = dson.decode(args[1], new Hexxagon());
   int player = int.parse(args[2]);
   print("sfsf");

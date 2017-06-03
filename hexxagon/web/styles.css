@@ -103,13 +103,10 @@ html, body {
     0% {
         opacity: 1;
     }
-    45% {
-        opacity: 1;
-    }
-    50% {
+    5% {
         opacity: 0.5;
     }
-    55% {
+    10% {
         opacity: 1;
     }
     100% {
@@ -265,4 +262,8 @@ html, body {
     text-align: center;
     font-weight: 800;
     color: #FFF;
+}
+
+.hexagon:hover svg {
+    transform: scale(1.25);
 }

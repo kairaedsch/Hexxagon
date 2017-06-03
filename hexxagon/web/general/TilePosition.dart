@@ -51,4 +51,9 @@ class TilePosition
   {
     return x >= 0 && y >= 0 && x < width && y < height;
   }
+
+  TilePosition next(int width, int height)
+  {
+    return new TilePosition.normal((x + 1) % width, (x + 1) == width ? ((y + 1) % height) : y);
+  }
 }
