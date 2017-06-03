@@ -4,56 +4,57 @@ import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import '../general/Move.dart';
 import 'dart:math';
-import 'package:dartson/dartson.dart';
 
-@Entity()
 class Hexxagon extends Board
 {
-  int width, height;
-  Array2D tiles;
-  int currentPlayer;
+  int _width, _height;
+  int get width => _width;
+  int get height => _height;
+
+  Array2D _tiles;
+  int _currentPlayer;
 
   Hexxagon();
 
-  Hexxagon.normal(this.width, this.height)
+  Hexxagon.normal(this._width, this._height)
   {
-    tiles = new Array2D.normal(width, height, TileType.EMPTY);
-    currentPlayer = TileType.PLAYER_ONE;
+    _tiles = new Array2D(_width, _height, TileType.EMPTY);
+    _currentPlayer = TileType.PLAYER_ONE;
 
-    _set(new TilePosition.normal(0, 0), TileType.PLAYER_ONE);
-    _set(new TilePosition.normal(width - 1, height - 1), TileType.PLAYER_ONE);
+    _set(TilePosition.get(0, 0), TileType.PLAYER_ONE);
+    _set(TilePosition.get(_width - 1, _height - 1), TileType.PLAYER_ONE);
 
-    _set(new TilePosition.normal(width - 1, 0), TileType.PLAYER_TWO);
-    _set(new TilePosition.normal(0, height - 1), TileType.PLAYER_TWO);
+    _set(TilePosition.get(_width - 1, 0), TileType.PLAYER_TWO);
+    _set(TilePosition.get(0, _height - 1), TileType.PLAYER_TWO);
 
-    TilePosition pos = new TilePosition.normal((width / 2).floor() - 1, (height / 2).floor());
+    TilePosition pos = TilePosition.get((_width / 2).floor() - 1, (_height / 2).floor());
     _set(pos, TileType.FORBIDDEN);
   }
 
   Hexxagon.clone(Hexxagon hexxagon) {
-    width = hexxagon.width;
-    height = hexxagon.height;
-    tiles = new Array2D.normal(width, height, TileType.EMPTY);
-    for (int x = 0; x < width; x++)
+    _width = hexxagon._width;
+    _height = hexxagon._height;
+    _tiles = new Array2D(_width, _height, TileType.EMPTY);
+    for (int x = 0; x < _width; x++)
     {
-      for (int y = 0; y < height; y++)
+      for (int y = 0; y < _height; y++)
       {
-        TilePosition pos = new TilePosition.normal(x, y);
-        tiles[x][y] = hexxagon.get(pos);
+        TilePosition pos = TilePosition.get(x, y);
+        _tiles[x][y] = hexxagon.get(pos);
       }
     }
-    currentPlayer = hexxagon.getCurrentPlayer();
+    _currentPlayer = hexxagon.getCurrentPlayer();
   }
 
   @override
-  void move(int player, TilePosition from, TilePosition to)
+  void move(TilePosition from, TilePosition to)
   {
-    if (!isVaidMove(player, from, to))
+    if (!isVaidMove(from, to))
     {
       throw new Exception("Invalid Move");
     }
 
-    _set(to, currentPlayer);
+    _set(to, _currentPlayer);
     int distance = from.getMaxDistanceTo(to);
     if (distance == 2)
     {
@@ -62,19 +63,19 @@ class Hexxagon extends Board
 
     for (List<int> neighbourDelta in to.y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd)
     {
-      TilePosition position = new TilePosition.normal(neighbourDelta[0] + to.x, neighbourDelta[1] + to.y);
-      if (position.isValid(width, height) && get(position) == getNotCurrentPlayer())
+      TilePosition position = TilePosition.get(neighbourDelta[0] + to.x, neighbourDelta[1] + to.y);
+      if (position.isValid(_width, _height) && get(position) == getNotCurrentPlayer())
       {
-        _set(position, currentPlayer);
+        _set(position, _currentPlayer);
       }
     }
 
-    currentPlayer = getNotCurrentPlayer();
+    _currentPlayer = getNotCurrentPlayer();
   }
 
-  bool isVaidMove(int player, TilePosition from, TilePosition to)
+  bool isVaidMove(TilePosition from, TilePosition to)
   {
-    if (player != currentPlayer || get(from) != currentPlayer || get(to) != TileType.EMPTY)
+    if (get(from) != _currentPlayer || get(to) != TileType.EMPTY)
     {
       return false;
     }
@@ -90,23 +91,31 @@ class Hexxagon extends Board
 
   void _set(TilePosition position, int type)
   {
-    tiles.array[position.x][position.y] = type;
+    _tiles.array[position.x][position.y] = type;
   }
 
   @override
-  List<Move> getPossibleMoves(int player, TilePosition from)
+  List<Move> getPossibleMoves(TilePosition from)
   {
-    List<Move> possibleMoves = [];
-    for (int x = 0; x < width; x++)
+    if (get(from) != _currentPlayer)
     {
-      for (int y = 0; y < height; y++)
+      return new List(0);
+    }
+    List<Move> possibleMoves = [];
+    for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd)
+    {
+      TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
+      if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
       {
-        TilePosition to = new TilePosition.normal(x, y);
-        if (isVaidMove(player, from, to))
-        {
-          possibleMoves.add(
-              new Move.normal(from, to, from.getMaxDistanceTo(to) == 1 ? "copy" : "jump"));
-        }
+        possibleMoves.add(new Move(from, to, "copy"));
+      }
+    }
+    for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourSecondRingDeltasEven : TilePosition.neighbourSecondRingDeltasOdd)
+    {
+      TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
+      if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
+      {
+        possibleMoves.add(new Move(from, to, "jump"));
       }
     }
     return possibleMoves;
@@ -115,37 +124,40 @@ class Hexxagon extends Board
   @override
   bool couldBeMoved(TilePosition position)
   {
-    return get(position) == currentPlayer;
+    return get(position) == _currentPlayer;
   }
 
-  Move getRandomMove(int player)
+  Move getRandomMove(Random rng)
   {
-    var rng = new Random();
-    TilePosition start = new TilePosition.normal(rng.nextInt(width), rng.nextInt(height));
+    TilePosition start = TilePosition.get(rng.nextInt(_width), rng.nextInt(_height));
+    TilePosition loop = start;
 
-    TilePosition loop = start.next(width, height);
-    while (!loop.equals(start))
+    do
     {
-      loop = loop.next(width, height);
-      List<Move> possibleMoves = getPossibleMoves(player, loop);
-      if (possibleMoves.isNotEmpty)
+      if (get(loop) == _currentPlayer)
       {
-        return possibleMoves[rng.nextInt(possibleMoves.length)];
+        List<Move> possibleMoves = getPossibleMoves(loop);
+        if (possibleMoves.isNotEmpty)
+        {
+          return possibleMoves[rng.nextInt(possibleMoves.length)];
+        }
       }
+      loop = loop.next(_width, _height);
     }
+    while (!loop.equals(start));
 
     return null;
   }
 
-  List<TilePosition> canBeMoved(int player)
+  List<TilePosition> canBeMoved()
   {
     List<TilePosition> possibleMoves = [];
-    for (int x = 0; x < width; x++)
+    for (int x = 0; x < _width; x++)
     {
-      for (int y = 0; y < height; y++)
+      for (int y = 0; y < _height; y++)
       {
-        TilePosition from = new TilePosition.normal(x, y);
-        if (getPossibleMoves(player, from).isNotEmpty)
+        TilePosition from = TilePosition.get(x, y);
+        if (getPossibleMoves(from).isNotEmpty)
         {
           possibleMoves.add(from);
         }
@@ -157,35 +169,48 @@ class Hexxagon extends Board
   @override
   int get(TilePosition position)
   {
-    return tiles.array[position.x][position.y];
+    return _tiles.array[position.x][position.y];
   }
 
   @override
   int getCurrentPlayer()
   {
-    return currentPlayer;
+    return _currentPlayer;
   }
 
   @override
   int getNotCurrentPlayer()
   {
-    return (currentPlayer == TileType.PLAYER_ONE ? TileType.PLAYER_TWO : TileType.PLAYER_ONE);
+    return (_currentPlayer == TileType.PLAYER_ONE ? TileType.PLAYER_TWO : TileType.PLAYER_ONE);
   }
 
   @override
   bool get isOver
-  => canBeMoved(getCurrentPlayer()).isEmpty;
+  {
+    for (int x = 0; x < _width; x++)
+    {
+      for (int y = 0; y < _height; y++)
+      {
+        TilePosition from = TilePosition.get(x, y);
+        if (getPossibleMoves(from).isNotEmpty)
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 
   @override
   int get betterPlayer
   {
     int playerOne = 0,
         playerTwo = 0;
-    for (int x = 0; x < width; x++)
+    for (int x = 0; x < _width; x++)
     {
-      for (int y = 0; y < height; y++)
+      for (int y = 0; y < _height; y++)
       {
-        int type = get(new TilePosition.normal(x, y));
+        int type = get(TilePosition.get(x, y));
         if (type == TileType.PLAYER_ONE)
         {
           playerOne++;

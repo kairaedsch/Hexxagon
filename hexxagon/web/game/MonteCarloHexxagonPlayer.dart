@@ -7,44 +7,45 @@ import 'Hexxagon.dart';
 import 'RandomHexxagonPlayer.dart';
 import 'dart:async';
 
-import 'package:dartson/dartson.dart';
+import 'dart:math';
 import 'package:tuple/tuple.dart';
 
-@Entity()
 class MonteCarloHexxagonPlayer extends ComputerPlayer
 {
   String get name => "MonteCarlo Player";
 
-  Move CalculateMove(Hexxagon hexxagon, int player)
+  void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
-    List<TilePosition> canBeMoved = hexxagon.canBeMoved(player);
+    List<TilePosition> canBeMoved = hexxagon.canBeMoved();
 
     List<Tuple2<int, Move>> possibleMoves = [];
     for (TilePosition pos in canBeMoved)
     {
-      possibleMoves.addAll(hexxagon.getPossibleMoves(player, pos).map((move)
+      possibleMoves.addAll(hexxagon.getPossibleMoves(pos).map((move)
       => new Tuple2(0, move)));
     }
 
     DateTime start = new DateTime.now();
-    RandomHexxagonPlayer randomHexxagonPlayer = new RandomHexxagonPlayer();
+    Random rng = new Random();
     int rounds = 0;
-    while(rounds < 25)
+    while(rounds < 500)
     {
       for (int i = 0; i < possibleMoves.length; i++)
       {
         Tuple2<int, Move> t = possibleMoves[i];
         Hexxagon clone = new Hexxagon.clone(hexxagon);
-        clone.move(player, t.item2.source, t.item2.target);
-        while (!clone.isOver)
+        clone.move(t.item2.source, t.item2.target);
+        Move move;
+        while ((move = clone.getRandomMove(rng)) != null)
         {
-          randomHexxagonPlayer.move2(clone, clone.getCurrentPlayer());
+          clone.move(move.source, move.target);
         }
-        if (clone.betterPlayer == hexxagon.getCurrentPlayer())
+        int betterPlayer = clone.betterPlayer;
+        if (betterPlayer == hexxagon.getCurrentPlayer())
         {
           possibleMoves[i] = new Tuple2(t.item1 + 1, t.item2);
         }
-        if (clone.betterPlayer == hexxagon.getNotCurrentPlayer())
+        if (betterPlayer == hexxagon.getNotCurrentPlayer())
         {
           possibleMoves[i] = new Tuple2(t.item1 - 1, t.item2);
         }
@@ -52,12 +53,13 @@ class MonteCarloHexxagonPlayer extends ComputerPlayer
       rounds++;
     }
     print(rounds);
+    print(possibleMoves);
 
     possibleMoves.shuffle();
     Move move = possibleMoves
         .reduce((t1, t2)
     => t1.item1 >= t2.item1 ? t1 : t2)
         .item2;
-    return move;
+    moveCallback(move);
   }
 }

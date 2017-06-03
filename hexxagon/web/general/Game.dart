@@ -40,12 +40,12 @@ class Game<B extends Board>
 
   void next()
   {
-    currentPlayer.move(_board, board.getCurrentPlayer(), move);
+    currentPlayer.move(_board, move);
   }
 
   void move(Move move)
   {
-    _board.move(_board.getCurrentPlayer(), move.source, move.target);
+    _board.move(move.source, move.target);
     _history.add(move);
     new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : 200), () {
       changeListener();
@@ -53,9 +53,9 @@ class Game<B extends Board>
     });
   }
 
-  List<Move> getPossibleMoves(int player, TilePosition tilePosition)
+  List<Move> getPossibleMoves(TilePosition tilePosition)
   {
-    return _board.getPossibleMoves(player, tilePosition);
+    return _board.getPossibleMoves(tilePosition);
   }
 
   bool couldBeMoved(TilePosition tilePosition)

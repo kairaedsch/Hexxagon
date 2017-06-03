@@ -110,7 +110,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " ${isSelected ? "selected" : ""}"
           " ${state.mouseIsOver ? "mouseIsOver" : ""}"
           " ${isDragging ? "dragging" : ""}"
-          " posy_${props.position.getMaxDistanceTo(new TilePosition.normal(0, 0))}"
+          " posy_${props.position.getMaxDistanceTo(TilePosition.get(0, 0))}"
       ..style = (state.delta.x != 0 || state.delta.y != 0) ? {"transform": "translate(${state.delta.x}px, ${state.delta.y}px)"} : {"transform": "none"}
     )(
         (Dom.svg()
@@ -135,7 +135,6 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
   void select(SyntheticMouseEvent event)
   {
-    print("select");
     Optional<Move> move;
     if (props.boardGUI.isSomethingSelected)
     {
@@ -184,7 +183,6 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   {
     if (props.boardGUI.currentPlayer.isHuman)
     {
-      print("startDrag");
       bool firstTimeUp = false;
       if (!props.boardGUI.isSomethingSelected || !props.boardGUI.selectedPosition.equals(props.position))
       {
@@ -208,7 +206,6 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   {
     Timer.run(()
     {
-      print("endDrag");
       l1.pause();
       l2.pause();
       this.setState((Map prevState, Map props)
@@ -229,7 +226,6 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
   onMouseUp()
   {
-    print("onMouseUp");
     if (isPlayAbleNow)
     {
       select(null);

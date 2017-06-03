@@ -16,9 +16,7 @@ dev_dependencies:
   over_react: ^1.6.0
   optional: "^1.2.3+1"
   tuple: "^1.0.1"
-  dartson: ">=0.2.0 <0.3.0"
 
 transformers:
-- dartson
 - over_react
 - dart_to_js_script_rewriter

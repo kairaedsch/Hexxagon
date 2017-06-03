@@ -12,7 +12,7 @@ class HumanPlayer<B extends Board> extends Player<B>
 
   String get name => "Human Player";
 
-  void move(B board, int player, MoveCallback moveCallback)
+  void move(B board, MoveCallback moveCallback)
   {
 
   }

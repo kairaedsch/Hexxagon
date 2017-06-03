@@ -6,7 +6,6 @@ import '../general/Player.dart';
 import '../general/TileType.dart';
 import 'dart:async';
 import 'dart:isolate';
-import 'package:dartson/dartson.dart';
 
 import 'package:tuple/tuple.dart';
 
@@ -20,20 +19,12 @@ abstract class ComputerPlayer extends Player<Hexxagon>
     return false;
   }
 
-  void move(Hexxagon board, int player, MoveCallback moveCallback)
+  void move(Hexxagon board, MoveCallback moveCallback)
   {
-    /*
-    var dson = new Dartson.JSON();
     DateTime start = new DateTime.now();
-    ReceivePort receivePort = new ReceivePort();
-    receivePort.listen((move)
-    {
-      print("${new DateTime.now().difference(start).inMilliseconds}ms");
-      moveCallback(dson.decode(move, new Move()));
-    });
-    Isolate.spawnUri(Uri.parse(identical(1, 1.0) ? "game/AsyncAI.dart.js" : "../game/AsyncAI.dart"), [dson.encode(this), dson.encode(board), player.toString()], receivePort.sendPort);
-    */
+    moveKI(board, moveCallback);
+    print("${new DateTime.now().difference(start).inMilliseconds}ms");
   }
 
-  Move CalculateMove(Hexxagon board, int player);
+  void moveKI(Hexxagon board, MoveCallback moveCallback);
 }

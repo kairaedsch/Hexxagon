@@ -13,5 +13,5 @@ abstract class Player<B extends Board>
 
   String get name;
 
-  void move(B board, int player, MoveCallback moveCallback);
+  void move(B board, MoveCallback moveCallback);
 }

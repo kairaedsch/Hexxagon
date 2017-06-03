@@ -34,7 +34,7 @@ class ReactTileRowComponent extends UiComponent<ReactTileRowProps>
           (ReactTile()
             ..key = x
             ..tileGrid = props.tileGrid
-            ..position = new TilePosition.normal(x, props.y)
+            ..position = TilePosition.get(x, props.y)
             ..boardGUI = props.gameGUI
           )();
     }

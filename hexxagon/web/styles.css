@@ -263,7 +263,3 @@ html, body {
     font-weight: 800;
     color: #FFF;
 }
-
-.hexagon:hover svg {
-    transform: scale(1.25);
-}

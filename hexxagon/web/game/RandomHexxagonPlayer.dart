@@ -6,21 +6,15 @@ import '../general/TileType.dart';
 import 'Hexxagon.dart';
 import 'dart:async';
 
-import 'package:dartson/dartson.dart';
+import 'dart:math';
 
-@Entity()
 class RandomHexxagonPlayer extends ComputerPlayer
 {
   String get name => "Random Player";
 
-  Move CalculateMove(Hexxagon hexxagon, int player)
+  void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
-    return hexxagon.getRandomMove(player);
-  }
-
-  void move2(Hexxagon hexxagon, int player)
-  {
-    Move move = hexxagon.getRandomMove(player);
-    hexxagon.move(player, move.source, move.target);
+    Random rng = new Random();
+    moveCallback(hexxagon.getRandomMove(rng));
   }
 }
