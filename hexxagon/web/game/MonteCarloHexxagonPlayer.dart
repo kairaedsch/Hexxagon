@@ -12,23 +12,17 @@ import 'package:tuple/tuple.dart';
 
 class MonteCarloHexxagonPlayer extends ComputerPlayer
 {
-  String get name => "MonteCarlo Player";
+  String get name
+  => "MonteCarlo Player";
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
-    List<TilePosition> canBeMoved = hexxagon.canBeMoved();
+    List<Tuple2<int, Move>> possibleMoves = hexxagon.getAllPossibleMoves().map((move)
+    => new Tuple2(0, move)).toList(growable: true);
 
-    List<Tuple2<int, Move>> possibleMoves = [];
-    for (TilePosition pos in canBeMoved)
-    {
-      possibleMoves.addAll(hexxagon.getPossibleMoves(pos).map((move)
-      => new Tuple2(0, move)));
-    }
-
-    DateTime start = new DateTime.now();
     Random rng = new Random();
     int rounds = 0;
-    while(rounds < 100)
+    while (rounds < 500)
     {
       for (int i = 0; i < possibleMoves.length; i++)
       {

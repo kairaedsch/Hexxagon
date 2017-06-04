@@ -129,7 +129,10 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
         ),
         (Dom.div()
           ..className = "hexagonInnerText"
-        )((isLastMoveSource || isLastMoveTarget) ? props.boardGUI.lastMove.value.kindOf : "")
+        )((isLastMoveSource || isLastMoveTarget) ? props.boardGUI.lastMove.value.kindOf : ""),
+        (Dom.div()
+          ..className = "hexagonInnerText positions"
+        )("${props.position.x} - ${props.position.y}")
     );
   }
 

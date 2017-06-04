@@ -239,6 +239,16 @@ html, body {
 }
 
 .hexagonInnerText {
+    margin-top: -104px;
+    width: 120px;
+    height: 103px;
+    padding-top: 33px;
+    text-align: center;
+    font-weight: 800;
+    color: #FFF;
+}
+
+.hexagonInnerText {
     display: none;
 }
 
@@ -254,12 +264,7 @@ html, body {
     display: none;
 }
 
-.hexagonInnerText {
-    margin-top: -104px;
-    width: 120px;
-    height: 103px;
-    padding-top: 33px;
-    text-align: center;
-    font-weight: 800;
-    color: #FFF;
+.hexagonInnerText.positions {
+    display: block;
+    padding-top: 15px;
 }

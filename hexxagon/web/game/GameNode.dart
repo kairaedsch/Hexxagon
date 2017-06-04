@@ -6,15 +6,15 @@ import 'dart:math';
 class GameNode
 {
   List<GameNode> _children;
+  GameNode _father;
 
   Hexxagon _board;
   Move _move;
   int _looses;
   int _draws;
   int _wins;
-  int _player;
 
-  GameNode(this._board, this._move, this._player)
+  GameNode(this._father, this._board, this._move)
   {
     _looses = 0;
     _draws = 0;
@@ -25,7 +25,7 @@ class GameNode
   GameResult playRandom()
   {
     GameResult result;
-    if (!_children.isEmpty)
+    if (_children.isNotEmpty)
     {
       GameNode bestChild = _getNextChild();
       result = bestChild.playRandom();
@@ -35,7 +35,7 @@ class GameNode
       List<Move> possibleMoves = _board.getAllPossibleMoves();
       if (possibleMoves.isEmpty)
       {
-        result = _board.getResult(_player);
+        result = _board.getResult(_board.getNotCurrentPlayer());
       }
       else
       {
@@ -43,7 +43,7 @@ class GameNode
         {
           Hexxagon childBoard = new Hexxagon.clone(_board);
           childBoard.move(move.source, move.target);
-          _children.add(new GameNode(childBoard, move, _player));
+          _children.add(new GameNode(this, childBoard, move));
         }
         GameNode bestChild = _getNextChild();
         result = bestChild.playRandom();
@@ -58,47 +58,69 @@ class GameNode
       {
         clone.move(move.source, move.target);
       }
-      result = clone.getResult(_player);
+      result = clone.getResult(clone.getNotCurrentPlayer());
     }
 
     if (result == GameResult.WIN)
     {
       _wins++;
+      return GameResult.LOST;
     }
     else if (result == GameResult.LOST)
     {
       _looses++;
+      return GameResult.WIN;
     }
     else
     {
       _draws++;
+      return GameResult.DRAW;
     }
-    return result;
   }
 
   GameNode _getNextChild()
   {
-    Random rng = new Random();
-    return _children[rng.nextInt(_children.length)];
+    return _children.reduce((gn1, gn2)
+    => gn1.childNextValue > gn2.childNextValue ? gn1 : gn2);
   }
 
   bool _shouldExpand()
   {
-    return value > 10;
+    return simulations >= 2;
   }
 
   Move getBestMove()
   {
-    return _children.reduce((gn1, gn2) => gn1.winRate > gn2.winRate ? gn1 : gn2)._move;
+    return _children
+        .reduce((gn1, gn2)
+    => gn1.simulations > gn2.simulations ? gn1 : gn2)
+        ._move;
   }
 
-  int get value
+  int get simulations
   {
     return _looses + _draws + _wins;
   }
 
-  double get winRate
+  double get childNextValue
   {
-    return _wins / _looses;
+    return simulations == 0 ? (_father.simulations.roundToDouble()) : (((_wins + _draws) / simulations) + 1 * sqrt(log(_father.simulations) / simulations));
   }
+
+  @override
+  String toTree(String left, String left2, int maxDepth)
+  {
+    String out = left2 + '${(_children.isNotEmpty && maxDepth > 0) ? "┬─" : "──"}l: $_looses, d: $_draws, w: $_wins, ${_move != null ? "ms: ${_move.source.x} - ${_move.source.y}, mt: ${_move.target.x} - ${_move.target.y}" : ""}';
+    if (maxDepth > 0)
+    {
+      for (int c = 0; c < _children.length; c++)
+      {
+        var notLast = c < _children.length - 1;
+        out += "\n$left${notLast ? "├" : "└"}─${_children[c].toTree(left + "${notLast ? "│" : " "} ", left2 + "", maxDepth - 1)}";
+      }
+    }
+    return out;
+  }
+
+
 }

@@ -18,12 +18,14 @@ class MonteCarloTreeSearchHexxagonPlayer extends ComputerPlayer
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
-    GameNode root = new GameNode(hexxagon, null, hexxagon.getCurrentPlayer());
+    GameNode root = new GameNode(null, hexxagon, null);
 
-    for (int r = 0; r < 500; r++)
+    for (int r = 0; r < 30000; r++)
     {
       root.playRandom();
     }
+
+    print(root.toTree("", "", 2));
 
     moveCallback(root.getBestMove());
   }
