@@ -47,7 +47,7 @@ class MonteCarloHexxagonPlayer extends ComputerPlayer
       rounds++;
     }
     print(rounds);
-    print(possibleMoves);
+    //print(possibleMoves);
 
     possibleMoves.shuffle();
     Move move = possibleMoves

@@ -23,7 +23,7 @@ abstract class ComputerPlayer extends Player<Hexxagon>
   {
     DateTime start = new DateTime.now();
     moveKI(board, moveCallback);
-    print("${new DateTime.now().difference(start).inMilliseconds}ms");
+    print("$name: ${new DateTime.now().difference(start).inMilliseconds}ms");
   }
 
   void moveKI(Hexxagon board, MoveCallback moveCallback);

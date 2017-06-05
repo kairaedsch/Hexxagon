@@ -6,7 +6,7 @@ import 'dart:math';
 class GameNode
 {
   List<GameNode> _children;
-  GameNode _father;
+  GameNode _parent;
 
   Hexxagon _board;
   Move _move;
@@ -14,12 +14,22 @@ class GameNode
   int _draws;
   int _wins;
 
-  GameNode(this._father, this._board, this._move)
+  GameNode(this._parent, this._board, this._move)
   {
     _looses = 0;
     _draws = 0;
     _wins = 0;
     _children = [];
+  }
+
+  GameNode.root(this._board)
+  {
+    _looses = 0;
+    _draws = 0;
+    _wins = 0;
+    _children = [];
+    _parent = this;
+    _move = null;
   }
 
   GameResult playRandom()
@@ -86,7 +96,7 @@ class GameNode
 
   bool _shouldExpand()
   {
-    return simulations >= 2;
+    return simulations >= 10;
   }
 
   Move getBestMove()
@@ -104,13 +114,18 @@ class GameNode
 
   double get childNextValue
   {
-    return simulations == 0 ? (_father.simulations.roundToDouble()) : (((_wins + _draws) / simulations) + 1 * sqrt(log(_father.simulations) / simulations));
+    return simulations == 0 ? (_parent.simulations.roundToDouble()) : ((_wins / simulations) + sqrt(2) * sqrt(log(_parent.simulations) / simulations));
+  }
+
+  double get winRate
+  {
+    return _wins / simulations;
   }
 
   @override
   String toTree(String left, String left2, int maxDepth)
   {
-    String out = left2 + '${(_children.isNotEmpty && maxDepth > 0) ? "┬─" : "──"}l: $_looses, d: $_draws, w: $_wins, ${_move != null ? "ms: ${_move.source.x} - ${_move.source.y}, mt: ${_move.target.x} - ${_move.target.y}" : ""}';
+    String out = left2 + '${(_children.isNotEmpty && maxDepth > 0) ? "┬" : "─"}${winRate.toStringAsFixed(2)}% ($_wins, $_draws, $_looses)${_move != null ? " (${_move.source.x} - ${_move.source.y}) => (${_move.target.x} - ${_move.target.y})" : ""}';
     if (maxDepth > 0)
     {
       for (int c = 0; c < _children.length; c++)
@@ -121,6 +136,4 @@ class GameNode
     }
     return out;
   }
-
-
 }
