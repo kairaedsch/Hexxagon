@@ -20,7 +20,7 @@ class MonteCarloTreeSearchHexxagonPlayer extends ComputerPlayer
   {
     GameNode root = new GameNode.root(hexxagon);
 
-    for (int r = 0; r < 50000; r++)
+    for (int r = 0; r < 5000; r++)
     {
       root.playRandom();
     }

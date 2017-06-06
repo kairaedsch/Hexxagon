@@ -2,6 +2,7 @@ import '../game/Hexxagon.dart';
 import '../general/TilePosition.dart';
 import 'GameGUI.dart';
 import '../general/Move.dart';
+import 'Hexagon.dart';
 import 'ReactTileGrid.dart';
 import '../general/TileType.dart';
 import 'dart:html';
@@ -20,6 +21,7 @@ class ReactTileRowProps extends UiProps
   int y;
   GameGUI gameGUI;
   ReactTileGridComponent tileGrid;
+  Hexagon hexagon;
 }
 
 @Component()
@@ -36,10 +38,15 @@ class ReactTileRowComponent extends UiComponent<ReactTileRowProps>
             ..tileGrid = props.tileGrid
             ..position = TilePosition.get(x, props.y)
             ..boardGUI = props.gameGUI
+            ..hexagon = props.hexagon
           )();
     }
     return (Dom.div()
       ..className = "tileRow"
+      ..style =
+      {
+        "marginLeft": (props.y % 2) == 0 ? "${props.hexagon.rowEvenMarginLeft}px" : "${props.hexagon.rowOddMarginLeft}px",
+      }
     )(
         tiles
     );

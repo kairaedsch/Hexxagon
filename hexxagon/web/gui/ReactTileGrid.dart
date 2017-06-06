@@ -2,6 +2,7 @@ import '../game/Hexxagon.dart';
 import '../general/TilePosition.dart';
 import 'GameGUI.dart';
 import '../general/Move.dart';
+import 'Hexagon.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
 import 'package:react/react_dom.dart' as react_dom;
@@ -22,7 +23,6 @@ class ReactTileGridProps extends UiProps
 @State()
 class ReactTileGridState extends UiState
 {
-
 }
 
 @Component()
@@ -31,12 +31,19 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
   void componentWillMount()
   {
     super.componentWillMount();
-    props.gameGUI.changeListener = () => setState(state);
+    props.gameGUI.changeListener = ()
+    => setState(state);
+    window.addEventListener("resize", (e)
+    => setState(state));
   }
 
   ReactElement render()
   {
+    var container = querySelector(".tileGridContainer");
+    var width = container.offsetWidth;
+    var height = container.offsetHeight;
     List<ReactElement> tiles = new List(props.gameGUI.height);
+    Hexagon hexagon = new Hexagon(width, height, props.gameGUI.width * 2, props.gameGUI.height);
     for (int y = 0; y < props.gameGUI.height; y++)
     {
       tiles[y] = (ReactTileRow()
@@ -44,10 +51,16 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
         ..y = y
         ..tileGrid = this
         ..gameGUI = props.gameGUI
+        ..hexagon = hexagon
       )();
     }
     return (Dom.div()
       ..className = "tileGrid clearfix"
+      ..style =
+      {
+        "width": "${width}px",
+        "paddingTop": "${hexagon.gridPaddingTop}px",
+      }
     )(
         tiles
     );

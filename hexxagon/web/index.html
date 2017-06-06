@@ -2,8 +2,9 @@
 
 <html>
 <head>
+    <link rel="shortcut icon" href="hexxagon-favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hexxagon</title>
+    <title>Hexxagon</title>
     <link rel="stylesheet" href="styles.css">
 
     <script src="packages/react/react.js"></script>
@@ -11,8 +12,45 @@
     <script src="packages/browser/dart.js"></script>
 </head>
 <body>
-<div id="react_mount_point">
-    // OverReact component render() output will show up here.
+<div class="game blur">
+    <div class="middle">
+        <div class="tileGridContainer">
+            loading tiles...
+        </div>
+    </div>
+    <div class="side">
+
+    </div>
+</div>
+<div class="mainMenuOverlay">
+    <div class="mainMenu">
+        <div class="title"></div>
+        <div class="playerSelection clearfix">
+            <div class="player playerOne">
+                <div class="arrow arrowUp"></div>
+                <div class="playerInner">
+                    <div class="playerImage"></div>
+                    <div class="playerText">
+                        KI Stufe 1
+                    </div>
+                </div>
+                <div class="arrow arrowDown"></div>
+            </div>
+            <div class="playerBetween">VS
+            </div>
+            <div class="player playerTwo">
+                <div class="arrow arrowUp"></div>
+                <div class="playerInner">
+                    <div class="playerImage"></div>
+                    <div class="playerText">
+                       Mensch
+                    </div>
+                </div>
+                <div class="arrow arrowDown"></div>
+            </div>
+        </div>
+        <div class="start">start</div>
+    </div>
 </div>
 <script type="application/dart" src="gui/main.dart"></script>
 </body>

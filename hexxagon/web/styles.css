@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 
 *, *:before, *:after {
     box-sizing: border-box;
@@ -21,42 +22,177 @@ svg {
 }
 
 html, body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     margin: 0;
     padding: 0;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+}
+
+.game {
+    position: absolute;
+    width: 76%;
+    height: 100%;
+    left: 12%;
+    right: 12%;
+}
+
+.blur {
+    -webkit-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
+    -ms-filter: blur(6px);
+    filter: blur(6px);
+}
+
+.mainMenuOverlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 194, 242, 0.5);
+    z-index: 100;
+}
+
+.mainMenu {
+
+}
+
+.title {
+    background-image: url("hexxagon-logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 200px;
+    margin: 25px 0 50px 0;
+}
+
+.playerSelection {
+    width: 70%;
+    margin: auto;
+    height: 400px;
+}
+
+.player {
+    float: left;
+    width: 40%;
+    height: 100%;
+}
+
+.playerOne {
+
+}
+
+.playerTwo {
+
+}
+
+.arrow {
+    height: 10%;
+    width: 100%;
+}
+
+.arrowUp {
+
+}
+
+.arrowDown {
+
+}
+
+.playerInner {
+    height: 80%;
+    width: 100%;
+}
+
+.playerImage {
+    height: 40%;
+    width: 100%;
+    background-image: url("robot.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.playerText {
+    height: 60%;
+    padding-top: 10%;
+    width: 100%;
+    color: #FFF;
+    text-align: center;
+    font-size: 30px;
+}
+
+.playerBetween {
+    width: 100%;
+    margin: 0 -40%;
+    float: left;
+    font-family: 'Pacifico', cursive;
+    font-size: 150px;
+    color: #FFF;
+    padding-top: 50px;
+    text-align: center;
+}
+
+
+.start {
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    font-size: 38px;
+    color: #FFF;
+    background: #00c2f2;
+    padding: 5px 10px 10px 10px;
+    cursor: pointer;
+    transition: 0.2s background linear;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.start:hover {
+    background: #ff9c00;
+}
+
+.middle {
+    float: left;
+    width: calc(100% - 200px);
+    height: 100%;
+}
+
+.tileGridContainer {
+    height: 100%;
+    overflow-x: visible;
+    overflow-y: hidden;
+}
+
+.side {
+    float: left;
+    width: 200px;
+    height: 100%;
 }
 
 .tileGrid {
     background-color: #FFF;
     padding-top: 54px;
     padding-bottom: 3px;
-    width: 800px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    overflow: visible;
 }
 
 .tileRow {
     clear: left;
 }
 
-.tileRow:nth-child(odd) {
-    margin-left: -64px;
-}
-
-.tileRow:nth-child(even) {
-    margin-left: 30px;
-}
-
 .hexagon {
-    margin-left: 68px;
-    margin-top: -50px;
     float: left;
-    width: 120px;
-    height: 104px;
     pointer-events: none;
 }
 
@@ -242,7 +378,6 @@ html, body {
     margin-top: -104px;
     width: 120px;
     height: 103px;
-    padding-top: 33px;
     text-align: center;
     font-weight: 800;
     color: #FFF;
@@ -265,6 +400,5 @@ html, body {
 }
 
 .hexagonInnerText.positions {
-    display: block;
-    padding-top: 15px;
+    ddisplay: block;
 }

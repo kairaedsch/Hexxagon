@@ -4,11 +4,14 @@ import '../general/Move.dart';
 import '../general/Player.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
+import 'dart:async';
 import 'package:optional/optional.dart';
 import 'package:tuple/tuple.dart';
 
 class GameGUI
 {
+  int _delay;
+
   Game _game;
   Function changeListener;
 
@@ -32,11 +35,17 @@ class GameGUI
   Optional<Move> get lastMove
   => _game.lastMove;
 
-  GameGUI(this._game)
+  GameGUI(this._game, this._delay)
   {
     changeListener = () => {};
-    _game.changeListener = () => changeListener();
+    _game.changeListener = () {
+      new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (200 + _delay / 2).floor()), () {
+        changeListener();
+        new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (200 + _delay / 2).floor()), _game.next);
+      });
+    };
     _selectedPosition = new Optional.empty();
+    _game.next();
   }
 
   void select(TilePosition position)

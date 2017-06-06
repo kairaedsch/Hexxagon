@@ -18,12 +18,12 @@ void main()
   react_client.setClientConfiguration();
 
   // Mount / render your component.
-  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon.normal(4, 10), new MonteCarloTreeSearchHexxagonPlayer(), new HumanPlayer()));
+  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon.normal(5, 10), new RandomHexxagonPlayer(), new RandomHexxagonPlayer()), 1000);
 
   react_dom.render(
       (ReactTileGrid()
         ..gameGUI = gameGUI
       )(),
-      querySelector('#react_mount_point')
+      querySelector('.tileGridContainer')
   );
 }

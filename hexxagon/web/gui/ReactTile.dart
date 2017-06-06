@@ -3,6 +3,7 @@ import 'GameGUI.dart';
 import '../general/Move.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
+import 'Hexagon.dart';
 import 'ReactTileGrid.dart';
 import 'dart:async';
 import 'dart:html';
@@ -22,6 +23,7 @@ class ReactTileProps extends UiProps
   ReactTileGridComponent tileGrid;
   TilePosition position;
   GameGUI boardGUI;
+  Hexagon hexagon;
 }
 
 @State()
@@ -98,6 +100,16 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
       isLastMoveSource = props.boardGUI.lastMove.value.source.equals(props.position);
       isLastMoveTarget = props.boardGUI.lastMove.value.target.equals(props.position);
     }
+    bool isTranslated = state.delta.x != 0 || state.delta.y != 0;
+
+    Map<String, String> textStyle =
+    {
+      "marginTop": "-${props.hexagon.tileHeight}px",
+      "width": "${props.hexagon.tileWidth}px",
+      "height": "${props.hexagon.tileHeight}px",
+      "fontSize": "${props.hexagon.tileWidth / 5.5}px",
+      "lineHeight": "${props.hexagon.tileHeight}px",
+    };
 
     return (Dom.div()
       ..className = "hexagon "
@@ -111,13 +123,24 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " ${state.mouseIsOver ? "mouseIsOver" : ""}"
           " ${isDragging ? "dragging" : ""}"
           " posy_${props.position.getMaxDistanceTo(TilePosition.get(0, 0))}"
-      ..style = (state.delta.x != 0 || state.delta.y != 0) ? {"transform": "translate(${state.delta.x}px, ${state.delta.y}px)"} : {"transform": "none"}
+      ..style =
+      {
+        "transform": (isTranslated ? "translate(${state.delta.x}px, ${state.delta.y}px)" : "none"),
+        "marginLeft": "${props.hexagon.tileMarginLeft}px",
+        "marginTop": "${props.hexagon.tileMarginTop}px",
+        "width": "${props.hexagon.tileWidth}px",
+        "height": "${props.hexagon.tileHeight}px"
+      }
     )(
         (Dom.svg()
           ..version = "1.1"
-          ..height = 104
-          ..width = 120
+          ..height = props.hexagon.tileHeight
+          ..width = props.hexagon.tileWidth
           ..viewBox = "0 0 726 628"
+          ..style =
+          {
+            "marginBottom": "${-props.hexagon.borderRows * 3}px",
+          }
         )(
             (Dom.polygon()
               ..points = "723,314 543,625.769145 183,625.769145 3,314 183,2.230855 543,2.230855 723,314"
@@ -129,9 +152,11 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
         ),
         (Dom.div()
           ..className = "hexagonInnerText"
+          ..style = textStyle
         )((isLastMoveSource || isLastMoveTarget) ? props.boardGUI.lastMove.value.kindOf : ""),
         (Dom.div()
           ..className = "hexagonInnerText positions"
+          ..style = textStyle
         )("${props.position.x} - ${props.position.y}")
     );
   }

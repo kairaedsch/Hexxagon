@@ -35,7 +35,6 @@ class Game<B extends Board>
   {
     _history = [];
     changeListener = () => {};
-    next();
   }
 
   void next()
@@ -47,10 +46,7 @@ class Game<B extends Board>
   {
     _board.move(move.source, move.target);
     _history.add(move);
-    new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : 200), () {
-      changeListener();
-      new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : 200), next);
-    });
+    changeListener();
   }
 
   List<Move> getPossibleMoves(TilePosition tilePosition)
