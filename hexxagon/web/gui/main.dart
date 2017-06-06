@@ -11,6 +11,7 @@ import 'package:react/react_dom.dart' as react_dom;
 import 'package:react/react_client.dart' as react_client;
 import 'package:over_react/over_react.dart';
 import 'ReactTileGrid.dart';
+import 'ReactPlayerSelect.dart';
 
 void main()
 {
@@ -18,12 +19,26 @@ void main()
   react_client.setClientConfiguration();
 
   // Mount / render your component.
-  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon.normal(5, 10), new RandomHexxagonPlayer(), new RandomHexxagonPlayer()), 1000);
+  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon.normal(5, 10), new RandomHexxagonPlayer(), new RandomHexxagonPlayer()), 3000);
 
   react_dom.render(
       (ReactTileGrid()
         ..gameGUI = gameGUI
       )(),
       querySelector('.tileGridContainer')
+  );
+  react_dom.render(
+      (ReactPlayerSelect()
+        ..players = [new HumanPlayer(), new RandomHexxagonPlayer(), new MonteCarloTreeSearchHexxagonPlayer(), new MonteCarloHexxagonPlayer()]
+        ..initialSelected = 0
+      )(),
+      querySelector('.playerOne')
+  );
+  react_dom.render(
+      (ReactPlayerSelect()
+        ..players = [new HumanPlayer(), new RandomHexxagonPlayer(), new MonteCarloTreeSearchHexxagonPlayer(), new MonteCarloHexxagonPlayer()]
+        ..initialSelected = 1
+      )(),
+      querySelector('.playerTwo')
   );
 }

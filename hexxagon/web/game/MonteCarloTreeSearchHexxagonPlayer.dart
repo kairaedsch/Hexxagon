@@ -16,6 +16,8 @@ class MonteCarloTreeSearchHexxagonPlayer extends ComputerPlayer
   String get name
   => "MonteCarlo TreeSearch Player";
 
+  String get image => "robot-2.png";
+
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
     GameNode root = new GameNode.root(hexxagon);

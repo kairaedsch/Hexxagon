@@ -13,5 +13,7 @@ abstract class Player<B extends Board>
 
   String get name;
 
+  String get image;
+
   void move(B board, MoveCallback moveCallback);
 }

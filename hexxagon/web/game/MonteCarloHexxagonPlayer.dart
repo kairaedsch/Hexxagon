@@ -15,6 +15,8 @@ class MonteCarloHexxagonPlayer extends ComputerPlayer
   String get name
   => "MonteCarlo Player";
 
+  String get image => "robot-3.png";
+
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
     List<Tuple2<int, Move>> possibleMoves = hexxagon.getAllPossibleMoves().map((move)

@@ -12,6 +12,8 @@ class HumanPlayer<B extends Board> extends Player<B>
 
   String get name => "Human Player";
 
+  String get image => "human.png";
+
   void move(B board, MoveCallback moveCallback)
   {
 

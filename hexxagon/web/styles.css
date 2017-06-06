@@ -74,7 +74,7 @@ html, body {
 .playerSelection {
     width: 70%;
     margin: auto;
-    height: 400px;
+    height: 300px;
 }
 
 .player {
@@ -83,44 +83,63 @@ html, body {
     height: 100%;
 }
 
-.playerOne {
-
+.playerContainer {
+    width: 100%;
+    height: 100%;
 }
 
-.playerTwo {
+.playerOne .playerImage {
+     background-image: url("robot-1.png");
+ }
 
-}
+.playerTwo .playerImage {
+     background-image: url("human.png");
+ }
 
 .arrow {
-    height: 10%;
-    width: 100%;
+    width: 0px;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    margin: auto;
+    transition: border-color 0.1s linear;
+    cursor: pointer;
 }
 
 .arrowUp {
-
+    border-bottom: 30px solid #DB9B28;
+    margin-bottom: calc(15% - 25px);
 }
 
 .arrowDown {
+    border-top: 30px solid #DB9B28;
+    margin-top: calc(15% - 25px);
+}
 
+.arrowUp:hover {
+    border-bottom-color: #FF9C00;
+}
+
+.arrowDown:hover {
+    border-top-color: #FF9C00;
 }
 
 .playerInner {
-    height: 80%;
+    height: 70%;
     width: 100%;
 }
 
 .playerImage {
-    height: 40%;
+    height: 60%;
     width: 100%;
-    background-image: url("robot.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transition: background 0.3s linear;
 }
 
 .playerText {
-    height: 60%;
-    padding-top: 10%;
+    height: 40%;
+    padding-top: 7.5%;
     width: 100%;
     color: #FFF;
     text-align: center;
@@ -138,7 +157,6 @@ html, body {
     text-align: center;
 }
 
-
 .start {
     width: 200px;
     margin: auto;
@@ -148,9 +166,10 @@ html, body {
     background: #00c2f2;
     padding: 5px 10px 10px 10px;
     cursor: pointer;
-    transition: 0.2s background linear;
+    transition: 0.1s background linear;
     border-radius: 15px;
     font-weight: 600;
+    margin-top: 100px;
 }
 
 .start:hover {
