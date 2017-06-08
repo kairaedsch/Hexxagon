@@ -4,6 +4,7 @@ import '../game/MonteCarloTreeSearchHexxagonPlayer.dart';
 import '../game/RandomHexxagonPlayer.dart';
 import '../general/Game.dart';
 import '../general/HumanPlayer.dart';
+import 'GUI.dart';
 import 'GameGUI.dart';
 import 'dart:html';
 import 'package:react/react.dart' as react;
@@ -11,34 +12,34 @@ import 'package:react/react_dom.dart' as react_dom;
 import 'package:react/react_client.dart' as react_client;
 import 'package:over_react/over_react.dart';
 import 'ReactTileGrid.dart';
-import 'ReactPlayerSelect.dart';
+import 'ReactPlayerSelection.dart';
+import 'ReactPlayerStates.dart';
 
 void main()
 {
   // Initialize React within our Dart app
   react_client.setClientConfiguration();
 
-  // Mount / render your component.
-  GameGUI gameGUI = new GameGUI(new Game<Hexxagon>(new Hexxagon.normal(5, 10), new RandomHexxagonPlayer(), new RandomHexxagonPlayer()), 3000);
+  GUI gui = new GUI();
 
   react_dom.render(
       (ReactTileGrid()
-        ..gameGUI = gameGUI
+        ..gui = gui
       )(),
       querySelector('.tileGridContainer')
   );
   react_dom.render(
-      (ReactPlayerSelect()
-        ..players = [new HumanPlayer(), new RandomHexxagonPlayer(), new MonteCarloTreeSearchHexxagonPlayer(), new MonteCarloHexxagonPlayer()]
-        ..initialSelected = 0
+      (ReactPlayerSelection()
+        ..gui = gui
       )(),
-      querySelector('.playerOne')
+      querySelector('.playerSelection')
   );
   react_dom.render(
-      (ReactPlayerSelect()
-        ..players = [new HumanPlayer(), new RandomHexxagonPlayer(), new MonteCarloTreeSearchHexxagonPlayer(), new MonteCarloHexxagonPlayer()]
-        ..initialSelected = 1
+      (ReactPlayerStates()
+        ..gui = gui
       )(),
-      querySelector('.playerTwo')
+      querySelector('.side')
   );
+  querySelector('.start').onClick.listen((e) => gui.startNewGame());
+  querySelector('.abort').onClick.listen((e) => gui.selectPlayer());
 }

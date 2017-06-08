@@ -2,6 +2,7 @@
 
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" href="hexxagon-favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hexxagon</title>
@@ -12,25 +13,60 @@
     <script src="packages/browser/dart.js"></script>
 </head>
 <body>
-<div class="game blur">
-    <div class="middle">
-        <div class="tileGridContainer">
-            loading tiles...
+<div class="game">
+    <div class="gameInner">
+        <div class="middle">
+            <div class="tileGridContainer"></div>
         </div>
-    </div>
-    <div class="side">
-
+        <div class="side">
+            <div class="title"></div>
+            <div class="playerStats PLAYER_ONE hisTurn">
+                <div class="playerStatsName">Mensch</div>
+                <div class="playerStatsEntry clearfix">
+                    <div class="playerStatsEntryName">Steine</div>
+                    <div class="playerStatsEntryValue">10</div>
+                </div>
+                <div class="playerStatsEntry clearfix">
+                    <div class="playerStatsEntryName">Sprünge</div>
+                    <div class="playerStatsEntryValue">10</div>
+                </div>
+                <div class="playerStatsEntry clearfix">
+                    <div class="playerStatsEntryName">Kopien</div>
+                    <div class="playerStatsEntryValue">10</div>
+                </div>
+                <div class="playerStatsEntry clearfix">
+                    <div class="playerStatsEntryName">Eingenommene Steine</div>
+                    <div class="playerStatsEntryValue">10</div>
+                </div>
+            </div>
+            <div class="playerStats PLAYER_TWO">
+                <div class="playerStatsName">Mensch</div>
+                <div class="playerStatsEntry clearfix">
+                    <div class="playerStatsEntryName">Steine</div>
+                    <div class="playerStatsEntryValue">22</div>
+                </div>
+                <div class="playerStatsEntry clearfix">
+                    <div class="playerStatsEntryName">Sprünge</div>
+                    <div class="playerStatsEntryValue">10</div>
+                </div>
+                <div class="playerStatsEntry clearfix">
+                    <div class="playerStatsEntryName">Kopien</div>
+                    <div class="playerStatsEntryValue">10</div>
+                </div>
+                <div class="playerStatsEntry clearfix">
+                    <div class="playerStatsEntryName">Eingenommene Steine</div>
+                    <div class="playerStatsEntryValue">10</div>
+                </div>
+            </div>
+            <div class="button abort">Spiel abbrechen</div>
+        </div>
     </div>
 </div>
 <div class="mainMenuOverlay">
     <div class="mainMenu">
         <div class="title"></div>
-        <div class="playerSelection clearfix">
-            <div class="player playerOne"></div>
-            <div class="playerBetween">VS</div>
-            <div class="player playerTwo"></div>
-        </div>
-        <div class="start">start</div>
+        <div class="playerSelection clearfix"></div>
+        <div class="button start">start</div>
     </div>
 </div>
 <script type="application/dart" src="gui/main.dart"></script>

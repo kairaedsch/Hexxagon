@@ -34,12 +34,16 @@ class Game<B extends Board>
   Game(this._board, this._playerOne, this._playerTwo)
   {
     _history = [];
-    changeListener = () => {};
+    changeListener = ()
+    => {};
   }
 
   void next()
   {
-    currentPlayer.move(_board, move);
+    if (!isOver)
+    {
+      currentPlayer.move(_board, move);
+    }
   }
 
   void move(Move move)
@@ -72,5 +76,29 @@ class Game<B extends Board>
   int getNotCurrentPlayer()
   {
     return _board.getNotCurrentPlayer();
+  }
+
+  bool get isOver
+  => _board.isOver;
+
+  Map<String, String> getStatsOf(int player)
+  {
+    return _board.getStatsOf(player);
+  }
+
+  Player<Board> getPlayer(int player)
+  {
+    if (player == TileType.PLAYER_ONE)
+    {
+      return _playerOne;
+    }
+    else if (player == TileType.PLAYER_TWO)
+    {
+      return _playerTwo;
+    }
+    else
+    {
+      throw new Exception("ERROR");
+    }
   }
 }

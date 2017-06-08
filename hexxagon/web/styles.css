@@ -6,7 +6,7 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 20px;
-    color: #000;
+    color: #FFF;
 }
 
 .clearfix:after {
@@ -26,6 +26,7 @@ html, body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    background: #80E1F9;
 }
 
 .main {
@@ -39,6 +40,28 @@ html, body {
     height: 100%;
     left: 12%;
     right: 12%;
+    overflow-x: visible;
+    padding: 100px 0;
+}
+
+.gameInner {
+    width: 100%;
+    height: 100%;
+    max-width: 1500px;
+    margin: auto;
+}
+
+.middle {
+    float: left;
+    width: calc(100% - 400px);
+    height: 100%;
+    overflow-x: visible;
+}
+
+.side {
+    float: left;
+    width: 400px;
+    height: 100%;
 }
 
 .blur {
@@ -53,8 +76,9 @@ html, body {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 194, 242, 0.5);
     z-index: 100;
+    overflow: hidden;
+    background: #80E1F9;
 }
 
 .mainMenu {
@@ -67,20 +91,74 @@ html, body {
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
+}
+
+.mainMenu .title {
     height: 200px;
     margin: 25px 0 50px 0;
+
+    animation-name: title;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.75, 0, 0.5, 1)
+}
+
+@keyframes title {
+    0% {
+        transform: scale(1.5) translate(0, 175px);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        transform: none;
+    }
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .playerSelection {
-    width: 70%;
+    width: 100%;
+    max-width: 1500px;
     margin: auto;
-    height: 300px;
+    height: 350px;
+
+    animation-name: show;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.playerSelectionContainer {
+    width: 100%;
+    height: 100%;
 }
 
 .player {
     float: left;
-    width: 40%;
+    width: 250px;
     height: 100%;
+}
+
+.playerOne {
+    margin-left: calc((50% - 250px) * 0.60);
+    margin-right: calc((50% - 250px) * 0.40);
+}
+
+.playerTwo {
+    margin-left: calc((50% - 250px) * 0.40);
+    margin-right: calc((50% - 250px) * 0.60);
 }
 
 .playerContainer {
@@ -88,43 +166,31 @@ html, body {
     height: 100%;
 }
 
-.playerOne .playerImage {
-     background-image: url("robot-1.png");
- }
-
-.playerTwo .playerImage {
-     background-image: url("human.png");
- }
-
 .arrow {
     width: 0px;
     border-left: 60px solid transparent;
     border-right: 60px solid transparent;
     margin: auto;
-    transition: border-color 0.1s linear;
+    transition: opacity 0.1s linear;
     cursor: pointer;
+    opacity: 0.8;
+}
+
+.arrow:hover {
+    opacity: 1;
 }
 
 .arrowUp {
-    border-bottom: 30px solid #DB9B28;
-    margin-bottom: calc(15% - 25px);
+    border-bottom: 30px solid #FF9C00;
 }
 
 .arrowDown {
-    border-top: 30px solid #DB9B28;
-    margin-top: calc(15% - 25px);
-}
-
-.arrowUp:hover {
-    border-bottom-color: #FF9C00;
-}
-
-.arrowDown:hover {
-    border-top-color: #FF9C00;
+    border-top: 30px solid #FF9C00;
 }
 
 .playerInner {
-    height: 70%;
+    height: calc(100% - 2 * 25px);
+    padding: calc(25% - 25px) 0;
     width: 100%;
 }
 
@@ -141,61 +207,134 @@ html, body {
     height: 40%;
     padding-top: 7.5%;
     width: 100%;
-    color: #FFF;
     text-align: center;
-    font-size: 30px;
+    font-size: 28px;
+    font-weight: 600;
 }
 
 .playerBetween {
     width: 100%;
-    margin: 0 -40%;
+    margin: 0 -50%;
     float: left;
     font-family: 'Pacifico', cursive;
     font-size: 150px;
-    color: #FFF;
     padding-top: 50px;
     text-align: center;
+    pointer-events: none;
+}
+
+.button {
+    margin: auto;
+    text-align: center;
+    background: #00c2f2;
+    cursor: pointer;
+    transition: 0.1s background linear;
+    font-weight: 600;
+}
+
+.button:hover {
+    background: #ff9c00;
 }
 
 .start {
     width: 200px;
-    margin: auto;
-    text-align: center;
+    border-radius: 10px;
     font-size: 38px;
-    color: #FFF;
-    background: #00c2f2;
     padding: 5px 10px 10px 10px;
-    cursor: pointer;
-    transition: 0.1s background linear;
-    border-radius: 15px;
-    font-weight: 600;
     margin-top: 100px;
-}
 
-.start:hover {
-    background: #ff9c00;
-}
-
-.middle {
-    float: left;
-    width: calc(100% - 200px);
-    height: 100%;
+    animation-name: show;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
 }
 
 .tileGridContainer {
     height: 100%;
-    overflow-x: visible;
-    overflow-y: hidden;
+    overflow: visible;
 }
 
-.side {
+.side .title {
+    height: 100px;
+    margin: 10px 0 25px 0;
+}
+
+.abort {
+    width: 250px;
+    border-radius: 5px;
+    font-size: 26px;
+    padding: 5px 10px 10px 10px;
+    margin-top: 25px;
+
+    animation-name: show;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.playerStats {
+    border-radius: 5px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.playerStats.PLAYER_ONE.hisTurn {
+    background: #00C2F2;
+}
+
+.playerStats.PLAYER_TWO.hisTurn {
+    background: #FF9C00;
+}
+
+.playerStatsName {
+    font-weight: 600;
+    font-size: 36px;
+    text-align: center;
+    padding: 5px;
+    border-bottom: 2px solid;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.playerStats.hisTurn {
+    animation-name: hisTurn;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes hisTurn {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.playerStatsEntry {
+    width: 100%;
+    padding: 10px 15px 0 15px;
+}
+
+.playerStatsEntryName {
     float: left;
-    width: 200px;
-    height: 100%;
+    width: 90%;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.playerStatsEntryValue {
+    font-weight: 600;
+    font-size: 28px;
+    float: left;
+    width: 10%;
 }
 
 .tileGrid {
-    background-color: #FFF;
     padding-top: 54px;
     padding-bottom: 3px;
     -webkit-touch-callout: none;
@@ -204,6 +343,7 @@ html, body {
     -ms-user-select: none;
     user-select: none;
     overflow: visible;
+    margin: auto;
 }
 
 .tileRow {
@@ -226,20 +366,20 @@ html, body {
 .hexagonInner {
     transition: fill 0.2s linear, stroke-width 0.2s linear;
     transform-origin: 50% 50%;
-    fill: #A6F4FF;
+    fill: #FFF;
     opacity: 1;
     transform: rotate(0deg);
-    stroke: white;
+    stroke: #80E1F9;
     stroke-width: 0;
     pointer-events: all;
 }
 
 .hexagon.PLAYER_ONE .hexagonInner, .hexagon.playAbleNow.playAbleNowPLAYER_ONE.mouseIsOver .hexagonInner {
-    fill: #2073FF;
+    fill: #00C2F2;
 }
 
 .hexagon.PLAYER_TWO .hexagonInner, .hexagon.playAbleNow.playAbleNowPLAYER_TWO.mouseIsOver .hexagonInner {
-    fill: #FF4E36;
+    fill: #FF9C00;
 }
 
 .hexagon.playAble .hexagonInner {
@@ -399,7 +539,6 @@ html, body {
     height: 103px;
     text-align: center;
     font-weight: 800;
-    color: #FFF;
 }
 
 .hexagonInnerText {
@@ -419,5 +558,41 @@ html, body {
 }
 
 .hexagonInnerText.positions {
-    ddisplay: block;
+    display: none !important;
+}
+
+.hide {
+    opacity: 0;
+    pointer-events: none;
+    animation-name: hide;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.unhide {
+    opacity: 1;
+    pointer-events: all;
+    animation-name: unhide;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear
+}
+
+@keyframes unhide {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

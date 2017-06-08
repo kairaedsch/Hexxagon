@@ -2,7 +2,7 @@ import 'dart:math';
 
 class TilePosition
 {
-  static final List<List<int>> neighbourDeltasOdd = [[0, -2], [1, -1], [1, 1], [0, 2], [0, -1], [0, 1]];
+  static final List<List<int>> neighbourDeltasOdd = [[0, -2], [1, -1], [1, 1], [0, 2], [0, 1], [0, -1]];
   static final List<List<int>> neighbourDeltasEven = [[0, -2], [0, -1], [0, 1], [0, 2], [-1, 1], [-1, -1]];
 
   static final List<List<int>> neighbourSecondRingDeltasOdd = [[0, -4], [1, -3], [1, -2], [1, 0], [1, 2], [1, 3], [0, 4], [0, 3], [-1, 2], [-1, 0], [-1, -2], [0, -3]];
@@ -13,7 +13,7 @@ class TilePosition
     return new TilePosition(x, y);
   }
 
-  int _x, _y;
+  final int _x, _y;
 
   int get x => _x;
   int get y => _y;

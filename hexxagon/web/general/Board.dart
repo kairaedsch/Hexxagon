@@ -1,4 +1,5 @@
 import 'Move.dart';
+import 'Player.dart';
 import 'TilePosition.dart';
 import 'TileType.dart';
 
@@ -14,4 +15,5 @@ abstract class Board
   int getNotCurrentPlayer();
   bool get isOver;
   int get betterPlayer;
+  Map<String, String> getStatsOf(int player);
 }

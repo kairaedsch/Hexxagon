@@ -1,5 +1,6 @@
 import '../game/Hexxagon.dart';
 import '../general/TilePosition.dart';
+import 'GUI.dart';
 import 'GameGUI.dart';
 import '../general/Move.dart';
 import 'Hexagon.dart';
@@ -17,7 +18,7 @@ UiFactory<ReactTileGridProps> ReactTileGrid;
 @Props()
 class ReactTileGridProps extends UiProps
 {
-  GameGUI gameGUI;
+  GUI gui;
 }
 
 @State()
@@ -31,8 +32,8 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
   void componentWillMount()
   {
     super.componentWillMount();
-    props.gameGUI.changeListener = ()
-    => setState(state);
+    props.gui.addGameChangeListener(()
+    => setState(state));
     window.addEventListener("resize", (e)
     => setState(state));
   }
@@ -40,29 +41,37 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
   ReactElement render()
   {
     var container = querySelector(".tileGridContainer");
-    var width = container.offsetWidth;
-    var height = container.offsetHeight;
-    List<ReactElement> tiles = new List(props.gameGUI.height);
-    Hexagon hexagon = new Hexagon(width, height, props.gameGUI.width * 2, props.gameGUI.height);
-    for (int y = 0; y < props.gameGUI.height; y++)
+    if (props.gui.isGameRunning || props.gui.isGameOver)
     {
-      tiles[y] = (ReactTileRow()
-        ..key = y
-        ..y = y
-        ..tileGrid = this
-        ..gameGUI = props.gameGUI
-        ..hexagon = hexagon
-      )();
-    }
-    return (Dom.div()
-      ..className = "tileGrid clearfix"
-      ..style =
+      GameGUI gameGUI = props.gui.currentGameGui;
+      var width = container.offsetWidth;
+      var height = container.offsetHeight;
+      List<ReactElement> tiles = new List(gameGUI.height);
+      Hexagon hexagon = new Hexagon(width, height, gameGUI.width * 2, gameGUI.height);
+      for (int y = 0; y < gameGUI.height; y++)
       {
-        "width": "${width}px",
-        "paddingTop": "${hexagon.gridPaddingTop}px",
+        tiles[y] = (ReactTileRow()
+          ..key = y
+          ..y = y
+          ..tileGrid = this
+          ..gameGUI = gameGUI
+          ..hexagon = hexagon
+        )();
       }
-    )(
-        tiles
-    );
+      return (Dom.div()
+        ..className = "tileGrid clearfix"
+        ..style =
+        {
+          "width": "${hexagon.gridWidth}px",
+          "paddingTop": "${hexagon.gridPaddingTop}px",
+        }
+      )(
+          tiles
+      );
+    }
+    else
+    {
+      return null;
+    }
   }
 }

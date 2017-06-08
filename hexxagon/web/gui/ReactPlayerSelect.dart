@@ -4,6 +4,7 @@ import '../general/TilePosition.dart';
 import 'GameGUI.dart';
 import '../general/Move.dart';
 import 'Hexagon.dart';
+import 'ReactPlayerSelection.dart';
 import 'ReactTileGrid.dart';
 import '../general/TileType.dart';
 import 'dart:html';
@@ -20,47 +21,36 @@ UiFactory<ReactPlayerSelectProps> ReactPlayerSelect;
 class ReactPlayerSelectProps extends UiProps
 {
   List<Player> players;
-  int initialSelected;
-}
-
-@State()
-class ReactPlayerSelectState extends UiState
-{
   int selected;
+  ReactPlayerSelectionComponent father;
+  bool playerOne;
 }
 
 @Component()
-class ReactPlayerSelectComponent extends UiStatefulComponent<ReactPlayerSelectProps, ReactPlayerSelectState>
+class ReactPlayerSelectComponent extends UiComponent<ReactPlayerSelectProps>
 {
-  @override
-  getInitialState()
-  {
-    return (newState()
-      ..selected = props.initialSelected
-    );
-  }
-
   ReactElement render()
   {
-    Player player = props.players[state.selected];
+    Player player = props.players[props.selected];
     return (Dom.div()
-      ..className = "playerContainer")
-      (
+      ..className = "playerContainer"
+    )(
         (Dom.div()
           ..className = "arrow arrowUp"
           ..onClick = (e)
           {
-            this.setState((Map prevState, Map props)
+            if (props.playerOne)
             {
-              ReactPlayerSelectState state = newState()
-                ..addAll(prevState);
-              state.selected = (state.selected + 1) % this.props.players.length;
-              return state;
-            });
+              props.father.changePlayerOne(-1);
+            }
+            else
+            {
+              props.father.changePlayerTwo(-1);
+            }
           })(),
         (Dom.div()
-          ..className = "playerInner")
-          (
+          ..className = "playerInner"
+        )(
             (Dom.div()
               ..className = "playerImage"
               ..style =
@@ -68,19 +58,23 @@ class ReactPlayerSelectComponent extends UiStatefulComponent<ReactPlayerSelectPr
                 "backgroundImage": "url('${player.image}')",
               })(),
             (Dom.div()
-              ..className = "playerText")(player.name)
+              ..className = "playerText"
+            )(
+                player.name
+            )
         ),
         (Dom.div()
           ..className = "arrow arrowDown"
           ..onClick = (e)
           {
-            this.setState((Map prevState, Map props)
+            if (props.playerOne)
             {
-              ReactPlayerSelectState state = newState()
-                ..addAll(prevState);
-              state.selected = (state.selected - 1 + this.props.players.length) % this.props.players.length;
-              return state;
-            });
+              props.father.changePlayerOne(1);
+            }
+            else
+            {
+              props.father.changePlayerTwo(1);
+            }
           })()
     );
   }
