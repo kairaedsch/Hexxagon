@@ -101,4 +101,6 @@ class Game<B extends Board>
       throw new Exception("ERROR");
     }
   }
+
+  int get betterPlayer => _board.betterPlayer;
 }

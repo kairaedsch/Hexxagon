@@ -33,8 +33,22 @@ class ReactPlayerStatesState extends UiState
 @Component()
 class ReactPlayerStatesComponent extends UiStatefulComponent<ReactPlayerStatesProps, ReactPlayerStatesState>
 {
+  void componentWillMount()
+  {
+    super.componentWillMount();
+    props.gui.addGameChangeListener(()
+    => setState(state));
+    props.gui.addStateChangeListener(()
+    => setState(state));
+  }
+
   ReactElement render()
   {
+    if (props.gui.currentGameGui == null)
+    {
+      return Dom.div()();
+    }
+
     return (Dom.div()
       ..className = "sideInner"
     )(
@@ -47,7 +61,12 @@ class ReactPlayerStatesComponent extends UiStatefulComponent<ReactPlayerStatesPr
         ..gui = props.gui
         ..player = TileType.PLAYER_TWO)(),
       (Dom.div()
-        ..className = "button abort")("Spiel abbrechen"),
+        ..className = "button abort"
+        ..onClick = (e)
+        {
+          props.gui.selectPlayer();
+        }
+      )(props.gui.isGameOver ? "Zurüch zum Hauptmenu" : "Spiel abbrechen"),
     );
   }
 }

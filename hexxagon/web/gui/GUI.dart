@@ -70,18 +70,20 @@ class GUI
   void selectPlayer()
   {
     _guiState = GUIState.PLAYER_SELECTION;
+    _currentGameGui.abort();
+    notifyGameChanged();
     notifyStateChanged();
   }
 
   void notifyStateChanged()
   {
-    _stateChangedListener.forEach((f)
+    _stateChangedListener.toList().forEach((f)
     => f());
   }
 
   void notifyGameChanged()
   {
-    _gameChangedListener.forEach((f)
+    _gameChangedListener.toList().forEach((f)
     => f());
   }
 

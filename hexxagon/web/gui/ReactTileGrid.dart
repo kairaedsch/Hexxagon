@@ -41,37 +41,34 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
   ReactElement render()
   {
     var container = querySelector(".tileGridContainer");
-    if (props.gui.isGameRunning || props.gui.isGameOver)
+    if (props.gui.currentGameGui == null)
     {
-      GameGUI gameGUI = props.gui.currentGameGui;
-      var width = container.offsetWidth;
-      var height = container.offsetHeight;
-      List<ReactElement> tiles = new List(gameGUI.height);
-      Hexagon hexagon = new Hexagon(width, height, gameGUI.width * 2, gameGUI.height);
-      for (int y = 0; y < gameGUI.height; y++)
+      return Dom.div()();
+    }
+    GameGUI gameGUI = props.gui.currentGameGui;
+    var width = container.offsetWidth;
+    var height = container.offsetHeight;
+    List<ReactElement> tiles = new List(gameGUI.height);
+    Hexagon hexagon = new Hexagon(width, height, gameGUI.width * 2, gameGUI.height);
+    for (int y = 0; y < gameGUI.height; y++)
+    {
+      tiles[y] = (ReactTileRow()
+        ..key = y
+        ..y = y
+        ..tileGrid = this
+        ..gameGUI = gameGUI
+        ..hexagon = hexagon
+      )();
+    }
+    return (Dom.div()
+      ..className = "tileGrid clearfix"
+      ..style =
       {
-        tiles[y] = (ReactTileRow()
-          ..key = y
-          ..y = y
-          ..tileGrid = this
-          ..gameGUI = gameGUI
-          ..hexagon = hexagon
-        )();
+        "width": "${hexagon.gridWidth}px",
+        "paddingTop": "calc((100vh - 100px * 2 - ${hexagon.gridheight}px) / 2)",
       }
-      return (Dom.div()
-        ..className = "tileGrid clearfix"
-        ..style =
-        {
-          "width": "${hexagon.gridWidth}px",
-          "paddingTop": "${hexagon.gridPaddingTop}px",
-        }
-      )(
-          tiles
-      );
-    }
-    else
-    {
-      return null;
-    }
+    )(
+        tiles
+    );
   }
 }

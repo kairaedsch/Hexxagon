@@ -77,6 +77,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     l3.pause();
   }
 
+  @override
   ReactElement render()
   {
     int tileType = props.boardGUI.get(props.position);
@@ -161,6 +162,11 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           ..style = textStyle
         )("${props.position.x} - ${props.position.y}")
     );
+  }
+
+  @override
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
   }
 
   void select(SyntheticMouseEvent event)

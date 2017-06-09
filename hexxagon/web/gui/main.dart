@@ -41,5 +41,4 @@ void main()
       querySelector('.side')
   );
   querySelector('.start').onClick.listen((e) => gui.startNewGame());
-  querySelector('.abort').onClick.listen((e) => gui.selectPlayer());
 }

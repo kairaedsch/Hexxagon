@@ -31,7 +31,7 @@ class Hexagon
 
   double get rowOddMarginLeft => _a / 2;
 
-  double get gridPaddingTop => _a - borderColumns;
-
   double get gridWidth => (_gridColumns * 1.5 + 0.5) * (_a + borderColumns * 2);
+
+  double get gridheight => (_gridRows * 0.5 + 0.5) * (tileHeight + borderRows * 2);
 }

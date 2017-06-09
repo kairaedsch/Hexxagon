@@ -27,11 +27,13 @@ html, body {
     margin: 0;
     padding: 0;
     background: #80E1F9;
+    overflow: hidden;
 }
 
 .main {
     width: 100%;
     height: 100%;
+    overflow: visible;
 }
 
 .game {
@@ -40,7 +42,7 @@ html, body {
     height: 100%;
     left: 12%;
     right: 12%;
-    overflow-x: visible;
+    overflow: visible;
     padding: 100px 0;
 }
 
@@ -55,13 +57,18 @@ html, body {
     float: left;
     width: calc(100% - 400px);
     height: 100%;
-    overflow-x: visible;
+    overflow: visible;
 }
 
 .side {
-    float: left;
-    width: 400px;
+    float: right;
+    width: 350px;
     height: 100%;
+    padding-left: 50px;
+}
+
+.sideInner {
+    margin-top: calc((100vh - 100px * 2 - 700px) / 2);
 }
 
 .blur {
@@ -82,7 +89,7 @@ html, body {
 }
 
 .mainMenu {
-
+    margin-top: calc((100vh - 767px) / 2);
 }
 
 .title {
@@ -265,11 +272,6 @@ html, body {
     font-size: 26px;
     padding: 5px 10px 10px 10px;
     margin-top: 25px;
-
-    animation-name: show;
-    animation-duration: 1.5s;
-    animation-iteration-count: 1;
-    animation-timing-function: linear;
 }
 
 .playerStats {
@@ -279,17 +281,17 @@ html, body {
     background: rgba(255, 255, 255, 0.25);
 }
 
-.playerStats.PLAYER_ONE.hisTurn {
+.playerStats.PLAYER_ONE.hisTurn, .playerStats.PLAYER_ONE.won {
     background: #00C2F2;
 }
 
-.playerStats.PLAYER_TWO.hisTurn {
+.playerStats.PLAYER_TWO.hisTurn, .playerStats.PLAYER_TWO.won {
     background: #FF9C00;
 }
 
 .playerStatsName {
     font-weight: 600;
-    font-size: 36px;
+    font-size: 28px;
     text-align: center;
     padding: 5px;
     border-bottom: 2px solid;
@@ -315,6 +317,44 @@ html, body {
     }
 }
 
+.playerStats.won {
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.playerStats.PLAYER_ONE.won {
+    animation-name: wonPLAYER_ONE;
+}
+
+.playerStats.PLAYER_TWO.won {
+    animation-name: wonPLAYER_TWO;
+}
+
+@keyframes wonPLAYER_ONE {
+    0% {
+        background: #00C2F2;
+    }
+    25% {
+        background: #ffde56;
+    }
+    50% {
+        background: #00C2F2;
+    }
+}
+
+@keyframes wonPLAYER_TWO {
+    0% {
+        background: #FF9C00;
+    }
+    25% {
+        background: #ffde56;
+    }
+    50% {
+        background: #FF9C00;
+    }
+}
+
 .playerStatsEntry {
     width: 100%;
     padding: 10px 15px 0 15px;
@@ -324,12 +364,12 @@ html, body {
     float: left;
     width: 90%;
     font-weight: 600;
-    font-size: 28px;
+    font-size: 22px;
 }
 
 .playerStatsEntryValue {
     font-weight: 600;
-    font-size: 28px;
+    font-size: 22px;
     float: left;
     width: 10%;
 }
@@ -539,10 +579,12 @@ html, body {
     height: 103px;
     text-align: center;
     font-weight: 800;
+    display: none;
+    color: #80E1F9;
 }
 
-.hexagonInnerText {
-    display: none;
+.hexagon.PLAYER_ONE .hexagonInnerText, .hexagon.PLAYER_TWO .hexagonInnerText {
+    color: #FFF;
 }
 
 .hexagon.lastMoveSource .hexagonInnerText {

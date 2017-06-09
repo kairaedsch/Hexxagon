@@ -10,6 +10,8 @@ import 'package:tuple/tuple.dart';
 
 class GameGUI
 {
+  bool aborted;
+
   int _delay;
 
   Game _game;
@@ -38,11 +40,17 @@ class GameGUI
   GameGUI(this._game, this._delay)
   {
     _changeListener = [];
-    _game.changeListener = () {
-      new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (250 + _delay / 2).floor()), () {
-        notify();
-        new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (250 + _delay / 2).floor()), _game.next);
-      });
+    aborted = false;
+    _game.changeListener = ()
+    {
+      if (!aborted)
+      {
+        new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (250 + _delay / 2).floor()), ()
+        {
+          notify();
+          new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (250 + _delay / 2).floor()), _game.next);
+        });
+      }
     };
     _selectedPosition = new Optional.empty();
     _game.next();
@@ -50,7 +58,8 @@ class GameGUI
 
   void notify()
   {
-    _changeListener.forEach((f) => f());
+    _changeListener.forEach((f)
+    => f());
   }
 
   void addChangeListener(Function f)
@@ -106,7 +115,8 @@ class GameGUI
   Player get currentPlayer
   => _game.currentPlayer;
 
-  bool get isOver => _game.isOver;
+  bool get isOver
+  => _game.isOver;
 
   Map<String, String> getStatsOf(int player)
   {
@@ -117,4 +127,11 @@ class GameGUI
   {
     return _game.getPlayer(player);
   }
+
+  void abort()
+  {
+    aborted = true;
+  }
+
+  int get betterPlayer => _game.betterPlayer;
 }

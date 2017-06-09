@@ -42,11 +42,6 @@ class ReactPlayerStateComponent extends UiStatefulComponent<ReactPlayerStateProp
 
   ReactElement render()
   {
-    if (!props.gui.isGameOver && !props.gui.isGameRunning)
-    {
-      return null;
-    }
-
     List<ReactElement> stats = [];
 
     props.gui.currentGameGui.getStatsOf(props.player).forEach((String name, String value)
@@ -54,6 +49,7 @@ class ReactPlayerStateComponent extends UiStatefulComponent<ReactPlayerStateProp
       stats.add(
           (Dom.div()
             ..className = "playerStatsEntry clearfix"
+              ..key = name
           )(
             (Dom.div()
               ..className = "playerStatsEntryName"
@@ -73,6 +69,7 @@ class ReactPlayerStateComponent extends UiStatefulComponent<ReactPlayerStateProp
       ..className = " playerStats"
           " ${props.player == TileType.PLAYER_ONE ? "PLAYER_ONE" : "PLAYER_TWO"}"
           " ${(!props.gui.currentGameGui.isOver && (props.gui.currentGameGui.getCurrentPlayer() == props.player)) ? "hisTurn" : ""}"
+          " ${(props.gui.currentGameGui.isOver && (props.gui.currentGameGui.betterPlayer == props.player)) ? "won" : ""}"
     )(
       (Dom.div()
         ..className = "playerStatsName"
