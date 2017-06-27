@@ -53,13 +53,22 @@ class ReactPlayerStatesComponent extends UiStatefulComponent<ReactPlayerStatesPr
       ..className = "sideInner"
     )(
       (Dom.div()
-        ..className = "title")(),
+        ..className = "title")()
+
+        ,
+
       (ReactPlayerState()
         ..gui = props.gui
-        ..player = TileType.PLAYER_ONE)(),
+        ..player = TileType.PLAYER_ONE)()
+
+        ,
+
       (ReactPlayerState()
         ..gui = props.gui
-        ..player = TileType.PLAYER_TWO)(),
+        ..player = TileType.PLAYER_TWO)()
+
+        ,
+
       (Dom.div()
         ..className = "button abort"
         ..onClick = (e)

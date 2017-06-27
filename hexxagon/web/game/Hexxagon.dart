@@ -6,6 +6,7 @@ import '../general/TileType.dart';
 import '../general/Move.dart';
 import 'GameResult.dart';
 import 'HexxagonStats.dart';
+import 'dart:collection';
 import 'dart:math';
 
 class Hexxagon extends Board
@@ -156,37 +157,64 @@ class Hexxagon extends Board
       return new List(0);
     }
     List<Move> possibleMoves = [];
+    _getPossibleCopyMoves(from, possibleMoves.add);
+    _getPossibleJumpMoves(from, possibleMoves.add);
+    return possibleMoves;
+  }
+
+  List<Move> getAllPossibleMoves()
+  {
+    Map<TilePosition, Move> possibleMoves = new HashMap<TilePosition, Move>();
+    for (int x = 0; x < _width; x++)
+    {
+      for (int y = 0; y < _height; y++)
+      {
+        TilePosition from = TilePosition.get(x, y);
+        if (get(from) == _currentPlayer)
+        {
+          _getPossibleCopyMoves(from, (move){
+            possibleMoves[move.target] = move;
+          });
+          _getPossibleJumpMoves(from, (move){
+            possibleMoves.putIfAbsent(move.target, () => move);
+          });
+        }
+      }
+    }
+    return possibleMoves.values.toList(growable: false);
+  }
+
+  void _getPossibleCopyMoves(TilePosition from, Function f)
+  {
+    if (get(from) != _currentPlayer)
+    {
+      return;
+    }
     for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd)
     {
       TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
       if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
       {
-        possibleMoves.add(new Move(from, to, "copy"));
+        f(new Move(from, to, "copy"));
       }
+    }
+  }
+
+  void _getPossibleJumpMoves(TilePosition from, Function f)
+  {
+    if (get(from) != _currentPlayer)
+    {
+      return;
     }
     for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourSecondRingDeltasEven : TilePosition.neighbourSecondRingDeltasOdd)
     {
       TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
       if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
       {
-        possibleMoves.add(new Move(from, to, "jump"));
+        f(new Move(from, to, "jump"));
       }
     }
-    return possibleMoves;
-  }
-
-  List<Move> getAllPossibleMoves()
-  {
-    List<Move> possibleMoves = [];
-    for (int x = 0; x < _width; x++)
-    {
-      for (int y = 0; y < _height; y++)
-      {
-        TilePosition from = TilePosition.get(x, y);
-        possibleMoves.addAll(getPossibleMoves(from));
-      }
-    }
-    return possibleMoves;
+    return;
   }
 
   @override

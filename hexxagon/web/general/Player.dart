@@ -1,4 +1,4 @@
-import '../game/MonteCarloHexxagonPlayer.dart';
+import '../game/montecarlo/MonteCarloHexxagonPlayer.dart';
 import '../game/RandomHexxagonPlayer.dart';
 import 'Board.dart';
 import 'Move.dart';

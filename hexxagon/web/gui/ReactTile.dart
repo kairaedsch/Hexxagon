@@ -149,6 +149,10 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
               ..onMouseDown = this.startDrag
               ..onMouseEnter = onMouseEnter
               ..onMouseLeave = onMouseLeave
+              ..style =
+              {
+                "animation-delay": playAble ? "${0.15 * props.position.getMaxDistanceTo(TilePosition.get(0, 0))}s" : ""
+              }
             )()
         ),
         (Dom.div()
@@ -165,7 +169,8 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   }
 
   @override
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState)
+  {
     return true;
   }
 

@@ -15,8 +15,11 @@ class TilePosition
 
   final int _x, _y;
 
-  int get x => _x;
-  int get y => _y;
+  int get x
+  => _x;
+
+  int get y
+  => _y;
 
   TilePosition(this._x, this._y);
 
@@ -63,4 +66,20 @@ class TilePosition
   {
     return TilePosition.get((x + 1) % width, ((x + 1) == width) ? ((y + 1) % height) : y);
   }
+
+  @override
+  bool operator ==(Object other)
+  =>
+      identical(this, other) ||
+          other is TilePosition &&
+              runtimeType == other.runtimeType &&
+              _x == other._x &&
+              _y == other._y;
+
+  @override
+  int get hashCode
+  =>
+      _x.hashCode ^
+      _y.hashCode;
+
 }

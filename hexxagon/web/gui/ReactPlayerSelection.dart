@@ -1,7 +1,8 @@
 import '../game/Hexxagon.dart';
-import '../game/MonteCarloHexxagonPlayer.dart';
-import '../game/MonteCarloHexxagonPlayer.dart';
-import '../game/MonteCarloTreeSearchHexxagonPlayer.dart';
+import '../game/minmax/MinMaxHexxagonPlayer.dart';
+import '../game/montecarlo/MonteCarloHexxagonPlayer.dart';
+import '../game/montecarlo/MonteCarloHexxagonPlayer.dart';
+import '../game/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart';
 import '../game/RandomHexxagonPlayer.dart';
 import '../general/HumanPlayer.dart';
 import '../general/Player.dart';
@@ -39,7 +40,7 @@ class ReactPlayerSelectionState extends UiState
 @Component()
 class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelectionProps, ReactPlayerSelectionState>
 {
-  List<Player> players = [new HumanPlayer(), new RandomHexxagonPlayer(), new MonteCarloTreeSearchHexxagonPlayer(), new MonteCarloHexxagonPlayer()];
+  List<Player> players = [new HumanPlayer(), new MinMaxHexxagonPlayer(), new RandomHexxagonPlayer(), new MonteCarloTreeSearchHexxagonPlayer(), new MonteCarloHexxagonPlayer()];
 
   @override
   getInitialState()

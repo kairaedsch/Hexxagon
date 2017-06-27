@@ -223,11 +223,12 @@ html, body {
     width: 100%;
     margin: 0 -50%;
     float: left;
-    font-family: 'Pacifico', cursive;
-    font-size: 150px;
+    font-size: 200px;
     padding-top: 50px;
     text-align: center;
     pointer-events: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 .button {
@@ -447,46 +448,6 @@ html, body {
     100% {
         opacity: 1;
     }
-}
-
-.hexagon.playAble.posy_0 .hexagonInner {
-    animation-delay: 0s;
-}
-
-.hexagon.playAble.posy_1 .hexagonInner {
-    animation-delay: 0.15s;
-}
-
-.hexagon.playAble.posy_2 .hexagonInner {
-    animation-delay: 0.3s;
-}
-
-.hexagon.playAble.posy_3 .hexagonInner {
-    animation-delay: 0.45s;
-}
-
-.hexagon.playAble.posy_4 .hexagonInner {
-    animation-delay: 0.60s;
-}
-
-.hexagon.playAble.posy_5 .hexagonInner {
-    animation-delay: 0.75s;
-}
-
-.hexagon.playAble.posy_6 .hexagonInner {
-    animation-delay: 0.90s;
-}
-
-.hexagon.playAble.posy_7 .hexagonInner {
-    animation-delay: 1.05s;
-}
-
-.hexagon.playAble.posy_8 .hexagonInner {
-    animation-delay: 1.20s;
-}
-
-.hexagon.playAble.posy_9 .hexagonInner {
-    animation-delay: 1.35s;
 }
 
 .hexagon.FORBIDDEN .hexagonInner {
