@@ -4,6 +4,7 @@ class TileType
   static int PLAYER_TWO = 1;
   static int EMPTY = 2;
   static int FORBIDDEN = 3;
+  static int OUT_OF_FIELD = 4;
 
   static String toName(int tileType)
   {
@@ -13,6 +14,8 @@ class TileType
       case 1: return "PLAYER_TWO";
       case 2: return "EMPTY";
       case 3: return "FORBIDDEN";
+      case 4: return "OUT_OF_FIELD";
     }
+    throw new Exception();
   }
 }

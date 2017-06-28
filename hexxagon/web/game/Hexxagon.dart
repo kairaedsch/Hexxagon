@@ -44,7 +44,7 @@ class Hexxagon extends Board
         var distance = center.getMaxDistanceTo(pos);
         if (distance > size)
         {
-          _set(pos, TileType.FORBIDDEN);
+          _set(pos, TileType.OUT_OF_FIELD);
         }
       }
     }
@@ -56,14 +56,9 @@ class Hexxagon extends Board
     setStartTiles(size, center, 4, TileType.PLAYER_ONE);
     setStartTiles(size, center, 5, TileType.PLAYER_TWO);
 
-    //_set(TilePosition.get(0, 0), TileType.PLAYER_ONE);
-    //_set(TilePosition.get(_width - 1, _height - 1), TileType.PLAYER_ONE);
-
-    //_set(TilePosition.get(_width - 1, 0), TileType.PLAYER_TWO);
-    //_set(TilePosition.get(0, _height - 1), TileType.PLAYER_TWO);
-
-    //TilePosition pos = TilePosition.get((_width / 2).floor() - 1, (_height / 2).floor());
-    //_set(pos, TileType.FORBIDDEN);
+    setStartTiles(1, center, 0, TileType.FORBIDDEN);
+    setStartTiles(1, center, 2, TileType.FORBIDDEN);
+    setStartTiles(1, center, 4, TileType.FORBIDDEN);
   }
 
   void setStartTiles(int size, TilePosition center, int direction, int tile) {

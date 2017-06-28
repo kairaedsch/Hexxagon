@@ -451,6 +451,10 @@ html, body {
 }
 
 .hexagon.FORBIDDEN .hexagonInner {
+    fill: #6CB5C7;
+}
+
+.hexagon.OUT_OF_FIELD .hexagonInner {
     fill: transparent;
 }
 
