@@ -1,5 +1,5 @@
 import '../game/Hexxagon.dart';
-import 'montecarlo/MonteCarloHexxagonPlayer.dart';
+import 'ai/montecarlo/MonteCarloHexxagonPlayer.dart';
 import '../game/RandomHexxagonPlayer.dart';
 import '../general/Move.dart';
 import '../general/Player.dart';

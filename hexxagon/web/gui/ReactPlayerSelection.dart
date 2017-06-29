@@ -1,8 +1,8 @@
 import '../game/Hexxagon.dart';
-import '../game/minmax/MinMaxHexxagonPlayer.dart';
-import '../game/montecarlo/MonteCarloHexxagonPlayer.dart';
-import '../game/montecarlo/MonteCarloHexxagonPlayer.dart';
-import '../game/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart';
+import '../game/ai/minmax/MinMaxHexxagonPlayer.dart';
+import '../game/ai/montecarlo/MonteCarloHexxagonPlayer.dart';
+import '../game/ai/montecarlo/MonteCarloHexxagonPlayer.dart';
+import '../game/ai/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart';
 import '../game/RandomHexxagonPlayer.dart';
 import '../general/HumanPlayer.dart';
 import '../general/Player.dart';

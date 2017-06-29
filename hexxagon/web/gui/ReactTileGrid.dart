@@ -29,11 +29,21 @@ class ReactTileGridState extends UiState
 @Component()
 class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, ReactTileGridState>
 {
+  int currentRows = 0;
+  int currentColumns = 0;
+
   void componentWillMount()
   {
     super.componentWillMount();
     props.gui.addGameChangeListener(()
-    => setState(state));
+    {
+      GameGUI gameGUI = props.gui.currentGameGui;
+
+      if (currentRows != gameGUI.height || currentColumns != gameGUI.width)
+      {
+        setState(state);
+      }
+    });
     window.addEventListener("resize", (e)
     => setState(state));
   }
@@ -46,6 +56,10 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
       return Dom.div()();
     }
     GameGUI gameGUI = props.gui.currentGameGui;
+
+    currentRows = gameGUI.height;
+    currentColumns = gameGUI.width;
+
     var width = container.offsetWidth;
     var height = container.offsetHeight;
     List<ReactElement> tiles = new List(gameGUI.height);
@@ -56,7 +70,7 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
         ..key = y
         ..y = y
         ..tileGrid = this
-        ..gameGUI = gameGUI
+        ..gui = props.gui
         ..hexagon = hexagon
       )();
     }

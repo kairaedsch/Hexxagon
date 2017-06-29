@@ -1,4 +1,4 @@
-import 'montecarlo/GameNode.dart';
+import 'ai/montecarlo/GameNode.dart';
 
 enum GameResult
 {

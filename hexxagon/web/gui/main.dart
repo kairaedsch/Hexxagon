@@ -1,6 +1,6 @@
 import '../game/Hexxagon.dart';
-import '../game/montecarlo/MonteCarloHexxagonPlayer.dart';
-import '../game/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart';
+import '../game/ai/montecarlo/MonteCarloHexxagonPlayer.dart';
+import '../game/ai/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart';
 import '../game/RandomHexxagonPlayer.dart';
 import '../general/Game.dart';
 import '../general/HumanPlayer.dart';

@@ -1,4 +1,5 @@
 import '../game/Hexxagon.dart';
+import 'GUI.dart';
 import 'GameGUI.dart';
 import '../general/Move.dart';
 import '../general/TilePosition.dart';
@@ -22,7 +23,8 @@ class ReactTileProps extends UiProps
 {
   ReactTileGridComponent tileGrid;
   TilePosition position;
-  GameGUI boardGUI;
+  GUI gui;
+  GameGUI gameGUI;
   Hexagon hexagon;
 }
 
@@ -40,10 +42,13 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 {
   StreamSubscription l1, l2, l3;
 
+  bool currentIsPlayAbleNow = false;
+  bool currentIsSelected = false;
+
   bool get isPlayAbleNow
   {
-    return props.boardGUI.isSomethingSelected
-        && props.boardGUI.possibleMoves.any((Move move)
+    return props.gameGUI.isSomethingSelected
+        && props.gameGUI.possibleMoves.any((Move move)
         => move.target.equals(props.position));
   }
 
@@ -75,31 +80,53 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     l1.pause();
     l2.pause();
     l3.pause();
+
+    props.gui.addGameGUIChangeListener(()
+    {
+      if (currentIsPlayAbleNow != isPlayAbleNow || isPlayAbleNow == true)
+      {
+        setState(state);
+      }
+      else
+      {
+        bool isSelected = props.gameGUI.isSomethingSelected && props.gameGUI.selectedPosition.equals(props.position);
+        if (currentIsSelected != isSelected)
+        {
+          setState(state);
+        }
+      }
+    });
+
+    props.gui.addGameChangeListener(()
+    {
+      setState(state);
+    });
   }
 
   @override
   ReactElement render()
   {
-    int tileType = props.boardGUI.get(props.position);
-    bool playAble = props.boardGUI.couldBeMoved(props.position) && props.boardGUI.currentPlayer.isHuman;
-    bool playAbleOfNotCurrentPlayer = !playAble && tileType == props.boardGUI.getNotCurrentPlayer();
+    int tileType = props.gameGUI.get(props.position);
+    bool playAble = props.gameGUI.couldBeMoved(props.position) && props.gameGUI.currentPlayer.isHuman;
+    bool playAbleOfNotCurrentPlayer = !playAble && tileType == props.gameGUI.getNotCurrentPlayer();
 
     bool isSelected = false;
     Optional<Move> move = new Optional.empty();
-    if (props.boardGUI.isSomethingSelected)
+    if (props.gameGUI.isSomethingSelected)
     {
-      move = new Optional.ofNullable(props.boardGUI.possibleMoves.firstWhere((Move move)
-      => move.target.equals(props.position), orElse: ()
-      => null));
-      isSelected = props.boardGUI.selectedPosition.equals(props.position);
+      move = getMovefromSelectedToHere();
+      isSelected = props.gameGUI.selectedPosition.equals(props.position);
     }
+
+    currentIsSelected = isSelected;
+    currentIsPlayAbleNow = isPlayAbleNow;
 
     bool isLastMoveSource = false;
     bool isLastMoveTarget = false;
-    if (props.boardGUI.lastMove.isPresent)
+    if (props.gameGUI.lastMove.isPresent)
     {
-      isLastMoveSource = props.boardGUI.lastMove.value.source.equals(props.position);
-      isLastMoveTarget = props.boardGUI.lastMove.value.target.equals(props.position);
+      isLastMoveSource = props.gameGUI.lastMove.value.source.equals(props.position);
+      isLastMoveTarget = props.gameGUI.lastMove.value.target.equals(props.position);
     }
     bool isTranslated = state.delta.x != 0 || state.delta.y != 0;
 
@@ -118,7 +145,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " ${isLastMoveTarget ? "lastMoveTarget" : ""}"
           " ${move.isPresent ? move.value.kindOf : ""}"
           " ${playAble ? "playAble" : (playAbleOfNotCurrentPlayer ? "notPlayAble" : "")}"
-          " ${isPlayAbleNow ? "playAbleNow playAbleNow${TileType.toName(props.boardGUI.getCurrentPlayer())}" : ""}"
+          " ${isPlayAbleNow ? "playAbleNow playAbleNow${TileType.toName(props.gameGUI.getCurrentPlayer())}" : ""}"
           " ${TileType.toName(tileType)}"
           " ${isSelected ? "selected" : ""}"
           " ${state.mouseIsOver ? "mouseIsOver" : ""}"
@@ -151,7 +178,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
               ..onMouseLeave = onMouseLeave
               ..style =
               {
-                "animation-delay": playAble ? "${0.15 * props.position.getMaxDistanceTo(TilePosition.get(0, 0))}s" : ""
+                "animationDelay": playAble ? "${0.15 * props.position.getMaxDistanceTo(TilePosition.get(0, 0))}s" : ""
               }
             )()
         ),
@@ -159,7 +186,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           ..className = "hexagonInnerText"
           ..style = textStyle
         )(
-            (isLastMoveSource || isLastMoveTarget) ? props.boardGUI.lastMove.value.kindOf : ""
+            (isLastMoveSource || isLastMoveTarget) ? props.gameGUI.lastMove.value.kindOf : ""
         ),
         (Dom.div()
           ..className = "hexagonInnerText positions"
@@ -168,20 +195,20 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     );
   }
 
-  @override
-  shouldComponentUpdate(nextProps, nextState)
+  Optional<Move> getMovefromSelectedToHere()
   {
-    return true;
+    Optional<Move> move = new Optional.ofNullable(props.gameGUI.possibleMoves.firstWhere((Move move)
+    => move.target.equals(props.position), orElse: ()
+    => null));
+    return move;
   }
 
   void select(SyntheticMouseEvent event)
   {
     Optional<Move> move;
-    if (props.boardGUI.isSomethingSelected)
+    if (props.gameGUI.isSomethingSelected)
     {
-      move = new Optional.ofNullable(props.boardGUI.possibleMoves.firstWhere((Move move)
-      => move.target.equals(props.position), orElse: ()
-      => null));
+      move = getMovefromSelectedToHere();
     }
     else
     {
@@ -190,11 +217,11 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
     if (move.isPresent)
     {
-      props.boardGUI.move(move.value);
+      props.gameGUI.move(move.value);
     }
     else
     {
-      props.boardGUI.select(props.position);
+      props.gameGUI.select(props.position);
     }
   }
 
@@ -222,15 +249,15 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
   startDrag(SyntheticMouseEvent event)
   {
-    if (props.boardGUI.currentPlayer.isHuman)
+    if (props.gameGUI.currentPlayer.isHuman)
     {
       bool firstTimeUp = false;
-      if (!props.boardGUI.isSomethingSelected || !props.boardGUI.selectedPosition.equals(props.position))
+      if (!props.gameGUI.isSomethingSelected || !props.gameGUI.selectedPosition.equals(props.position))
       {
         select(null);
         firstTimeUp = true;
       }
-      if (props.boardGUI.isSomethingSelected && props.boardGUI.selectedPosition.equals(props.position))
+      if (props.gameGUI.isSomethingSelected && props.gameGUI.selectedPosition.equals(props.position))
       {
         l1.resume();
         l2.resume();

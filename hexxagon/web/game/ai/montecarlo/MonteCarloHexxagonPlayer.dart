@@ -1,10 +1,10 @@
-import '../ComputerPlayer.dart';
-import '../../general/Move.dart';
-import '../../general/Player.dart';
-import '../../general/TilePosition.dart';
-import '../../general/TileType.dart';
-import '../Hexxagon.dart';
-import '../RandomHexxagonPlayer.dart';
+import '../../ComputerPlayer.dart';
+import '../../../general/Move.dart';
+import '../../../general/Player.dart';
+import '../../../general/TilePosition.dart';
+import '../../../general/TileType.dart';
+import '../../Hexxagon.dart';
+import '../../RandomHexxagonPlayer.dart';
 import 'dart:async';
 
 import 'dart:math';

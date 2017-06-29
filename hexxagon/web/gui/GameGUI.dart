@@ -15,7 +15,8 @@ class GameGUI
   int _delay;
 
   Game _game;
-  List<Function> _changeListener;
+  List<Function> _GameChangeListener;
+  List<Function> _GameGUIChangeListener;
 
   int get width
   => _game.width;
@@ -39,7 +40,8 @@ class GameGUI
 
   GameGUI(this._game, this._delay)
   {
-    _changeListener = [];
+    _GameChangeListener = [];
+    _GameGUIChangeListener = [];
     aborted = false;
     _game.changeListener = ()
     {
@@ -47,7 +49,7 @@ class GameGUI
       {
         new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (250 + _delay / 2).floor()), ()
         {
-          notify();
+          notifyGameChange();
           new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (250 + _delay / 2).floor()), _game.next);
         });
       }
@@ -56,15 +58,26 @@ class GameGUI
     _game.next();
   }
 
-  void notify()
+  void notifyGameChange()
   {
-    _changeListener.forEach((f)
+    _GameChangeListener.forEach((f)
     => f());
   }
 
-  void addChangeListener(Function f)
+  void notifyGameGUIChange()
   {
-    _changeListener.add(f);
+    _GameGUIChangeListener.forEach((f)
+    => f());
+  }
+
+  void addGameChangeListener(Function f)
+  {
+    _GameChangeListener.add(f);
+  }
+
+  void addGameGUIChangeListener(Function f)
+  {
+    _GameGUIChangeListener.add(f);
   }
 
   void select(TilePosition position)
@@ -72,7 +85,7 @@ class GameGUI
     if (_game.couldBeMoved(position) && (!isSomethingSelected || !position.equals(selectedPosition)))
     {
       _selectedPosition = new Optional.of(new Tuple2(position, _game.getPossibleMoves(position)));
-      notify();
+      notifyGameGUIChange();
     }
     else
     {
@@ -83,7 +96,7 @@ class GameGUI
   void unselect()
   {
     _selectedPosition = new Optional.empty();
-    notify();
+    notifyGameGUIChange();
   }
 
   void move(Move move)
