@@ -82,7 +82,7 @@ class GameGUI
 
   void select(TilePosition position)
   {
-    if (_game.couldBeMoved(position) && (!isSomethingSelected || !position.equals(selectedPosition)))
+    if (!_game.isOver && _game.couldBeMoved(position) && (!isSomethingSelected || !position.equals(selectedPosition)))
     {
       _selectedPosition = new Optional.of(new Tuple2(position, _game.getPossibleMoves(position)));
       notifyGameGUIChange();

@@ -8,8 +8,9 @@
       <excludeFolder url="file://$MODULE_DIR$/packages" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/web/game/minmax/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/web/game/montecarlo/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/game/ai/minmax/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/game/ai/montecarlo/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/game/ai/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/game/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/general/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/gui/packages" />

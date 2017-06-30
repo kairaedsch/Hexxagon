@@ -565,7 +565,7 @@ html, body {
 }
 
 .hexagonInnerText.positions {
-    display: none !important;
+    display: block !important;
 }
 
 .hide {

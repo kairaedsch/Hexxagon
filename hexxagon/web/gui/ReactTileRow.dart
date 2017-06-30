@@ -40,7 +40,6 @@ class ReactTileRowComponent extends UiComponent<ReactTileRowProps>
             ..tileGrid = props.tileGrid
             ..position = TilePosition.get(x, props.y)
             ..gui = props.gui
-            ..gameGUI = gameGUI
             ..hexagon = props.hexagon
           )();
     }
