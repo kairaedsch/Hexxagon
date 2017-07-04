@@ -1,6 +1,6 @@
 import 'package:over_react/over_react.dart';
 
-import '../../general/Player.dart';
+import '../../general/Intelligence.dart';
 
 import 'ReactPlayerSelection.dart';
 
@@ -10,7 +10,7 @@ UiFactory<ReactPlayerSelectProps> ReactPlayerSelect;
 @Props()
 class ReactPlayerSelectProps extends UiProps
 {
-  List<Player> players;
+  List<Intelligence> intelligences;
   int selected;
   ReactPlayerSelectionComponent father;
   bool playerOne;
@@ -21,7 +21,7 @@ class ReactPlayerSelectComponent extends UiComponent<ReactPlayerSelectProps>
 {
   ReactElement render()
   {
-    Player player = props.players[props.selected];
+    Intelligence intelligences = props.intelligences[props.selected];
     return (Dom.div()
       ..className = "playerContainer"
     )(
@@ -45,12 +45,12 @@ class ReactPlayerSelectComponent extends UiComponent<ReactPlayerSelectProps>
               ..className = "playerImage"
               ..style =
               {
-                "backgroundImage": "url('${player.isHuman ? "human.png" : "robot-${player.strength}.png"}')",
+                "backgroundImage": "url('${intelligences.isHuman ? "human.png" : "robot-${intelligences.strength}.png"}')",
               })(),
             (Dom.div()
               ..className = "playerText"
             )(
-                player.name
+                intelligences.name
             )
         ),
         (Dom.div()

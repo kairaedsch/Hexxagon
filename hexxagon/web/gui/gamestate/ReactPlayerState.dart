@@ -57,14 +57,14 @@ class ReactPlayerStateComponent extends UiStatefulComponent<ReactPlayerStateProp
     return (Dom.div()
       ..className = " playerStats"
           " ${props.player == TileType.PLAYER_ONE ? "PLAYER_ONE" : "PLAYER_TWO"}"
-          " ${(!props.gui.currentGameGui.isOver && (props.gui.currentGameGui.getCurrentPlayer() == props.player)) ? "hisTurn" : ""}"
+          " ${(!props.gui.currentGameGui.isOver && (props.gui.currentGameGui.currentPlayer == props.player)) ? "hisTurn" : ""}"
           " ${(props.gui.currentGameGui.isOver && (props.gui.currentGameGui.betterPlayer == props.player)) ? "won" : ""}"
     )(
       (Dom.div()
         ..className = "playerStatsName"
       )(
           props.gui.currentGameGui
-              .getPlayer(props.player)
+              .getIntelligence(props.player)
               .name
       ),
       (Dom.div()

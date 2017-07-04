@@ -1,10 +1,10 @@
 import 'dart:math';
 
-import '../../../general/Player.dart';
-import '../ComputerPlayer.dart';
+import '../../../general/Intelligence.dart';
+import '../ArtificialIntelligence.dart';
 import '../../Hexxagon.dart';
 
-class RandomHexxagonPlayer extends ComputerPlayer
+class RandomAI extends ArtificialIntelligence
 {
   String get name => "Random Player";
 

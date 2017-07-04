@@ -6,21 +6,21 @@ import '../GUI.dart';
 import 'ReactPlayerState.dart';
 
 @Factory()
-UiFactory<ReactPlayerStatesProps> ReactPlayerStates;
+UiFactory<ReactGameSidePanelProps> ReactGameSidePanel;
 
 @Props()
-class ReactPlayerStatesProps extends UiProps
+class ReactGameSidePanelProps extends UiProps
 {
   GUI gui;
 }
 
 @State()
-class ReactPlayerStatesState extends UiState
+class ReactGameSidePanelState extends UiState
 {
 }
 
 @Component()
-class ReactPlayerStatesComponent extends UiStatefulComponent<ReactPlayerStatesProps, ReactPlayerStatesState>
+class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanelProps, ReactGameSidePanelState>
 {
   void componentWillMount()
   {

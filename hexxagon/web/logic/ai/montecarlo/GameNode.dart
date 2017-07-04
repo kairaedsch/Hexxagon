@@ -46,7 +46,7 @@ class GameNode
       List<Move> possibleMoves = _board.getAllPossibleMoves();
       if (possibleMoves.isEmpty)
       {
-        result = _board.getResult(_board.getNotCurrentPlayer());
+        result = _board.getResult(_board.notCurrentPlayer);
       }
       else
       {
@@ -69,7 +69,7 @@ class GameNode
       {
         clone.move(move.source, move.target);
       }
-      result = clone.getResult(clone.getNotCurrentPlayer());
+      result = clone.getResult(clone.notCurrentPlayer);
     }
 
     if (result == GameResult.WIN)

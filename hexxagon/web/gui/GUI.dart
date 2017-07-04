@@ -1,6 +1,6 @@
 import '../general/Board.dart';
 import '../general/Game.dart';
-import '../general/Player.dart';
+import '../general/Intelligence.dart';
 
 import 'GameGUI.dart';
 
@@ -34,8 +34,8 @@ class GUI<B extends Board>
   List<Function> _gameChangedListener;
   List<Function> _gameGUIChangedListener;
 
-  Player<B> playerOne;
-  Player<B> playerTwo;
+  Intelligence<B> playerOne;
+  Intelligence<B> playerTwo;
 
   GUI(this._boardCreater)
   {

@@ -3,11 +3,11 @@ import 'dart:math';
 import 'package:tuple/tuple.dart';
 
 import '../../../general/Move.dart';
-import '../../../general/Player.dart';
-import '../ComputerPlayer.dart';
+import '../../../general/Intelligence.dart';
+import '../ArtificialIntelligence.dart';
 import '../../Hexxagon.dart';
 
-class MonteCarloHexxagonPlayer extends ComputerPlayer
+class MonteCarloAI extends ArtificialIntelligence
 {
   String get name
   => "MonteCarlo Player";
@@ -34,11 +34,11 @@ class MonteCarloHexxagonPlayer extends ComputerPlayer
           clone.move(move.source, move.target);
         }
         int betterPlayer = clone.betterPlayer;
-        if (betterPlayer == hexxagon.getCurrentPlayer())
+        if (betterPlayer == hexxagon.currentPlayer)
         {
           possibleMoves[i] = new Tuple2(t.item1 + 1, t.item2);
         }
-        if (betterPlayer == hexxagon.getNotCurrentPlayer())
+        if (betterPlayer == hexxagon.notCurrentPlayer)
         {
           possibleMoves[i] = new Tuple2(t.item1 - 1, t.item2);
         }

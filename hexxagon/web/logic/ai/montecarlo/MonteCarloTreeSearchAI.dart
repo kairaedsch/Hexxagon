@@ -1,9 +1,9 @@
-import '../../../general/Player.dart';
-import '../ComputerPlayer.dart';
+import '../../../general/Intelligence.dart';
+import '../ArtificialIntelligence.dart';
 import '../../Hexxagon.dart';
 import 'GameNode.dart';
 
-class MonteCarloTreeSearchHexxagonPlayer extends ComputerPlayer
+class MonteCarloTreeSearchAI extends ArtificialIntelligence
 {
   String get name => "MonteCarlo TreeSearch Player";
 

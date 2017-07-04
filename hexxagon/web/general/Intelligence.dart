@@ -3,7 +3,7 @@ import 'Move.dart';
 
 typedef void MoveCallback(Move move);
 
-abstract class Player<B extends Board>
+abstract class Intelligence<B extends Board>
 {
   bool get isHuman;
 

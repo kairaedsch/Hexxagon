@@ -9,9 +9,9 @@ abstract class Board
   List<Move> getPossibleMoves(TilePosition tilePosition);
   bool couldBeMoved(TilePosition tilePosition);
   int get(TilePosition tilePosition);
-  int getCurrentPlayer();
-  int getNotCurrentPlayer();
+  int get currentPlayer;
+  int get notCurrentPlayer;
   bool get isOver;
   int get betterPlayer;
-  Map<String, String> getStatsOf(int player);
+  Map<String, String> getStatsOf(int player) => {};
 }

@@ -7,7 +7,6 @@ import '../general/Move.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import 'GameResult.dart';
-import 'HexxagonStats.dart';
 
 class Hexxagon extends Board
 {
@@ -22,13 +21,8 @@ class Hexxagon extends Board
   Array2D _tiles;
   int _currentPlayer;
 
-  HexxagonStats _hexxagonStatsPlayerOne;
-  HexxagonStats _hexxagonStatsPlayerTwo;
-
   Hexxagon(int size)
   {
-    _hexxagonStatsPlayerOne = new HexxagonStats();
-    _hexxagonStatsPlayerTwo = new HexxagonStats();
     _width = size + 1;
     _height = (size * 2 + 1) * 2;
 
@@ -72,12 +66,10 @@ class Hexxagon extends Board
   }
 
   Hexxagon.clone(Hexxagon hexxagon) {
-    _hexxagonStatsPlayerOne = new HexxagonStats();
-    _hexxagonStatsPlayerTwo = new HexxagonStats();
     _width = hexxagon._width;
     _height = hexxagon._height;
 
-    _tiles = new Array2D(_width, _height, TileType.EMPTY);
+    _tiles = new Array2D.empty(_width, _height);
     for (int x = 0; x < _width; x++)
     {
       for (int y = 0; y < _height; y++)
@@ -86,7 +78,7 @@ class Hexxagon extends Board
         _tiles[x][y] = hexxagon.get(pos);
       }
     }
-    _currentPlayer = hexxagon.getCurrentPlayer();
+    _currentPlayer = hexxagon.currentPlayer;
   }
 
   @override
@@ -96,31 +88,24 @@ class Hexxagon extends Board
     {
       throw new Exception("Invalid Move");
     }
-    HexxagonStats hexxagonStats = _currentPlayer == TileType.PLAYER_ONE ? _hexxagonStatsPlayerOne : _hexxagonStatsPlayerTwo;
 
     _set(to, _currentPlayer);
     int distance = from.getMaxDistanceTo(to);
     if (distance == 2)
     {
-      hexxagonStats.jumps++;
       _set(from, TileType.EMPTY);
-    }
-    else
-    {
-      hexxagonStats.copies++;
     }
 
     for (List<int> neighbourDelta in to.y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd)
     {
       TilePosition position = TilePosition.get(neighbourDelta[0] + to.x, neighbourDelta[1] + to.y);
-      if (position.isValid(_width, _height) && get(position) == getNotCurrentPlayer())
+      if (position.isValid(_width, _height) && get(position) == notCurrentPlayer)
       {
         _set(position, _currentPlayer);
-        hexxagonStats.capturedStones++;
       }
     }
 
-    _currentPlayer = getNotCurrentPlayer();
+    _currentPlayer = notCurrentPlayer;
   }
 
   bool isVaidMove(TilePosition from, TilePosition to)
@@ -240,23 +225,6 @@ class Hexxagon extends Board
     return null;
   }
 
-  List<TilePosition> canBeMoved()
-  {
-    List<TilePosition> possibleMoves = [];
-    for (int x = 0; x < _width; x++)
-    {
-      for (int y = 0; y < _height; y++)
-      {
-        TilePosition from = TilePosition.get(x, y);
-        if (getPossibleMoves(from).isNotEmpty)
-        {
-          possibleMoves.add(from);
-        }
-      }
-    }
-    return possibleMoves;
-  }
-
   @override
   int get(TilePosition position)
   {
@@ -264,16 +232,10 @@ class Hexxagon extends Board
   }
 
   @override
-  int getCurrentPlayer()
-  {
-    return _currentPlayer;
-  }
+  int get currentPlayer => _currentPlayer;
 
   @override
-  int getNotCurrentPlayer()
-  {
-    return (_currentPlayer == TileType.PLAYER_ONE ? TileType.PLAYER_TWO : TileType.PLAYER_ONE);
-  }
+  int get notCurrentPlayer => (_currentPlayer == TileType.PLAYER_ONE ? TileType.PLAYER_TWO : TileType.PLAYER_ONE);
 
   @override
   bool get isOver
@@ -346,11 +308,5 @@ class Hexxagon extends Board
       }
     }
     return count;
-  }
-
-  @override
-  Map<String, String> getStatsOf(int player)
-  {
-    return (player == TileType.PLAYER_ONE ? _hexxagonStatsPlayerOne : _hexxagonStatsPlayerTwo).toMap(this, player);
   }
 }

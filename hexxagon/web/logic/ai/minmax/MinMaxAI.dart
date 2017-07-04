@@ -1,16 +1,20 @@
 import '../../../general/Move.dart';
-import '../../../general/Player.dart';
-import '../ComputerPlayer.dart';
+import '../../../general/Intelligence.dart';
+import '../ArtificialIntelligence.dart';
 import '../../Hexxagon.dart';
 
 typedef double Heuristic(Hexxagon hexxagon, int player);
 
-class MinMaxHexxagonPlayer extends ComputerPlayer
+class MinMaxAI extends ArtificialIntelligence
 {
-  String get name
-  => "Min Max Player";
+  int treeDepth;
 
-  int get strength => 3;
+  String get name
+  => "Min Max Player level $strength";
+
+  int get strength => (treeDepth - 1);
+
+  MinMaxAI(this.treeDepth);
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
@@ -22,7 +26,7 @@ class MinMaxHexxagonPlayer extends ComputerPlayer
     {
       Hexxagon childHexxagon = new Hexxagon.clone(hexxagon);
       childHexxagon.move(move.source, move.target);
-      double childValue = minimax(childHexxagon, 4, heuristic, hexxagon.getCurrentPlayer(), bestValue);
+      double childValue = minimax(childHexxagon, treeDepth, heuristic, hexxagon.currentPlayer, bestValue);
       if (childValue > bestValue)
       {
         bestValue = childValue;
@@ -51,7 +55,7 @@ class MinMaxHexxagonPlayer extends ComputerPlayer
       return heuristic(hexxagon, player);
     }
 
-    if (hexxagon.getCurrentPlayer() == player)
+    if (hexxagon.currentPlayer == player)
     {
       double bestValue = double.NEGATIVE_INFINITY;
       for (Move move in allPossibleMoves)

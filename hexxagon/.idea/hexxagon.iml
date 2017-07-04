@@ -8,12 +8,16 @@
       <excludeFolder url="file://$MODULE_DIR$/packages" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/web/game/ai/minmax/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/web/game/ai/montecarlo/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/web/game/ai/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/web/game/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/general/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/gui/gamestate/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/gui/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/gui/playerselection/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/gui/tiles/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/logic/ai/minmax/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/logic/ai/montecarlo/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/logic/ai/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/logic/ai/random/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/logic/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/packages" />
     </content>
     <orderEntry type="inheritedJdk" />

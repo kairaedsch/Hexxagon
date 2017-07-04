@@ -1,10 +1,9 @@
-import '../../general/Player.dart';
+import '../../general/Intelligence.dart';
 import '../Hexxagon.dart';
 
 typedef void Callback();
 
-
-abstract class ComputerPlayer extends Player<Hexxagon>
+abstract class ArtificialIntelligence extends Intelligence<Hexxagon>
 {
   bool get isHuman
   {

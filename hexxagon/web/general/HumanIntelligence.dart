@@ -1,9 +1,9 @@
 import 'Board.dart';
-import 'Player.dart';
+import 'Intelligence.dart';
 
 typedef void Callback();
 
-class HumanPlayer<B extends Board> extends Player<B>
+class HumanIntelligence<B extends Board> extends Intelligence<B>
 {
   bool get isHuman => true;
 

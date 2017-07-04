@@ -6,7 +6,7 @@ import 'package:tuple/tuple.dart';
 import '../general/Board.dart';
 import '../general/Game.dart';
 import '../general/Move.dart';
-import '../general/Player.dart';
+import '../general/Intelligence.dart';
 import '../general/TilePosition.dart';
 
 class GameGUI
@@ -20,10 +20,10 @@ class GameGUI
   List<Function> _GameGUIChangeListener;
 
   int get width
-  => _game.width;
+  => _game.board.width;
 
   int get height
-  => _game.height;
+  => _game.board.height;
 
   Optional<Tuple2<TilePosition, List<Move>>> _selectedPosition;
 
@@ -48,11 +48,11 @@ class GameGUI
     {
       if (!aborted)
       {
-        new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (250 + _delay / 2).floor()), ()
+        notifyGameChange();
+        if (!_game.board.isOver)
         {
-          notifyGameChange();
-          new Timer(new Duration(milliseconds: currentPlayer.isHuman ? 0 : (250 + _delay / 2).floor()), _game.next);
-        });
+          new Timer(new Duration(milliseconds: (_game.notCurrentIntelligence.isHuman && !_game.currentIntelligence.isHuman) ? (500 + _delay) : 50), _game.next);
+        }
       }
     };
     _selectedPosition = new Optional.empty();
@@ -83,9 +83,9 @@ class GameGUI
 
   void select(TilePosition position)
   {
-    if (!_game.isOver && _game.couldBeMoved(position) && (!isSomethingSelected || !position.equals(selectedPosition)))
+    if (!_game.board.isOver && _game.board.couldBeMoved(position) && (!isSomethingSelected || !position.equals(selectedPosition)))
     {
-      _selectedPosition = new Optional.of(new Tuple2(position, _game.getPossibleMoves(position)));
+      _selectedPosition = new Optional.of(new Tuple2(position, _game.board.getPossibleMoves(position)));
       notifyGameGUIChange();
     }
     else
@@ -108,38 +108,34 @@ class GameGUI
 
   bool couldBeMoved(TilePosition tilePosition)
   {
-    return _game.couldBeMoved(tilePosition);
+    return _game.board.couldBeMoved(tilePosition);
   }
 
   int get(TilePosition tilePosition)
   {
-    return _game.get(tilePosition);
+    return _game.board.get(tilePosition);
   }
 
-  int getCurrentPlayer()
-  {
-    return _game.getCurrentPlayer();
-  }
+  int get currentPlayer
+  => _game.board.currentPlayer;
 
-  int getNotCurrentPlayer()
-  {
-    return _game.getNotCurrentPlayer();
-  }
+  int get notCurrentPlayer
+  => _game.board.notCurrentPlayer;
 
-  Player get currentPlayer
-  => _game.currentPlayer;
+  Intelligence get currentIntelligence
+  => _game.currentIntelligence;
 
   bool get isOver
-  => _game.isOver;
+  => _game.board.isOver;
 
   Map<String, String> getStatsOf(int player)
   {
     return _game.getStatsOf(player);
   }
 
-  Player<Board> getPlayer(int player)
+  Intelligence<Board> getIntelligence(int player)
   {
-    return _game.getPlayer(player);
+    return _game.getIntelligence(player);
   }
 
   void abort()
@@ -147,5 +143,6 @@ class GameGUI
     aborted = true;
   }
 
-  int get betterPlayer => _game.betterPlayer;
+  int get betterPlayer
+  => _game.board.betterPlayer;
 }
