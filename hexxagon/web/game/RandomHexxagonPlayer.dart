@@ -1,12 +1,8 @@
-import 'ComputerPlayer.dart';
-import '../general/Move.dart';
-import '../general/Player.dart';
-import '../general/TilePosition.dart';
-import '../general/TileType.dart';
-import 'Hexxagon.dart';
-import 'dart:async';
-
 import 'dart:math';
+
+import '../general/Player.dart';
+import 'ComputerPlayer.dart';
+import 'Hexxagon.dart';
 
 class RandomHexxagonPlayer extends ComputerPlayer
 {

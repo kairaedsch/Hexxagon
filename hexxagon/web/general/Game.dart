@@ -1,10 +1,10 @@
-import 'Move.dart';
+import 'package:optional/optional.dart';
+
 import 'Board.dart';
+import 'Move.dart';
 import 'Player.dart';
 import 'TilePosition.dart';
 import 'TileType.dart';
-import 'dart:async';
-import 'package:optional/optional.dart';
 
 class Game<B extends Board>
 {

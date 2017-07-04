@@ -1,13 +1,13 @@
-import '../general/Array2D.dart';
-import '../general/Board.dart';
-import '../general/Player.dart';
-import '../general/TilePosition.dart';
-import '../general/TileType.dart';
-import '../general/Move.dart';
-import 'GameResult.dart';
-import 'HexxagonStats.dart';
 import 'dart:collection';
 import 'dart:math';
+
+import '../general/Array2D.dart';
+import '../general/Board.dart';
+import '../general/Move.dart';
+import '../general/TilePosition.dart';
+import '../general/TileType.dart';
+import 'GameResult.dart';
+import 'HexxagonStats.dart';
 
 class Hexxagon extends Board
 {

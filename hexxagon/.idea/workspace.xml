@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/web/gui/ReactTileGrid.dart" line="32" />
+    <bookmark url="file://$PROJECT_DIR$/web/gui/ReactTileGrid.dart" line="27" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040ffbd4-fe00-4cfa-9f85-21d48bb5e9f0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/hexxagon.iml" afterPath="$PROJECT_DIR$/.idea/hexxagon.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/game/ComputerPlayer.dart" afterPath="$PROJECT_DIR$/web/game/ComputerPlayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/game/GameResult.dart" afterPath="$PROJECT_DIR$/web/game/GameResult.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/game/Hexxagon.dart" afterPath="$PROJECT_DIR$/web/game/Hexxagon.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/game/HexxagonStats.dart" afterPath="$PROJECT_DIR$/web/game/HexxagonStats.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/game/RandomHexxagonPlayer.dart" afterPath="$PROJECT_DIR$/web/game/RandomHexxagonPlayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/game/ai/minmax/MinMaxHexxagonPlayer.dart" afterPath="$PROJECT_DIR$/web/game/ai/minmax/MinMaxHexxagonPlayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/game/ai/montecarlo/GameNode.dart" afterPath="$PROJECT_DIR$/web/game/ai/montecarlo/GameNode.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/game/ai/montecarlo/MonteCarloHexxagonPlayer.dart" afterPath="$PROJECT_DIR$/web/game/ai/montecarlo/MonteCarloHexxagonPlayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/game/ai/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart" afterPath="$PROJECT_DIR$/web/game/ai/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/Board.dart" afterPath="$PROJECT_DIR$/web/general/Board.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/Game.dart" afterPath="$PROJECT_DIR$/web/general/Game.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/HumanPlayer.dart" afterPath="$PROJECT_DIR$/web/general/HumanPlayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/Player.dart" afterPath="$PROJECT_DIR$/web/general/Player.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/GUI.dart" afterPath="$PROJECT_DIR$/web/gui/GUI.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/GUIState.dart" afterPath="$PROJECT_DIR$/web/gui/GUIState.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/GameGUI.dart" afterPath="$PROJECT_DIR$/web/gui/GameGUI.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/ReactPlayerSelect.dart" afterPath="$PROJECT_DIR$/web/gui/ReactPlayerSelect.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/ReactPlayerSelection.dart" afterPath="$PROJECT_DIR$/web/gui/ReactPlayerSelection.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/ReactPlayerState.dart" afterPath="$PROJECT_DIR$/web/gui/ReactPlayerState.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/ReactPlayerStates.dart" afterPath="$PROJECT_DIR$/web/gui/ReactPlayerStates.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/ReactTile.dart" afterPath="$PROJECT_DIR$/web/gui/ReactTile.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/ReactTileGrid.dart" afterPath="$PROJECT_DIR$/web/gui/ReactTileGrid.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/ReactTileRow.dart" afterPath="$PROJECT_DIR$/web/gui/ReactTileRow.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/styles.css" afterPath="$PROJECT_DIR$/web/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/main.dart" afterPath="$PROJECT_DIR$/web/gui/main.dart" />
     </list>
     <list id="f9be6b39-d5c2-47b1-9740-540f457e7a10" name="Revert: " comment="" />
     <list id="de988520-99e5-498a-bbf9-890faa2d80f8" name="Revert:" comment="" />
@@ -27,42 +47,26 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="234">
-      <file leaf-file-name="ReactTileGrid.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/ReactTileGrid.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReactTileRow.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/ReactTileRow.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameGUI.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameGUI.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/gui/GameGUI.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="84" column="21" lean-forward="true" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
-              <folding />
+            <state relative-caret-position="476">
+              <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/general/Game.dart">
+      <file leaf-file-name="MinMaxHexxagonPlayer.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/game/ai/minmax/MinMaxHexxagonPlayer.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="62" column="22" lean-forward="false" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
-              <folding />
+            <state relative-caret-position="153">
+              <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,40 +74,10 @@
       <file leaf-file-name="GUI.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/gui/GUI.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="76" column="29" lean-forward="false" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReactTile.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/ReactTile.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="230" column="36" lean-forward="true" selection-start-line="230" selection-start-column="36" selection-end-line="230" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="403" column="66" lean-forward="true" selection-start-line="403" selection-start-column="66" selection-end-line="403" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MinMaxHexxagonPlayer.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/game/ai/minmax/MinMaxHexxagonPlayer.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+            <state relative-caret-position="663">
+              <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1499174009383" expanded="true" signature="2164:2191" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -112,19 +86,75 @@
       <file leaf-file-name="Hexxagon.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/game/Hexxagon.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="148" column="3" lean-forward="false" selection-start-line="148" selection-start-column="3" selection-end-line="148" selection-end-column="3" />
+            <state relative-caret-position="629">
+              <caret line="46" column="41" lean-forward="false" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="41" />
+              <folding>
+                <marker date="1499174009401" expanded="false" signature="7:272" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TileType.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/general/TileType.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUIState.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/GUIState.dart">
+      <file leaf-file-name="ReactTile.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/gui/ReactTile.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="12" column="43" lean-forward="false" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
-              <folding />
+            <state relative-caret-position="3111">
+              <caret line="183" column="68" lean-forward="false" selection-start-line="183" selection-start-column="68" selection-end-line="183" selection-end-column="68" />
+              <folding>
+                <marker date="1499174009455" expanded="false" signature="7:8" ph="..." />
+                <marker date="1499174009455" expanded="true" signature="7778:8090" ph="{...}" />
+                <marker date="1499174009455" expanded="true" signature="8121:8588" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7701">
+              <caret line="453" column="11" lean-forward="false" selection-start-line="453" selection-start-column="11" selection-end-line="453" selection-end-column="11" />
+              <folding>
+                <marker date="1499173917500" expanded="true" signature="9728:9762" ph="{...}" />
+                <marker date="1499173917500" expanded="true" signature="9770:9943" ph="{...}" />
+                <marker date="1499173917500" expanded="true" signature="9961:10036" ph="..." />
+                <marker date="1499173917500" expanded="true" signature="9970:9997" ph="{...}" />
+                <marker date="1499173917500" expanded="true" signature="10007:10034" ph="{...}" />
+                <marker date="1499173917500" expanded="true" signature="10046:10220" ph="{...}" />
+                <marker date="1499173917500" expanded="true" signature="10240:10315" ph="..." />
+                <marker date="1499173917500" expanded="true" signature="10249:10276" ph="{...}" />
+                <marker date="1499173917500" expanded="true" signature="10286:10313" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReactPlayerSelection.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/gui/ReactPlayerSelection.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+              <folding>
+                <marker date="1499174009548" expanded="false" signature="7:421" ph="..." />
+                <marker date="1499174009548" expanded="true" signature="551:565" ph="{...}" />
+                <marker date="1499174009548" expanded="true" signature="624:677" ph="{...}" />
+                <marker date="1499174009548" expanded="true" signature="810:2953" ph="{...}" />
+                <marker date="1499174009548" expanded="true" signature="1023:1118" ph="{...}" />
+                <marker date="1499174009548" expanded="true" signature="1150:1252" ph="{...}" />
+                <marker date="1499174009548" expanded="true" signature="1280:2379" ph="{...}" />
+                <marker date="1499174009548" expanded="true" signature="2417:2665" ph="{...}" />
+                <marker date="1499174009548" expanded="true" signature="2703:2951" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -203,7 +233,6 @@
         <option value="$PROJECT_DIR$/web/game/Hexxagon.dart" />
         <option value="$PROJECT_DIR$/web/general/TileType.dart" />
         <option value="$PROJECT_DIR$/web/game/minmax/MinMaxHexxagonPlayer.dart" />
-        <option value="$PROJECT_DIR$/web/game/ai/minmax/MinMaxHexxagonPlayer.dart" />
         <option value="$PROJECT_DIR$/web/game/ai/montecarlo/GameNode.dart" />
         <option value="$PROJECT_DIR$/web/game/ai/montecarlo/MonteCarloHexxagonPlayer.dart" />
         <option value="$PROJECT_DIR$/web/game/ai/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart" />
@@ -218,6 +247,7 @@
         <option value="$PROJECT_DIR$/web/gui/ReactTile.dart" />
         <option value="$PROJECT_DIR$/web/styles.css" />
         <option value="$PROJECT_DIR$/web/gui/GameGUI.dart" />
+        <option value="$PROJECT_DIR$/web/game/ai/minmax/MinMaxHexxagonPlayer.dart" />
       </list>
     </option>
   </component>
@@ -228,10 +258,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="675" />
-    <option name="y" value="25" />
-    <option name="width" value="1606" />
-    <option name="height" value="1416" />
+    <option name="x" value="1015" />
+    <option name="y" value="670" />
+    <option name="width" value="2335" />
+    <option name="height" value="1320" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -249,9 +279,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="hexxagon" />
@@ -382,8 +421,63 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".pub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="transformers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".pub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="debug" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -409,6 +503,137 @@
       <recent name="C:\Users\kaira\Documents\GitHub\hexxagon\hexxagon\web\game" />
       <recent name="C:\Users\kaira\Documents\GitHub\hexxagon\hexxagon\web\general" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/hexxagon.iml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/ComputerPlayer.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/GameResult.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/general/Player.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/gui/GUI.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/gui/GameGUI.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/gui/ReactPlayerSelection.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/gui/ReactTile.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/gui/ReactTileGrid.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/gui/ReactTileRow.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/gui/main.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/styles.css</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/ai/minmax/MinMaxHexxagonPlayer.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/ai/montecarlo/GameNode.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/ai/montecarlo/MonteCarloHexxagonPlayer.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/ai/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/minmax/MinMaxHexxagonPlayer.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/montecarlo/GameNode.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/montecarlo/MonteCarloHexxagonPlayer.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/game/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -678,30 +903,41 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="284316000" />
+    <option name="totallyTimeSpent" value="284418000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="675" y="25" width="1606" height="1416" extended-state="0" />
+    <frame x="1015" y="670" width="2335" height="1320" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2984694" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16412713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31980908" sideWeight="0.5511335" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21485624" sideWeight="0.4830287" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32988802" sideWeight="0.50152373" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30852842" sideWeight="0.49839228" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32988802" sideWeight="0.49847627" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24978128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34292567" sideWeight="0.49579832" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39966556" sideWeight="0.49839228" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26923078" sideWeight="0.4488665" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21485624" sideWeight="0.4830287" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31980908" sideWeight="0.5511335" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30852842" sideWeight="0.49839228" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34292567" sideWeight="0.49579832" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24965197" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2984694" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24978128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39966556" sideWeight="0.49839228" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -868,7 +1104,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="79" column="19" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="79" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,7 +1180,8 @@
     <entry file="file://$PROJECT_DIR$/web/general/TileType.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1003,7 +1239,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7667">
           <caret line="455" column="25" lean-forward="false" selection-start-line="455" selection-start-column="6" selection-end-line="455" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,12 +1258,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/gui/ReactPlayerSelection.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        <state relative-caret-position="102">
+          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <marker date="1499174009548" expanded="false" signature="7:421" ph="..." />
+            <marker date="1499174009548" expanded="true" signature="551:565" ph="{...}" />
+            <marker date="1499174009548" expanded="true" signature="624:677" ph="{...}" />
+            <marker date="1499174009548" expanded="true" signature="810:2953" ph="{...}" />
+            <marker date="1499174009548" expanded="true" signature="1023:1118" ph="{...}" />
+            <marker date="1499174009548" expanded="true" signature="1150:1252" ph="{...}" />
+            <marker date="1499174009548" expanded="true" signature="1280:2379" ph="{...}" />
+            <marker date="1499174009548" expanded="true" signature="2417:2665" ph="{...}" />
+            <marker date="1499174009548" expanded="true" signature="2703:2951" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1057,9 +1299,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/gui/GUI.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="76" column="29" lean-forward="false" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="663">
+          <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+          <folding>
+            <marker date="1499174009383" expanded="true" signature="2164:2191" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1071,21 +1315,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/game/ai/minmax/MinMaxHexxagonPlayer.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/game/Hexxagon.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="148" column="3" lean-forward="false" selection-start-line="148" selection-start-column="3" selection-end-line="148" selection-end-column="3" />
-          <folding />
+        <state relative-caret-position="629">
+          <caret line="46" column="41" lean-forward="false" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="41" />
+          <folding>
+            <marker date="1499174009401" expanded="false" signature="7:272" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1107,25 +1343,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="403" column="66" lean-forward="true" selection-start-line="403" selection-start-column="66" selection-end-line="403" selection-end-column="66" />
-          <folding />
+        <state relative-caret-position="7701">
+          <caret line="453" column="11" lean-forward="false" selection-start-line="453" selection-start-column="11" selection-end-line="453" selection-end-column="11" />
+          <folding>
+            <marker date="1499173917500" expanded="true" signature="9728:9762" ph="{...}" />
+            <marker date="1499173917500" expanded="true" signature="9770:9943" ph="{...}" />
+            <marker date="1499173917500" expanded="true" signature="9961:10036" ph="..." />
+            <marker date="1499173917500" expanded="true" signature="9970:9997" ph="{...}" />
+            <marker date="1499173917500" expanded="true" signature="10007:10034" ph="{...}" />
+            <marker date="1499173917500" expanded="true" signature="10046:10220" ph="{...}" />
+            <marker date="1499173917500" expanded="true" signature="10240:10315" ph="..." />
+            <marker date="1499173917500" expanded="true" signature="10249:10276" ph="{...}" />
+            <marker date="1499173917500" expanded="true" signature="10286:10313" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/gui/ReactTile.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="230" column="36" lean-forward="true" selection-start-line="230" selection-start-column="36" selection-end-line="230" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="3111">
+          <caret line="183" column="68" lean-forward="false" selection-start-line="183" selection-start-column="68" selection-end-line="183" selection-end-column="68" />
+          <folding>
+            <marker date="1499174009455" expanded="false" signature="7:8" ph="..." />
+            <marker date="1499174009455" expanded="true" signature="7778:8090" ph="{...}" />
+            <marker date="1499174009455" expanded="true" signature="8121:8588" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/gui/GameGUI.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="84" column="21" lean-forward="true" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="476">
+          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/game/ai/minmax/MinMaxHexxagonPlayer.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

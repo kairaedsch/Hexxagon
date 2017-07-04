@@ -1,15 +1,7 @@
-import '../../ComputerPlayer.dart';
-import '../../../general/Move.dart';
 import '../../../general/Player.dart';
-import '../../../general/TilePosition.dart';
-import '../../../general/TileType.dart';
-import 'GameNode.dart';
+import '../../ComputerPlayer.dart';
 import '../../Hexxagon.dart';
-import '../../RandomHexxagonPlayer.dart';
-import 'dart:async';
-
-import 'dart:math';
-import 'package:tuple/tuple.dart';
+import 'GameNode.dart';
 
 class MonteCarloTreeSearchHexxagonPlayer extends ComputerPlayer
 {

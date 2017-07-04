@@ -1,13 +1,5 @@
 import '../game/Hexxagon.dart';
-import 'ai/montecarlo/MonteCarloHexxagonPlayer.dart';
-import '../game/RandomHexxagonPlayer.dart';
-import '../general/Move.dart';
 import '../general/Player.dart';
-import '../general/TileType.dart';
-import 'dart:async';
-import 'dart:isolate';
-
-import 'package:tuple/tuple.dart';
 
 typedef void Callback();
 

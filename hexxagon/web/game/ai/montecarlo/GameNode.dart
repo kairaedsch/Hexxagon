@@ -1,7 +1,8 @@
+import 'dart:math';
+
 import '../../../general/Move.dart';
 import '../../GameResult.dart';
 import '../../Hexxagon.dart';
-import 'dart:math';
 
 class GameNode
 {
