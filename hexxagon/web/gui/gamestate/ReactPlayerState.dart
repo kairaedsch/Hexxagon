@@ -11,7 +11,7 @@ UiFactory<ReactPlayerStateProps> ReactPlayerState;
 class ReactPlayerStateProps extends UiProps
 {
   GUI gui;
-  int player;
+  TileType player;
 }
 
 @State()

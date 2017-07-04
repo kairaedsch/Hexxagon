@@ -18,8 +18,8 @@ class Hexxagon extends Board
   int get height
   => _height;
 
-  Array2D _tiles;
-  int _currentPlayer;
+  Array2D<TileType> _tiles;
+  TileType _currentPlayer;
 
   Hexxagon(int size)
   {
@@ -55,7 +55,7 @@ class Hexxagon extends Board
     setStartTiles(1, center, 4, TileType.FORBIDDEN);
   }
 
-  void setStartTiles(int size, TilePosition center, int direction, int tile) {
+  void setStartTiles(int size, TilePosition center, int direction, TileType tile) {
     TilePosition toTarget = center;
     for(int i = 0; i < size; i++)
     {
@@ -124,7 +124,7 @@ class Hexxagon extends Board
     return true;
   }
 
-  void _set(TilePosition position, int type)
+  void _set(TilePosition position, TileType type)
   {
     _tiles.array[position.x][position.y] = type;
   }
@@ -226,16 +226,16 @@ class Hexxagon extends Board
   }
 
   @override
-  int get(TilePosition position)
+  TileType get(TilePosition position)
   {
     return _tiles.array[position.x][position.y];
   }
 
   @override
-  int get currentPlayer => _currentPlayer;
+  TileType get currentPlayer => _currentPlayer;
 
   @override
-  int get notCurrentPlayer => (_currentPlayer == TileType.PLAYER_ONE ? TileType.PLAYER_TWO : TileType.PLAYER_ONE);
+  TileType get notCurrentPlayer => (_currentPlayer == TileType.PLAYER_ONE ? TileType.PLAYER_TWO : TileType.PLAYER_ONE);
 
   @override
   bool get isOver
@@ -255,7 +255,7 @@ class Hexxagon extends Board
   }
 
   @override
-  int get betterPlayer
+  TileType get betterPlayer
   {
     int playerOne = 0,
         playerTwo = 0;
@@ -263,7 +263,7 @@ class Hexxagon extends Board
     {
       for (int y = 0; y < _height; y++)
       {
-        int type = get(TilePosition.get(x, y));
+        TileType type = get(TilePosition.get(x, y));
         if (type == TileType.PLAYER_ONE)
         {
           playerOne++;
@@ -277,9 +277,9 @@ class Hexxagon extends Board
     return playerOne > playerTwo ? TileType.PLAYER_ONE : playerOne < playerTwo ? TileType.PLAYER_TWO : TileType.EMPTY;
   }
 
-  GameResult getResult(int player)
+  GameResult getResult(TileType player)
   {
-    int betterPlayer = this.betterPlayer;
+    TileType betterPlayer = this.betterPlayer;
     if (betterPlayer == player)
     {
       return GameResult.WIN;
@@ -294,13 +294,13 @@ class Hexxagon extends Board
     }
   }
 
-  int countTilesOfType(int player) {
+  int countTilesOfType(TileType player) {
     int count = 0;
     for (int x = 0; x < _width; x++)
     {
       for (int y = 0; y < _height; y++)
       {
-        int type = get(TilePosition.get(x, y));
+        TileType type = get(TilePosition.get(x, y));
         if (type == player)
         {
           count++;

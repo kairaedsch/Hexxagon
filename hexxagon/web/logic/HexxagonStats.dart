@@ -30,7 +30,7 @@ class HexxagonWithStats extends Hexxagon
   }
 
   @override
-  Map<String, String> getStatsOf(int player)
+  Map<String, String> getStatsOf(TileType player)
   {
     return (player == TileType.PLAYER_ONE ? _hexxagonStatsPlayerOne : _hexxagonStatsPlayerTwo).toMap(this, player);
   }
@@ -53,7 +53,7 @@ class HexxagonStatsData
     copies = hexxagonStats.copies;
   }
 
-  Map<String, String> toMap(Hexxagon hexxagon, int player)
+  Map<String, String> toMap(Hexxagon hexxagon, TileType player)
   {
     Map<String, String> map = new Map();
     map["Steine"] = hexxagon.countTilesOfType(player).toString();

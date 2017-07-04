@@ -27,7 +27,7 @@ class Game<B extends Board>
   Optional<Move> get lastMove
   => _history.isNotEmpty ? new Optional.of(_history.last) : new Optional.empty();
 
-  Intelligence<Board> getIntelligence(int player)
+  Intelligence<Board> getIntelligence(TileType player)
   {
     if (player == TileType.PLAYER_ONE)
     {
@@ -65,7 +65,7 @@ class Game<B extends Board>
     changeListener();
   }
 
-  Map<String, String> getStatsOf(int player)
+  Map<String, String> getStatsOf(TileType player)
   {
     return _board.getStatsOf(player);
   }

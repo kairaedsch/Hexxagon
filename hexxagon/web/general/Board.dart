@@ -1,5 +1,6 @@
 import 'Move.dart';
 import 'TilePosition.dart';
+import 'TileType.dart';
 
 abstract class Board
 {
@@ -8,10 +9,10 @@ abstract class Board
   void move(TilePosition from, TilePosition to);
   List<Move> getPossibleMoves(TilePosition tilePosition);
   bool couldBeMoved(TilePosition tilePosition);
-  int get(TilePosition tilePosition);
-  int get currentPlayer;
-  int get notCurrentPlayer;
+  TileType get(TilePosition tilePosition);
+  TileType get currentPlayer;
+  TileType get notCurrentPlayer;
   bool get isOver;
-  int get betterPlayer;
-  Map<String, String> getStatsOf(int player) => {};
+  TileType get betterPlayer;
+  Map<String, String> getStatsOf(TileType player) => {};
 }

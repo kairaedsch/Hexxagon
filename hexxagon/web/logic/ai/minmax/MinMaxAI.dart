@@ -1,9 +1,10 @@
 import '../../../general/Move.dart';
 import '../../../general/Intelligence.dart';
+import '../../../general/TileType.dart';
 import '../ArtificialIntelligence.dart';
 import '../../Hexxagon.dart';
 
-typedef double Heuristic(Hexxagon hexxagon, int player);
+typedef double Heuristic(Hexxagon hexxagon, TileType player);
 
 class MinMaxAI extends ArtificialIntelligence
 {
@@ -37,12 +38,12 @@ class MinMaxAI extends ArtificialIntelligence
     moveCallback(bestMove);
   }
 
-  double heuristic(Hexxagon hexxagon, int player)
+  double heuristic(Hexxagon hexxagon, TileType player)
   {
     return hexxagon.countTilesOfType(player).roundToDouble();
   }
 
-  double minimax(Hexxagon hexxagon, int depth, Heuristic heuristic, int player, double bestNeighbour)
+  double minimax(Hexxagon hexxagon, int depth, Heuristic heuristic, TileType player, double bestNeighbour)
   {
     if (depth == 0)
     {

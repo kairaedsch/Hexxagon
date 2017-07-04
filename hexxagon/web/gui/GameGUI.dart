@@ -1,3 +1,4 @@
+import '../general/TileType.dart';
 import 'dart:async';
 
 import 'package:optional/optional.dart';
@@ -111,15 +112,15 @@ class GameGUI
     return _game.board.couldBeMoved(tilePosition);
   }
 
-  int get(TilePosition tilePosition)
+  TileType get(TilePosition tilePosition)
   {
     return _game.board.get(tilePosition);
   }
 
-  int get currentPlayer
+  TileType get currentPlayer
   => _game.board.currentPlayer;
 
-  int get notCurrentPlayer
+  TileType get notCurrentPlayer
   => _game.board.notCurrentPlayer;
 
   Intelligence get currentIntelligence
@@ -128,12 +129,12 @@ class GameGUI
   bool get isOver
   => _game.board.isOver;
 
-  Map<String, String> getStatsOf(int player)
+  Map<String, String> getStatsOf(TileType player)
   {
     return _game.getStatsOf(player);
   }
 
-  Intelligence<Board> getIntelligence(int player)
+  Intelligence<Board> getIntelligence(TileType player)
   {
     return _game.getIntelligence(player);
   }
@@ -143,6 +144,6 @@ class GameGUI
     aborted = true;
   }
 
-  int get betterPlayer
+  TileType get betterPlayer
   => _game.board.betterPlayer;
 }

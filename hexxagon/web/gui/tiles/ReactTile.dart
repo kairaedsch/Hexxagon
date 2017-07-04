@@ -40,7 +40,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
   bool currentIsPlayAbleNow = false;
   bool currentIsSelected = false;
-  int currentTileType = -1;
+  TileType currentTileType = null;
 
   bool get isPlayAbleNow
   {
@@ -114,7 +114,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
     props.gui.addGameChangeListener(()
     {
-      int tileType = props.gui.currentGameGui.get(props.position);
+      TileType tileType = props.gui.currentGameGui.get(props.position);
       if (!(currentTileType == tileType && tileType == TileType.FORBIDDEN))
       {
         setState(state);
@@ -125,7 +125,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   @override
   ReactElement render()
   {
-    int tileType = props.gui.currentGameGui.get(props.position);
+    TileType tileType = props.gui.currentGameGui.get(props.position);
     bool playAble = props.gui.currentGameGui.couldBeMoved(props.position) && props.gui.currentGameGui.currentIntelligence.isHuman;
     bool playAbleOfNotCurrentPlayer = !playAble && tileType == props.gui.currentGameGui.notCurrentPlayer;
 
@@ -149,8 +149,8 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " ${isLastMoveTarget ? "lastMoveTarget" : ""}"
           " ${move.isPresent ? move.value.kindOf : ""}"
           " ${playAble ? "playAble" : (playAbleOfNotCurrentPlayer ? "notPlayAble" : "")}"
-          " ${isPlayAbleNow ? "playAbleNow playAbleNow${TileType.toName(props.gui.currentGameGui.currentPlayer)}" : ""}"
-          " ${TileType.toName(tileType)}"
+          " ${isPlayAbleNow ? "playAbleNow playAbleNow${TileTypeToName(props.gui.currentGameGui.currentPlayer)}" : ""}"
+          " ${TileTypeToName(tileType)}"
           " ${isSelected ? "selected" : ""}"
           " ${state.mouseIsOver ? "mouseIsOver" : ""}"
           " ${isDragging ? "dragging" : ""}"

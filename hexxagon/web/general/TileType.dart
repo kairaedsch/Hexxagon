@@ -1,21 +1,22 @@
-class TileType
+enum TileType
 {
-  static int PLAYER_ONE = 0;
-  static int PLAYER_TWO = 1;
-  static int EMPTY = 2;
-  static int FORBIDDEN = 3;
-  static int OUT_OF_FIELD = 4;
+  PLAYER_ONE, PLAYER_TWO, EMPTY, FORBIDDEN, OUT_OF_FIELD
+}
 
-  static String toName(int tileType)
+String TileTypeToName(TileType tileType)
+{
+  switch (tileType)
   {
-    switch(tileType)
-    {
-      case 0: return "PLAYER_ONE";
-      case 1: return "PLAYER_TWO";
-      case 2: return "EMPTY";
-      case 3: return "FORBIDDEN";
-      case 4: return "OUT_OF_FIELD";
-    }
-    throw new Exception();
+    case TileType.PLAYER_ONE:
+      return "PLAYER_ONE";
+    case TileType.PLAYER_TWO:
+      return "PLAYER_TWO";
+    case TileType.EMPTY:
+      return "EMPTY";
+    case TileType.FORBIDDEN:
+      return "FORBIDDEN";
+    case TileType.OUT_OF_FIELD:
+      return "OUT_OF_FIELD";
   }
+  throw new Exception();
 }

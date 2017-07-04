@@ -1,3 +1,4 @@
+import '../../../general/TileType.dart';
 import 'dart:math';
 
 import 'package:tuple/tuple.dart';
@@ -33,7 +34,7 @@ class MonteCarloAI extends ArtificialIntelligence
         {
           clone.move(move.source, move.target);
         }
-        int betterPlayer = clone.betterPlayer;
+        TileType betterPlayer = clone.betterPlayer;
         if (betterPlayer == hexxagon.currentPlayer)
         {
           possibleMoves[i] = new Tuple2(t.item1 + 1, t.item2);
