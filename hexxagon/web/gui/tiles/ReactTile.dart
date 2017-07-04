@@ -4,12 +4,12 @@ import 'dart:html';
 import 'package:optional/optional_internal.dart';
 import 'package:over_react/over_react.dart';
 
-import '../general/Move.dart';
-import '../general/TilePosition.dart';
-import '../general/TileType.dart';
+import '../../general/Move.dart';
+import '../../general/TilePosition.dart';
+import '../../general/TileType.dart';
 
-import 'GUI.dart';
-import 'Hexagon.dart';
+import '../GUI.dart';
+import '../Hexagon.dart';
 import 'ReactTileGrid.dart';
 
 @Factory()

@@ -1,18 +1,18 @@
 import 'dart:html';
 
-import 'game/Hexxagon.dart';
-import 'game/ai/random/RandomHexxagonPlayer.dart';
-import 'game/ai/minmax/MinMaxHexxagonPlayer.dart';
-import 'game/ai/montecarlo/MonteCarloHexxagonPlayer.dart';
-import 'game/ai/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart';
+import 'logic/Hexxagon.dart';
+import 'logic/ai/random/RandomHexxagonPlayer.dart';
+import 'logic/ai/minmax/MinMaxHexxagonPlayer.dart';
+import 'logic/ai/montecarlo/MonteCarloHexxagonPlayer.dart';
+import 'logic/ai/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart';
 import 'general/HumanPlayer.dart';
 import 'package:react/react_client.dart' as react_client;
 import 'package:react/react_dom.dart' as react_dom;
 
 import 'gui/GUI.dart';
-import 'gui/ReactPlayerSelection.dart';
-import 'gui/ReactPlayerStates.dart';
-import 'gui/ReactTileGrid.dart';
+import 'gui/playerselection/ReactPlayerSelection.dart';
+import 'gui/gamestate/ReactPlayerStates.dart';
+import 'gui/tiles/ReactTileGrid.dart';
 
 void main()
 {
