@@ -4,7 +4,7 @@ import 'package:tuple/tuple.dart';
 
 import '../../../general/Move.dart';
 import '../../../general/Player.dart';
-import '../../ComputerPlayer.dart';
+import '../ComputerPlayer.dart';
 import '../../Hexxagon.dart';
 
 class MonteCarloHexxagonPlayer extends ComputerPlayer

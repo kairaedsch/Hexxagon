@@ -1,6 +1,6 @@
 import '../../../general/Move.dart';
 import '../../../general/Player.dart';
-import '../../ComputerPlayer.dart';
+import '../ComputerPlayer.dart';
 import '../../Hexxagon.dart';
 
 typedef double Heuristic(Hexxagon hexxagon, int player);

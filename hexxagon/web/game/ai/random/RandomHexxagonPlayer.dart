@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import '../general/Player.dart';
-import 'ComputerPlayer.dart';
-import 'Hexxagon.dart';
+import '../../../general/Player.dart';
+import '../ComputerPlayer.dart';
+import '../../Hexxagon.dart';
 
 class RandomHexxagonPlayer extends ComputerPlayer
 {

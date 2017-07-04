@@ -1,5 +1,5 @@
-import '../game/Hexxagon.dart';
-import '../general/Player.dart';
+import '../../general/Player.dart';
+import '../Hexxagon.dart';
 
 typedef void Callback();
 

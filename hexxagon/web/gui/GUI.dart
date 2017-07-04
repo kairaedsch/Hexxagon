@@ -1,12 +1,20 @@
-import '../game/Hexxagon.dart';
+import '../general/Board.dart';
 import '../general/Game.dart';
 import '../general/Player.dart';
-import 'GUIState.dart';
+
 import 'GameGUI.dart';
 
-class GUI
+typedef Board BoardCreater();
+
+enum GUIState
+{
+  PLAYER_SELECTION, GAME_RUNNING, GAME_OVER
+}
+
+class GUI<B extends Board>
 {
   GUIState _guiState;
+  BoardCreater _boardCreater;
 
   bool get isPlayerSelection
   => _guiState == GUIState.PLAYER_SELECTION;
@@ -26,10 +34,10 @@ class GUI
   List<Function> _gameChangedListener;
   List<Function> _gameGUIChangedListener;
 
-  Player<Hexxagon> playerOne;
-  Player<Hexxagon> playerTwo;
+  Player<B> playerOne;
+  Player<B> playerTwo;
 
-  GUI()
+  GUI(this._boardCreater)
   {
     _stateChangedListener = [];
     _gameChangedListener = [];
@@ -41,7 +49,7 @@ class GUI
   {
     if (isPlayerSelection)
     {
-      _currentGameGui = new GameGUI(new Game(new Hexxagon(4), playerOne, playerTwo), 0);
+      _currentGameGui = new GameGUI(new Game(_boardCreater(), playerOne, playerTwo), 0);
       _guiState = GUIState.GAME_RUNNING;
       _currentGameGui.addGameChangeListener(gameChanged);
       _currentGameGui.addGameGUIChangeListener(gameGUIChanged);

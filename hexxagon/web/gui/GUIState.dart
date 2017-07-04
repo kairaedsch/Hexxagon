@@ -1,6 +1,0 @@
-
-
-enum GUIState
-{
-  PLAYER_SELECTION, GAME_RUNNING, GAME_OVER
-}

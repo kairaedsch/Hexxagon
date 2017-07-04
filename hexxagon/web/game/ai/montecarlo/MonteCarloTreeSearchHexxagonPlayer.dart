@@ -1,5 +1,5 @@
 import '../../../general/Player.dart';
-import '../../ComputerPlayer.dart';
+import '../ComputerPlayer.dart';
 import '../../Hexxagon.dart';
 import 'GameNode.dart';
 

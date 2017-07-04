@@ -2,12 +2,8 @@ import 'dart:html';
 
 import 'package:over_react/over_react.dart';
 
-import '../game/RandomHexxagonPlayer.dart';
-import '../game/ai/minmax/MinMaxHexxagonPlayer.dart';
-import '../game/ai/montecarlo/MonteCarloHexxagonPlayer.dart';
-import '../game/ai/montecarlo/MonteCarloTreeSearchHexxagonPlayer.dart';
-import '../general/HumanPlayer.dart';
 import '../general/Player.dart';
+
 import 'GUI.dart';
 import 'ReactPlayerSelect.dart';
 
@@ -18,6 +14,7 @@ UiFactory<ReactPlayerSelectionProps> ReactPlayerSelection;
 class ReactPlayerSelectionProps extends UiProps
 {
   GUI gui;
+  List<Player> players;
 }
 
 @State()
@@ -30,8 +27,6 @@ class ReactPlayerSelectionState extends UiState
 @Component()
 class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelectionProps, ReactPlayerSelectionState>
 {
-  List<Player> players = [new HumanPlayer(), new MinMaxHexxagonPlayer(), new RandomHexxagonPlayer(), new MonteCarloTreeSearchHexxagonPlayer(), new MonteCarloHexxagonPlayer()];
-
   @override
   getInitialState()
   {
@@ -50,8 +45,8 @@ class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelec
 
   ReactElement render()
   {
-    props.gui.playerOne = players[state.selectedPlayerOne];
-    props.gui.playerTwo = players[state.selectedPlayerTwo];
+    props.gui.playerOne = props.players[state.selectedPlayerOne];
+    props.gui.playerTwo = props.players[state.selectedPlayerTwo];
     if (props.gui.isPlayerSelection)
     {
       querySelector(".mainMenuOverlay").classes
@@ -71,7 +66,7 @@ class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelec
           ..className = "player playerOne"
         )(
             (ReactPlayerSelect()
-              ..players = players
+              ..players = props.players
               ..selected = state.selectedPlayerOne
               ..father = this
               ..playerOne = true)()),
@@ -84,7 +79,7 @@ class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelec
           ..className = "player playerTwo"
         )(
             (ReactPlayerSelect()
-              ..players = players
+              ..players = props.players
               ..selected = state.selectedPlayerTwo
               ..father = this
               ..playerOne = false)()
@@ -98,7 +93,7 @@ class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelec
     {
       ReactPlayerSelectionState state = newState()
         ..addAll(prevState);
-      state.selectedPlayerOne = (state.selectedPlayerOne + delta) % players.length;
+      state.selectedPlayerOne = (state.selectedPlayerOne + delta) % this.props.players.length;
       return state;
     });
   }
@@ -109,7 +104,7 @@ class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelec
     {
       ReactPlayerSelectionState state = newState()
         ..addAll(prevState);
-      state.selectedPlayerTwo = (state.selectedPlayerTwo + delta) % players.length;
+      state.selectedPlayerTwo = (state.selectedPlayerTwo + delta) % this.props.players.length;
       return state;
     });
   }
