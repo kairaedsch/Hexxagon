@@ -12,7 +12,7 @@ class MonteCarloHexxagonPlayer extends ComputerPlayer
   String get name
   => "MonteCarlo Player";
 
-  String get image => "robot-3.png";
+  int get strength => 1;
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
@@ -21,7 +21,7 @@ class MonteCarloHexxagonPlayer extends ComputerPlayer
 
     Random rng = new Random();
     int rounds = 0;
-    while (rounds < 500)
+    while (rounds < 200)
     {
       for (int i = 0; i < possibleMoves.length; i++)
       {

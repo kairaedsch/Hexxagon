@@ -45,7 +45,7 @@ class ReactPlayerSelectComponent extends UiComponent<ReactPlayerSelectProps>
               ..className = "playerImage"
               ..style =
               {
-                "backgroundImage": "url('${player.image}')",
+                "backgroundImage": "url('${player.isHuman ? "human.png" : "robot-${player.strength}.png"}')",
               })(),
             (Dom.div()
               ..className = "playerText"

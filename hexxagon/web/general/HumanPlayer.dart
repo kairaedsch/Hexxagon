@@ -9,7 +9,7 @@ class HumanPlayer<B extends Board> extends Player<B>
 
   String get name => "Human Player";
 
-  String get image => "human.png";
+  int get strength => 0;
 
   void move(B board, MoveCallback moveCallback)
   {

@@ -8,7 +8,7 @@ class RandomHexxagonPlayer extends ComputerPlayer
 {
   String get name => "Random Player";
 
-  String get image => "robot-1.png";
+  int get strength => 1;
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {

@@ -10,8 +10,7 @@ class MinMaxHexxagonPlayer extends ComputerPlayer
   String get name
   => "Min Max Player";
 
-  String get image
-  => "robot-2.png";
+  int get strength => 3;
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
