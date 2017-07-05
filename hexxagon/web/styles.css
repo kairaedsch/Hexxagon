@@ -38,12 +38,12 @@ html, body {
 
 .game {
     position: absolute;
-    width: 76%;
+    width: 90%;
     height: 100%;
-    left: 12%;
-    right: 12%;
+    padding-top: 5vh;
+    left: 5%;
+    right: 5%;
     overflow: visible;
-    padding: 100px 0;
 }
 
 .gameInner {
@@ -54,21 +54,20 @@ html, body {
 }
 
 .middle {
-    float: left;
-    width: calc(100% - 400px);
-    height: 100%;
+    width: 100%;
+    height: 65vh;
     overflow: visible;
 }
 
 .side {
-    float: right;
-    width: 350px;
-    height: 100%;
-    padding-left: 50px;
+    width: 100%;
+    height: 20vh;
+    overflow: hidden;
 }
 
 .sideInner {
-    margin-top: calc((100vh - 100px * 2 - 700px) / 2);
+    width: 100%;
+    height: 100%;
 }
 
 .blur {
@@ -89,7 +88,7 @@ html, body {
 }
 
 .mainMenu {
-    margin-top: calc((100vh - 767px) / 2);
+
 }
 
 .title {
@@ -101,8 +100,8 @@ html, body {
 }
 
 .mainMenu .title {
-    height: 200px;
-    margin: 25px 0 50px 0;
+    height: 14vh;
+    margin: 3vh 0 3vh 0;
 
     animation-name: title;
     animation-duration: 1.5s;
@@ -137,9 +136,8 @@ html, body {
 
 .playerSelection {
     width: 100%;
-    max-width: 1500px;
-    margin: auto;
-    height: 350px;
+    height: 60vh;
+    background: #1DBCD8;
 
     animation-name: show;
     animation-duration: 1.5s;
@@ -149,15 +147,19 @@ html, body {
 
 .playerSelectionContainer {
     width: 100%;
+    max-width: 1500px;
+    margin: auto;
     height: 100%;
 }
 
 .player {
     float: left;
-    width: 250px;
+    width: 50%;
     height: 100%;
+    transform: rotate(0deg);
 }
 
+/*
 .playerOne {
     margin-left: calc((50% - 250px) * 0.60);
     margin-right: calc((50% - 250px) * 0.40);
@@ -166,11 +168,15 @@ html, body {
 .playerTwo {
     margin-left: calc((50% - 250px) * 0.40);
     margin-right: calc((50% - 250px) * 0.60);
-}
+}*/
 
 .playerContainer {
-    width: 100%;
-    height: 100%;
+    width: 40vw;
+    max-width: 250px;
+    height: 60vh;
+    margin: auto;
+    padding: 5vh 0;
+    background: rgba(29, 188, 216, 0.75);
 }
 
 .arrow {
@@ -203,7 +209,8 @@ html, body {
 
 .playerImage {
     height: 60%;
-    width: 100%;
+    width: 70%;
+    margin: 0 15%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -215,7 +222,7 @@ html, body {
     padding-top: 7.5%;
     width: 100%;
     text-align: center;
-    font-size: 28px;
+    font-size: 3vh;
     font-weight: 600;
 }
 
@@ -223,12 +230,13 @@ html, body {
     width: 100%;
     margin: 0 -50%;
     float: left;
-    font-size: 200px;
-    padding-top: 50px;
+    font-size: 20vh;
+    padding-top: 15vh;
     text-align: center;
     pointer-events: none;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
+    color: #A7F2FF;
 }
 
 .button {
@@ -249,12 +257,20 @@ html, body {
     border-radius: 10px;
     font-size: 38px;
     padding: 5px 10px 10px 10px;
-    margin-top: 100px;
+    margin-top: calc((20vh - 67px) / 2);
 
     animation-name: show;
     animation-duration: 1.5s;
     animation-iteration-count: 1;
     animation-timing-function: linear;
+}
+
+.abort {
+    width: 250px;
+    border-radius: 5px;
+    font-size: 26px;
+    padding: 5px 10px 10px 10px;
+    margin-top: calc((10vh - 54px) / 2);
 }
 
 .tileGridContainer {
@@ -267,12 +283,12 @@ html, body {
     margin: 10px 0 25px 0;
 }
 
-.abort {
-    width: 250px;
-    border-radius: 5px;
-    font-size: 26px;
-    padding: 5px 10px 10px 10px;
-    margin-top: 25px;
+
+.playerStatsContainer {
+    width: 50%;
+    padding: 0 2%;
+    height: 100%;
+    float: left;
 }
 
 .playerStats {
@@ -292,9 +308,13 @@ html, body {
 
 .playerStatsName {
     font-weight: 600;
-    font-size: 28px;
+    font-size: 2.5vh;
+    height: 5.5vh;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     text-align: center;
-    padding: 5px;
+    padding: 0.75vh;
     border-bottom: 2px solid;
     border-color: rgba(255, 255, 255, 0.5);
 }
@@ -358,26 +378,25 @@ html, body {
 
 .playerStatsEntry {
     width: 100%;
-    padding: 10px 15px 0 15px;
+    padding: 0.75vh 1.5vh 0 1.5vh;
+}
+
+.playerStatsEntry>div {
+    float: left;
+    font-size: 2.5vh;
 }
 
 .playerStatsEntryName {
-    float: left;
     width: 90%;
     font-weight: 600;
-    font-size: 22px;
 }
 
 .playerStatsEntryValue {
     font-weight: 600;
-    font-size: 22px;
-    float: left;
     width: 10%;
 }
 
 .tileGrid {
-    padding-top: 54px;
-    padding-bottom: 3px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;

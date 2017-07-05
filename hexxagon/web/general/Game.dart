@@ -39,7 +39,7 @@ class Game<B extends Board>
     }
     else
     {
-      throw new Exception("ERROR");
+      throw new Exception("ERROR: Tiletype is not a Player: ${TileTypeToName(player)}");
     }
   }
 

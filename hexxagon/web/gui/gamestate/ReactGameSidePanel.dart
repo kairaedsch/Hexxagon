@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'package:over_react/over_react.dart';
 
 import '../../general/TileType.dart';
@@ -29,6 +30,11 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
     => setState(state));
     props.gui.addStateChangeListener(()
     => setState(state));
+
+    querySelector('.button.abort').onClick.forEach((e)
+    {
+      props.gui.selectPlayer();
+    });
   }
 
   ReactElement render()
@@ -39,32 +45,15 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
     }
 
     return (Dom.div()
-      ..className = "sideInner"
+      ..className = "sideInner clearfix"
     )(
-      (Dom.div()
-        ..className = "title")()
-
-        ,
-
       (ReactPlayerState()
         ..gui = props.gui
         ..player = TileType.PLAYER_ONE)()
-
         ,
-
       (ReactPlayerState()
         ..gui = props.gui
         ..player = TileType.PLAYER_TWO)()
-
-        ,
-
-      (Dom.div()
-        ..className = "button abort"
-        ..onClick = (e)
-        {
-          props.gui.selectPlayer();
-        }
-      )(props.gui.isGameOver ? "Zurüch zum Hauptmenu" : "Spiel abbrechen"),
     );
   }
 }
