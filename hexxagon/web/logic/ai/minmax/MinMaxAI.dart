@@ -27,7 +27,7 @@ class MinMaxAI extends ArtificialIntelligence
     {
       Hexxagon childHexxagon = new Hexxagon.clone(hexxagon);
       childHexxagon.move(move.source, move.target);
-      double childValue = minimax(childHexxagon, treeDepth, heuristic, hexxagon.currentPlayer, bestValue);
+      double childValue = minimax(childHexxagon, treeDepth, heuristic, hexxagon.currentPlayer, bestValue, double.INFINITY);
       if (childValue > bestValue)
       {
         bestValue = childValue;
@@ -43,7 +43,7 @@ class MinMaxAI extends ArtificialIntelligence
     return hexxagon.countTilesOfType(player).roundToDouble();
   }
 
-  double minimax(Hexxagon hexxagon, int depth, Heuristic heuristic, TileType player, double bestNeighbour)
+  double minimax(Hexxagon hexxagon, int depth, Heuristic heuristic, TileType player, double bestValue, double worstValue)
   {
     if (depth == 0)
     {
@@ -58,17 +58,16 @@ class MinMaxAI extends ArtificialIntelligence
 
     if (hexxagon.currentPlayer == player)
     {
-      double bestValue = double.NEGATIVE_INFINITY;
       for (Move move in allPossibleMoves)
       {
         Hexxagon childHexxagon = new Hexxagon.clone(hexxagon);
         childHexxagon.move(move.source, move.target);
-        double childValue = minimax(childHexxagon, depth - 1, heuristic, player, bestValue);
+        double childValue = minimax(childHexxagon, depth - 1, heuristic, player, bestValue, worstValue);
         if (childValue > bestValue)
         {
           bestValue = childValue;
         }
-        if (bestValue > bestNeighbour)
+        if (bestValue >= worstValue)
         {
           return bestValue;
         }
@@ -78,23 +77,22 @@ class MinMaxAI extends ArtificialIntelligence
     }
     else
     {
-      double bestValue = double.INFINITY;
       for (Move move in allPossibleMoves)
       {
         Hexxagon childHexxagon = new Hexxagon.clone(hexxagon);
         childHexxagon.move(move.source, move.target);
-        double childValue = minimax(childHexxagon, depth - 1, heuristic, player, bestValue);
-        if (childValue < bestValue)
+        double childValue = minimax(childHexxagon, depth - 1, heuristic, player, bestValue, worstValue);
+        if (childValue < worstValue)
         {
-          bestValue = childValue;
+          worstValue = childValue;
         }
-        if (bestValue < bestNeighbour)
+        if (worstValue <= bestValue)
         {
-          return bestValue;
+          return worstValue;
         }
       }
 
-      return bestValue;
+      return worstValue;
     }
   }
 }

@@ -47,13 +47,76 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
     return (Dom.div()
       ..className = "sideInner clearfix"
     )(
-      (ReactPlayerState()
-        ..gui = props.gui
-        ..player = TileType.PLAYER_ONE)()
-        ,
-      (ReactPlayerState()
-        ..gui = props.gui
-        ..player = TileType.PLAYER_TWO)()
+        (Dom.div()
+          ..className = "topInfoOverview topInfoPlayerOverview"
+        )(
+            (Dom.div()
+              ..className = "topInfoPart"
+            )(
+                (Dom.div()
+                  ..className = "topInfoPartInner"
+                )(
+                    props.gui.currentGameGui
+                        .getIntelligence(TileType.PLAYER_ONE)
+                        .name
+                )
+            )
+            ,
+            (Dom.div()
+              ..className = "topInfoBetween"
+            )(
+                (Dom.div()
+                  ..className = "topInfoBetweenInner"
+                )(
+                    "VS"
+                )
+            )
+            ,
+            (Dom.div()
+              ..className = "topInfoPart"
+            )(
+                (Dom.div()
+                  ..className = "topInfoPartInner"
+                )(
+                    props.gui.currentGameGui
+                        .getIntelligence(TileType.PLAYER_TWO)
+                        .name
+                )
+            )
+        ),
+        (Dom.div()
+          ..className = "topInfoOverview topInfoPointsOverview"
+        )(
+            (Dom.div()
+              ..className = "topInfoPart"
+            )(
+                (Dom.div()
+                  ..className = "topInfoPartInner"
+                )(
+                    props.gui.currentGameGui.getStatsOf(TileType.PLAYER_ONE)["Steine"]
+                )
+            )
+            ,
+            (Dom.div()
+              ..className = "topInfoBetween"
+            )(
+                (Dom.div()
+                  ..className = "topInfoBetweenInner"
+                )(
+                    "-"
+                )
+            )
+            ,
+            (Dom.div()
+              ..className = "topInfoPart"
+            )(
+                (Dom.div()
+                  ..className = "topInfoPartInner"
+                )(
+                    props.gui.currentGameGui.getStatsOf(TileType.PLAYER_TWO)["Steine"]
+                )
+            )
+        )
     );
   }
 }

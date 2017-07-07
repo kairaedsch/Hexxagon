@@ -38,12 +38,10 @@ html, body {
 
 .game {
     position: absolute;
-    width: 90%;
+    width: 100%;
     height: 100%;
-    padding-top: 5vh;
-    left: 5%;
-    right: 5%;
-    overflow: visible;
+    padding: 5vh 5vw;
+    overflow: hidden;
 }
 
 .gameInner {
@@ -61,8 +59,7 @@ html, body {
 
 .side {
     width: 100%;
-    height: 20vh;
-    overflow: hidden;
+    height: 15vh;
 }
 
 .sideInner {
@@ -283,40 +280,12 @@ html, body {
     margin: 10px 0 25px 0;
 }
 
-
-.playerStatsContainer {
-    width: 50%;
-    padding: 0 2%;
-    height: 100%;
-    float: left;
-}
-
-.playerStats {
-    border-radius: 5px;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    background: rgba(255, 255, 255, 0.25);
-}
-
 .playerStats.PLAYER_ONE.hisTurn, .playerStats.PLAYER_ONE.won {
     background: #00C2F2;
 }
 
 .playerStats.PLAYER_TWO.hisTurn, .playerStats.PLAYER_TWO.won {
     background: #FF9C00;
-}
-
-.playerStatsName {
-    font-weight: 600;
-    font-size: 2.5vh;
-    height: 5.5vh;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: center;
-    padding: 0.75vh;
-    border-bottom: 2px solid;
-    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .playerStats.hisTurn {
@@ -376,24 +345,77 @@ html, body {
     }
 }
 
-.playerStatsEntry {
+.topInfoOverview
+{
     width: 100%;
-    padding: 0.75vh 1.5vh 0 1.5vh;
+    height: 50%;
 }
 
-.playerStatsEntry>div {
+.topInfoPart
+{
     float: left;
-    font-size: 2.5vh;
+    height: 100%;
 }
 
-.playerStatsEntryName {
-    width: 90%;
-    font-weight: 600;
+.topInfoPartInner {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.playerStatsEntryValue {
-    font-weight: 600;
-    width: 10%;
+.topInfoPart:nth-child(1)
+{
+    text-align: right;
+}
+
+.topInfoPart:nth-child(2)
+{
+    text-align: left;
+}
+
+.topInfoBetween
+{
+    float: left;
+    text-align: center;
+    height: 100%;
+}
+
+.topInfoPlayerOverview .topInfoBetween {
+    width: 20vh;
+}
+
+.topInfoPlayerOverview .topInfoBetweenInner {
+    font-size: 10vh;
+    margin-top: -5vh;
+    color: #C5F3FF;
+}
+
+.topInfoPlayerOverview .topInfoPart {
+    width: calc(50% - 20vh / 2);
+}
+
+.topInfoPlayerOverview .topInfoPartInner {
+    font-size: 5vh;
+    margin-top: -1.5vh;
+}
+
+.topInfoPointsOverview .topInfoBetween {
+    width: 20vh;
+}
+
+.topInfoPointsOverview .topInfoBetweenInner {
+    font-size: 10vh;
+    margin-top: -5vh;
+    color: #C5F3FF;
+}
+
+.topInfoPointsOverview .topInfoPart {
+    width: calc(50% - 20vh / 2);
+}
+
+.topInfoPointsOverview .topInfoPartInner {
+    font-size: 5vh;
+    margin-top: -1.5vh;
 }
 
 .tileGrid {
