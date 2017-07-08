@@ -346,41 +346,22 @@ html, body {
     color: #FFF;
 }
 
-.turn.PLAYER_ONE .topInfoPart:nth-child(1), .turn.PLAYER_TWO .topInfoPart:nth-child(3)  {
+.turn.PLAYER_ONE .topInfoPart:nth-child(1) div, .turn.PLAYER_TWO .topInfoPart:nth-child(3) div  {
+    animation-name: turn;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
 
-.turn.PLAYER_ONE .topInfoPart:nth-child(1)  {
-    animation-name: turnPLAYER_ONE;
-}
-
-.turn.PLAYER_TWO .topInfoPart:nth-child(3)  {
-    animation-name: turnPLAYER_TWO;
-}
-
-@keyframes turnPLAYER_ONE {
+@keyframes turn {
     0% {
-        background: #00C2F2;
+        opacity: 1;
     }
     25% {
-        background: #a1e7f2;
+        opacity: 0.35;
     }
     50% {
-        background: #00C2F2;
-    }
-}
-
-@keyframes turnPLAYER_TWO {
-    0% {
-        background: #FF9C00;
-    }
-    25% {
-        background: #ffe1af;
-    }
-    50% {
-        background: #FF9C00;
+        opacity: 1;
     }
 }
 
