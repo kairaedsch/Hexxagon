@@ -53,10 +53,11 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
       ..className = "sideInner clearfix"
     )(
         (Dom.div()
-          ..className = "topInfoOverview topInfoPlayerOverview"
+          ..className = "topInfoOverview"
         )(
             (Dom.div()
               ..className = "topInfoPart"
+              ..title = intelligenceplayerOne.name
             )(
                 (Dom.div()
                   ..className = "topInfoPartInner"
@@ -89,39 +90,6 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
                   }
                   ..title = intelligenceplayerTwo.name
                 )()
-            )
-        ),
-        (Dom.div()
-          ..className = "topInfoOverview topInfoPointsOverview"
-        )(
-            (Dom.div()
-              ..className = "topInfoPart"
-            )(
-                (Dom.div()
-                  ..className = "topInfoPartInner"
-                )(
-                    props.gui.currentGameGui.getStatsOf(TileType.PLAYER_ONE)["Steine"]
-                )
-            )
-            ,
-            (Dom.div()
-              ..className = "topInfoBetween"
-            )(
-                (Dom.div()
-                  ..className = "topInfoBetweenInner"
-                )(
-                    "-"
-                )
-            )
-            ,
-            (Dom.div()
-              ..className = "topInfoPart"
-            )(
-                (Dom.div()
-                  ..className = "topInfoPartInner"
-                )(
-                    props.gui.currentGameGui.getStatsOf(TileType.PLAYER_TWO)["Steine"]
-                )
             )
         )
     );

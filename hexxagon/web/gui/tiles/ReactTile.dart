@@ -64,6 +64,11 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     return props.gui.currentGameGui.lastMove.isPresent && props.gui.currentGameGui.lastMove.value.source.equals(props.position);
   }
 
+  bool get isInfo
+  {
+    return (state.delta.x.abs() > 20 || state.delta.y.abs() > 20);
+  }
+
   Optional<Move> get getMovefromSelectedToHere
   {
     Optional<Move> move = new Optional.ofNullable(props.gui.currentGameGui.possibleMoves.firstWhere((Move move)
@@ -155,6 +160,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " ${state.mouseIsOver ? "mouseIsOver" : ""}"
           " ${isDragging ? "dragging" : ""}"
           " posy_${props.position.getMaxDistanceTo(TilePosition.get(0, 0))}"
+          " ${isDragging ? "dragging" : ""}"
       ..style =
       {
         "transform": (isTranslated ? "translate(${state.delta.x}px, ${state.delta.y}px)" : "none"),

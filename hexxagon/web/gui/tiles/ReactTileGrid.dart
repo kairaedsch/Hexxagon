@@ -75,6 +75,7 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
       {
         "width": "${hexagon.gridWidth}px",
         "paddingTop": "calc((65vh - ${hexagon.gridheight}px) / 2)",
+        "marginLeft": "${(width - hexagon.gridWidth) / 2}px"
       }
     )(
         tiles

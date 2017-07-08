@@ -51,14 +51,14 @@ html, body {
 
 .middle {
     width: 100%;
-    height: 65vh;
+    height: 72vh;
+    padding-top: 2vh;
     overflow: visible;
 }
 
 .side {
     width: 100%;
-    height: 20vh;
-    padding: 3vh 0 2vh 0;
+    height: 15vh;
     background: #1DBCD8;
 }
 
@@ -134,7 +134,7 @@ html, body {
 .playerSelection {
     width: 100%;
     height: 60vh;
-    background: #1DBCD8;
+    background: -webkit-linear-gradient(-10deg, #01C2F2 50%, #FF9C00 50%);
 
     animation-name: show;
     animation-duration: 1.5s;
@@ -144,7 +144,6 @@ html, body {
 
 .playerSelectionContainer {
     width: 100%;
-    max-width: 1500px;
     margin: auto;
     height: 100%;
 }
@@ -169,17 +168,15 @@ html, body {
 
 .playerContainer {
     width: 40vw;
-    max-width: 250px;
     height: 60vh;
     margin: auto;
     padding: 5vh 0;
-    background: rgba(29, 188, 216, 0.75);
 }
 
 .arrow {
     width: 0px;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
+    border-left: 5vh solid transparent;
+    border-right: 5vh solid transparent;
     margin: auto;
     transition: opacity 0.1s linear;
     cursor: pointer;
@@ -191,16 +188,16 @@ html, body {
 }
 
 .arrowUp {
-    border-bottom: 30px solid #FF9C00;
+    border-bottom: 4vh solid #FFF;
 }
 
 .arrowDown {
-    border-top: 30px solid #FF9C00;
+    border-top: 4vh solid #FFF;
 }
 
 .playerInner {
-    height: calc(100% - 2 * 25px);
-    padding: calc(25% - 25px) 0;
+    height: 42vh;
+    padding: 8vh 0;
     width: 100%;
 }
 
@@ -233,7 +230,7 @@ html, body {
     pointer-events: none;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
-    color: #A7F2FF;
+    color: rgba(255, 255, 255, 0.33);
 }
 
 .button {
@@ -250,11 +247,11 @@ html, body {
 }
 
 .start {
-    width: 200px;
-    border-radius: 10px;
-    font-size: 38px;
-    padding: 5px 10px 10px 10px;
-    margin-top: calc((20vh - 67px) / 2);
+    width: 17vh;
+    border-radius: 1vh;
+    font-size: 4vh;
+    padding: 0.5vh 1vh 1vh 1vh;
+    margin-top: 6.5vh;
 
     animation-name: show;
     animation-duration: 1.5s;
@@ -263,11 +260,10 @@ html, body {
 }
 
 .abort {
-    width: 250px;
-    border-radius: 5px;
-    font-size: 26px;
-    padding: 5px 10px 10px 10px;
-    margin-top: calc((10vh - 54px) / 2);
+    width: 35vh;
+    border-radius: 1vh;
+    font-size: 4vh;
+    padding: 0.5vh 1vh 1vh 1vh;
 }
 
 .tileGridContainer {
@@ -345,39 +341,52 @@ html, body {
     }
 }
 
-.topInfoOverview
-{
+.topInfoOverview {
     width: 100%;
-    height: 50%;
-}
-
-.topInfoPart
-{
-    float: left;
     height: 100%;
 }
 
-.topInfoPartInner {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+.topInfoPart {
+    float: left;
+    height: 100%;
+    padding: 3.5vh 0 4vh 0;
 }
 
-.topInfoPart:nth-child(1)
-{
-    text-align: right;
+.topInfoPart:nth-child(1) {
+    background-color: #01C2F2;
+    padding-right: 2vh;
 }
 
-.topInfoPart:nth-child(3)
-{
-    text-align: left;
+.topInfoPart:nth-child(3) {
+    background-color: #FF9C00;
+    padding-left: 2vh;
 }
 
-.topInfoBetween
-{
+.topInfoPart:nth-child(1) .topInfoPartInner {
+    background-position: center right;
+}
+
+.topInfoPart:nth-child(3) .topInfoPartInner {
+    background-position: center left;
+}
+
+.topInfoPart {
+    width: calc(50% - 20vh / 2);
+}
+
+.topInfoPartInner  {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.topInfoBetween {
     float: left;
     text-align: center;
     height: 100%;
+    padding: 3.5vh 0 4vh 0;
+    background: -webkit-linear-gradient(-20deg, #01C2F2 50%, #FF9C00 50%);
 }
 
 .topInfoBetween {
@@ -386,38 +395,9 @@ html, body {
 
 .topInfoBetweenInner {
     font-size: 10vh;
+    font-weight: 600;
     margin-top: -3.5vh;
-    color: #C5F3FF;
-}
-
-.topInfoPlayerOverview .topInfoPart {
-    width: calc(50% - 20vh / 2);
-}
-
-.topInfoPlayerOverview .topInfoPartInner {
-    height: 100%;
-    width: 100%;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.topInfoPlayerOverview  .topInfoPart:nth-child(1) .topInfoPartInner
-{
-    background-position: center right;
-}
-
-.topInfoPlayerOverview  .topInfoPart:nth-child(3) .topInfoPartInner
-{
-    background-position: center left;
-}
-
-.topInfoPointsOverview .topInfoPart {
-    width: calc(50% - 20vh / 2);
-}
-
-.topInfoPointsOverview .topInfoPartInner {
-    font-size: 5vh;
-    margin-top: 0.5vh;
+    color: #FFF;
 }
 
 .tileGrid {
