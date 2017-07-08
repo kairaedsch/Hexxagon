@@ -60,7 +60,13 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
               ..title = intelligenceplayerOne.name
             )(
                 (Dom.div()
-                  ..className = "topInfoPartInner"
+                  ..className = "topInfoPartScore"
+                  ..title = "Score"
+                )(
+                    props.gui.currentGameGui.getStatsOf(TileType.PLAYER_ONE)["Steine"]
+                ),
+                (Dom.div()
+                  ..className = "topInfoPartImage"
                   ..style =
                   {
                     "backgroundImage": "url('${intelligenceplayerOne.isHuman ? "human.png" : "robot-${intelligenceplayerOne.strength}.png"}')",
@@ -83,13 +89,19 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
               ..className = "topInfoPart"
             )(
                 (Dom.div()
-                  ..className = "topInfoPartInner"
+                  ..className = "topInfoPartImage"
                   ..style =
                   {
                     "backgroundImage": "url('${intelligenceplayerTwo.isHuman ? "human.png" : "robot-${intelligenceplayerTwo.strength}.png"}')",
                   }
                   ..title = intelligenceplayerTwo.name
-                )()
+                )(),
+                (Dom.div()
+                  ..className = "topInfoPartScore"
+                  ..title = "Score"
+                )(
+                    props.gui.currentGameGui.getStatsOf(TileType.PLAYER_TWO)["Steine"]
+                )
             )
         )
     );

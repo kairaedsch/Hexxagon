@@ -31,7 +31,7 @@ void main()
   react_dom.render(
       (ReactPlayerSelection()
         ..gui = gui
-        ..intelligences = [new HumanIntelligence(), new MinMaxAI(2), new MinMaxAI(3), new MinMaxAI(4), new RandomAI(), new MonteCarloTreeSearchAI(), new MonteCarloAI()]
+        ..intelligences = [new HumanIntelligence(), new MinMaxAI(2), new MinMaxAI(3), new MinMaxAI(4), new MinMaxAI(5), new RandomAI(), new MonteCarloTreeSearchAI(), new MonteCarloAI()]
       )(),
       querySelector('.playerSelection')
   );

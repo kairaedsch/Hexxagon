@@ -260,7 +260,7 @@ html, body {
 }
 
 .abort {
-    width: 35vh;
+    width: 41vh;
     border-radius: 1vh;
     font-size: 4vh;
     padding: 0.5vh 1vh 1vh 1vh;
@@ -354,43 +354,55 @@ html, body {
 
 .topInfoPart:nth-child(1) {
     background-color: #01C2F2;
-    padding-right: 2vh;
+    padding-left: 3vh;
 }
 
 .topInfoPart:nth-child(3) {
     background-color: #FF9C00;
-    padding-left: 2vh;
-}
-
-.topInfoPart:nth-child(1) .topInfoPartInner {
-    background-position: center right;
-}
-
-.topInfoPart:nth-child(3) .topInfoPartInner {
-    background-position: center left;
+    padding-right: 3vh;
 }
 
 .topInfoPart {
-    width: calc(50% - 20vh / 2);
+    width: calc(50% - 15vh / 2);
 }
 
-.topInfoPartInner  {
-    width: 100%;
+.topInfoPartScore  {
+    float: left;
+    width: 8vh;
+    height: 100%;
+    font-size: 7vh;
+    font-weight: 600;
+    margin-top: -1vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.topInfoPartImage  {
+    float: left;
+    width: calc(100% - 2.5vh * 2 - 8vh);
+    margin: 0 2.5vh;
     height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
+.topInfoPart:nth-child(1) .topInfoPartScore, .topInfoPart:nth-child(1) .topInfoPartImage {
+    background-position: center right;
+    text-align: left;
+}
+
+.topInfoPart:nth-child(3) .topInfoPartScore, .topInfoPart:nth-child(3) .topInfoPartImage {
+    background-position: center left;
+    text-align: right;
+}
+
 .topInfoBetween {
+    width: 15vh;
     float: left;
     text-align: center;
     height: 100%;
     padding: 3.5vh 0 4vh 0;
     background: -webkit-linear-gradient(-20deg, #01C2F2 50%, #FF9C00 50%);
-}
-
-.topInfoBetween {
-    width: 20vh;
 }
 
 .topInfoBetweenInner {
