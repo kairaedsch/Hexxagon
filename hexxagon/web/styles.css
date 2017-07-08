@@ -59,7 +59,6 @@ html, body {
 .side {
     width: 100%;
     height: 15vh;
-    background: #1DBCD8;
 }
 
 .sideInner {
@@ -276,71 +275,6 @@ html, body {
     margin: 10px 0 25px 0;
 }
 
-.playerStats.PLAYER_ONE.hisTurn, .playerStats.PLAYER_ONE.won {
-    background: #00C2F2;
-}
-
-.playerStats.PLAYER_TWO.hisTurn, .playerStats.PLAYER_TWO.won {
-    background: #FF9C00;
-}
-
-.playerStats.hisTurn {
-    animation-name: hisTurn;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes hisTurn {
-    0% {
-        opacity: 1;
-    }
-    25% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
-.playerStats.won {
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-.playerStats.PLAYER_ONE.won {
-    animation-name: wonPLAYER_ONE;
-}
-
-.playerStats.PLAYER_TWO.won {
-    animation-name: wonPLAYER_TWO;
-}
-
-@keyframes wonPLAYER_ONE {
-    0% {
-        background: #00C2F2;
-    }
-    25% {
-        background: #ffde56;
-    }
-    50% {
-        background: #00C2F2;
-    }
-}
-
-@keyframes wonPLAYER_TWO {
-    0% {
-        background: #FF9C00;
-    }
-    25% {
-        background: #ffde56;
-    }
-    50% {
-        background: #FF9C00;
-    }
-}
-
 .topInfoOverview {
     width: 100%;
     height: 100%;
@@ -410,6 +344,82 @@ html, body {
     font-weight: 600;
     margin-top: -3.5vh;
     color: #FFF;
+}
+
+.turn.PLAYER_ONE .topInfoPart:nth-child(1), .turn.PLAYER_TWO .topInfoPart:nth-child(3)  {
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.turn.PLAYER_ONE .topInfoPart:nth-child(1)  {
+    animation-name: turnPLAYER_ONE;
+}
+
+.turn.PLAYER_TWO .topInfoPart:nth-child(3)  {
+    animation-name: turnPLAYER_TWO;
+}
+
+@keyframes turnPLAYER_ONE {
+    0% {
+        background: #00C2F2;
+    }
+    25% {
+        background: #a1e7f2;
+    }
+    50% {
+        background: #00C2F2;
+    }
+}
+
+@keyframes turnPLAYER_TWO {
+    0% {
+        background: #FF9C00;
+    }
+    25% {
+        background: #ffe1af;
+    }
+    50% {
+        background: #FF9C00;
+    }
+}
+
+.won.PLAYER_ONE .topInfoPart:nth-child(1), .won.PLAYER_TWO .topInfoPart:nth-child(3)  {
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.won.PLAYER_ONE .topInfoPart:nth-child(1)  {
+    animation-name: wonPLAYER_ONE;
+}
+
+.won.PLAYER_TWO .topInfoPart:nth-child(3)  {
+    animation-name: wonPLAYER_TWO;
+}
+
+@keyframes wonPLAYER_ONE {
+    0% {
+        background: #00C2F2;
+    }
+    25% {
+        background: #ffde56;
+    }
+    50% {
+        background: #00C2F2;
+    }
+}
+
+@keyframes wonPLAYER_TWO {
+    0% {
+        background: #FF9C00;
+    }
+    25% {
+        background: #ffde56;
+    }
+    50% {
+        background: #FF9C00;
+    }
 }
 
 .tileGrid {

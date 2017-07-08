@@ -54,6 +54,7 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
     )(
         (Dom.div()
           ..className = "topInfoOverview"
+            " ${props.gui.currentGameGui.isOver ? "won ${TileTypeToName(props.gui.currentGameGui.betterPlayer)}" : "turn ${TileTypeToName(props.gui.currentGameGui.currentPlayer)}"}"
         )(
             (Dom.div()
               ..className = "topInfoPart"
