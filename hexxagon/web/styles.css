@@ -40,14 +40,12 @@ html, body {
     position: absolute;
     width: 100%;
     height: 100%;
-    padding: 5vh 5vw;
     overflow: hidden;
 }
 
 .gameInner {
     width: 100%;
     height: 100%;
-    max-width: 1500px;
     margin: auto;
 }
 
@@ -59,7 +57,9 @@ html, body {
 
 .side {
     width: 100%;
-    height: 15vh;
+    height: 20vh;
+    padding: 3vh 0 2vh 0;
+    background: #1DBCD8;
 }
 
 .sideInner {
@@ -368,7 +368,7 @@ html, body {
     text-align: right;
 }
 
-.topInfoPart:nth-child(2)
+.topInfoPart:nth-child(3)
 {
     text-align: left;
 }
@@ -380,13 +380,13 @@ html, body {
     height: 100%;
 }
 
-.topInfoPlayerOverview .topInfoBetween {
+.topInfoBetween {
     width: 20vh;
 }
 
-.topInfoPlayerOverview .topInfoBetweenInner {
+.topInfoBetweenInner {
     font-size: 10vh;
-    margin-top: -5vh;
+    margin-top: -3.5vh;
     color: #C5F3FF;
 }
 
@@ -395,18 +395,20 @@ html, body {
 }
 
 .topInfoPlayerOverview .topInfoPartInner {
-    font-size: 5vh;
-    margin-top: -1.5vh;
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.topInfoPointsOverview .topInfoBetween {
-    width: 20vh;
+.topInfoPlayerOverview  .topInfoPart:nth-child(1) .topInfoPartInner
+{
+    background-position: center right;
 }
 
-.topInfoPointsOverview .topInfoBetweenInner {
-    font-size: 10vh;
-    margin-top: -5vh;
-    color: #C5F3FF;
+.topInfoPlayerOverview  .topInfoPart:nth-child(3) .topInfoPartInner
+{
+    background-position: center left;
 }
 
 .topInfoPointsOverview .topInfoPart {
@@ -415,7 +417,7 @@ html, body {
 
 .topInfoPointsOverview .topInfoPartInner {
     font-size: 5vh;
-    margin-top: -1.5vh;
+    margin-top: 0.5vh;
 }
 
 .tileGrid {

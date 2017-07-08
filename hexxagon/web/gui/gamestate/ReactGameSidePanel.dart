@@ -1,3 +1,5 @@
+import '../../general/Board.dart';
+import '../../general/Intelligence.dart';
 import 'dart:html';
 import 'package:over_react/over_react.dart';
 
@@ -44,6 +46,9 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
       return Dom.div()();
     }
 
+    Intelligence<Board> intelligenceplayerOne = props.gui.currentGameGui.getIntelligence(TileType.PLAYER_ONE);
+    Intelligence<Board> intelligenceplayerTwo = props.gui.currentGameGui.getIntelligence(TileType.PLAYER_TWO);
+
     return (Dom.div()
       ..className = "sideInner clearfix"
     )(
@@ -55,11 +60,12 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
             )(
                 (Dom.div()
                   ..className = "topInfoPartInner"
-                )(
-                    props.gui.currentGameGui
-                        .getIntelligence(TileType.PLAYER_ONE)
-                        .name
-                )
+                  ..style =
+                  {
+                    "backgroundImage": "url('${intelligenceplayerOne.isHuman ? "human.png" : "robot-${intelligenceplayerOne.strength}.png"}')",
+                  }
+                  ..title = intelligenceplayerOne.name
+                )()
             )
             ,
             (Dom.div()
@@ -77,11 +83,12 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
             )(
                 (Dom.div()
                   ..className = "topInfoPartInner"
-                )(
-                    props.gui.currentGameGui
-                        .getIntelligence(TileType.PLAYER_TWO)
-                        .name
-                )
+                  ..style =
+                  {
+                    "backgroundImage": "url('${intelligenceplayerTwo.isHuman ? "human.png" : "robot-${intelligenceplayerTwo.strength}.png"}')",
+                  }
+                  ..title = intelligenceplayerTwo.name
+                )()
             )
         ),
         (Dom.div()
