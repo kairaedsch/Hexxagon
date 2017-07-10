@@ -7,7 +7,7 @@ class HumanIntelligence<B extends Board> extends Intelligence<B>
 {
   bool get isHuman => true;
 
-  String get name => "Human Player";
+  String get name => "Human";
 
   int get strength => 0;
 
