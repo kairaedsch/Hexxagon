@@ -12,7 +12,7 @@ class MinMaxAI extends ArtificialIntelligence
   bool _preferCopies;
 
   String get name
-  => "Min Max Player level $strength${_preferCopies ? " pref copies" : ""}";
+  => "Min Max${_preferCopies ? "" : " no pref"}";
 
   int get strength => (_treeDepth - 1);
 

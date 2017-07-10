@@ -31,11 +31,6 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
     => setState(state));
     props.gui.addStateChangeListener(()
     => setState(state));
-
-    querySelector('.button.abort').onClick.forEach((e)
-    {
-      props.gui.selectPlayer();
-    });
   }
 
   ReactElement render()
@@ -53,7 +48,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
     )(
         (Dom.div()
           ..className = "topInfoOverview"
-            " ${props.gui.currentGameGui.isOver ? "won ${TileTypes.toName(props.gui.currentGameGui.betterPlayer)}" : "turn ${TileTypes.toName(props.gui.currentGameGui.currentPlayer)}"}"
+              " ${props.gui.currentGameGui.isOver ? "won ${TileTypes.toName(props.gui.currentGameGui.betterPlayer)}" : "turn ${TileTypes.toName(props.gui.currentGameGui.currentPlayer)}"}"
         )(
             (Dom.div()
               ..className = "topInfoPart"
@@ -103,6 +98,14 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                     props.gui.currentGameGui.countTilesOfType(TileType.PLAYER_TWO)
                 )
             )
+        ),
+        (Dom.div()
+          ..className = "abort button"
+        )(
+            (Dom.div()
+              ..className = "abortInner"
+                ..onClick = (e) => props.gui.showMainMenu()
+            )()
         )
     );
   }

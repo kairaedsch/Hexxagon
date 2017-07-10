@@ -160,7 +160,6 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " ${state.mouseIsOver ? "mouseIsOver" : ""}"
           " ${isDragging ? "dragging" : ""}"
           " posy_${props.position.getMaxDistanceTo(TilePosition.get(0, 0))}"
-          " ${isDragging ? "dragging" : ""}"
       ..style =
       {
         "transform": (isTranslated ? "translate(${state.delta.x}px, ${state.delta.y}px)" : "none"),

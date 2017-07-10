@@ -15,7 +15,7 @@ class Hexagon
 
   double get _aFromWidth => (_gridWidth - (_gridColumns + 1) * borderColumns * 2) / (_gridColumns * 1.5);
 
-  double get _aFromHeight => ((_gridHeight - (_gridRows - 1) * borderRows * 2) / (_gridRows + 1)) / (0.5 * sqrt(3));
+  double get _aFromHeight => ((_gridHeight - (_gridRows / 2 - 1) * borderRows * 2) / (_gridRows + 1)) / (0.5 * sqrt(3));
 
   double get _a => min(_aFromHeight, _aFromWidth);
 

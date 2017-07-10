@@ -50,7 +50,12 @@ class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelecti
             (Dom.div()
               ..className = "playerText"
             )(
+                intelligences.isHuman ? "" : "AI level ${intelligences.strengthName}"
+                ,
+                Dom.br()()
+                ,
                 intelligences.name
+
             )
         ),
         (Dom.div()

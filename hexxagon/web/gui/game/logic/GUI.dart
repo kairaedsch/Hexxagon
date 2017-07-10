@@ -79,7 +79,7 @@ class GUI<B extends Board>
     }
   }
 
-  void selectPlayer()
+  void showMainMenu()
   {
     _guiState = GUIState.PLAYER_SELECTION;
     _currentGameGui.abort();
