@@ -69,12 +69,55 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     return (state.delta.x.abs() > 20 || state.delta.y.abs() > 20);
   }
 
+  String get title
+  {
+    if (tileType == TileType.OUT_OF_FIELD)
+    {
+      return "";
+    }
+    if (tileType == TileType.FORBIDDEN)
+    {
+      return "This Tile is blocked";
+    }
+    if (tileType == TileType.EMPTY)
+    {
+      if (isPlayAbleNow)
+      {
+        Optional<Move> move = getMovefromSelectedToHere;
+        return move.isPresent ? "Click, to ${move.value.kindOf} to this tile" : "ERROR";
+      }
+      else
+      {
+        return "This Tile is empty";
+      }
+    }
+    if (tileType == TileType.PLAYER_ONE || tileType == TileType.PLAYER_TWO)
+    {
+      if (isSelected)
+      {
+        return "Now select a green tile to finish your move";
+      }
+      if (playAble)
+      {
+        return "Click, to make a move";
+      }
+      return "This tile belongs to the enemy";
+    }
+    return "";
+  }
+
   Optional<Move> get getMovefromSelectedToHere
   {
-    Optional<Move> move = new Optional.ofNullable(props.gui.currentGameGui.possibleMoves.firstWhere((Move move)
-    => move.target.equals(props.position), orElse: ()
-    => null));
-    return move;
+    if (props.gui.currentGameGui.isSomethingSelected)
+    {
+      return new Optional.ofNullable(props.gui.currentGameGui.possibleMoves.firstWhere((Move move)
+      => move.target.equals(props.position), orElse: ()
+      => null));
+    }
+    else
+    {
+      return new Optional.empty();
+    }
   }
 
   @override
@@ -119,7 +162,6 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
     props.gui.addGameChangeListener(()
     {
-      TileType tileType = props.gui.currentGameGui.get(props.position);
       if (!(currentTileType == tileType && tileType == TileType.FORBIDDEN))
       {
         setState(state);
@@ -130,17 +172,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   @override
   ReactElement render()
   {
-    TileType tileType = props.gui.currentGameGui.get(props.position);
-    bool playAble = props.gui.currentGameGui.couldBeMoved(props.position) && props.gui.currentGameGui.currentIntelligence.isHuman;
-    bool playAbleOfNotCurrentPlayer = !playAble && tileType == props.gui.currentGameGui.notCurrentPlayer;
-
-    bool isSelected = false;
-    Optional<Move> move = new Optional.empty();
-    if (props.gui.currentGameGui.isSomethingSelected)
-    {
-      move = getMovefromSelectedToHere;
-      isSelected = props.gui.currentGameGui.selectedPosition.equals(props.position);
-    }
+    Optional<Move> move = getMovefromSelectedToHere;
 
     currentIsSelected = isSelected;
     currentIsPlayAbleNow = isPlayAbleNow;
@@ -169,41 +201,43 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
         "height": "${props.hexagon.tileHeight}px"
       }
     )(
-        (Dom.svg()
-          ..version = "1.1"
-          ..height = props.hexagon.tileHeight
-          ..width = props.hexagon.tileWidth
-          ..viewBox = "0 0 726 628"
-          ..style =
-          {
-            "height": "${props.hexagon.tileHeight}px",
-          }
-        )(
-            (Dom.polygon()
-              ..points = "723,314 543,625.769145 183,625.769145 3,314 183,2.230855 543,2.230855 723,314"
-              ..className = "hexagonInner"
-              ..onMouseDown = this.startDrag
-              ..onMouseEnter = onMouseEnter
-              ..onMouseLeave = onMouseLeave
-              ..style =
-              {
-                "animationDelay": playAble ? "${0.15 * props.position.getMaxDistanceTo(TilePosition.get(0, 0))}s" : ""
-              }
-            )()
-        ),
-        (Dom.div()
-          ..className = "hexagonInnerText"
-          ..style = {
-            "marginTop": "-${props.hexagon.tileHeight + props.hexagon.borderRows * 3}px",
-            "width": "${props.hexagon.tileWidth}px",
-            "height": "${props.hexagon.tileHeight}px",
-            "fontSize": "${props.hexagon.tileWidth / 5.5}px",
-            "lineHeight": "${props.hexagon.tileHeight}px",
-          }
-        )(
-            (isLastMoveSource || isLastMoveTarget) ? props.gui.currentGameGui.lastMove.value.kindOf : ""
-        ),
-        /*
+      (Dom.svg()
+        ..version = "1.1"
+        ..height = props.hexagon.tileHeight
+        ..width = props.hexagon.tileWidth
+        ..viewBox = "0 0 726 628"
+        ..style =
+        {
+          "height": "${props.hexagon.tileHeight}px",
+        }
+      )(
+          (Dom.polygon()
+            ..points = "723,314 543,625.769145 183,625.769145 3,314 183,2.230855 543,2.230855 723,314"
+            ..className = "hexagonInner"
+            ..onMouseDown = this.startDrag
+            ..onMouseEnter = onMouseEnter
+            ..onMouseLeave = onMouseLeave
+            ..style =
+            {
+              "animationDelay": playAble ? "${0.15 * props.position.getMaxDistanceTo(TilePosition.get(0, 0))}s" : ""
+            }
+          )(
+              Dom.title()(title)
+          )
+      ),
+      (Dom.div()
+        ..className = "hexagonInnerText"
+        ..style = {
+          "marginTop": "-${props.hexagon.tileHeight + props.hexagon.borderRows * 3}px",
+          "width": "${props.hexagon.tileWidth}px",
+          "height": "${props.hexagon.tileHeight}px",
+          "fontSize": "${props.hexagon.tileWidth / 5.5}px",
+          "lineHeight": "${props.hexagon.tileHeight}px",
+        }
+      )(
+          (isLastMoveSource || isLastMoveTarget) ? props.gui.currentGameGui.lastMove.value.kindOf : ""
+      ),
+      /*
         (Dom.div()
           ..className = "hexagonInnerText positions"
           ..style = textStyle
@@ -212,17 +246,21 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     );
   }
 
+  bool get isSelected
+  => props.gui.currentGameGui.isSomethingSelected && props.gui.currentGameGui.selectedPosition.equals(props.position);
+
+  bool get playAbleOfNotCurrentPlayer
+  => !playAble && tileType == props.gui.currentGameGui.notCurrentPlayer;
+
+  bool get playAble
+  => props.gui.currentGameGui.couldBeMoved(props.position) && props.gui.currentGameGui.currentIntelligence.isHuman;
+
+  TileType get tileType
+  => props.gui.currentGameGui.get(props.position);
+
   void select(SyntheticMouseEvent event)
   {
-    Optional<Move> move;
-    if (props.gui.currentGameGui.isSomethingSelected)
-    {
-      move = getMovefromSelectedToHere;
-    }
-    else
-    {
-      move = new Optional.empty();
-    }
+    Optional<Move> move = getMovefromSelectedToHere;
 
     if (move.isPresent)
     {

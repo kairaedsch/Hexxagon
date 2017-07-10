@@ -37,7 +37,9 @@ class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelecti
             {
               props.father.changePlayerTwo(-1);
             }
-          })(),
+          }
+          ..title = "Change player"
+          )(),
         (Dom.div()
           ..className = "playerInner"
         )(
@@ -50,7 +52,7 @@ class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelecti
             (Dom.div()
               ..className = "playerText"
             )(
-                intelligences.isHuman ? intelligences.name : "AI level ${intelligences.strengthName}"
+                intelligences.isHuman ? intelligences.name : "AI ${intelligences.strengthName}"
                 ,
                 Dom.br()()
                 ,
@@ -70,7 +72,9 @@ class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelecti
             {
               props.father.changePlayerTwo(1);
             }
-          })()
+          }
+          ..title = "Change player"
+        )()
     );
   }
 }

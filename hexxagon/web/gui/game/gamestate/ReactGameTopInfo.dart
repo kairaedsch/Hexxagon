@@ -56,7 +56,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
             )(
                 (Dom.div()
                   ..className = "topInfoPartScore"
-                  ..title = "Score"
+                  ..title = "Score of the blue player"
                 )(
                     props.gui.currentGameGui.countTilesOfType(TileType.PLAYER_ONE)
                 ),
@@ -66,7 +66,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                   {
                     "backgroundImage": "url('${intelligenceplayerOne.isHuman ? "human.png" : "robot-${intelligenceplayerOne.strength}.png"}')",
                   }
-                  ..title = intelligenceplayerOne.name
+                  ..title = intelligenceplayerOne.isHuman ? "Human" : "AI ${intelligenceplayerOne.strengthName} - ${intelligenceplayerOne.name}"
                 )()
             )
             ,
@@ -89,11 +89,11 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                   {
                     "backgroundImage": "url('${intelligenceplayerTwo.isHuman ? "human.png" : "robot-${intelligenceplayerTwo.strength}.png"}')",
                   }
-                  ..title = intelligenceplayerTwo.name
+                  ..title = intelligenceplayerTwo.isHuman ? "Human" : "AI ${intelligenceplayerTwo.strengthName} - ${intelligenceplayerTwo.name}"
                 )(),
                 (Dom.div()
                   ..className = "topInfoPartScore"
-                  ..title = "Score"
+                  ..title = "Score of the orange player"
                 )(
                     props.gui.currentGameGui.countTilesOfType(TileType.PLAYER_TWO)
                 )
@@ -101,6 +101,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
         ),
         (Dom.div()
           ..className = "abort button"
+          ..title = "Back to main menu"
         )(
             (Dom.div()
               ..className = "abortInner"

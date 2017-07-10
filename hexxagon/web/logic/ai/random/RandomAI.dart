@@ -8,7 +8,7 @@ import '../../Hexxagon.dart';
 
 class RandomAI extends ArtificialIntelligence
 {
-  String get name => "Random Player";
+  String get name => "Random";
 
   int get strength => 1;
 
