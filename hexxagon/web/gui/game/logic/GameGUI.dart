@@ -1,14 +1,14 @@
-import '../general/TileType.dart';
+import '../../../general/TileType.dart';
 import 'dart:async';
 
 import 'package:optional/optional.dart';
 import 'package:tuple/tuple.dart';
 
-import '../general/Board.dart';
-import '../general/Game.dart';
-import '../general/Move.dart';
-import '../general/Intelligence.dart';
-import '../general/TilePosition.dart';
+import '../../../general/Board.dart';
+import '../../../general/Game.dart';
+import '../../../general/Move.dart';
+import '../../../general/Intelligence.dart';
+import '../../../general/TilePosition.dart';
 
 class GameGUI
 {
@@ -129,10 +129,7 @@ class GameGUI
   bool get isOver
   => _game.board.isOver;
 
-  Map<String, String> getStatsOf(TileType player)
-  {
-    return _game.getStatsOf(player);
-  }
+  int countTilesOfType(TileType player) => _game.countTilesOfType(player);
 
   Intelligence<Board> getIntelligence(TileType player)
   {

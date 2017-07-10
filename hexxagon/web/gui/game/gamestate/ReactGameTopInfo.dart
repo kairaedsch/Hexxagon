@@ -1,29 +1,28 @@
-import '../../general/Board.dart';
-import '../../general/Intelligence.dart';
+import '../../../general/Board.dart';
+import '../../../general/Intelligence.dart';
 import 'dart:html';
 import 'package:over_react/over_react.dart';
 
-import '../../general/TileType.dart';
+import '../../../general/TileType.dart';
 
-import '../GUI.dart';
-import 'ReactPlayerState.dart';
+import '../logic/GUI.dart';
 
 @Factory()
-UiFactory<ReactGameSidePanelProps> ReactGameSidePanel;
+UiFactory<ReactGameTopInfoProps> ReactGameTopInfo;
 
 @Props()
-class ReactGameSidePanelProps extends UiProps
+class ReactGameTopInfoProps extends UiProps
 {
   GUI gui;
 }
 
 @State()
-class ReactGameSidePanelState extends UiState
+class ReactGameTopInfoState extends UiState
 {
 }
 
 @Component()
-class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanelProps, ReactGameSidePanelState>
+class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProps, ReactGameTopInfoState>
 {
   void componentWillMount()
   {
@@ -54,7 +53,7 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
     )(
         (Dom.div()
           ..className = "topInfoOverview"
-            " ${props.gui.currentGameGui.isOver ? "won ${TileTypeToName(props.gui.currentGameGui.betterPlayer)}" : "turn ${TileTypeToName(props.gui.currentGameGui.currentPlayer)}"}"
+            " ${props.gui.currentGameGui.isOver ? "won ${TileTypes.toName(props.gui.currentGameGui.betterPlayer)}" : "turn ${TileTypes.toName(props.gui.currentGameGui.currentPlayer)}"}"
         )(
             (Dom.div()
               ..className = "topInfoPart"
@@ -64,7 +63,7 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
                   ..className = "topInfoPartScore"
                   ..title = "Score"
                 )(
-                    props.gui.currentGameGui.getStatsOf(TileType.PLAYER_ONE)["Steine"]
+                    props.gui.currentGameGui.countTilesOfType(TileType.PLAYER_ONE)
                 ),
                 (Dom.div()
                   ..className = "topInfoPartImage"
@@ -101,7 +100,7 @@ class ReactGameSidePanelComponent extends UiStatefulComponent<ReactGameSidePanel
                   ..className = "topInfoPartScore"
                   ..title = "Score"
                 )(
-                    props.gui.currentGameGui.getStatsOf(TileType.PLAYER_TWO)["Steine"]
+                    props.gui.currentGameGui.countTilesOfType(TileType.PLAYER_TWO)
                 )
             )
         )

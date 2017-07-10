@@ -6,7 +6,9 @@ import '../general/Board.dart';
 import '../general/Move.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
-import 'GameResult.dart';
+import '../general/GameResult.dart';
+
+import 'package:tuple/tuple.dart';
 
 class Hexxagon extends Board
 {
@@ -43,19 +45,19 @@ class Hexxagon extends Board
       }
     }
 
-    setStartTiles(size, center, 0, TileType.PLAYER_ONE);
-    setStartTiles(size, center, 1, TileType.PLAYER_TWO);
-    setStartTiles(size, center, 2, TileType.PLAYER_ONE);
-    setStartTiles(size, center, 3, TileType.PLAYER_TWO);
-    setStartTiles(size, center, 4, TileType.PLAYER_ONE);
-    setStartTiles(size, center, 5, TileType.PLAYER_TWO);
+    _setStartTiles(size, center, 0, TileType.PLAYER_ONE);
+    _setStartTiles(size, center, 1, TileType.PLAYER_TWO);
+    _setStartTiles(size, center, 2, TileType.PLAYER_ONE);
+    _setStartTiles(size, center, 3, TileType.PLAYER_TWO);
+    _setStartTiles(size, center, 4, TileType.PLAYER_ONE);
+    _setStartTiles(size, center, 5, TileType.PLAYER_TWO);
 
-    setStartTiles(1, center, 0, TileType.FORBIDDEN);
-    setStartTiles(1, center, 2, TileType.FORBIDDEN);
-    setStartTiles(1, center, 4, TileType.FORBIDDEN);
+    _setStartTiles(1, center, 0, TileType.FORBIDDEN);
+    _setStartTiles(1, center, 2, TileType.FORBIDDEN);
+    _setStartTiles(1, center, 4, TileType.FORBIDDEN);
   }
 
-  void setStartTiles(int size, TilePosition center, int direction, TileType tile) {
+  void _setStartTiles(int size, TilePosition center, int direction, TileType tile) {
     TilePosition toTarget = center;
     for(int i = 0; i < size; i++)
     {
@@ -84,7 +86,7 @@ class Hexxagon extends Board
   @override
   void move(TilePosition from, TilePosition to)
   {
-    if (!isVaidMove(from, to))
+    if (!_isValidMove(from, to))
     {
       throw new Exception("Invalid Move");
     }
@@ -108,7 +110,7 @@ class Hexxagon extends Board
     _currentPlayer = notCurrentPlayer;
   }
 
-  bool isVaidMove(TilePosition from, TilePosition to)
+  bool _isValidMove(TilePosition from, TilePosition to)
   {
     if (get(from) != _currentPlayer || get(to) != TileType.EMPTY)
     {
@@ -130,6 +132,12 @@ class Hexxagon extends Board
   }
 
   @override
+  TileType get(TilePosition position)
+  {
+    return _tiles.array[position.x][position.y];
+  }
+
+  @override
   List<Move> getPossibleMoves(TilePosition from)
   {
     if (get(from) != _currentPlayer)
@@ -137,98 +145,15 @@ class Hexxagon extends Board
       return new List(0);
     }
     List<Move> possibleMoves = [];
-    _getPossibleCopyMoves(from, possibleMoves.add);
-    _getPossibleJumpMoves(from, possibleMoves.add);
+    getPossibleCopyMoves(from, possibleMoves.add);
+    getPossibleJumpMoves(from, possibleMoves.add);
     return possibleMoves;
-  }
-
-  List<Move> getAllPossibleMoves()
-  {
-    Map<TilePosition, Move> possibleMoves = new HashMap<TilePosition, Move>();
-    for (int x = 0; x < _width; x++)
-    {
-      for (int y = 0; y < _height; y++)
-      {
-        TilePosition from = TilePosition.get(x, y);
-        if (get(from) == _currentPlayer)
-        {
-          _getPossibleCopyMoves(from, (move){
-            possibleMoves[move.target] = move;
-          });
-          _getPossibleJumpMoves(from, (move){
-            possibleMoves.putIfAbsent(move.target, () => move);
-          });
-        }
-      }
-    }
-    return possibleMoves.values.toList(growable: false);
-  }
-
-  void _getPossibleCopyMoves(TilePosition from, Function f)
-  {
-    if (get(from) != _currentPlayer)
-    {
-      return;
-    }
-    for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd)
-    {
-      TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
-      if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
-      {
-        f(new Move(from, to, "copy"));
-      }
-    }
-  }
-
-  void _getPossibleJumpMoves(TilePosition from, Function f)
-  {
-    if (get(from) != _currentPlayer)
-    {
-      return;
-    }
-    for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourSecondRingDeltasEven : TilePosition.neighbourSecondRingDeltasOdd)
-    {
-      TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
-      if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
-      {
-        f(new Move(from, to, "jump"));
-      }
-    }
-    return;
   }
 
   @override
   bool couldBeMoved(TilePosition position)
   {
     return get(position) == _currentPlayer;
-  }
-
-  Move getRandomMove(Random rng)
-  {
-    TilePosition start = TilePosition.get(rng.nextInt(_width), rng.nextInt(_height));
-    TilePosition loop = start;
-
-    do
-    {
-      if (get(loop) == _currentPlayer)
-      {
-        List<Move> possibleMoves = getPossibleMoves(loop);
-        if (possibleMoves.isNotEmpty)
-        {
-          return possibleMoves[rng.nextInt(possibleMoves.length)];
-        }
-      }
-      loop = loop.next(_width, _height);
-    }
-    while (!loop.equals(start));
-
-    return null;
-  }
-
-  @override
-  TileType get(TilePosition position)
-  {
-    return _tiles.array[position.x][position.y];
   }
 
   @override
@@ -277,6 +202,7 @@ class Hexxagon extends Board
     return playerOne > playerTwo ? TileType.PLAYER_ONE : playerOne < playerTwo ? TileType.PLAYER_TWO : TileType.EMPTY;
   }
 
+  @override
   GameResult getResult(TileType player)
   {
     TileType betterPlayer = this.betterPlayer;
@@ -294,6 +220,7 @@ class Hexxagon extends Board
     }
   }
 
+  @override
   int countTilesOfType(TileType player) {
     int count = 0;
     for (int x = 0; x < _width; x++)
@@ -308,5 +235,82 @@ class Hexxagon extends Board
       }
     }
     return count;
+  }
+
+  List<Move> getAllPossibleMoves()
+  {
+    Map<Tuple2<TilePosition, String>, Move> possibleMoves = new HashMap<Tuple2<TilePosition, String>, Move>();
+    for (int x = 0; x < _width; x++)
+    {
+      for (int y = 0; y < _height; y++)
+      {
+        TilePosition from = TilePosition.get(x, y);
+        if (get(from) == _currentPlayer)
+        {
+          getPossibleCopyMoves(from, (move){
+            possibleMoves[new Tuple2<TilePosition, String>(move.target, move.kindOf)] = move;
+          });
+          getPossibleJumpMoves(from, (move){
+            possibleMoves.putIfAbsent(new Tuple2<TilePosition, String>(move.target, move.kindOf), () => move);
+          });
+        }
+      }
+    }
+    return possibleMoves.values.toList(growable: false);
+  }
+
+  List<Move> getAllPossibleMovesPreferCopies()
+  {
+    Map<TilePosition, Move> possibleMoves = new HashMap<TilePosition, Move>();
+    for (int x = 0; x < _width; x++)
+    {
+      for (int y = 0; y < _height; y++)
+      {
+        TilePosition from = TilePosition.get(x, y);
+        if (get(from) == _currentPlayer)
+        {
+          getPossibleCopyMoves(from, (move){
+            possibleMoves[move.target] = move;
+          });
+          getPossibleJumpMoves(from, (move){
+            possibleMoves.putIfAbsent(move.target, () => move);
+          });
+        }
+      }
+    }
+    return possibleMoves.values.toList(growable: false);
+  }
+
+  void getPossibleCopyMoves(TilePosition from, Function f)
+  {
+    if (get(from) != _currentPlayer)
+    {
+      return;
+    }
+    for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd)
+    {
+      TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
+      if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
+      {
+        f(new Move(from, to, "copy"));
+      }
+    }
+  }
+
+  void getPossibleJumpMoves(TilePosition from, Function f)
+  {
+    if (get(from) != _currentPlayer)
+    {
+      return;
+    }
+    for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourSecondRingDeltasEven : TilePosition.neighbourSecondRingDeltasOdd)
+    {
+      TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
+      if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
+      {
+        f(new Move(from, to, "jump"));
+      }
+    }
+    return;
   }
 }

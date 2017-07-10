@@ -9,10 +9,12 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/web/general/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/web/gui/gamestate/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/gui/game/gamestate/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/gui/game/logic/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/gui/game/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/gui/game/tiles/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/gui/mainmenu/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/gui/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/web/gui/playerselection/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/web/gui/tiles/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/logic/ai/minmax/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/logic/ai/montecarlo/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/logic/ai/packages" />

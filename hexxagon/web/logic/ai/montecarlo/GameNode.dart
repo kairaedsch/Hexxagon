@@ -1,7 +1,8 @@
+import '../random/RandomAI.dart';
 import 'dart:math';
 
 import '../../../general/Move.dart';
-import '../../GameResult.dart';
+import '../../../general/GameResult.dart';
 import '../../Hexxagon.dart';
 
 class GameNode
@@ -43,7 +44,7 @@ class GameNode
     }
     else if (_shouldExpand())
     {
-      List<Move> possibleMoves = _board.getAllPossibleMoves();
+      List<Move> possibleMoves = _board.getAllPossibleMovesPreferCopies();
       if (possibleMoves.isEmpty)
       {
         result = _board.getResult(_board.notCurrentPlayer);
@@ -65,7 +66,7 @@ class GameNode
       Random rng = new Random();
       Hexxagon clone = new Hexxagon.clone(_board);
       Move move;
-      while ((move = clone.getRandomMove(rng)) != null)
+      while ((move = RandomAI.getRandomMove(clone, rng)) != null)
       {
         clone.move(move.source, move.target);
       }

@@ -2,9 +2,9 @@ import 'TilePosition.dart';
 
 class Move
 {
-  TilePosition source;
-  TilePosition target;
-  String kindOf;
+  final TilePosition source;
+  final TilePosition target;
+  final String kindOf;
 
   Move(this.source, this.target, this.kindOf);
 }

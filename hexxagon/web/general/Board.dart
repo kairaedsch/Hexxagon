@@ -1,3 +1,4 @@
+import 'GameResult.dart';
 import 'Move.dart';
 import 'TilePosition.dart';
 import 'TileType.dart';
@@ -14,5 +15,6 @@ abstract class Board
   TileType get notCurrentPlayer;
   bool get isOver;
   TileType get betterPlayer;
-  Map<String, String> getStatsOf(TileType player) => {};
+  int countTilesOfType(TileType player);
+  GameResult getResult(TileType player);
 }

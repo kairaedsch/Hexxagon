@@ -4,28 +4,28 @@ import 'package:over_react/over_react.dart';
 
 import '../../general/Intelligence.dart';
 
-import '../GUI.dart';
-import 'ReactPlayerSelect.dart';
+import '../game/logic/GUI.dart';
+import 'ReactOnePlayerSelection.dart';
 
 @Factory()
-UiFactory<ReactPlayerSelectionProps> ReactPlayerSelection;
+UiFactory<ReactTwoPlayerSelectionProps> ReactTwoPlayerSelection;
 
 @Props()
-class ReactPlayerSelectionProps extends UiProps
+class ReactTwoPlayerSelectionProps extends UiProps
 {
   GUI gui;
   List<Intelligence> intelligences;
 }
 
 @State()
-class ReactPlayerSelectionState extends UiState
+class ReactTwoPlayerSelectionState extends UiState
 {
   int selectedPlayerOne;
   int selectedPlayerTwo;
 }
 
 @Component()
-class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelectionProps, ReactPlayerSelectionState>
+class ReactTwoPlayerSelectionComponent extends UiStatefulComponent<ReactTwoPlayerSelectionProps, ReactTwoPlayerSelectionState>
 {
   @override
   getInitialState()
@@ -65,7 +65,7 @@ class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelec
         (Dom.div()
           ..className = "player playerOne"
         )(
-            (ReactPlayerSelect()
+            (ReactOnePlayerSelection()
               ..intelligences = props.intelligences
               ..selected = state.selectedPlayerOne
               ..father = this
@@ -78,7 +78,7 @@ class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelec
         (Dom.div()
           ..className = "player playerTwo"
         )(
-            (ReactPlayerSelect()
+            (ReactOnePlayerSelection()
               ..intelligences = props.intelligences
               ..selected = state.selectedPlayerTwo
               ..father = this
@@ -91,7 +91,7 @@ class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelec
   {
     this.setState((Map prevState, Map props)
     {
-      ReactPlayerSelectionState state = newState()
+      ReactTwoPlayerSelectionState state = newState()
         ..addAll(prevState);
       state.selectedPlayerOne = (state.selectedPlayerOne + delta) % this.props.intelligences.length;
       return state;
@@ -102,7 +102,7 @@ class ReactPlayerSelectionComponent extends UiStatefulComponent<ReactPlayerSelec
   {
     this.setState((Map prevState, Map props)
     {
-      ReactPlayerSelectionState state = newState()
+      ReactTwoPlayerSelectionState state = newState()
         ..addAll(prevState);
       state.selectedPlayerTwo = (state.selectedPlayerTwo + delta) % this.props.intelligences.length;
       return state;

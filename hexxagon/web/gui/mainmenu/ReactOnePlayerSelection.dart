@@ -2,22 +2,22 @@ import 'package:over_react/over_react.dart';
 
 import '../../general/Intelligence.dart';
 
-import 'ReactPlayerSelection.dart';
+import 'ReactTwoPlayerSelection.dart';
 
 @Factory()
-UiFactory<ReactPlayerSelectProps> ReactPlayerSelect;
+UiFactory<ReactOnePlayerSelectionProps> ReactOnePlayerSelection;
 
 @Props()
-class ReactPlayerSelectProps extends UiProps
+class ReactOnePlayerSelectionProps extends UiProps
 {
   List<Intelligence> intelligences;
   int selected;
-  ReactPlayerSelectionComponent father;
+  ReactTwoPlayerSelectionComponent father;
   bool playerOne;
 }
 
 @Component()
-class ReactPlayerSelectComponent extends UiComponent<ReactPlayerSelectProps>
+class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelectionProps>
 {
   ReactElement render()
   {

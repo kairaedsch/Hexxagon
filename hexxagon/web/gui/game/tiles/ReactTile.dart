@@ -4,12 +4,12 @@ import 'dart:html';
 import 'package:optional/optional_internal.dart';
 import 'package:over_react/over_react.dart';
 
-import '../../general/Move.dart';
-import '../../general/TilePosition.dart';
-import '../../general/TileType.dart';
+import '../../../general/Move.dart';
+import '../../../general/TilePosition.dart';
+import '../../../general/TileType.dart';
 
-import '../GUI.dart';
-import '../Hexagon.dart';
+import '../logic/GUI.dart';
+import '../logic/Hexagon.dart';
 import 'ReactTileGrid.dart';
 
 @Factory()
@@ -154,8 +154,8 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " ${isLastMoveTarget ? "lastMoveTarget" : ""}"
           " ${move.isPresent ? move.value.kindOf : ""}"
           " ${playAble ? "playAble" : (playAbleOfNotCurrentPlayer ? "notPlayAble" : "")}"
-          " ${isPlayAbleNow ? "playAbleNow playAbleNow${TileTypeToName(props.gui.currentGameGui.currentPlayer)}" : ""}"
-          " ${TileTypeToName(tileType)}"
+          " ${isPlayAbleNow ? "playAbleNow playAbleNow${TileTypes.toName(props.gui.currentGameGui.currentPlayer)}" : ""}"
+          " ${TileTypes.toName(tileType)}"
           " ${isSelected ? "selected" : ""}"
           " ${state.mouseIsOver ? "mouseIsOver" : ""}"
           " ${isDragging ? "dragging" : ""}"

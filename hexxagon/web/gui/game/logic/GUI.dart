@@ -1,6 +1,6 @@
-import '../general/Board.dart';
-import '../general/Game.dart';
-import '../general/Intelligence.dart';
+import '../../../general/Board.dart';
+import '../../../general/Game.dart';
+import '../../../general/Intelligence.dart';
 
 import 'GameGUI.dart';
 

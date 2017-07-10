@@ -39,7 +39,7 @@ class Game<B extends Board>
     }
     else
     {
-      throw new Exception("ERROR: Tiletype is not a Player: ${TileTypeToName(player)}");
+      throw new Exception("ERROR: Tiletype is not a Player: ${TileTypes.toName(player)}");
     }
   }
 
@@ -65,8 +65,5 @@ class Game<B extends Board>
     changeListener();
   }
 
-  Map<String, String> getStatsOf(TileType player)
-  {
-    return _board.getStatsOf(player);
-  }
+  int countTilesOfType(TileType player) => _board.countTilesOfType(player);
 }

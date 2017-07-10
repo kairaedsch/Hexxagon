@@ -8,18 +8,22 @@ typedef double Heuristic(Hexxagon hexxagon, TileType player);
 
 class MinMaxAI extends ArtificialIntelligence
 {
-  int treeDepth;
+  int _treeDepth;
+  bool _preferCopies;
 
   String get name
-  => "Min Max Player level $strength";
+  => "Min Max Player level $strength${_preferCopies ? " pref copies" : ""}";
 
-  int get strength => (treeDepth - 1);
+  int get strength => (_treeDepth - 1);
 
-  MinMaxAI(this.treeDepth);
+  MinMaxAI(this._treeDepth, [bool preferCopies = true])
+  {
+    this._preferCopies = preferCopies;
+  }
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
-    List<Move> allPossibleMoves = hexxagon.getAllPossibleMoves();
+    List<Move> allPossibleMoves = hexxagon.getAllPossibleMovesPreferCopies();
 
     Move bestMove = null;
     double bestValue = double.NEGATIVE_INFINITY;
@@ -27,7 +31,7 @@ class MinMaxAI extends ArtificialIntelligence
     {
       Hexxagon childHexxagon = new Hexxagon.clone(hexxagon);
       childHexxagon.move(move.source, move.target);
-      double childValue = minimax(childHexxagon, treeDepth, heuristic, hexxagon.currentPlayer, bestValue, double.INFINITY);
+      double childValue = minimax(childHexxagon, _treeDepth, heuristic, hexxagon.currentPlayer, bestValue, double.INFINITY);
       if (childValue > bestValue)
       {
         bestValue = childValue;
@@ -40,7 +44,7 @@ class MinMaxAI extends ArtificialIntelligence
 
   double heuristic(Hexxagon hexxagon, TileType player)
   {
-    return hexxagon.countTilesOfType(player).roundToDouble();
+    return (hexxagon.countTilesOfType(player) - hexxagon.countTilesOfType(TileTypes.other(player))).roundToDouble();
   }
 
   double minimax(Hexxagon hexxagon, int depth, Heuristic heuristic, TileType player, double bestValue, double worstValue)
@@ -50,7 +54,7 @@ class MinMaxAI extends ArtificialIntelligence
       return heuristic(hexxagon, player);
     }
 
-    List<Move> allPossibleMoves = hexxagon.getAllPossibleMoves();
+    List<Move> allPossibleMoves = _preferCopies ? hexxagon.getAllPossibleMovesPreferCopies() : hexxagon.getAllPossibleMoves();
     if (allPossibleMoves.length == 0)
     {
       return heuristic(hexxagon, player);

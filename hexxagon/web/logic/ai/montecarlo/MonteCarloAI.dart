@@ -1,4 +1,5 @@
 import '../../../general/TileType.dart';
+import '../random/RandomAI.dart';
 import 'dart:math';
 
 import 'package:tuple/tuple.dart';
@@ -17,7 +18,7 @@ class MonteCarloAI extends ArtificialIntelligence
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
-    List<Tuple2<int, Move>> possibleMoves = hexxagon.getAllPossibleMoves().map((move)
+    List<Tuple2<int, Move>> possibleMoves = hexxagon.getAllPossibleMovesPreferCopies().map((move)
     => new Tuple2(0, move)).toList(growable: true);
 
     Random rng = new Random();
@@ -30,7 +31,7 @@ class MonteCarloAI extends ArtificialIntelligence
         Hexxagon clone = new Hexxagon.clone(hexxagon);
         clone.move(t.item2.source, t.item2.target);
         Move move;
-        while ((move = clone.getRandomMove(rng)) != null)
+        while ((move = RandomAI.getRandomMove(clone, rng)) != null)
         {
           clone.move(move.source, move.target);
         }
