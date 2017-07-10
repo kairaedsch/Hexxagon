@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040ffbd4-fe00-4cfa-9f85-21d48bb5e9f0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/hexxagon/ai/move/MoveAI.dart" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/logic/Hexxagon.dart" afterPath="$PROJECT_DIR$/web/hexxagon/Hexxagon.dart" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/logic/ai/ArtificialIntelligence.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/ArtificialIntelligence.dart" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/logic/ai/minmax/MinMaxAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/minmax/MinMaxAI.dart" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/logic/ai/montecarlo/GameNode.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/GameNode.dart" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/logic/ai/montecarlo/MonteCarloAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloAI.dart" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/logic/ai/montecarlo/MonteCarloTreeSearchAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloTreeSearchAI.dart" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/logic/ai/random/RandomAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/random/RandomAI.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart" afterPath="$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart" afterPath="$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart" afterPath="$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/logic/ai/random/RandomAI.dart" afterPath="$PROJECT_DIR$/web/logic/ai/random/RandomAI.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/TilePosition.dart" afterPath="$PROJECT_DIR$/web/general/TilePosition.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
     </list>
     <list id="f9be6b39-d5c2-47b1-9740-540f457e7a10" name="Revert: " comment="" />
     <list id="de988520-99e5-498a-bbf9-890faa2d80f8" name="Revert:" comment="" />
@@ -27,27 +32,37 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="234">
-      <file leaf-file-name="ReactGameTopInfo.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart">
+      <file leaf-file-name="Hexxagon.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/hexxagon/Hexxagon.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="72" column="22" lean-forward="true" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+            <state relative-caret-position="744">
+              <caret line="302" column="9" lean-forward="false" selection-start-line="302" selection-start-column="9" selection-end-line="302" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HumanIntelligence.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/general/HumanIntelligence.dart">
+      <file leaf-file-name="TilePosition.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/general/TilePosition.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+            <state relative-caret-position="327">
+              <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReactOnePlayerSelection.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MinMaxAI.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/minmax/MinMaxAI.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReactOnePlayerSelection.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="530">
@@ -57,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.html">
+      <file leaf-file-name="MonteCarloAI.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloAI.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="57" lean-forward="false" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+            <state relative-caret-position="258">
+              <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -77,28 +92,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameGUI.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/game/logic/GameGUI.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RandomAI.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/logic/ai/random/RandomAI.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MonteCarloTreeSearchAI.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/logic/ai/montecarlo/MonteCarloTreeSearchAI.dart">
+        <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloTreeSearchAI.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
@@ -107,21 +102,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameNode.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/logic/ai/montecarlo/GameNode.dart">
+      <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="103" column="7" lean-forward="false" selection-start-line="103" selection-start-column="7" selection-end-line="103" selection-end-column="7" />
+            <state relative-caret-position="153">
+              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Intelligence.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/general/Intelligence.dart">
+      <file leaf-file-name="MoveAI.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/move/MoveAI.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+            <state relative-caret-position="387">
+              <caret line="36" column="3" lean-forward="true" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iterable.dart" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Program Files/Dart/dart-sdk/lib/core/iterable.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="250" column="4" lean-forward="false" selection-start-line="250" selection-start-column="4" selection-end-line="250" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -138,8 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mount</find>
-      <find>p</find>
       <find>pri</find>
       <find>print</find>
       <find>not</find>
@@ -164,10 +167,12 @@
       <find>Toi</find>
       <find>Tou</find>
       <find>To</find>
-      <find>T</find>
       <find>Tui</find>
       <find>Tu</find>
       <find>dragging</find>
+      <find>t</find>
+      <find>Z</find>
+      <find>T</find>
     </findStrings>
     <replaceStrings>
       <replace>_height</replace>
@@ -184,9 +189,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/game/ai/ComputerPlayer.dart" />
-        <option value="$PROJECT_DIR$/web/game/ai/random/RandomHexxagonPlayer.dart" />
-        <option value="$PROJECT_DIR$/web/game/GameResult.dart" />
         <option value="$PROJECT_DIR$/web/gui/tiles/ReactTileRow.dart" />
         <option value="$PROJECT_DIR$/web/gui/gamestate/ReactPlayerStates.dart" />
         <option value="$PROJECT_DIR$/web/logic/ai/random/RandomHexxagonPlayer.dart" />
@@ -217,7 +219,6 @@
         <option value="$PROJECT_DIR$/web/logic/ai/montecarlo/MonteCarloAI.dart" />
         <option value="$PROJECT_DIR$/web/logic/ai/montecarlo/GameNode.dart" />
         <option value="$PROJECT_DIR$/web/general/Board.dart" />
-        <option value="$PROJECT_DIR$/web/main.dart" />
         <option value="$PROJECT_DIR$/web/logic/Hexxagon.dart" />
         <option value="$PROJECT_DIR$/web/general/TileType.dart" />
         <option value="$PROJECT_DIR$/web/general/Game.dart" />
@@ -235,6 +236,10 @@
         <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart" />
         <option value="$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart" />
+        <option value="$PROJECT_DIR$/web/main.dart" />
+        <option value="$PROJECT_DIR$/web/general/TilePosition.dart" />
+        <option value="$PROJECT_DIR$/web/hexxagon/Hexxagon.dart" />
+        <option value="$PROJECT_DIR$/web/hexxagon/ai/move/MoveAI.dart" />
       </list>
     </option>
   </component>
@@ -245,10 +250,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="892" />
-    <option name="y" value="503" />
-    <option name="width" value="2495" />
-    <option name="height" value="1485" />
+    <option name="x" value="1018" />
+    <option name="y" value="486" />
+    <option name="width" value="2083" />
+    <option name="height" value="1512" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -318,7 +323,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logic" />
+              <option name="myItemId" value="hexxagon" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -336,7 +341,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logic" />
+              <option name="myItemId" value="hexxagon" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -358,7 +363,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logic" />
+              <option name="myItemId" value="hexxagon" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -384,7 +389,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logic" />
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ai" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="move" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexxagon" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -410,7 +441,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logic" />
+              <option name="myItemId" value="hexxagon" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -553,11 +584,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kaira\Documents\GitHub\hexxagon\hexxagon\web\logic\ai\move" />
       <recent name="C:\Users\kaira\Documents\GitHub\hexxagon\hexxagon\web" />
       <recent name="C:\Users\kaira\Documents\GitHub\hexxagon\hexxagon\web\game\minmax" />
       <recent name="C:\Users\kaira\Documents\GitHub\hexxagon\hexxagon\web\gui" />
       <recent name="C:\Users\kaira\Documents\GitHub\hexxagon\hexxagon\web\general" />
-      <recent name="C:\Users\kaira\Documents\GitHub\hexxagon\hexxagon\web\game" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kaira\Documents\GitHub\hexxagon\hexxagon\web\general" />
@@ -717,7 +748,7 @@
       <workItem from="1499460663353" duration="8211000" />
       <workItem from="1499505325744" duration="18638000" />
       <workItem from="1499587380221" duration="5195000" />
-      <workItem from="1499672104392" duration="12350000" />
+      <workItem from="1499672104392" duration="16551000" />
     </task>
     <task id="LOCAL-00001" summary="added hexxagon">
       <created>1495470482688</created>
@@ -950,19 +981,28 @@
       <option name="project" value="LOCAL" />
       <updated>1499680984341</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="tooltips">
+      <created>1499696143695</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1499696143695</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347057000" />
+    <option name="totallyTimeSpent" value="351258000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="892" y="503" width="2495" height="1485" extended-state="0" />
+    <frame x="1018" y="486" width="2083" height="1512" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16890517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20293398" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2586727" sideWeight="0.55567765" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2535107" sideWeight="0.50305253" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21485624" sideWeight="0.4830287" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32880846" sideWeight="0.4969475" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30852842" sideWeight="0.49839228" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -976,7 +1016,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24965197" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289358" sideWeight="0.49847627" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1009,7 +1048,8 @@
     <MESSAGE value="mobile design" />
     <MESSAGE value="restructure" />
     <MESSAGE value="restructure, ai anzeige, button left top" />
-    <option name="LAST_COMMIT_MESSAGE" value="restructure, ai anzeige, button left top" />
+    <MESSAGE value="tooltips" />
+    <option name="LAST_COMMIT_MESSAGE" value="tooltips" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1018,14 +1058,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/general/Stats.dart" />
-    <entry file="file://$PROJECT_DIR$/build/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/over_react-1.9.2/lib/src/component/dom_components.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
@@ -1130,17 +1162,11 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/general/TilePosition.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1153,14 +1179,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/gui/gamestate/ReactPlayerState.dart" />
     <entry file="file://$PROJECT_DIR$/web/logic/HexxagonStats.dart" />
-    <entry file="file://$PROJECT_DIR$/web/logic/ai/montecarlo/MonteCarloAI.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/general/Board.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1169,18 +1187,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/logic/ai/ArtificialIntelligence.dart">
+    <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/ArtificialIntelligence.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="47" lean-forward="false" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="127" lean-forward="false" selection-start-line="32" selection-start-column="127" selection-end-line="32" selection-end-column="127" />
           <folding />
         </state>
       </provider>
@@ -1205,14 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="33" lean-forward="false" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/logic/Hexxagon.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="311" column="7" lean-forward="false" selection-start-line="311" selection-start-column="7" selection-end-line="311" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -1289,26 +1291,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/logic/ai/minmax/MinMaxAI.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/logic/ai/montecarlo/GameNode.dart">
+    <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/montecarlo/GameNode.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
           <caret line="103" column="7" lean-forward="false" selection-start-line="103" selection-start-column="7" selection-end-line="103" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/logic/ai/montecarlo/MonteCarloTreeSearchAI.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1321,7 +1307,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/logic/ai/random/RandomAI.dart">
+    <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/random/RandomAI.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
@@ -1373,6 +1359,70 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="530">
           <caret line="40" column="35" lean-forward="false" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloAI.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Dart/dart-sdk/lib/core/iterable.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="250" column="4" lean-forward="false" selection-start-line="250" selection-start-column="4" selection-end-line="250" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloTreeSearchAI.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/minmax/MinMaxAI.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/move/MoveAI.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="36" column="3" lean-forward="true" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/general/TilePosition.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/hexxagon/Hexxagon.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="302" column="9" lean-forward="false" selection-start-line="302" selection-start-column="9" selection-end-line="302" selection-end-column="9" />
           <folding />
         </state>
       </provider>

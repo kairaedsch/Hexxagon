@@ -61,8 +61,7 @@ class Hexxagon extends Board
     TilePosition toTarget = center;
     for(int i = 0; i < size; i++)
     {
-      List<List<int>> neighbourDeltas = toTarget.y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd;
-      toTarget = new TilePosition(toTarget.x + neighbourDeltas[direction][0], toTarget.y + neighbourDeltas[direction][1]);
+      toTarget = new TilePosition(toTarget.x + toTarget.neighbourDeltas[direction][0], toTarget.y + toTarget.neighbourDeltas[direction][1]);
     }
     _set(toTarget, tile);
   }
@@ -88,7 +87,7 @@ class Hexxagon extends Board
   {
     if (!_isValidMove(from, to))
     {
-      throw new Exception("Invalid Move");
+      throw new Exception("Invalid move");
     }
 
     _set(to, _currentPlayer);
@@ -98,14 +97,13 @@ class Hexxagon extends Board
       _set(from, TileType.EMPTY);
     }
 
-    for (List<int> neighbourDelta in to.y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd)
+    to.forEachNeighbour(this, (TilePosition neighbour)
     {
-      TilePosition position = TilePosition.get(neighbourDelta[0] + to.x, neighbourDelta[1] + to.y);
-      if (position.isValid(_width, _height) && get(position) == notCurrentPlayer)
+      if (get(neighbour) == notCurrentPlayer)
       {
-        _set(position, _currentPlayer);
+        _set(neighbour, _currentPlayer);
       }
-    }
+    });
 
     _currentPlayer = notCurrentPlayer;
   }
@@ -287,14 +285,13 @@ class Hexxagon extends Board
     {
       return;
     }
-    for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd)
+    from.forEachNeighbour(this, (neighbour)
     {
-      TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
-      if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
+      if (get(neighbour) == TileType.EMPTY)
       {
-        f(new Move(from, to, "copy"));
+        f(new Move(from, neighbour, "copy"));
       }
-    }
+    });
   }
 
   void getPossibleJumpMoves(TilePosition from, Function f)
@@ -303,14 +300,12 @@ class Hexxagon extends Board
     {
       return;
     }
-    for (List<int> neighbourDelta in from.y.isEven ? TilePosition.neighbourSecondRingDeltasEven : TilePosition.neighbourSecondRingDeltasOdd)
+    from.forEachNeighbourSecondRing(this, (neighbour)
     {
-      TilePosition to = TilePosition.get(neighbourDelta[0] + from.x, neighbourDelta[1] + from.y);
-      if (to.isValid(_width, _height) && get(to) == TileType.EMPTY)
+      if (get(neighbour) == TileType.EMPTY)
       {
-        f(new Move(from, to, "jump"));
+        f(new Move(from, neighbour, "jump"));
       }
-    }
-    return;
+    });
   }
 }

@@ -1,3 +1,4 @@
+import 'Board.dart';
 import 'dart:math';
 
 class TilePosition
@@ -7,6 +8,40 @@ class TilePosition
 
   static final List<List<int>> neighbourSecondRingDeltasOdd = [[0, -4], [1, -3], [1, -2], [1, 0], [1, 2], [1, 3], [0, 4], [0, 3], [-1, 2], [-1, 0], [-1, -2], [0, -3]];
   static final List<List<int>> neighbourSecondRingDeltasEven = [[0, -4], [0, -3], [1, -2], [1, 0], [1, 2], [0, 3], [0, 4], [-1, 3], [-1, 2], [-1, 0], [-1, -2], [-1, -3]];
+
+  List<List<int>> get neighbourDeltas
+  {
+    return y.isEven ? neighbourDeltasEven : neighbourDeltasOdd;
+  }
+
+  List<List<int>> get neighbourSecondRing
+  {
+    return y.isEven ? neighbourSecondRingDeltasEven : neighbourSecondRingDeltasOdd;
+  }
+
+  void forEachNeighbour(Board board, void consumer(TilePosition neighbour))
+  {
+    for (List<int> neighbourDelta in neighbourDeltas)
+    {
+      TilePosition position = TilePosition.get(neighbourDelta[0] + x, neighbourDelta[1] + y);
+      if (position.isValid(board.width, board.height))
+      {
+        consumer(position);
+      }
+    }
+  }
+
+  void forEachNeighbourSecondRing(Board board, void consumer(TilePosition neighbour))
+  {
+    for (List<int> neighbourDelta in neighbourSecondRing)
+    {
+      TilePosition position = TilePosition.get(neighbourDelta[0] + x, neighbourDelta[1] + y);
+      if (position.isValid(board.width, board.height))
+      {
+        consumer(position);
+      }
+    }
+  }
 
   static TilePosition get(int x, int y)
   {
@@ -36,7 +71,7 @@ class TilePosition
     else
     {
       int minDistance = 1000;
-      for (List<int> neighbourDelta in y.isEven ? TilePosition.neighbourDeltasEven : TilePosition.neighbourDeltasOdd)
+      for (List<int> neighbourDelta in neighbourDeltas)
       {
         if (neighbourDelta[1].isOdd)
         {
