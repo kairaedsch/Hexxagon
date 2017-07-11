@@ -590,11 +590,7 @@ html, body {
     color: #FFF;
 }
 
-.hexagon.lastMoveSource .hexagonInnerText {
-    display: block;
-}
-
-.hexagon.lastMoveTarget .hexagonInnerText {
+.hexagon.labeled .hexagonInnerText {
     display: block;
 }
 

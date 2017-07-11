@@ -1,3 +1,4 @@
+import 'HexxagonMove.dart';
 import 'dart:collection';
 import 'dart:math';
 
@@ -10,7 +11,7 @@ import '../general/GameResult.dart';
 
 import 'package:tuple/tuple.dart';
 
-class Hexxagon extends Board
+class Hexxagon extends Board<Hexxagon>
 {
   int _width, _height;
 
@@ -82,6 +83,10 @@ class Hexxagon extends Board
     _currentPlayer = hexxagon.currentPlayer;
   }
 
+  Hexxagon cloneIt() {
+    return new Hexxagon.clone(this);
+  }
+
   @override
   void move(TilePosition from, TilePosition to)
   {
@@ -97,7 +102,7 @@ class Hexxagon extends Board
       _set(from, TileType.EMPTY);
     }
 
-    to.forEachNeighbour(this, (TilePosition neighbour)
+    to.forEachValidNeighbour(this, (TilePosition neighbour)
     {
       if (get(neighbour) == notCurrentPlayer)
       {
@@ -285,11 +290,11 @@ class Hexxagon extends Board
     {
       return;
     }
-    from.forEachNeighbour(this, (neighbour)
+    from.forEachValidNeighbour(this, (neighbour)
     {
       if (get(neighbour) == TileType.EMPTY)
       {
-        f(new Move(from, neighbour, "copy"));
+        f(new HexxagonMove(from, neighbour, "copy"));
       }
     });
   }
@@ -300,11 +305,11 @@ class Hexxagon extends Board
     {
       return;
     }
-    from.forEachNeighbourSecondRing(this, (neighbour)
+    from.forEachValidNeighbourSecondRing(this, (neighbour)
     {
       if (get(neighbour) == TileType.EMPTY)
       {
-        f(new Move(from, neighbour, "jump"));
+        f(new HexxagonMove(from, neighbour, "jump"));
       }
     });
   }

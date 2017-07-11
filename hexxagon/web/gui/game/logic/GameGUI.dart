@@ -37,8 +37,9 @@ class GameGUI
   bool get isSomethingSelected
   => _selectedPosition.isPresent;
 
-  Optional<Move> get lastMove
-  => _game.lastMove;
+  Optional<Map<TilePosition, String>> get lastMoveChanges {
+    return _game.lastMoveChanges;
+  }
 
   GameGUI(this._game, this._delay)
   {

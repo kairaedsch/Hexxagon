@@ -19,26 +19,34 @@ class TilePosition
     return y.isEven ? neighbourSecondRingDeltasEven : neighbourSecondRingDeltasOdd;
   }
 
-  void forEachNeighbour(Board board, void consumer(TilePosition neighbour))
+  void forEachNeighbour(void consumer(TilePosition neighbour))
   {
     for (List<int> neighbourDelta in neighbourDeltas)
     {
-      TilePosition position = TilePosition.get(neighbourDelta[0] + x, neighbourDelta[1] + y);
-      if (position.isValid(board.width, board.height))
-      {
-        consumer(position);
-      }
+      TilePosition neighbour = TilePosition.get(neighbourDelta[0] + x, neighbourDelta[1] + y);
+      consumer(neighbour);
     }
   }
 
-  void forEachNeighbourSecondRing(Board board, void consumer(TilePosition neighbour))
+  void forEachValidNeighbour(Board board, void consumer(TilePosition neighbour))
+  {
+    forEachNeighbour((neighbour)
+    {
+      if (neighbour.isValid(board.width, board.height))
+      {
+        consumer(neighbour);
+      }
+    });
+  }
+
+  void forEachValidNeighbourSecondRing(Board board, void consumer(TilePosition neighbour))
   {
     for (List<int> neighbourDelta in neighbourSecondRing)
     {
-      TilePosition position = TilePosition.get(neighbourDelta[0] + x, neighbourDelta[1] + y);
-      if (position.isValid(board.width, board.height))
+      TilePosition neighbour = TilePosition.get(neighbourDelta[0] + x, neighbourDelta[1] + y);
+      if (neighbour.isValid(board.width, board.height))
       {
-        consumer(position);
+        consumer(neighbour);
       }
     }
   }

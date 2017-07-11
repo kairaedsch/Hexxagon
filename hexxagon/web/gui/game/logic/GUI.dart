@@ -11,7 +11,7 @@ enum GUIState
   PLAYER_SELECTION, GAME_RUNNING, GAME_OVER
 }
 
-class GUI<B extends Board>
+class GUI<B extends Board<B>>
 {
   GUIState _guiState;
   BoardCreater _boardCreater;
@@ -49,7 +49,7 @@ class GUI<B extends Board>
   {
     if (isPlayerSelection)
     {
-      _currentGameGui = new GameGUI(new Game(_boardCreater(), playerOne, playerTwo), 0);
+      _currentGameGui = new GameGUI(new Game<B>(_boardCreater(), playerOne, playerTwo), 0);
       _guiState = GUIState.GAME_RUNNING;
       _currentGameGui.addGameChangeListener(gameChanged);
       _currentGameGui.addGameGUIChangeListener(gameGUIChanged);

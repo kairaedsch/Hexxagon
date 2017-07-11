@@ -54,14 +54,9 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     return (state.delta.x.abs() > 20 || state.delta.y.abs() > 20);
   }
 
-  bool get isLastMoveTarget
+  bool get isLabeled
   {
-    return props.gui.currentGameGui.lastMove.isPresent && props.gui.currentGameGui.lastMove.value.target.equals(props.position);
-  }
-
-  bool get isLastMoveSource
-  {
-    return props.gui.currentGameGui.lastMove.isPresent && props.gui.currentGameGui.lastMove.value.source.equals(props.position);
+    return props.gui.currentGameGui.lastMoveChanges.isPresent && props.gui.currentGameGui.lastMoveChanges.value.containsKey(props.position);
   }
 
   bool get isInfo
@@ -182,8 +177,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
     return (Dom.div()
       ..className = "hexagon "
-          " ${isLastMoveSource ? "lastMoveSource" : ""}"
-          " ${isLastMoveTarget ? "lastMoveTarget" : ""}"
+          " ${isLabeled ? "labeled" : ""}"
           " ${move.isPresent ? move.value.kindOf : ""}"
           " ${playAble ? "playAble" : (playAbleOfNotCurrentPlayer ? "notPlayAble" : "")}"
           " ${isPlayAbleNow ? "playAbleNow playAbleNow${TileTypes.toName(props.gui.currentGameGui.currentPlayer)}" : ""}"
@@ -235,7 +229,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           "lineHeight": "${props.hexagon.tileHeight}px",
         }
       )(
-          (isLastMoveSource || isLastMoveTarget) ? props.gui.currentGameGui.lastMove.value.kindOf : ""
+          isLabeled ? props.gui.currentGameGui.lastMoveChanges.value[props.position] : ""
       ),
       /*
         (Dom.div()

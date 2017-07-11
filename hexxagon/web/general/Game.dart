@@ -1,3 +1,4 @@
+import 'TilePosition.dart';
 import 'package:optional/optional.dart';
 
 import 'Board.dart';
@@ -5,12 +6,14 @@ import 'Move.dart';
 import 'Intelligence.dart';
 import 'TileType.dart';
 
-class Game<B extends Board>
+class Game<B extends Board<B>>
 {
   B _board;
 
   B get board
   => _board;
+
+  Optional<B> _lastBoard;
 
   Function changeListener;
 
@@ -22,10 +25,16 @@ class Game<B extends Board>
   Intelligence get notCurrentIntelligence
   => _board.currentPlayer == TileType.PLAYER_ONE ? _intelligenceTwo : _IntelligenceOne;
 
-  List<Move> _history;
+  List<Move<B>> _history;
 
-  Optional<Move> get lastMove
-  => _history.isNotEmpty ? new Optional.of(_history.last) : new Optional.empty();
+  Optional<Map<TilePosition, String>> get lastMoveChanges
+  {
+    if (!_lastBoard.isPresent || _history.isEmpty)
+    {
+      return new Optional.empty();
+    }
+    return new Optional.of(_history.last.getChanges(_lastBoard.value));
+  }
 
   Intelligence<Board> getIntelligence(TileType player)
   {
@@ -46,6 +55,7 @@ class Game<B extends Board>
   Game(this._board, this._IntelligenceOne, this._intelligenceTwo)
   {
     _history = [];
+    _lastBoard = new Optional.empty();
     changeListener = ()
     => {};
   }
@@ -60,10 +70,12 @@ class Game<B extends Board>
 
   void move(Move move)
   {
+    _lastBoard = new Optional.of(_board.cloneIt());
     _board.move(move.source, move.target);
     _history.add(move);
     changeListener();
   }
 
-  int countTilesOfType(TileType player) => _board.countTilesOfType(player);
+  int countTilesOfType(TileType player)
+  => _board.countTilesOfType(player);
 }
