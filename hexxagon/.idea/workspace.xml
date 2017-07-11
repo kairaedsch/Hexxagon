@@ -4,19 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart" line="27" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="040ffbd4-fe00-4cfa-9f85-21d48bb5e9f0" name="Default" comment="AI order">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/hexxagon/HexxagonMove.dart" />
+    <list default="true" id="040ffbd4-fe00-4cfa-9f85-21d48bb5e9f0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/Board.dart" afterPath="$PROJECT_DIR$/web/general/Board.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/Game.dart" afterPath="$PROJECT_DIR$/web/general/Game.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/Move.dart" afterPath="$PROJECT_DIR$/web/general/Move.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/TilePosition.dart" afterPath="$PROJECT_DIR$/web/general/TilePosition.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/logic/GUI.dart" afterPath="$PROJECT_DIR$/web/gui/game/logic/GUI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/logic/GameGUI.dart" afterPath="$PROJECT_DIR$/web/gui/game/logic/GameGUI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart" afterPath="$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/hexxagon/Hexxagon.dart" afterPath="$PROJECT_DIR$/web/hexxagon/Hexxagon.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/hexxagon/HexxagonMove.dart" afterPath="$PROJECT_DIR$/web/hexxagon/HexxagonMove.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/hexxagon/ai/move/MoveAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/move/MoveAI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/styles.css" afterPath="$PROJECT_DIR$/web/styles.css" />
     </list>
     <list id="f9be6b39-d5c2-47b1-9740-540f457e7a10" name="Revert: " comment="" />
     <list id="de988520-99e5-498a-bbf9-890faa2d80f8" name="Revert:" comment="" />
@@ -46,8 +39,8 @@
       <file leaf-file-name="TilePosition.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/general/TilePosition.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="37" column="7" lean-forward="true" selection-start-line="34" selection-start-column="6" selection-end-line="37" selection-end-column="7" />
+            <state relative-caret-position="499">
+              <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -57,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/web/hexxagon/HexxagonMove.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="19" column="72" lean-forward="false" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
+              <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -769,7 +762,7 @@
       <workItem from="1499587380221" duration="5195000" />
       <workItem from="1499672104392" duration="16784000" />
       <workItem from="1499724141000" duration="1803000" />
-      <workItem from="1499766540811" duration="4689000" />
+      <workItem from="1499766540811" duration="5367000" />
     </task>
     <task id="LOCAL-00001" summary="added hexxagon">
       <created>1495470482688</created>
@@ -1023,11 +1016,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499732049376</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="arrows">
+      <created>1499771243299</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1499771243299</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357983000" />
+    <option name="totallyTimeSpent" value="358661000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1189" y="518" width="2083" height="1519" extended-state="0" />
@@ -1061,7 +1061,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added hexxagon" />
     <MESSAGE value="hexxagon pre alpha human VS human working" />
     <MESSAGE value="hexxagon alpha, dragging &gt; 5" />
     <MESSAGE value="random player" />
@@ -1086,7 +1085,8 @@
     <MESSAGE value="tooltips" />
     <MESSAGE value="Move AI" />
     <MESSAGE value="AI order" />
-    <option name="LAST_COMMIT_MESSAGE" value="AI order" />
+    <MESSAGE value="arrows" />
+    <option name="LAST_COMMIT_MESSAGE" value="arrows" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1369,14 +1369,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/hexxagon/Hexxagon.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="85" column="19" lean-forward="false" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/general/Board.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1435,8 +1427,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/general/TilePosition.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="37" column="7" lean-forward="true" selection-start-line="34" selection-start-column="6" selection-end-line="37" selection-end-column="7" />
+        <state relative-caret-position="499">
+          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/hexxagon/Hexxagon.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="85" column="19" lean-forward="false" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -1444,7 +1444,7 @@
     <entry file="file://$PROJECT_DIR$/web/hexxagon/HexxagonMove.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="72" lean-forward="false" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
+          <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
           <folding />
         </state>
       </provider>

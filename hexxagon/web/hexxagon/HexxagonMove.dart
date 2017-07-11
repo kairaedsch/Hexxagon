@@ -10,22 +10,15 @@ class HexxagonMove extends Move<Hexxagon>
   Map<TilePosition, String> getChanges(Hexxagon hexxagonBeforeMove)
   {
     Map<TilePosition, String> changes = new Map<TilePosition, String>();
-    List<String> arrows = ["↑",  "↗", "↘", "↓", "↙", "↖"];
-    changes[source] = "↘";
-    changes[target] = "o";
-    var iterator = arrows.iterator;
-    target.forEachNeighbour((neighbour)
+    changes[source] = kindOf;
+    changes[target] = kindOf;
+    target.forEachNeighbour(hexxagonBeforeMove, (neighbour)
     {
-      iterator.moveNext();
-      if (neighbour.isValid(hexxagonBeforeMove.width, hexxagonBeforeMove.height))
+      TileType neighbourType = hexxagonBeforeMove.get(neighbour);
+      if (neighbourType == hexxagonBeforeMove.notCurrentPlayer)
       {
-        TileType neighbourType = hexxagonBeforeMove.get(neighbour);
-        if (neighbourType == hexxagonBeforeMove.notCurrentPlayer)
-        {
-          changes[neighbour] = iterator.current;
-        }
+        changes[neighbour] = "●";
       }
-
     });
     return changes;
   }

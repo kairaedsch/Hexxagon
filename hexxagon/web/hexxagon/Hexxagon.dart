@@ -102,7 +102,7 @@ class Hexxagon extends Board<Hexxagon>
       _set(from, TileType.EMPTY);
     }
 
-    to.forEachValidNeighbour(this, (TilePosition neighbour)
+    to.forEachNeighbour(this, (TilePosition neighbour)
     {
       if (get(neighbour) == notCurrentPlayer)
       {
@@ -290,7 +290,7 @@ class Hexxagon extends Board<Hexxagon>
     {
       return;
     }
-    from.forEachValidNeighbour(this, (neighbour)
+    from.forEachNeighbour(this, (neighbour)
     {
       if (get(neighbour) == TileType.EMPTY)
       {
@@ -305,7 +305,7 @@ class Hexxagon extends Board<Hexxagon>
     {
       return;
     }
-    from.forEachValidNeighbourSecondRing(this, (neighbour)
+    from.forEachNeighbourSecondRing(this, (neighbour)
     {
       if (get(neighbour) == TileType.EMPTY)
       {
