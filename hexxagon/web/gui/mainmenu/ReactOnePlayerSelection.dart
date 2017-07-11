@@ -31,11 +31,11 @@ class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelecti
           {
             if (props.playerOne)
             {
-              props.father.changePlayerOne(-1);
+              props.father.changePlayerOne(1);
             }
             else
             {
-              props.father.changePlayerTwo(-1);
+              props.father.changePlayerTwo(1);
             }
           }
           ..title = "Change player"
@@ -66,11 +66,11 @@ class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelecti
           {
             if (props.playerOne)
             {
-              props.father.changePlayerOne(1);
+              props.father.changePlayerOne(-1);
             }
             else
             {
-              props.father.changePlayerTwo(1);
+              props.father.changePlayerTwo(-1);
             }
           }
           ..title = "Change player"

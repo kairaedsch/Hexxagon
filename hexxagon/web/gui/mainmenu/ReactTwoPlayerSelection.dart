@@ -32,7 +32,7 @@ class ReactTwoPlayerSelectionComponent extends UiStatefulComponent<ReactTwoPlaye
   {
     return (newState()
       ..selectedPlayerOne = 0
-      ..selectedPlayerTwo = 1
+      ..selectedPlayerTwo = 4
     );
   }
 
