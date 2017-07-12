@@ -13,7 +13,7 @@ abstract class Board<B>
   bool couldBeMoved(TilePosition tilePosition);
   TileType get(TilePosition tilePosition);
   TileType get currentPlayer;
-  TileType get notCurrentPlayer;
+  TileType get notCurrentPlayer => (currentPlayer == TileType.PLAYER_ONE ? TileType.PLAYER_TWO : TileType.PLAYER_ONE);
   bool get isOver;
   TileType get betterPlayer;
   int countTilesOfType(TileType player);

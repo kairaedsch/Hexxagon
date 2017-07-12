@@ -1,6 +1,7 @@
 import '../../../general/Move.dart';
 import '../../../general/Intelligence.dart';
 import '../../../general/TileType.dart';
+import '../../HexxagonHistory.dart';
 import '../ArtificialIntelligence.dart';
 import '../../Hexxagon.dart';
 import '../MoveFinder.dart';
@@ -29,13 +30,15 @@ class MinMaxAI extends ArtificialIntelligence
   {
     List<Move> allPossibleMoves = MoveFinder.getAllMovesOptimiseAll(hexxagon);
 
+    HexxagonHistory hexxagonHistory = new HexxagonHistory.clone(hexxagon);
+
     Move bestMove = null;
     double bestValue = double.NEGATIVE_INFINITY;
     for (Move move in allPossibleMoves)
     {
-      Hexxagon childHexxagon = new Hexxagon.clone(hexxagon);
-      childHexxagon.move(move);
-      double childValue = minimax(childHexxagon, _treeDepth, heuristic, hexxagon.currentPlayer, bestValue, double.INFINITY);
+      hexxagonHistory.move(move);
+      double childValue = minimax(hexxagonHistory, _treeDepth, heuristic, hexxagon.currentPlayer, bestValue, double.INFINITY);
+      hexxagonHistory.undoLastMove();
       if (childValue > bestValue)
       {
         bestValue = childValue;
@@ -51,26 +54,26 @@ class MinMaxAI extends ArtificialIntelligence
     return (hexxagon.countTilesOfType(player) - hexxagon.countTilesOfType(TileTypes.other(player))).roundToDouble();
   }
 
-  double minimax(Hexxagon hexxagon, int depth, Heuristic heuristic, TileType player, double bestValue, double worstValue)
+  double minimax(HexxagonHistory hexxagonHistory, int depth, Heuristic heuristic, TileType player, double bestValue, double worstValue)
   {
     if (depth == 0)
     {
-      return heuristic(hexxagon, player);
+      return heuristic(hexxagonHistory, player);
     }
 
-    List<Move> allPossibleMoves = _preferCopies ? MoveFinder.getAllMovesOptimiseAll(hexxagon) : MoveFinder.getAllMovesOptimiseOnlyJumps(hexxagon);
+    List<Move> allPossibleMoves = _preferCopies ? MoveFinder.getAllMovesOptimiseAll(hexxagonHistory) : MoveFinder.getAllMovesOptimiseOnlyJumps(hexxagonHistory);
     if (allPossibleMoves.length == 0)
     {
-      return heuristic(hexxagon, player) + (hexxagon.currentPlayer == player ? WIN : -WIN);
+      return heuristic(hexxagonHistory, player) + (hexxagonHistory.currentPlayer == player ? WIN : -WIN);
     }
 
-    if (hexxagon.currentPlayer == player)
+    if (hexxagonHistory.currentPlayer == player)
     {
       for (Move move in allPossibleMoves)
       {
-        Hexxagon childHexxagon = new Hexxagon.clone(hexxagon);
-        childHexxagon.move(move);
-        double childValue = minimax(childHexxagon, depth - 1, heuristic, player, bestValue, worstValue);
+        hexxagonHistory.move(move);
+        double childValue = minimax(hexxagonHistory, depth - 1, heuristic, player, bestValue, worstValue);
+        hexxagonHistory.undoLastMove();
         if (childValue > bestValue)
         {
           bestValue = childValue;
@@ -87,9 +90,9 @@ class MinMaxAI extends ArtificialIntelligence
     {
       for (Move move in allPossibleMoves)
       {
-        Hexxagon childHexxagon = new Hexxagon.clone(hexxagon);
-        childHexxagon.move(move);
-        double childValue = minimax(childHexxagon, depth - 1, heuristic, player, bestValue, worstValue);
+        hexxagonHistory.move(move);
+        double childValue = minimax(hexxagonHistory, depth - 1, heuristic, player, bestValue, worstValue);
+        hexxagonHistory.undoLastMove();
         if (childValue < worstValue)
         {
           worstValue = childValue;

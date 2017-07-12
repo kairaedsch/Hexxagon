@@ -65,13 +65,13 @@ class GameNode
     else
     {
       Random rng = new Random();
-      Hexxagon hexxagonClone = new Hexxagon.clone(_hexxagon);
+      Hexxagon clone = new Hexxagon.clone(_hexxagon);
       Move move;
-      while ((move = RandomAI.getRandomMove(hexxagonClone, rng)) != null)
+      while ((move = RandomAI.getRandomMove(clone, rng)) != null)
       {
-        hexxagonClone.move(move);
+        clone.move(move);
       }
-      result = hexxagonClone.getResult(hexxagonClone.notCurrentPlayer);
+      result = clone.getResult(clone.notCurrentPlayer);
     }
 
     if (result == GameResult.WIN)

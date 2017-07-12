@@ -37,7 +37,8 @@ class GameGUI
   bool get isSomethingSelected
   => _selectedPosition.isPresent;
 
-  Optional<Map<TilePosition, String>> get lastMoveChanges {
+  Optional<Map<TilePosition, String>> get lastMoveChanges
+  {
     return _game.lastMoveChanges;
   }
 
@@ -53,7 +54,10 @@ class GameGUI
         notifyGameChange();
         if (!_game.board.isOver)
         {
-          new Timer(new Duration(milliseconds: (_game.notCurrentIntelligence.isHuman && !_game.currentIntelligence.isHuman) ? (500 + _delay) : 50), _game.next);
+          if (!_game.currentIntelligence.isHuman)
+          {
+            new Timer(new Duration(milliseconds: (500 + _delay)), _game.next);
+          }
         }
       }
     };
@@ -130,7 +134,8 @@ class GameGUI
   bool get isOver
   => _game.board.isOver;
 
-  int countTilesOfType(TileType player) => _game.countTilesOfType(player);
+  int countTilesOfType(TileType player)
+  => _game.countTilesOfType(player);
 
   Intelligence<Board> getIntelligence(TileType player)
   {

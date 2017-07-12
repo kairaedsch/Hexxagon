@@ -6,6 +6,7 @@ import '../general/Move.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import '../general/GameResult.dart';
+import 'package:meta/meta.dart';
 
 class Hexxagon extends Board<Hexxagon>
 {
@@ -37,7 +38,7 @@ class Hexxagon extends Board<Hexxagon>
         var distance = center.getMaxDistanceTo(pos);
         if (distance > size)
         {
-          _set(pos, TileType.OUT_OF_FIELD);
+          set(pos, TileType.OUT_OF_FIELD);
         }
       }
     }
@@ -54,13 +55,14 @@ class Hexxagon extends Board<Hexxagon>
     _setStartTiles(1, center, 4, TileType.FORBIDDEN);
   }
 
-  void _setStartTiles(int size, TilePosition center, int direction, TileType tile) {
+  void _setStartTiles(int size, TilePosition center, int direction, TileType tile)
+  {
     TilePosition toTarget = center;
-    for(int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)
     {
       toTarget = new TilePosition(toTarget.x + toTarget.neighbourDeltas[direction][0], toTarget.y + toTarget.neighbourDeltas[direction][1]);
     }
-    _set(toTarget, tile);
+    set(toTarget, tile);
   }
 
   Hexxagon.clone(Hexxagon hexxagon) {
@@ -80,37 +82,39 @@ class Hexxagon extends Board<Hexxagon>
   }
 
   @override
-  Hexxagon cloneIt() {
+  Hexxagon cloneIt()
+  {
     return new Hexxagon.clone(this);
   }
 
   @override
   void move(Move move)
   {
-    if (!_isValidMove(move))
+    if (!isValidMove(move))
     {
       throw new Exception("Invalid move");
     }
 
-    _set(move.target, _currentPlayer);
+    set(move.target, _currentPlayer);
     int distance = move.source.getMaxDistanceTo(move.target);
     if (distance == 2)
     {
-      _set(move.source, TileType.EMPTY);
+      set(move.source, TileType.EMPTY);
     }
 
     move.target.forEachNeighbour(this, (TilePosition neighbour)
     {
       if (get(neighbour) == notCurrentPlayer)
       {
-        _set(neighbour, _currentPlayer);
+        set(neighbour, _currentPlayer);
       }
     });
 
     _currentPlayer = notCurrentPlayer;
   }
 
-  bool _isValidMove(Move move)
+  @protected
+  bool isValidMove(Move move)
   {
     if (get(move.source) != _currentPlayer || get(move.target) != TileType.EMPTY)
     {
@@ -126,7 +130,8 @@ class Hexxagon extends Board<Hexxagon>
     return true;
   }
 
-  void _set(TilePosition position, TileType type)
+  @protected
+  void set(TilePosition position, TileType type)
   {
     _tiles.array[position.x][position.y] = type;
   }
@@ -169,10 +174,13 @@ class Hexxagon extends Board<Hexxagon>
   }
 
   @override
-  TileType get currentPlayer => _currentPlayer;
+  TileType get currentPlayer
+  => _currentPlayer;
 
-  @override
-  TileType get notCurrentPlayer => (_currentPlayer == TileType.PLAYER_ONE ? TileType.PLAYER_TWO : TileType.PLAYER_ONE);
+  @protected
+  void set currentPlayer(TileType currentPlayer) {
+  _currentPlayer = currentPlayer;
+  }
 
   @override
   bool get isOver
@@ -233,7 +241,8 @@ class Hexxagon extends Board<Hexxagon>
   }
 
   @override
-  int countTilesOfType(TileType player) {
+  int countTilesOfType(TileType player)
+  {
     int count = 0;
     for (int x = 0; x < _width; x++)
     {
