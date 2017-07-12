@@ -20,7 +20,7 @@ void main()
   // Initialize React within our Dart app
   react_client.setClientConfiguration();
 
-  GUI<Hexxagon> gui = new GUI<Hexxagon>(() => new Hexxagon(4));
+  GUI<Hexxagon> gui = new GUI<Hexxagon>(() => new Hexxagon(5));
 
   react_dom.render(
       (ReactTileGrid()

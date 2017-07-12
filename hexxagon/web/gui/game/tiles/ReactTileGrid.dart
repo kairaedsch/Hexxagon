@@ -4,7 +4,7 @@ import 'package:over_react/over_react.dart';
 
 import '../logic/GUI.dart';
 import '../logic/GameGUI.dart';
-import '../logic/Hexagon.dart';
+import '../logic/HexagonGrid.dart';
 import 'ReactTileRow.dart';
 
 @Factory()
@@ -58,7 +58,7 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
     var width = container.offsetWidth;
     var height = container.offsetHeight;
     List<ReactElement> tiles = new List(gameGUI.height);
-    Hexagon hexagon = new Hexagon(width, height, gameGUI.width * 2, gameGUI.height);
+    HexagonGrid hexagonGrid = new HexagonGrid(width, height, gameGUI.width, gameGUI.height);
     for (int y = 0; y < gameGUI.height; y++)
     {
       tiles[y] = (ReactTileRow()
@@ -66,16 +66,17 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
         ..y = y
         ..tileGrid = this
         ..gui = props.gui
-        ..hexagon = hexagon
+        ..hexagonGrid = hexagonGrid
       )();
     }
     return (Dom.div()
       ..className = "tileGrid clearfix"
       ..style =
       {
-        "width": "${hexagon.gridWidth}px",
-        "paddingTop": "calc((85vh - ${hexagon.gridheight}px) / 2)",
-        "marginLeft": "${(width - hexagon.gridWidth) / 2}px"
+        "width": "${hexagonGrid.gridWidth}px",
+        "height": "${hexagonGrid.gridHeight}px",
+        "marginTop": "calc((81vh - ${hexagonGrid.gridHeight}px) / 2)",
+        "marginLeft": "${(width - hexagonGrid.gridWidthIfRound) / 2}px"
       }
     )(
         tiles

@@ -1,4 +1,5 @@
 import '../../../general/TileType.dart';
+import '../MoveFinder.dart';
 import '../random/RandomAI.dart';
 import 'dart:math';
 
@@ -18,7 +19,7 @@ class MonteCarloAI extends ArtificialIntelligence
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
-    List<Tuple2<int, Move>> possibleMoves = hexxagon.getAllPossibleMovesPreferCopies().map((move)
+    List<Tuple2<int, Move>> possibleMoves = MoveFinder.getAllMovesOptimiseAll(hexxagon).map((move)
     => new Tuple2(0, move)).toList(growable: true);
 
     Random rng = new Random();
@@ -29,11 +30,11 @@ class MonteCarloAI extends ArtificialIntelligence
       {
         Tuple2<int, Move> t = possibleMoves[i];
         Hexxagon clone = new Hexxagon.clone(hexxagon);
-        clone.move(t.item2.source, t.item2.target);
+        clone.move(t.item2);
         Move move;
         while ((move = RandomAI.getRandomMove(clone, rng)) != null)
         {
-          clone.move(move.source, move.target);
+          clone.move(move);
         }
         TileType betterPlayer = clone.betterPlayer;
         if (betterPlayer == hexxagon.currentPlayer)

@@ -1,6 +1,4 @@
 import 'HexxagonMove.dart';
-import 'dart:collection';
-import 'dart:math';
 
 import '../general/Array2D.dart';
 import '../general/Board.dart';
@@ -8,8 +6,6 @@ import '../general/Move.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import '../general/GameResult.dart';
-
-import 'package:tuple/tuple.dart';
 
 class Hexxagon extends Board<Hexxagon>
 {
@@ -32,7 +28,7 @@ class Hexxagon extends Board<Hexxagon>
     _tiles = new Array2D(_width, _height, TileType.EMPTY);
     _currentPlayer = TileType.PLAYER_ONE;
 
-    TilePosition center = TilePosition.get((_width / 2).floor(), (_height / 2).floor());
+    TilePosition center = TilePosition.get((size / 2).floor(), (_height / 2).floor());
     for (int x = 0; x < _width; x++)
     {
       for (int y = 0; y < _height; y++)
@@ -83,26 +79,27 @@ class Hexxagon extends Board<Hexxagon>
     _currentPlayer = hexxagon.currentPlayer;
   }
 
+  @override
   Hexxagon cloneIt() {
     return new Hexxagon.clone(this);
   }
 
   @override
-  void move(TilePosition from, TilePosition to)
+  void move(Move move)
   {
-    if (!_isValidMove(from, to))
+    if (!_isValidMove(move))
     {
       throw new Exception("Invalid move");
     }
 
-    _set(to, _currentPlayer);
-    int distance = from.getMaxDistanceTo(to);
+    _set(move.target, _currentPlayer);
+    int distance = move.source.getMaxDistanceTo(move.target);
     if (distance == 2)
     {
-      _set(from, TileType.EMPTY);
+      _set(move.source, TileType.EMPTY);
     }
 
-    to.forEachNeighbour(this, (TilePosition neighbour)
+    move.target.forEachNeighbour(this, (TilePosition neighbour)
     {
       if (get(neighbour) == notCurrentPlayer)
       {
@@ -113,14 +110,14 @@ class Hexxagon extends Board<Hexxagon>
     _currentPlayer = notCurrentPlayer;
   }
 
-  bool _isValidMove(TilePosition from, TilePosition to)
+  bool _isValidMove(Move move)
   {
-    if (get(from) != _currentPlayer || get(to) != TileType.EMPTY)
+    if (get(move.source) != _currentPlayer || get(move.target) != TileType.EMPTY)
     {
       return false;
     }
 
-    int distance = from.getMaxDistanceTo(to);
+    int distance = move.source.getMaxDistanceTo(move.target);
     if (distance != 1 && distance != 2)
     {
       return false;
@@ -148,8 +145,20 @@ class Hexxagon extends Board<Hexxagon>
       return new List(0);
     }
     List<Move> possibleMoves = [];
-    getPossibleCopyMoves(from, possibleMoves.add);
-    getPossibleJumpMoves(from, possibleMoves.add);
+    from.forEachNeighbour(this, (neighbour)
+    {
+      if (get(neighbour) == TileType.EMPTY)
+      {
+        possibleMoves.add(new HexxagonMove(from, neighbour));
+      }
+    });
+    from.forEachNeighbourSecondRing(this, (neighbour)
+    {
+      if (get(neighbour) == TileType.EMPTY)
+      {
+        possibleMoves.add(new HexxagonMove(from, neighbour));
+      }
+    });
     return possibleMoves;
   }
 
@@ -238,79 +247,5 @@ class Hexxagon extends Board<Hexxagon>
       }
     }
     return count;
-  }
-
-  List<Move> getAllPossibleMoves()
-  {
-    Map<Tuple2<TilePosition, String>, Move> possibleMoves = new HashMap<Tuple2<TilePosition, String>, Move>();
-    for (int x = 0; x < _width; x++)
-    {
-      for (int y = 0; y < _height; y++)
-      {
-        TilePosition from = TilePosition.get(x, y);
-        if (get(from) == _currentPlayer)
-        {
-          getPossibleCopyMoves(from, (move){
-            possibleMoves[new Tuple2<TilePosition, String>(move.target, move.kindOf)] = move;
-          });
-          getPossibleJumpMoves(from, (move){
-            possibleMoves.putIfAbsent(new Tuple2<TilePosition, String>(move.target, move.kindOf), () => move);
-          });
-        }
-      }
-    }
-    return possibleMoves.values.toList(growable: false);
-  }
-
-  List<Move> getAllPossibleMovesPreferCopies()
-  {
-    Map<TilePosition, Move> possibleMoves = new HashMap<TilePosition, Move>();
-    for (int x = 0; x < _width; x++)
-    {
-      for (int y = 0; y < _height; y++)
-      {
-        TilePosition from = TilePosition.get(x, y);
-        if (get(from) == _currentPlayer)
-        {
-          getPossibleCopyMoves(from, (move){
-            possibleMoves[move.target] = move;
-          });
-          getPossibleJumpMoves(from, (move){
-            possibleMoves.putIfAbsent(move.target, () => move);
-          });
-        }
-      }
-    }
-    return possibleMoves.values.toList(growable: false);
-  }
-
-  void getPossibleCopyMoves(TilePosition from, Function f)
-  {
-    if (get(from) != _currentPlayer)
-    {
-      return;
-    }
-    from.forEachNeighbour(this, (neighbour)
-    {
-      if (get(neighbour) == TileType.EMPTY)
-      {
-        f(new HexxagonMove(from, neighbour, "copy"));
-      }
-    });
-  }
-
-  void getPossibleJumpMoves(TilePosition from, Function f)
-  {
-    if (get(from) != _currentPlayer)
-    {
-      return;
-    }
-    from.forEachNeighbourSecondRing(this, (neighbour)
-    {
-      if (get(neighbour) == TileType.EMPTY)
-      {
-        f(new HexxagonMove(from, neighbour, "jump"));
-      }
-    });
   }
 }

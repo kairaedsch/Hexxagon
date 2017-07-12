@@ -1,3 +1,4 @@
+import '../MoveFinder.dart';
 import '../random/RandomAI.dart';
 import 'dart:math';
 
@@ -10,13 +11,13 @@ class GameNode
   List<GameNode> _children;
   GameNode _parent;
 
-  Hexxagon _board;
+  Hexxagon _hexxagon;
   Move _move;
   int _looses;
   int _draws;
   int _wins;
 
-  GameNode(this._parent, this._board, this._move)
+  GameNode(this._parent, this._hexxagon, this._move)
   {
     _looses = 0;
     _draws = 0;
@@ -24,7 +25,7 @@ class GameNode
     _children = [];
   }
 
-  GameNode.root(this._board)
+  GameNode.root(this._hexxagon)
   {
     _looses = 0;
     _draws = 0;
@@ -44,17 +45,17 @@ class GameNode
     }
     else if (_shouldExpand())
     {
-      List<Move> possibleMoves = _board.getAllPossibleMovesPreferCopies();
+      List<Move> possibleMoves = MoveFinder.getAllMovesOptimiseAll(_hexxagon);
       if (possibleMoves.isEmpty)
       {
-        result = _board.getResult(_board.notCurrentPlayer);
+        result = _hexxagon.getResult(_hexxagon.notCurrentPlayer);
       }
       else
       {
         for (Move move in possibleMoves)
         {
-          Hexxagon childBoard = new Hexxagon.clone(_board);
-          childBoard.move(move.source, move.target);
+          Hexxagon childBoard = new Hexxagon.clone(_hexxagon);
+          childBoard.move(move);
           _children.add(new GameNode(this, childBoard, move));
         }
         GameNode bestChild = _getNextChild();
@@ -64,13 +65,13 @@ class GameNode
     else
     {
       Random rng = new Random();
-      Hexxagon clone = new Hexxagon.clone(_board);
+      Hexxagon hexxagonClone = new Hexxagon.clone(_hexxagon);
       Move move;
-      while ((move = RandomAI.getRandomMove(clone, rng)) != null)
+      while ((move = RandomAI.getRandomMove(hexxagonClone, rng)) != null)
       {
-        clone.move(move.source, move.target);
+        hexxagonClone.move(move);
       }
-      result = clone.getResult(clone.notCurrentPlayer);
+      result = hexxagonClone.getResult(hexxagonClone.notCurrentPlayer);
     }
 
     if (result == GameResult.WIN)

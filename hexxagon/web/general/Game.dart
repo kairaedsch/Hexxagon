@@ -71,7 +71,7 @@ class Game<B extends Board<B>>
   void move(Move move)
   {
     _lastBoard = new Optional.of(_board.cloneIt());
-    _board.move(move.source, move.target);
+    _board.move(move);
     _history.add(move);
     changeListener();
   }

@@ -3,6 +3,7 @@ import '../../../general/Intelligence.dart';
 import '../../../general/TileType.dart';
 import '../ArtificialIntelligence.dart';
 import '../../Hexxagon.dart';
+import '../MoveFinder.dart';
 import 'package:tuple/tuple.dart';
 
 typedef double Heuristic(Hexxagon hexxagon, TileType player);
@@ -22,7 +23,7 @@ class MoveAI extends ArtificialIntelligence
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
-    List<Move> allPossibleMoves = hexxagon.getAllPossibleMovesPreferCopies();
+    List<Move> allPossibleMoves = MoveFinder.getAllMovesOptimiseAll(hexxagon);
 
     Iterable<Tuple2<Move, double>> allPossibleMovesEvaluated = allPossibleMoves.map((move)
     => evaluateMove(hexxagon, move));

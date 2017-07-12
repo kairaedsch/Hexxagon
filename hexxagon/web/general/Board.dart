@@ -8,7 +8,7 @@ abstract class Board<B>
   B cloneIt();
   int get width;
   int get height;
-  void move(TilePosition from, TilePosition to);
+  void move(Move move);
   List<Move> getPossibleMoves(TilePosition tilePosition);
   bool couldBeMoved(TilePosition tilePosition);
   TileType get(TilePosition tilePosition);

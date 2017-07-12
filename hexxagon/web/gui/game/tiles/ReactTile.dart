@@ -9,7 +9,7 @@ import '../../../general/TilePosition.dart';
 import '../../../general/TileType.dart';
 
 import '../logic/GUI.dart';
-import '../logic/Hexagon.dart';
+import '../logic/HexagonGrid.dart';
 import 'ReactTileGrid.dart';
 
 @Factory()
@@ -21,7 +21,7 @@ class ReactTileProps extends UiProps
   ReactTileGridComponent tileGrid;
   TilePosition position;
   GUI gui;
-  Hexagon hexagon;
+  HexagonGrid hexagonGrid;
 }
 
 @State()
@@ -189,20 +189,20 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
       ..style =
       {
         "transform": (isTranslated ? "translate(${state.delta.x}px, ${state.delta.y}px)" : "none"),
-        "marginLeft": "${props.hexagon.tileMarginLeft}px",
-        "marginTop": "${props.hexagon.tileMarginTop}px",
-        "width": "${props.hexagon.tileWidth}px",
-        "height": "${props.hexagon.tileHeight}px"
+        "marginLeft": "${props.hexagonGrid.tileMarginLeft}px",
+        "marginTop": "${props.hexagonGrid.tileMarginTop}px",
+        "width": "${props.hexagonGrid.tileWidth}px",
+        "height": "${props.hexagonGrid.tileHeight}px"
       }
     )(
       (Dom.svg()
         ..version = "1.1"
-        ..height = props.hexagon.tileHeight
-        ..width = props.hexagon.tileWidth
+        ..height = props.hexagonGrid.tileHeight
+        ..width = props.hexagonGrid.tileWidth
         ..viewBox = "0 0 726 628"
         ..style =
         {
-          "height": "${props.hexagon.tileHeight}px",
+          "height": "${props.hexagonGrid.tileHeight}px",
         }
       )(
           (Dom.polygon()
@@ -222,11 +222,11 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
       (Dom.div()
         ..className = "hexagonInnerText"
         ..style = {
-          "marginTop": "-${props.hexagon.tileHeight + props.hexagon.borderRows * 3}px",
-          "width": "${props.hexagon.tileWidth}px",
-          "height": "${props.hexagon.tileHeight}px",
-          "fontSize": "${props.hexagon.tileWidth / 5.5}px",
-          "lineHeight": "${props.hexagon.tileHeight}px",
+          "marginTop": "-${props.hexagonGrid.tileHeight + props.hexagonGrid.borderRows * 3}px",
+          "width": "${props.hexagonGrid.tileWidth}px",
+          "height": "${props.hexagonGrid.tileHeight}px",
+          "fontSize": "${props.hexagonGrid.tileWidth / 5.5}px",
+          "lineHeight": "${props.hexagonGrid.tileHeight}px",
         }
       )(
           isLabeled ? props.gui.currentGameGui.lastMoveChanges.value[props.position] : ""
