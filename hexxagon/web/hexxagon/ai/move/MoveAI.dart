@@ -41,7 +41,7 @@ class MoveAI extends ArtificialIntelligence
     int enemyGoNear = 0;
     int selfGoNear = 0;
     bool goingToWall = false;
-    move.target.forEachNeighbour(hexxagon, (neighbour)
+    move.to.forEachNeighbour(hexxagon, (neighbour)
     {
       TileType neighbourTile = hexxagon.get(neighbour);
       if (neighbourTile == enemy)
@@ -58,7 +58,7 @@ class MoveAI extends ArtificialIntelligence
       }
     });
     int selfGoAway = 0;
-    move.source.forEachNeighbour(hexxagon, (neighbour)
+    move.from.forEachNeighbour(hexxagon, (neighbour)
     {
       TileType neighbourTile = hexxagon.get(neighbour);
       if (neighbourTile == player)

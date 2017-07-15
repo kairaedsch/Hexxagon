@@ -134,8 +134,8 @@ class GameGUI
   bool get isOver
   => _game.board.isOver;
 
-  int countTilesOfType(TileType player)
-  => _game.countTilesOfType(player);
+  int scoreOfPlayer(TileType player)
+  => _game.scoreOfPlayer(player);
 
   Intelligence<Board> getIntelligence(TileType player)
   {

@@ -58,7 +58,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                   ..className = "topInfoPartScore"
                   ..title = "Score of the blue player"
                 )(
-                    props.gui.currentGameGui.countTilesOfType(TileType.PLAYER_ONE)
+                    props.gui.currentGameGui.scoreOfPlayer(TileType.PLAYER_ONE)
                 ),
                 (Dom.div()
                   ..className = "topInfoPartImage"
@@ -95,7 +95,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                   ..className = "topInfoPartScore"
                   ..title = "Score of the orange player"
                 )(
-                    props.gui.currentGameGui.countTilesOfType(TileType.PLAYER_TWO)
+                    props.gui.currentGameGui.scoreOfPlayer(TileType.PLAYER_TWO)
                 )
             )
         ),

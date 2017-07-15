@@ -12,11 +12,9 @@ class Hexxagon extends Board<Hexxagon>
 {
   int _width, _height;
 
-  int get width
-  => _width;
+  int get width => _width;
 
-  int get height
-  => _height;
+  int get height => _height;
 
   Array2D<TileType> _tiles;
   TileType _currentPlayer;
@@ -35,7 +33,7 @@ class Hexxagon extends Board<Hexxagon>
       for (int y = 0; y < _height; y++)
       {
         TilePosition pos = TilePosition.get(x, y);
-        var distance = center.getMaxDistanceTo(pos);
+        var distance = center.getDistanceTo(pos);
         if (distance > size)
         {
           set(pos, TileType.OUT_OF_FIELD);
@@ -50,9 +48,9 @@ class Hexxagon extends Board<Hexxagon>
     _setStartTiles(size, center, 4, TileType.PLAYER_ONE);
     _setStartTiles(size, center, 5, TileType.PLAYER_TWO);
 
-    _setStartTiles(1, center, 0, TileType.FORBIDDEN);
-    _setStartTiles(1, center, 2, TileType.FORBIDDEN);
-    _setStartTiles(1, center, 4, TileType.FORBIDDEN);
+    _setStartTiles(1, center, 0, TileType.BLOCKED);
+    _setStartTiles(1, center, 2, TileType.BLOCKED);
+    _setStartTiles(1, center, 4, TileType.BLOCKED);
   }
 
   void _setStartTiles(int size, TilePosition center, int direction, TileType tile)
@@ -95,14 +93,14 @@ class Hexxagon extends Board<Hexxagon>
       throw new Exception("Invalid move");
     }
 
-    set(move.target, _currentPlayer);
-    int distance = move.source.getMaxDistanceTo(move.target);
+    set(move.to, _currentPlayer);
+    int distance = move.from.getDistanceTo(move.to);
     if (distance == 2)
     {
-      set(move.source, TileType.EMPTY);
+      set(move.from, TileType.EMPTY);
     }
 
-    move.target.forEachNeighbour(this, (TilePosition neighbour)
+    move.to.forEachNeighbour(this, (TilePosition neighbour)
     {
       if (get(neighbour) == notCurrentPlayer)
       {
@@ -116,12 +114,12 @@ class Hexxagon extends Board<Hexxagon>
   @protected
   bool isValidMove(Move move)
   {
-    if (get(move.source) != _currentPlayer || get(move.target) != TileType.EMPTY)
+    if (get(move.from) != _currentPlayer || get(move.to) != TileType.EMPTY)
     {
       return false;
     }
 
-    int distance = move.source.getMaxDistanceTo(move.target);
+    int distance = move.from.getDistanceTo(move.to);
     if (distance != 1 && distance != 2)
     {
       return false;
@@ -168,18 +166,14 @@ class Hexxagon extends Board<Hexxagon>
   }
 
   @override
-  bool couldBeMoved(TilePosition position)
-  {
-    return get(position) == _currentPlayer;
-  }
+  bool couldBeMoved(TilePosition position) => get(position) == _currentPlayer;
 
   @override
-  TileType get currentPlayer
-  => _currentPlayer;
+  TileType get currentPlayer => _currentPlayer;
 
   @protected
   void set currentPlayer(TileType currentPlayer) {
-  _currentPlayer = currentPlayer;
+    _currentPlayer = currentPlayer;
   }
 
   @override
@@ -200,47 +194,6 @@ class Hexxagon extends Board<Hexxagon>
   }
 
   @override
-  TileType get betterPlayer
-  {
-    int playerOne = 0,
-        playerTwo = 0;
-    for (int x = 0; x < _width; x++)
-    {
-      for (int y = 0; y < _height; y++)
-      {
-        TileType type = get(TilePosition.get(x, y));
-        if (type == TileType.PLAYER_ONE)
-        {
-          playerOne++;
-        }
-        else if (type == TileType.PLAYER_TWO)
-        {
-          playerTwo++;
-        }
-      }
-    }
-    return playerOne > playerTwo ? TileType.PLAYER_ONE : playerOne < playerTwo ? TileType.PLAYER_TWO : TileType.EMPTY;
-  }
-
-  @override
-  GameResult getResult(TileType player)
-  {
-    TileType betterPlayer = this.betterPlayer;
-    if (betterPlayer == player)
-    {
-      return GameResult.WIN;
-    }
-    else if (betterPlayer == TileType.EMPTY)
-    {
-      return GameResult.DRAW;
-    }
-    else
-    {
-      return GameResult.LOST;
-    }
-  }
-
-  @override
   int countTilesOfType(TileType player)
   {
     int count = 0;
@@ -257,4 +210,6 @@ class Hexxagon extends Board<Hexxagon>
     }
     return count;
   }
+
+  scoreOfPlayer(TileType player) => countTilesOfType(player);
 }

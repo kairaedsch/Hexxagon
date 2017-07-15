@@ -22,16 +22,16 @@ class HexxagonHistory extends Hexxagon
 
     List<TilePosition> changed = [];
 
-    set(move.target, currentPlayer);
-    changed.add(move.target);
-    int distance = move.source.getMaxDistanceTo(move.target);
+    set(move.to, currentPlayer);
+    changed.add(move.to);
+    int distance = move.from.getDistanceTo(move.to);
     if (distance == 2)
     {
-      set(move.source, TileType.EMPTY);
-      changed.add(move.source);
+      set(move.from, TileType.EMPTY);
+      changed.add(move.from);
     }
 
-    move.target.forEachNeighbour(this, (TilePosition neighbour)
+    move.to.forEachNeighbour(this, (TilePosition neighbour)
     {
       if (get(neighbour) == notCurrentPlayer)
       {

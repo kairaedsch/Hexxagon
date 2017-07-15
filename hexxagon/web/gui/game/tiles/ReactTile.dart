@@ -46,7 +46,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   {
     return props.gui.currentGameGui.isSomethingSelected
         && props.gui.currentGameGui.possibleMoves.any((Move move)
-        => move.target.equals(props.position));
+        => move.to.equals(props.position));
   }
 
   bool get isDragging
@@ -70,7 +70,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     {
       return "";
     }
-    if (tileType == TileType.FORBIDDEN)
+    if (tileType == TileType.BLOCKED)
     {
       return "This Tile is blocked";
     }
@@ -106,7 +106,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     if (props.gui.currentGameGui.isSomethingSelected)
     {
       return new Optional.ofNullable(props.gui.currentGameGui.possibleMoves.firstWhere((Move move)
-      => move.target.equals(props.position), orElse: ()
+      => move.to.equals(props.position), orElse: ()
       => null));
     }
     else
@@ -157,7 +157,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
     props.gui.addGameChangeListener(()
     {
-      if (!(currentTileType == tileType && tileType == TileType.FORBIDDEN))
+      if (!(currentTileType == tileType && tileType == TileType.BLOCKED))
       {
         setState(state);
       }
@@ -185,7 +185,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " ${isSelected ? "selected" : ""}"
           " ${state.mouseIsOver ? "mouseIsOver" : ""}"
           " ${isDragging ? "dragging" : ""}"
-          " posy_${props.position.getMaxDistanceTo(TilePosition.get(0, 0))}"
+          " posy_${props.position.getDistanceTo(TilePosition.get(0, 0))}"
       ..style =
       {
         "transform": (isTranslated ? "translate(${state.delta.x}px, ${state.delta.y}px)" : "none"),
@@ -213,7 +213,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
             ..onMouseLeave = onMouseLeave
             ..style =
             {
-              "animationDelay": playAble ? "${0.15 * props.position.getMaxDistanceTo(TilePosition.get(0, 0))}s" : ""
+              "animationDelay": playAble ? "${0.15 * props.position.getDistanceTo(TilePosition.get(0, 0))}s" : ""
             }
           )(
               Dom.title()(title)

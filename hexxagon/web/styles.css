@@ -488,7 +488,7 @@ html, body {
     }
 }
 
-.hexagon.FORBIDDEN .hexagonInner {
+.hexagon.BLOCKED .hexagonInner {
     fill: #6CB5C7;
 }
 

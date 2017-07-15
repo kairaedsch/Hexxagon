@@ -22,7 +22,7 @@ class MoveFinder
         {
           _getPossibleCopyMoves(hexxagon, from, (move)
           {
-            possibleCopies[move.target] = move;
+            possibleCopies[move.to] = move;
           });
           _getPossibleJumpMoves(hexxagon, from, (move)
           {
@@ -46,12 +46,12 @@ class MoveFinder
         {
           _getPossibleCopyMoves(hexxagon, from, (move)
           {
-            possibleMoves[move.target] = move;
+            possibleMoves[move.to] = move;
           });
           _getPossibleJumpMoves(hexxagon, from, (move)
           {
             bool hasEnemyNeihbours = false;
-            move.target.forEachNeighbour(hexxagon, (neighbour)
+            move.to.forEachNeighbour(hexxagon, (neighbour)
             {
               if (!hasEnemyNeihbours)
               {
@@ -60,7 +60,7 @@ class MoveFinder
             });
             if (hasEnemyNeihbours)
             {
-              possibleMoves.putIfAbsent(move.target, ()
+              possibleMoves.putIfAbsent(move.to, ()
               => move);
             }
           });

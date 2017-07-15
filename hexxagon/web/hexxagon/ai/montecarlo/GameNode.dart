@@ -125,10 +125,9 @@ class GameNode
     return _wins / simulations;
   }
 
-  @override
   String toTree(String left, String left2, int maxDepth)
   {
-    String out = left2 + '${(_children.isNotEmpty && maxDepth > 0) ? "┬" : "─"}${winRate.toStringAsFixed(2)}% ($_wins, $_draws, $_looses)${_move != null ? " (${_move.source.x} - ${_move.source.y}) => (${_move.target.x} - ${_move.target.y})" : ""}';
+    String out = left2 + '${(_children.isNotEmpty && maxDepth > 0) ? "┬" : "─"}${winRate.toStringAsFixed(2)}% ($_wins, $_draws, $_looses)${_move != null ? " (${_move.from.x} - ${_move.from.y}) => (${_move.to.x} - ${_move.to.y})" : ""}';
     if (maxDepth > 0)
     {
       for (int c = 0; c < _children.length; c++)

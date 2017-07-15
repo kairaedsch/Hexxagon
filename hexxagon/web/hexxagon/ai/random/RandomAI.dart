@@ -1,3 +1,4 @@
+import '../../../general/Board.dart';
 import '../../../general/Move.dart';
 import '../../../general/TilePosition.dart';
 import 'dart:math';
@@ -8,9 +9,11 @@ import '../../Hexxagon.dart';
 
 class RandomAI extends ArtificialIntelligence
 {
-  String get name => "Random";
+  String get name
+  => "Random";
 
-  int get strength => 1;
+  int get strength
+  => 1;
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
@@ -30,13 +33,46 @@ class RandomAI extends ArtificialIntelligence
         List<Move> possibleMoves = hexxagon.getPossibleMoves(loop);
         if (possibleMoves.isNotEmpty)
         {
-          return possibleMoves[rng.nextInt(possibleMoves.length)];
+          Move<Board> randomMoveFromTile = getRandomMoveFromTile(hexxagon, possibleMoves, rng);
+          if (randomMoveFromTile != null)
+          {
+            return randomMoveFromTile;
+          }
         }
       }
       loop = loop.next(hexxagon.width, hexxagon.height);
     }
     while (!loop.equals(start));
 
+    return null;
+  }
+
+  static Move<Board> getRandomMoveFromTile(Hexxagon hexxagon, List<Move<Board>> possibleMoves, Random rng)
+  {
+    int start = rng.nextInt(possibleMoves.length);
+    int i = start;
+    do
+    {
+      Move<Board> move = possibleMoves[i];
+      bool goodMove = true;
+      if (move.kindOf == "jump")
+      {
+        goodMove = false;
+        move.to.forEachNeighbour(hexxagon, (neighbour)
+        {
+          if (hexxagon.get(neighbour) == hexxagon.notCurrentPlayer)
+          {
+            goodMove = true;
+          }
+        });
+      }
+      if (goodMove)
+      {
+        return possibleMoves[i];
+      }
+      i = (i + 1) % possibleMoves.length;
+    }
+    while (start != i);
     return null;
   }
 }

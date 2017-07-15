@@ -3,12 +3,14 @@ import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import 'Hexxagon.dart';
 
+/// A possible Move on a Hexxagon Board
 class HexxagonMove extends Move<Hexxagon>
 {
   HexxagonMove(TilePosition source, TilePosition target) : super(source, target);
 
+  @override
   String get kindOf {
-    switch(source.getMaxDistanceTo(target))
+    switch(from.getDistanceTo(to))
     {
       case 1: return "copy";
       case 2: return "jump";
@@ -16,12 +18,13 @@ class HexxagonMove extends Move<Hexxagon>
     }
   }
 
+  @override
   Map<TilePosition, String> getChanges(Hexxagon hexxagonBeforeMove)
   {
     Map<TilePosition, String> changes = new Map<TilePosition, String>();
-    changes[source] = kindOf;
-    changes[target] = kindOf;
-    target.forEachNeighbour(hexxagonBeforeMove, (neighbour)
+    changes[from] = kindOf;
+    changes[to] = kindOf;
+    to.forEachNeighbour(hexxagonBeforeMove, (neighbour)
     {
       TileType neighbourType = hexxagonBeforeMove.get(neighbour);
       if (neighbourType == hexxagonBeforeMove.notCurrentPlayer)
