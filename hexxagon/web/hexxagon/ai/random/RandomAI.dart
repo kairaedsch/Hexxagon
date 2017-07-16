@@ -7,6 +7,7 @@ import '../../../general/Intelligence.dart';
 import '../ArtificialIntelligence.dart';
 import '../../Hexxagon.dart';
 
+/// An artificial intelligence who chooses random moves but never a move which does not rise the score of the current player.
 class RandomAI extends ArtificialIntelligence
 {
   String get name
@@ -21,6 +22,7 @@ class RandomAI extends ArtificialIntelligence
     moveCallback(getRandomMove(hexxagon, rng));
   }
 
+  /// Chooses a random move but never a move which does not rise the score of the current player.
   static Move getRandomMove(Hexxagon hexxagon, Random rng)
   {
     TilePosition start = TilePosition.get(rng.nextInt(hexxagon.width), rng.nextInt(hexxagon.height));
@@ -33,11 +35,7 @@ class RandomAI extends ArtificialIntelligence
         List<Move> possibleMoves = hexxagon.getPossibleMoves(loop);
         if (possibleMoves.isNotEmpty)
         {
-          Move<Board> randomMoveFromTile = getRandomMoveFromTile(hexxagon, possibleMoves, rng);
-          if (randomMoveFromTile != null)
-          {
-            return randomMoveFromTile;
-          }
+          return getRandomMoveFromTile(hexxagon, possibleMoves, rng);
         }
       }
       loop = loop.next(hexxagon.width, hexxagon.height);
@@ -47,6 +45,7 @@ class RandomAI extends ArtificialIntelligence
     return null;
   }
 
+  /// Chooses a random move from the given ones but never a move which does not rise the score of the current player.
   static Move<Board> getRandomMoveFromTile(Hexxagon hexxagon, List<Move<Board>> possibleMoves, Random rng)
   {
     int start = rng.nextInt(possibleMoves.length);
@@ -73,6 +72,6 @@ class RandomAI extends ArtificialIntelligence
       i = (i + 1) % possibleMoves.length;
     }
     while (start != i);
-    return null;
+    throw new Exception("There has to be a copy move or a good jump");
   }
 }

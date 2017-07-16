@@ -3,10 +3,13 @@ import '../general/TilePosition.dart';
 import '../general/TileType.dart';
 import 'Hexxagon.dart';
 
+/// The logical implementation of the two player Game Hexxagon which can undo moves by creating a history.
 class HexxagonHistory extends Hexxagon
 {
+  /// The history of changes on this Hexxagon board,
   List<List<TilePosition>> _history;
 
+  /// Create a new HexxagonHistory from a existing Hexxagon board.
   HexxagonHistory.clone(Hexxagon hexxagon) : super.clone(hexxagon)
   {
     _history = [];
@@ -44,6 +47,7 @@ class HexxagonHistory extends Hexxagon
     currentPlayer = notCurrentPlayer;
   }
 
+  /// Undo the last move made.
   void undoLastMove()
   {
     if (_history.isEmpty)

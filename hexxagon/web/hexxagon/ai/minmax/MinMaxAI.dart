@@ -61,7 +61,7 @@ class MinMaxAI extends ArtificialIntelligence
       return heuristic(hexxagonHistory, player);
     }
 
-    List<Move> allPossibleMoves = _preferCopies ? MoveFinder.getAllMovesOptimiseAll(hexxagonHistory) : MoveFinder.getAllMovesOptimiseOnlyJumps(hexxagonHistory);
+    List<Move> allPossibleMoves = _preferCopies ? MoveFinder.getAllMovesOptimiseAll(hexxagonHistory) : MoveFinder.getAllMovesOptimiseOnlyCopies(hexxagonHistory);
     if (allPossibleMoves.length == 0)
     {
       return heuristic(hexxagonHistory, player) + (hexxagonHistory.currentPlayer == player ? WIN : -WIN);

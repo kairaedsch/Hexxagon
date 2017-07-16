@@ -5,6 +5,7 @@ import 'Board.dart';
 import 'Move.dart';
 import 'Intelligence.dart';
 import 'TileType.dart';
+import 'package:tuple/tuple.dart';
 
 /// A Game of two intelligences who play on a board.
 class Game<B extends Board<B>>
@@ -14,9 +15,6 @@ class Game<B extends Board<B>>
 
   /// The board on which will be played.
   B get board => _board;
-
-  /// The board before the last move of a intelligence.
-  Optional<B> _lastBoard;
 
   /// The changeListener which will be triggered, if the a intelligence does a move.
   Function changeListener;
@@ -33,25 +31,24 @@ class Game<B extends Board<B>>
   /// Not the current intelligence.
   Intelligence get notCurrentIntelligence => _board.currentPlayer == TileType.PLAYER_ONE ? _intelligenceTwo : _IntelligenceOne;
 
-  /// The history of moves made by both intelligences.
-  List<Move<B>> _history;
+  /// The history of board states and moves made by the intelligences.
+  List<Tuple2<B, Move<B>>> _history;
 
   /// Creates a new Game with a Board and two intelligences.
   Game(this._board, this._IntelligenceOne, this._intelligenceTwo)
   {
     _history = [];
-    _lastBoard = new Optional.empty();
     changeListener = () => {};
   }
 
   /// Changes on the board which were done by the last move of a intelligence.
   Optional<Map<TilePosition, String>> get lastMoveChanges
   {
-    if (!_lastBoard.isPresent || _history.isEmpty)
+    if (_history.isEmpty)
     {
       return new Optional.empty();
     }
-    return new Optional.of(_history.last.getChanges(_lastBoard.value));
+    return new Optional.of(_history.last.item2.getChanges(_history.last.item1));
   }
 
   /// The intelligence which plays the given player.
@@ -83,9 +80,8 @@ class Game<B extends Board<B>>
   /// Makes the given move on the board.
   void move(Move move)
   {
-    _lastBoard = new Optional.of(_board.cloneIt());
+    _history.add(new Tuple2(board.cloneIt(), move));
     _board.move(move);
-    _history.add(move);
     changeListener();
   }
 

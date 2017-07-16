@@ -5,77 +5,83 @@ import '../general/Board.dart';
 import '../general/Move.dart';
 import '../general/TilePosition.dart';
 import '../general/TileType.dart';
-import '../general/GameResult.dart';
 import 'package:meta/meta.dart';
 
+/// The logical implementation of the two player Game Hexxagon.
 class Hexxagon extends Board<Hexxagon>
 {
-  int _width, _height;
+  /// The width of this Hexxagon board (columns).
+  int _width;
 
+  /// The height of this Hexxagon board (rows).
+  int _height;
+
+  @override
   int get width => _width;
 
+  @override
   int get height => _height;
 
+  /// The tiles of this Hexxagon board.
   Array2D<TileType> _tiles;
+
+  /// The current Player who has to do a move, if the game is not already over.
   TileType _currentPlayer;
 
-  Hexxagon(int size)
+  @override
+  TileType get currentPlayer => _currentPlayer;
+
+  /// Creates a new Hexxagon Board with the given radius.
+  Hexxagon(int radius)
   {
-    _width = size + 1;
-    _height = (size * 2 + 1) * 2;
+    _width = radius + 1;
+    _height = (radius * 2 + 1) * 2;
 
     _tiles = new Array2D(_width, _height, TileType.EMPTY);
     _currentPlayer = TileType.PLAYER_ONE;
 
-    TilePosition center = TilePosition.get((size / 2).floor(), (_height / 2).floor());
-    for (int x = 0; x < _width; x++)
+    TilePosition center = TilePosition.get((radius / 2).floor(), (_height / 2).floor());
+    TilePosition.forEachOnBoard(this, (TilePosition pos)
     {
-      for (int y = 0; y < _height; y++)
+      var distance = center.getDistanceTo(pos);
+      if (distance > radius)
       {
-        TilePosition pos = TilePosition.get(x, y);
-        var distance = center.getDistanceTo(pos);
-        if (distance > size)
-        {
-          set(pos, TileType.OUT_OF_FIELD);
-        }
+        set(pos, TileType.OUT_OF_FIELD);
       }
-    }
+    });
 
-    _setStartTiles(size, center, 0, TileType.PLAYER_ONE);
-    _setStartTiles(size, center, 1, TileType.PLAYER_TWO);
-    _setStartTiles(size, center, 2, TileType.PLAYER_ONE);
-    _setStartTiles(size, center, 3, TileType.PLAYER_TWO);
-    _setStartTiles(size, center, 4, TileType.PLAYER_ONE);
-    _setStartTiles(size, center, 5, TileType.PLAYER_TWO);
+    _setTileAroundTile(radius, center, 0, TileType.PLAYER_ONE);
+    _setTileAroundTile(radius, center, 1, TileType.PLAYER_TWO);
+    _setTileAroundTile(radius, center, 2, TileType.PLAYER_ONE);
+    _setTileAroundTile(radius, center, 3, TileType.PLAYER_TWO);
+    _setTileAroundTile(radius, center, 4, TileType.PLAYER_ONE);
+    _setTileAroundTile(radius, center, 5, TileType.PLAYER_TWO);
 
-    _setStartTiles(1, center, 0, TileType.BLOCKED);
-    _setStartTiles(1, center, 2, TileType.BLOCKED);
-    _setStartTiles(1, center, 4, TileType.BLOCKED);
+    _setTileAroundTile(1, center, 0, TileType.BLOCKED);
+    _setTileAroundTile(1, center, 2, TileType.BLOCKED);
+    _setTileAroundTile(1, center, 4, TileType.BLOCKED);
   }
 
-  void _setStartTiles(int size, TilePosition center, int direction, TileType tile)
+  /// Calculates a position by going the given amount of steps in the given direction, starting from the given start position.
+  /// This position is then set to the given tile.
+  void _setTileAroundTile(int steps, TilePosition start, int direction, TileType tile)
   {
-    TilePosition toTarget = center;
-    for (int i = 0; i < size; i++)
+    TilePosition end = start;
+    for (int i = 0; i < steps; i++)
     {
-      toTarget = new TilePosition(toTarget.x + toTarget.neighbourDeltas[direction][0], toTarget.y + toTarget.neighbourDeltas[direction][1]);
+      end = new TilePosition(end.x + end.neighbourDeltas[direction][0], end.y + end.neighbourDeltas[direction][1]);
     }
-    set(toTarget, tile);
+    set(end, tile);
   }
 
+  /// Clone this Hexxagon board.
   Hexxagon.clone(Hexxagon hexxagon) {
     _width = hexxagon._width;
     _height = hexxagon._height;
 
     _tiles = new Array2D.empty(_width, _height);
-    for (int x = 0; x < _width; x++)
-    {
-      for (int y = 0; y < _height; y++)
-      {
-        TilePosition pos = TilePosition.get(x, y);
-        _tiles[x][y] = hexxagon.get(pos);
-      }
-    }
+
+    TilePosition.forEachOnBoard(this, (TilePosition pos) => _tiles[pos.x][pos.y] = hexxagon.get(pos));
     _currentPlayer = hexxagon.currentPlayer;
   }
 
@@ -111,6 +117,7 @@ class Hexxagon extends Board<Hexxagon>
     _currentPlayer = notCurrentPlayer;
   }
 
+  /// If the given move is a valid move on the current state of this Hexxagon game.
   @protected
   bool isValidMove(Move move)
   {
@@ -128,6 +135,7 @@ class Hexxagon extends Board<Hexxagon>
     return true;
   }
 
+  /// Sets the given position to the given tile.
   @protected
   void set(TilePosition position, TileType type)
   {
@@ -168,9 +176,7 @@ class Hexxagon extends Board<Hexxagon>
   @override
   bool couldBeMoved(TilePosition position) => get(position) == _currentPlayer;
 
-  @override
-  TileType get currentPlayer => _currentPlayer;
-
+  /// Sets the current Player.
   @protected
   void set currentPlayer(TileType currentPlayer) {
     _currentPlayer = currentPlayer;
@@ -193,23 +199,20 @@ class Hexxagon extends Board<Hexxagon>
     return true;
   }
 
-  @override
+  /// Count the tiles of the given player on the game field.
   int countTilesOfType(TileType player)
   {
     int count = 0;
-    for (int x = 0; x < _width; x++)
+    TilePosition.forEachOnBoard(this, (TilePosition pos)
     {
-      for (int y = 0; y < _height; y++)
+      if (get(pos) == player)
       {
-        TileType type = get(TilePosition.get(x, y));
-        if (type == player)
-        {
-          count++;
-        }
+        count++;
       }
-    }
+    });
     return count;
   }
 
+  @override
   scoreOfPlayer(TileType player) => countTilesOfType(player);
 }

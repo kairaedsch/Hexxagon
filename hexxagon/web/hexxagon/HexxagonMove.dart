@@ -6,6 +6,7 @@ import 'Hexxagon.dart';
 /// A possible Move on a Hexxagon Board
 class HexxagonMove extends Move<Hexxagon>
 {
+  /// Create a new HexxagonMove.
   HexxagonMove(TilePosition source, TilePosition target) : super(source, target);
 
   @override

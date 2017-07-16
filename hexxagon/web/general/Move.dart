@@ -10,6 +10,7 @@ abstract class Move<B extends Board>
   /// The TilePosition, where the tile will be moved, copied, or whatever the rules ove the board are.
   final TilePosition to;
 
+  /// Create a new Move.
   Move(this.from, this.to);
 
   /// The kind of this move.

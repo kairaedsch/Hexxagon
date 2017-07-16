@@ -16,6 +16,19 @@ class TilePosition
   /// Delta-values to be added to a even TilePosition to get all tiles with a distance of 1 to a TilePosition.
   static final List<List<int>> neighbourSecondRingDeltasEven = [[0, -4], [0, -3], [1, -2], [1, 0], [1, 2], [0, 3], [0, 4], [-1, 3], [-1, 2], [-1, 0], [-1, -2], [-1, -3]];
 
+  /// Calls the given consumer for each TilePosition on the given board.
+  static void forEachOnBoard(Board board, void consumer(TilePosition tileposition))
+  {
+    for (int x = 0; x < board.width; x++)
+    {
+      for (int y = 0; y < board.height; y++)
+      {
+        TilePosition pos = TilePosition.get(x, y);
+        consumer(pos);
+      }
+    }
+  }
+
   /// A new TilePosition at the given position.
   static TilePosition get(int x, int y)
   {
@@ -55,7 +68,7 @@ class TilePosition
     for (List<int> neighbourDelta in neighbourDeltas)
     {
       TilePosition position = TilePosition.get(neighbourDelta[0] + x, neighbourDelta[1] + y);
-      if (position.isValid(board.width, board.height))
+      if (position.isValid(board))
       {
         consumer(position);
       }
@@ -68,7 +81,7 @@ class TilePosition
     for (List<int> neighbourDelta in neighbourSecondRing)
     {
       TilePosition position = TilePosition.get(neighbourDelta[0] + x, neighbourDelta[1] + y);
-      if (position.isValid(board.width, board.height))
+      if (position.isValid(board))
       {
         consumer(position);
       }
@@ -111,10 +124,10 @@ class TilePosition
     return x == other.x && other.y == y;
   }
 
-  /// If this TilePosition is in the given size.
-  bool isValid(int width, int height)
+  /// If this TilePosition is on the field of the given board.
+  bool isValid(Board board)
   {
-    return x >= 0 && y >= 0 && x < width && y < height;
+    return x >= 0 && y >= 0 && x < board.width && y < board.height;
   }
 
   /// The right neighbour TilePosition to this TilePosition or, if the right neighbour does not exist, the first TilePosition in the row under the row of this TilePosition.
