@@ -1,5 +1,6 @@
 import '../../../general/Board.dart';
 import '../../../general/Intelligence.dart';
+import '../logic/GameGUI.dart';
 import 'dart:html';
 import 'package:over_react/over_react.dart';
 
@@ -35,20 +36,23 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
 
   ReactElement render()
   {
-    if (props.gui.currentGameGui == null)
+    GameGUI gameGui = props.gui.currentGameGui;
+    if (gameGui == null)
     {
       return Dom.div()();
     }
 
-    Intelligence<Board> intelligenceplayerOne = props.gui.currentGameGui.getIntelligence(TileType.PLAYER_ONE);
-    Intelligence<Board> intelligenceplayerTwo = props.gui.currentGameGui.getIntelligence(TileType.PLAYER_TWO);
+    Intelligence<Board> intelligenceplayerOne = gameGui.getIntelligence(TileType.PLAYER_ONE);
+    Intelligence<Board> intelligenceplayerTwo = gameGui.getIntelligence(TileType.PLAYER_TWO);
+    TileType betterPlayer = gameGui.betterPlayer;
+    bool draw = betterPlayer == TileType.EMPTY;
 
     return (Dom.div()
       ..className = "sideInner clearfix"
     )(
         (Dom.div()
           ..className = "topInfoOverview"
-              " ${props.gui.currentGameGui.isOver ? "won ${TileTypes.toName(props.gui.currentGameGui.betterPlayer)}" : "turn ${TileTypes.toName(props.gui.currentGameGui.currentPlayer)}"}"
+              " ${gameGui.isOver ? "gameIsOver ${TileTypes.toName(betterPlayer)}" : "turn ${TileTypes.toName(gameGui.currentPlayer)}"}"
         )(
             (Dom.div()
               ..className = "topInfoPart"
@@ -58,7 +62,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                   ..className = "topInfoPartScore"
                   ..title = "Score of the blue player"
                 )(
-                    props.gui.currentGameGui.scoreOfPlayer(TileType.PLAYER_ONE)
+                    gameGui.scoreOfPlayer(TileType.PLAYER_ONE)
                 ),
                 (Dom.div()
                   ..className = "topInfoPartImage"
@@ -76,7 +80,9 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                 (Dom.div()
                   ..className = "topInfoBetweenInner"
                 )(
-                    "VS"
+                    !gameGui.isOver ? "VS" : (draw ? "" : (betterPlayer == TileType.PLAYER_ONE ? "BLUE" : "ORANGE")),
+                    !gameGui.isOver ? "" : Dom.br()(),
+                    !gameGui.isOver ? "" : (draw ? "DRAW" : "WON")
                 )
             )
             ,
@@ -95,7 +101,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                   ..className = "topInfoPartScore"
                   ..title = "Score of the orange player"
                 )(
-                    props.gui.currentGameGui.scoreOfPlayer(TileType.PLAYER_TWO)
+                    gameGui.scoreOfPlayer(TileType.PLAYER_TWO)
                 )
             )
         ),

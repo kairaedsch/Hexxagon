@@ -35,7 +35,11 @@ class RandomAI extends ArtificialIntelligence
         List<Move> possibleMoves = hexxagon.getPossibleMoves(loop);
         if (possibleMoves.isNotEmpty)
         {
-          return getRandomMoveFromTile(hexxagon, possibleMoves, rng);
+          Move<Board> move = getRandomMoveFromMoves(hexxagon, possibleMoves, rng);
+          if (move != null)
+          {
+            return move;
+          }
         }
       }
       loop = loop.next(hexxagon.width, hexxagon.height);
@@ -46,7 +50,7 @@ class RandomAI extends ArtificialIntelligence
   }
 
   /// Chooses a random move from the given ones but never a move which does not rise the score of the current player.
-  static Move<Board> getRandomMoveFromTile(Hexxagon hexxagon, List<Move<Board>> possibleMoves, Random rng)
+  static Move<Board> getRandomMoveFromMoves(Hexxagon hexxagon, List<Move<Board>> possibleMoves, Random rng)
   {
     int start = rng.nextInt(possibleMoves.length);
     int i = start;
@@ -67,11 +71,11 @@ class RandomAI extends ArtificialIntelligence
       }
       if (goodMove)
       {
-        return possibleMoves[i];
+        return move;
       }
       i = (i + 1) % possibleMoves.length;
     }
     while (start != i);
-    throw new Exception("There has to be a copy move or a good jump");
+    return null;
   }
 }

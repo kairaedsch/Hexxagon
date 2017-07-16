@@ -73,7 +73,7 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
       ..className = "tileGrid clearfix"
       ..style =
       {
-        "width": "${hexagonGrid.gridWidth}px",
+        "width": "${hexagonGrid.gridWidth + 1}px",
         "height": "${hexagonGrid.gridHeight}px",
         "marginTop": "calc((81vh - ${hexagonGrid.gridHeight}px) / 2)",
         "marginLeft": "${(width - hexagonGrid.gridWidthIfRound) / 2}px"

@@ -159,17 +159,6 @@ html, body {
     transform: rotate(0deg);
 }
 
-/*
-.playerOne {
-    margin-left: calc((50% - 250px) * 0.60);
-    margin-right: calc((50% - 250px) * 0.40);
-}
-
-.playerTwo {
-    margin-left: calc((50% - 250px) * 0.40);
-    margin-right: calc((50% - 250px) * 0.60);
-}*/
-
 .playerContainer {
     width: 40vw;
     height: 60vh;
@@ -182,9 +171,12 @@ html, body {
     border-left: 5vh solid transparent;
     border-right: 5vh solid transparent;
     margin: auto;
-    transition: opacity 0.1s linear;
     cursor: pointer;
     opacity: 0.8;
+
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 .arrow:hover {
@@ -193,10 +185,46 @@ html, body {
 
 .arrowUp {
     border-bottom: 4vh solid #FFF;
+    animation-name: arrowUp;
 }
 
 .arrowDown {
     border-top: 4vh solid #FFF;
+    animation-name: arrowDown;
+}
+
+@keyframes arrowUp {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.5vh) scale(1.2);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes arrowDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(+0.5vh) scale(1.2);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.arrowUp:hover {
+    transform: translateY(-0.5vh) scale(1.2) !important;
+    animation: none;
+}
+
+.arrowDown:hover {
+    transform: translateY(+0.5vh) scale(1.2) !important;
+    animation: none;
 }
 
 .playerInner {
@@ -300,21 +328,23 @@ html, body {
 .topInfoPart {
     float: left;
     height: 100%;
-    padding: 3.5vh 0 4vh 0;
+    padding: 3.5vh 2.5vh 4vh 2.5vh;
 }
 
 .topInfoPart:nth-child(1) {
     background-color: #01C2F2;
-    padding-left: 3vh;
 }
 
 .topInfoPart:nth-child(3) {
     background-color: #FF9C00;
-    padding-right: 3vh;
 }
 
 .topInfoPart {
     width: calc(50% - 15vh / 2);
+}
+
+.topInfoOverview.gameIsOver .topInfoPart {
+    width: calc(50% - 25vh / 2);
 }
 
 .topInfoPartScore  {
@@ -330,8 +360,7 @@ html, body {
 
 .topInfoPartImage  {
     float: left;
-    width: calc(100% - 2.5vh * 2 - 8vh);
-    margin: 0 2.5vh;
+    width: calc(100% - 8vh);
     height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
@@ -354,6 +383,10 @@ html, body {
     height: 100%;
     padding: 3.5vh 0 4vh 0;
     background: -webkit-linear-gradient(-20deg, #01C2F2 50%, #FF9C00 50%);
+}
+
+.topInfoOverview.gameIsOver .topInfoBetween {
+    width: 25vh;
 }
 
 .topInfoBetweenInner {
@@ -382,42 +415,17 @@ html, body {
     }
 }
 
-.won.PLAYER_ONE .topInfoPart:nth-child(1), .won.PLAYER_TWO .topInfoPart:nth-child(3)  {
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+.topInfoOverview.gameIsOver.PLAYER_ONE .topInfoBetween {
+    background: #01C2F2;
 }
 
-.won.PLAYER_ONE .topInfoPart:nth-child(1)  {
-    animation-name: wonPLAYER_ONE;
+.topInfoOverview.gameIsOver.PLAYER_TWO .topInfoBetween {
+    background: #FF9C00;
 }
 
-.won.PLAYER_TWO .topInfoPart:nth-child(3)  {
-    animation-name: wonPLAYER_TWO;
-}
-
-@keyframes wonPLAYER_ONE {
-    0% {
-        background: #00C2F2;
-    }
-    25% {
-        background: #ffde56;
-    }
-    50% {
-        background: #00C2F2;
-    }
-}
-
-@keyframes wonPLAYER_TWO {
-    0% {
-        background: #FF9C00;
-    }
-    25% {
-        background: #ffde56;
-    }
-    50% {
-        background: #FF9C00;
-    }
+.topInfoOverview.gameIsOver .topInfoBetweenInner {
+    font-size: 5vh;
+    margin-top: -3vh;
 }
 
 .tileGrid {

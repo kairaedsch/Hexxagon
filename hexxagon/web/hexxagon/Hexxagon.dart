@@ -28,9 +28,6 @@ class Hexxagon extends Board<Hexxagon>
   /// The current Player who has to do a move, if the game is not already over.
   TileType _currentPlayer;
 
-  @override
-  TileType get currentPlayer => _currentPlayer;
-
   /// Creates a new Hexxagon Board with the given radius.
   Hexxagon(int radius)
   {
@@ -135,19 +132,6 @@ class Hexxagon extends Board<Hexxagon>
     return true;
   }
 
-  /// Sets the given position to the given tile.
-  @protected
-  void set(TilePosition position, TileType type)
-  {
-    _tiles.array[position.x][position.y] = type;
-  }
-
-  @override
-  TileType get(TilePosition position)
-  {
-    return _tiles.array[position.x][position.y];
-  }
-
   @override
   List<Move> getPossibleMoves(TilePosition from)
   {
@@ -171,15 +155,6 @@ class Hexxagon extends Board<Hexxagon>
       }
     });
     return possibleMoves;
-  }
-
-  @override
-  bool couldBeMoved(TilePosition position) => get(position) == _currentPlayer;
-
-  /// Sets the current Player.
-  @protected
-  void set currentPlayer(TileType currentPlayer) {
-    _currentPlayer = currentPlayer;
   }
 
   @override
@@ -212,6 +187,31 @@ class Hexxagon extends Board<Hexxagon>
     });
     return count;
   }
+
+  /// Sets the given position to the given tile.
+  @protected
+  void set(TilePosition position, TileType type)
+  {
+    _tiles.array[position.x][position.y] = type;
+  }
+
+  @override
+  TileType get(TilePosition position)
+  {
+    return _tiles.array[position.x][position.y];
+  }
+
+  @override
+  TileType get currentPlayer => _currentPlayer;
+
+  /// Sets the current Player.
+  @protected
+  void set currentPlayer(TileType currentPlayer) {
+    _currentPlayer = currentPlayer;
+  }
+
+  @override
+  bool couldBeMoved(TilePosition position) => get(position) == _currentPlayer;
 
   @override
   scoreOfPlayer(TileType player) => countTilesOfType(player);

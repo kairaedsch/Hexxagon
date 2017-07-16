@@ -6,11 +6,13 @@ import '../../Hexxagon.dart';
 import '../MoveFinder.dart';
 import 'package:tuple/tuple.dart';
 
-typedef double Heuristic(Hexxagon hexxagon, TileType player);
-
+/// An artificial intelligence who chooses moves by evaluating the move and the tiles around it.
 class MoveAI extends ArtificialIntelligence
 {
+  /// Coefficient for capturing enemy tiles.
   final double _goNearCoef = 0.2;
+
+  /// Coefficient for not leaving own tiles alone.
   final double _goAwayCoef = 0.2;
 
   String get name
@@ -19,22 +21,19 @@ class MoveAI extends ArtificialIntelligence
   int get strength
   => 1;
 
-  MoveAI();
-
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
     List<Move> allPossibleMoves = MoveFinder.getAllMovesOptimiseAll(hexxagon);
 
-    Iterable<Tuple2<Move, double>> allPossibleMovesEvaluated = allPossibleMoves.map((move)
-    => evaluateMove(hexxagon, move));
+    Iterable<Tuple2<Move, double>> allPossibleMovesEvaluated = allPossibleMoves.map((move) => new Tuple2(move, evaluateMove(hexxagon, move)));
 
     moveCallback(allPossibleMovesEvaluated
-        .reduce((a, b)
-    => a.item2 >= b.item2 ? a : b)
+        .reduce((a, b) => a.item2 >= b.item2 ? a : b)
         .item1);
   }
 
-  Tuple2<Move, double> evaluateMove(Hexxagon hexxagon, Move move)
+  /// Calculate the value of a move.
+  double evaluateMove(Hexxagon hexxagon, Move move)
   {
     TileType player = hexxagon.currentPlayer;
     TileType enemy = TileTypes.other(player);
@@ -67,6 +66,6 @@ class MoveAI extends ArtificialIntelligence
       }
     });
 
-    return new Tuple2(move, enemyGoNear + _goNearCoef * selfGoNear + ((move.kindOf == "jump") ? (-selfGoAway * _goAwayCoef) : 1) + (goingToWall ? 0.05 : 0));
+    return enemyGoNear + _goNearCoef * selfGoNear + ((move.kindOf == "jump") ? (-selfGoAway * _goAwayCoef) : 1) + (goingToWall ? 0.05 : 0);
   }
 }
