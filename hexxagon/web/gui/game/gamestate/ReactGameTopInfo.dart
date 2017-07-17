@@ -1,7 +1,6 @@
 import '../../../general/Board.dart';
 import '../../../general/Intelligence.dart';
 import '../logic/GameGUI.dart';
-import 'dart:html';
 import 'package:over_react/over_react.dart';
 
 import '../../../general/TileType.dart';
