@@ -13,7 +13,7 @@ UiFactory<ReactGameTopInfoProps> ReactGameTopInfo;
 @Props()
 class ReactGameTopInfoProps extends UiProps
 {
-  /// The GUI.
+  /// The GUI which always contains the current GUI state with data.
   GUI gui;
 }
 
@@ -26,6 +26,7 @@ class ReactGameTopInfoState extends UiState
 @Component()
 class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProps, ReactGameTopInfoState>
 {
+  @override
   void componentWillMount()
   {
     super.componentWillMount();
@@ -33,6 +34,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
     props.gui.addGUIStateChangeListener(() => setState(state));
   }
 
+  @override
   ReactElement render()
   {
     GameGUI gameGui = props.gui.currentGameGui;

@@ -13,17 +13,24 @@ UiFactory<ReactTwoPlayerSelectionProps> ReactTwoPlayerSelection;
 @Props()
 class ReactTwoPlayerSelectionProps extends UiProps
 {
+  /// The GUI which always contains the current GUI state with data.
   GUI gui;
+
+  /// The intelligences which are available to select.
   List<Intelligence> intelligences;
 }
 
 @State()
 class ReactTwoPlayerSelectionState extends UiState
 {
+  /// The selection index for the first intelligence.
   int selectedPlayerOne;
+
+  /// The selection index for the second intelligence.
   int selectedPlayerTwo;
 }
 
+/// React Component to display the player-selection of both players
 @Component()
 class ReactTwoPlayerSelectionComponent extends UiStatefulComponent<ReactTwoPlayerSelectionProps, ReactTwoPlayerSelectionState>
 {
@@ -36,13 +43,14 @@ class ReactTwoPlayerSelectionComponent extends UiStatefulComponent<ReactTwoPlaye
     );
   }
 
+  @override
   void componentWillMount()
   {
     super.componentWillMount();
-    props.gui.addGUIStateChangeListener(()
-    => setState(state));
+    props.gui.addGUIStateChangeListener(() => setState(state));
   }
 
+  @override
   ReactElement render()
   {
     props.gui.playerOne = props.intelligences[state.selectedPlayerOne];
@@ -66,10 +74,8 @@ class ReactTwoPlayerSelectionComponent extends UiStatefulComponent<ReactTwoPlaye
           ..className = "player playerOne"
         )(
             (ReactOnePlayerSelection()
-              ..intelligences = props.intelligences
-              ..selected = state.selectedPlayerOne
-              ..father = this
-              ..playerOne = true)()),
+              ..intelligence = props.intelligences[state.selectedPlayerOne]
+              ..changePlayer = changePlayerOne)()),
         (Dom.div()
           ..className = "playerBetween"
         )(
@@ -79,14 +85,13 @@ class ReactTwoPlayerSelectionComponent extends UiStatefulComponent<ReactTwoPlaye
           ..className = "player playerTwo"
         )(
             (ReactOnePlayerSelection()
-              ..intelligences = props.intelligences
-              ..selected = state.selectedPlayerTwo
-              ..father = this
-              ..playerOne = false)()
+              ..intelligence = props.intelligences[state.selectedPlayerTwo]
+              ..changePlayer = changePlayerTwo)()
         )
     );
   }
 
+  /// Change Player One.
   void changePlayerOne(int delta)
   {
     this.setState((Map prevState, Map props)
@@ -98,6 +103,7 @@ class ReactTwoPlayerSelectionComponent extends UiStatefulComponent<ReactTwoPlaye
     });
   }
 
+  /// Change Player Two.
   void changePlayerTwo(int delta)
   {
     this.setState((Map prevState, Map props)

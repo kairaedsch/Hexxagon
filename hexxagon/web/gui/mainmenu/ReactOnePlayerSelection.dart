@@ -2,7 +2,8 @@ import 'package:over_react/over_react.dart';
 
 import '../../general/Intelligence.dart';
 
-import 'ReactTwoPlayerSelection.dart';
+/// A Method to be called to change the selected player.
+typedef void ChangePlayer(int delta);
 
 @Factory()
 UiFactory<ReactOnePlayerSelectionProps> ReactOnePlayerSelection;
@@ -10,34 +11,26 @@ UiFactory<ReactOnePlayerSelectionProps> ReactOnePlayerSelection;
 @Props()
 class ReactOnePlayerSelectionProps extends UiProps
 {
-  List<Intelligence> intelligences;
-  int selected;
-  ReactTwoPlayerSelectionComponent father;
-  bool playerOne;
+  /// The currently selected intelligence.
+  Intelligence intelligence;
+
+  /// The Method to be called to change the selected player/intelligence.
+  ChangePlayer changePlayer;
 }
 
+/// React Component to display the player-selection of one player
 @Component()
 class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelectionProps>
 {
+  @override
   ReactElement render()
   {
-    Intelligence intelligences = props.intelligences[props.selected];
     return (Dom.div()
       ..className = "playerContainer"
     )(
         (Dom.div()
           ..className = "arrow arrowUp"
-          ..onClick = (e)
-          {
-            if (props.playerOne)
-            {
-              props.father.changePlayerOne(1);
-            }
-            else
-            {
-              props.father.changePlayerTwo(1);
-            }
-          }
+          ..onClick = ((e) => props.changePlayer(1))
           ..title = "Change player"
           )(),
         (Dom.div()
@@ -47,32 +40,22 @@ class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelecti
               ..className = "playerImage"
               ..style =
               {
-                "backgroundImage": "url('${intelligences.isHuman ? "human.png" : "robot-${intelligences.strength}.png"}')",
+                "backgroundImage": "url('${props.intelligence.isHuman ? "human.png" : "robot-${props.intelligence.strength}.png"}')",
               })(),
             (Dom.div()
               ..className = "playerText"
             )(
-                intelligences.isHuman ? intelligences.name : "AI ${intelligences.strengthName}"
+                props.intelligence.isHuman ? props.intelligence.name : "AI ${props.intelligence.strengthName}"
                 ,
                 Dom.br()()
                 ,
-                intelligences.isHuman ? "" : intelligences.name
+                props.intelligence.isHuman ? "" : props.intelligence.name
 
             )
         ),
         (Dom.div()
           ..className = "arrow arrowDown"
-          ..onClick = (e)
-          {
-            if (props.playerOne)
-            {
-              props.father.changePlayerOne(-1);
-            }
-            else
-            {
-              props.father.changePlayerTwo(-1);
-            }
-          }
+          ..onClick = ((e) => props.changePlayer(-1))
           ..title = "Change player"
         )()
     );

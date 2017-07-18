@@ -6,7 +6,6 @@ import '../logic/GUI.dart';
 import '../logic/GameGUI.dart';
 import '../logic/HexagonGrid.dart';
 import 'ReactTile.dart';
-import 'ReactTileGrid.dart';
 
 @Factory()
 UiFactory<ReactTileRowProps> ReactTileRow;
@@ -14,15 +13,21 @@ UiFactory<ReactTileRowProps> ReactTileRow;
 @Props()
 class ReactTileRowProps extends UiProps
 {
+  /// The y-pos of this row.
   int y;
+
+  /// The GUI which always contains the current GUI state with data.
   GUI gui;
-  ReactTileGridComponent tileGrid;
+
+  /// The HexagonGrid for the sizes and margins.
   HexagonGrid hexagonGrid;
 }
 
+/// React Component to display a row of hexagon tiles.
 @Component()
 class ReactTileRowComponent extends UiComponent<ReactTileRowProps>
 {
+  @override
   ReactElement render()
   {
     GameGUI gameGUI = props.gui.currentGameGui;
@@ -32,7 +37,6 @@ class ReactTileRowComponent extends UiComponent<ReactTileRowProps>
       tiles[x] =
           (ReactTile()
             ..key = x
-            ..tileGrid = props.tileGrid
             ..position = TilePosition.get(x, props.y)
             ..gui = props.gui
             ..hexagonGrid = props.hexagonGrid

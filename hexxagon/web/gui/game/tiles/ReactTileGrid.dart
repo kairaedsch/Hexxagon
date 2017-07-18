@@ -13,6 +13,7 @@ UiFactory<ReactTileGridProps> ReactTileGrid;
 @Props()
 class ReactTileGridProps extends UiProps
 {
+  /// The GUI which always contains the current GUI state with data.
   GUI gui;
 }
 
@@ -21,12 +22,15 @@ class ReactTileGridState extends UiState
 {
 }
 
+/// React Component to display a grid of hexagon tiles.
 @Component()
 class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, ReactTileGridState>
 {
+  // TODO set as state
   int currentRows = 0;
   int currentColumns = 0;
 
+  @override
   void componentWillMount()
   {
     super.componentWillMount();
@@ -39,10 +43,10 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
         setState(state);
       }
     });
-    window.addEventListener("resize", (e)
-    => setState(state));
+    window.addEventListener("resize", (e) => setState(state));
   }
 
+  @override
   ReactElement render()
   {
     var container = querySelector(".tileGridContainer");
@@ -64,7 +68,6 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
       tiles[y] = (ReactTileRow()
         ..key = y
         ..y = y
-        ..tileGrid = this
         ..gui = props.gui
         ..hexagonGrid = hexagonGrid
       )();

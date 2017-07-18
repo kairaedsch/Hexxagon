@@ -1,34 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart" line="27" />
+    <bookmark url="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart" line="30" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040ffbd4-fe00-4cfa-9f85-21d48bb5e9f0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/gui/game/tiles/ReactTileInfos.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/robot-1.png" afterPath="$PROJECT_DIR$/web/robot-1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/robot-2.png" afterPath="$PROJECT_DIR$/web/robot-2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/robot-3.png" afterPath="$PROJECT_DIR$/web/robot-3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/robot-4.png" afterPath="$PROJECT_DIR$/web/robot-4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/hexxagon.iml" afterPath="$PROJECT_DIR$/.idea/hexxagon.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/robot-0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/robot-5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/robot-6.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/Intelligence.dart" afterPath="$PROJECT_DIR$/web/general/Intelligence.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/general/TilePosition.dart" afterPath="$PROJECT_DIR$/web/general/TilePosition.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart" afterPath="$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/logic/GUI.dart" afterPath="$PROJECT_DIR$/web/gui/game/logic/GUI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/logic/GameGUI.dart" afterPath="$PROJECT_DIR$/web/gui/game/logic/GameGUI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/logic/HexagonGrid.dart" afterPath="$PROJECT_DIR$/web/gui/game/logic/HexagonGrid.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart" afterPath="$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart" afterPath="$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/game/tiles/ReactTileRow.dart" afterPath="$PROJECT_DIR$/web/gui/game/tiles/ReactTileRow.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart" afterPath="$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/gui/mainmenu/ReactTwoPlayerSelection.dart" afterPath="$PROJECT_DIR$/web/gui/mainmenu/ReactTwoPlayerSelection.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/hexxagon/ai/MoveFinder.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/MoveFinder.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/hexxagon/ai/minmax/MinMaxAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/minmax/MinMaxAI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloAI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloTreeSearchAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloTreeSearchAI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/hexxagon/ai/move/MoveAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/move/MoveAI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/hexxagon/ai/random/RandomAI.dart" afterPath="$PROJECT_DIR$/web/hexxagon/ai/random/RandomAI.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/styles.css" afterPath="$PROJECT_DIR$/web/styles.css" />
     </list>
     <list id="fe05f0f9-55aa-4a2e-99a3-bfdd4a03b657" name="webstorms" comment="" />
     <list id="f9be6b39-d5c2-47b1-9740-540f457e7a10" name="Revert: " comment="" />
@@ -49,8 +35,8 @@
       <file leaf-file-name="ReactGameTopInfo.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="32" column="43" lean-forward="false" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+            <state relative-caret-position="612">
+              <caret line="36" column="11" lean-forward="false" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -66,21 +52,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUI.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/game/logic/GUI.dart">
+      <file leaf-file-name="HumanIntelligence.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/general/HumanIntelligence.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="77" column="36" lean-forward="false" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+            <state relative-caret-position="272">
+              <caret line="16" column="9" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HexagonGrid.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/game/logic/HexagonGrid.dart">
+      <file leaf-file-name="Intelligence.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/general/Intelligence.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="56" column="56" lean-forward="true" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
+            <state relative-caret-position="51">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -89,28 +75,8 @@
       <file leaf-file-name="ReactTile.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1291">
-              <caret line="116" column="44" lean-forward="false" selection-start-line="116" selection-start-column="44" selection-end-line="116" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReactTileGrid.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1087">
-              <caret line="78" column="54" lean-forward="true" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReactTileInfos.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileInfos.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1462">
-              <caret line="86" column="31" lean-forward="false" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
+            <state relative-caret-position="4776">
+              <caret line="295" column="22" lean-forward="false" selection-start-line="295" selection-start-column="22" selection-end-line="295" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -119,28 +85,48 @@
       <file leaf-file-name="ReactTileRow.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileRow.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="4" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+            <state relative-caret-position="663">
+              <caret line="39" column="50" lean-forward="true" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MonteCarloTreeSearchAI.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloTreeSearchAI.dart">
+      <file leaf-file-name="ReactTileGrid.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+            <state relative-caret-position="476">
+              <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MonteCarloAI.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloAI.dart">
+      <file leaf-file-name="ReactOnePlayerSelection.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+            <state relative-caret-position="323">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReactTileInfos.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileInfos.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReactTwoPlayerSelection.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/gui/mainmenu/ReactTwoPlayerSelection.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -221,10 +207,7 @@
         <option value="$PROJECT_DIR$/web/home.svg" />
         <option value="$PROJECT_DIR$/web/logic/ai/minmax/MinMaxAI.dart" />
         <option value="$PROJECT_DIR$/web/logic/ai/random/RandomAI.dart" />
-        <option value="$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart" />
-        <option value="$PROJECT_DIR$/web/gui/mainmenu/ReactTwoPlayerSelection.dart" />
         <option value="$PROJECT_DIR$/web/gui/game/logic/Hexagon.dart" />
-        <option value="$PROJECT_DIR$/web/gui/game/tiles/ReactTileRow.dart" />
         <option value="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/GameNode.dart" />
         <option value="$PROJECT_DIR$/web/general/Board.dart" />
         <option value="$PROJECT_DIR$/web/general/HumanIntelligence.dart" />
@@ -235,7 +218,6 @@
         <option value="$PROJECT_DIR$/web/general/Move.dart" />
         <option value="$PROJECT_DIR$/web/hexxagon/HexxagonMove.dart" />
         <option value="$PROJECT_DIR$/web/hexxagon/ai/ArtificialIntelligence.dart" />
-        <option value="$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart" />
         <option value="$PROJECT_DIR$/web/hexxagon/Hexxagon.dart" />
         <option value="$PROJECT_DIR$/web/styles.css" />
         <option value="$PROJECT_DIR$/web/index.html" />
@@ -251,10 +233,14 @@
         <option value="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloTreeSearchAI.dart" />
         <option value="$PROJECT_DIR$/web/hexxagon/ai/montecarlo/MonteCarloAI.dart" />
         <option value="$PROJECT_DIR$/web/hexxagon/HexxagonHistory.dart" />
-        <option value="$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart" />
         <option value="$PROJECT_DIR$/web/gui/game/tiles/ReactTileInfos.dart" />
-        <option value="$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart" />
         <option value="$PROJECT_DIR$/web/hexxagon/ai/minmax/MinMaxAI.dart" />
+        <option value="$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart" />
+        <option value="$PROJECT_DIR$/web/gui/mainmenu/ReactTwoPlayerSelection.dart" />
+        <option value="$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart" />
+        <option value="$PROJECT_DIR$/web/gui/game/tiles/ReactTileRow.dart" />
+        <option value="$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart" />
+        <option value="$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart" />
       </list>
     </option>
   </component>
@@ -1113,11 +1099,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500234567502</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="comments, reactTileInfos">
+      <created>1500396257996</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1500396257996</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="415450000" />
+    <option name="totallyTimeSpent" value="418757000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1130,7 +1123,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1246" y="287" width="2274" height="1782" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1627907" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1138,7 +1130,7 @@
       <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21475257" sideWeight="0.4811736" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2669462" sideWeight="0.568574" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30852842" sideWeight="0.49839228" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18730746" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18730746" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34294623" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1216,7 +1208,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="multithreading gleich weg, faster random" />
     <MESSAGE value="Monte carlo fast" />
     <MESSAGE value="monte carlo tree search" />
     <MESSAGE value="logo, start page" />
@@ -1241,7 +1232,8 @@
     <MESSAGE value="HexxagonHistory" />
     <MESSAGE value="Comments" />
     <MESSAGE value="Better won display" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better won display" />
+    <MESSAGE value="comments, reactTileInfos" />
+    <option name="LAST_COMMIT_MESSAGE" value="comments, reactTileInfos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1299,13 +1291,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="81" lean-forward="false" selection-start-line="0" selection-start-column="81" selection-end-line="0" selection-end-column="81" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="14" lean-forward="true" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1383,22 +1368,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/general/HumanIntelligence.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="9" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/general/Intelligence.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -1440,30 +1409,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1105">
           <caret line="65" column="4" lean-forward="false" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/gui/mainmenu/ReactTwoPlayerSelection.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="41" column="14" lean-forward="false" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/general/Game.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/general/Board.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="27" column="11" lean-forward="false" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -1548,22 +1493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="32" column="43" lean-forward="false" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/gui/game/logic/GameGUI.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/gui/game/logic/GUI.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
@@ -1580,34 +1509,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart">
+    <entry file="file://$PROJECT_DIR$/web/general/Board.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1291">
-          <caret line="116" column="44" lean-forward="false" selection-start-line="116" selection-start-column="44" selection-end-line="116" selection-end-column="44" />
+        <state relative-caret-position="430">
+          <caret line="27" column="11" lean-forward="false" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart">
+    <entry file="file://$PROJECT_DIR$/web/general/Game.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1087">
-          <caret line="78" column="54" lean-forward="true" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="54" />
+        <state relative-caret-position="272">
+          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/general/HumanIntelligence.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="9" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/general/Intelligence.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/gui/mainmenu/ReactTwoPlayerSelection.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/gui/mainmenu/ReactOnePlayerSelection.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/gui/game/gamestate/ReactGameTopInfo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="11" lean-forward="false" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/gui/game/logic/GameGUI.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTile.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4776">
+          <caret line="295" column="22" lean-forward="false" selection-start-line="295" selection-start-column="22" selection-end-line="295" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileInfos.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="86" column="31" lean-forward="false" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
+        <state relative-caret-position="289">
+          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileGrid.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/gui/game/tiles/ReactTileRow.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="4" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        <state relative-caret-position="663">
+          <caret line="39" column="50" lean-forward="true" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
           <folding />
         </state>
       </provider>

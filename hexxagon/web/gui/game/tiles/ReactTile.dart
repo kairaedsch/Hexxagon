@@ -11,7 +11,6 @@ import '../../../general/TileType.dart';
 
 import '../logic/GUI.dart';
 import '../logic/HexagonGrid.dart';
-import 'ReactTileGrid.dart';
 
 @Factory()
 UiFactory<ReactTileProps> ReactTile;
@@ -19,9 +18,13 @@ UiFactory<ReactTileProps> ReactTile;
 @Props()
 class ReactTileProps extends UiProps
 {
-  ReactTileGridComponent tileGrid;
+  /// The position of the tile.
   TilePosition position;
+
+  /// The GUI which always contains the current GUI state with data.
   GUI gui;
+
+  /// The HexagonGrid for the sizes and margins.
   HexagonGrid hexagonGrid;
 }
 
@@ -34,15 +37,23 @@ class ReactTileState extends UiState
   bool mouseIsOver;
 }
 
+/// React Component to display a hexagon tile.
 @Component()
 class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileState>
 {
+  /// StreamSubscription to listen to mouse-events.
   StreamSubscription l1, l2, l3;
 
+  /// Last value of a ReactTileInfo value.
   bool currentIsPlayAbleNow = false;
+
+  /// Last value of a ReactTileInfo value.
   bool currentIsSelected = false;
+
+  /// Last value of a ReactTileInfo value.
   TileType currentTileType = null;
 
+  /// ReactTileInfo to provide info about this ReactTileComponent.
   ReactTileInfo rti;
 
   ReactTileComponent()
@@ -64,12 +75,10 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   @override
   componentDidMount()
   {
-    l3 = window.document.onMouseUp.listen((event)
-    => onMouseUp());
-    l1 = window.document.onMouseUp.listen((event)
-    => endDrag(null));
-    l2 = window.document.onMouseMove.listen((event)
-    => mouseMoved(event.screen));
+    l3 = window.document.onMouseUp.listen((event) => onMouseUp());
+    l1 = window.document.onMouseUp.listen((event) => endDrag(null));
+    l2 = window.document.onMouseMove.listen((event) => mouseMoved(event.screen));
+
     l1.pause();
     l2.pause();
     l3.pause();
@@ -175,7 +184,8 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     );
   }
 
-  void select(SyntheticMouseEvent event)
+  /// Select this tile.
+  void select()
   {
     Optional<Move> move = rti.getMovefromSelectedToHere;
 
@@ -189,6 +199,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     }
   }
 
+  /// The mouse was moved over this tile.
   mouseMoved(Point screenPos)
   {
     this.setState((Map prevState, Map props)
@@ -210,6 +221,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     });
   }
 
+  /// The mouse started dragging over this tile.
   startDrag(SyntheticMouseEvent event)
   {
     if (props.gui.currentGameGui.currentIntelligence.isHuman)
@@ -217,7 +229,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
       bool firstTimeUp = false;
       if (!props.gui.currentGameGui.isATileSelected || !props.gui.currentGameGui.selectedPosition.equals(props.position))
       {
-        select(null);
+        select();
         firstTimeUp = true;
       }
       if (props.gui.currentGameGui.isATileSelected && props.gui.currentGameGui.selectedPosition.equals(props.position))
@@ -233,6 +245,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     }
   }
 
+  /// The mouse ended dragging over this tile.
   endDrag(Point screenPos)
   {
     Timer.run(()
@@ -245,7 +258,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           ..addAll(prevState);
         if (rti.isDragging || !reactTileState.firstTimeUp)
         {
-          select(null);
+          select();
         }
         return (newState()
           ..lastMouseDownPos = new Optional.empty()
@@ -255,11 +268,12 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     });
   }
 
+  /// The mouse went up on this tile.
   onMouseUp()
   {
     if (rti.isPlayAbleNow)
     {
-      select(null);
+      select();
     }
     setState((newState()
       ..mouseIsOver = false
@@ -267,6 +281,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     l3.pause();
   }
 
+  /// The mouse entered this tile.
   onMouseEnter(SyntheticMouseEvent event)
   {
     if (rti.isPlayAbleNow)
@@ -278,6 +293,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
     }
   }
 
+  /// The mouse leaved this tile.
   onMouseLeave(SyntheticMouseEvent event)
   {
     if (rti.isPlayAbleNow)
