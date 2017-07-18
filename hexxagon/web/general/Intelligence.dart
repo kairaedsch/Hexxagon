@@ -21,11 +21,13 @@ abstract class Intelligence<B extends Board>
   {
     switch(strength)
     {
+      case 0: return "beginner";
       case 1: return "very easy";
       case 2: return "easy";
       case 3: return "medium";
       case 4: return "hard";
-      case 5: return "extrem";
+      case 5: return "expert";
+      case 6: return "extreme";
     }
   }
 

@@ -1,6 +1,6 @@
 import '../../../general/Board.dart';
-import '../../../general/Move.dart';
 import '../../../general/TilePosition.dart';
+import '../../HexxagonMove.dart';
 import 'dart:math';
 
 import '../../../general/Intelligence.dart';
@@ -10,11 +10,11 @@ import '../../Hexxagon.dart';
 /// An artificial intelligence who chooses random moves but never a move which does not rise the score of the current player.
 class RandomAI extends ArtificialIntelligence
 {
-  String get name
-  => "Random";
+  @override
+  String get name => "Random";
 
-  int get strength
-  => 1;
+  @override
+  int get strength => 0;
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
@@ -23,7 +23,7 @@ class RandomAI extends ArtificialIntelligence
   }
 
   /// Chooses a random move but never a move which does not rise the score of the current player.
-  static Move getRandomMove(Hexxagon hexxagon, Random rng)
+  static HexxagonMove getRandomMove(Hexxagon hexxagon, Random rng)
   {
     TilePosition start = TilePosition.get(rng.nextInt(hexxagon.width), rng.nextInt(hexxagon.height));
     TilePosition loop = start;
@@ -32,10 +32,10 @@ class RandomAI extends ArtificialIntelligence
     {
       if (hexxagon.get(loop) == hexxagon.currentPlayer)
       {
-        List<Move> possibleMoves = hexxagon.getPossibleMoves(loop);
+        List<HexxagonMove> possibleMoves = hexxagon.getPossibleMoves(loop);
         if (possibleMoves.isNotEmpty)
         {
-          Move<Board> move = getRandomMoveFromMoves(hexxagon, possibleMoves, rng);
+          HexxagonMove move = getRandomMoveFromMoves(hexxagon, possibleMoves, rng);
           if (move != null)
           {
             return move;
@@ -50,13 +50,13 @@ class RandomAI extends ArtificialIntelligence
   }
 
   /// Chooses a random move from the given ones but never a move which does not rise the score of the current player.
-  static Move<Board> getRandomMoveFromMoves(Hexxagon hexxagon, List<Move<Board>> possibleMoves, Random rng)
+  static HexxagonMove getRandomMoveFromMoves(Hexxagon hexxagon, List<HexxagonMove> possibleMoves, Random rng)
   {
     int start = rng.nextInt(possibleMoves.length);
     int i = start;
     do
     {
-      Move<Board> move = possibleMoves[i];
+      HexxagonMove move = possibleMoves[i];
       bool goodMove = true;
       if (move.kindOf == "jump")
       {

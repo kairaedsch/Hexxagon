@@ -1,4 +1,3 @@
-import '../../general/Move.dart';
 import '../../general/TilePosition.dart';
 import '../../general/TileType.dart';
 import '../Hexxagon.dart';
@@ -10,10 +9,10 @@ class MoveFinder
 {
   /// Get all possible moves and ignore:
   /// * copies to the same position.
-  static List<Move> getAllMovesOptimiseOnlyCopies(Hexxagon hexxagon)
+  static List<HexxagonMove> getAllMovesOptimiseOnlyCopies(Hexxagon hexxagon)
   {
-    Map<TilePosition, Move> possibleCopies = new HashMap<TilePosition, Move>();
-    List<Move> moves = new List<Move>();
+    Map<TilePosition, HexxagonMove> possibleCopies = new HashMap<TilePosition, HexxagonMove>();
+    List<HexxagonMove> moves = new List<HexxagonMove>();
     TilePosition.forEachOnBoard(hexxagon, (TilePosition from)
     {
       if (hexxagon.get(from) == hexxagon.currentPlayer)
@@ -34,18 +33,18 @@ class MoveFinder
   /// Get all possible moves and ignore:
   /// * copies to the same position.
   /// * jumps if you can also copy to the target of the jump.
-  /// * ignore jumps if this jump would not capture any enemy tiles..
-  static List<Move> getAllMovesOptimiseAll(Hexxagon hexxagon)
+  /// * ignore jumps if this jump would not capture any enemy tiles.
+  static List<HexxagonMove> getAllMovesOptimiseAll(Hexxagon hexxagon)
   {
-    Map<TilePosition, Move> possibleMoves = new HashMap<TilePosition, Move>();
-    List<Move> moves = new List<Move>();
+    Map<TilePosition, HexxagonMove> copyMoves = new HashMap<TilePosition, HexxagonMove>();
+    List<HexxagonMove> jumpMoves = new List<HexxagonMove>();
     TilePosition.forEachOnBoard(hexxagon, (TilePosition from)
     {
       if (hexxagon.get(from) == hexxagon.currentPlayer)
       {
         _forEachCopyMoves(hexxagon, from, (move)
         {
-          possibleMoves[move.to] = move;
+          copyMoves[move.to] = move;
         });
         _forEachJumpMoves(hexxagon, from, (move)
         {
@@ -57,14 +56,15 @@ class MoveFinder
               hasEnemyNeihbours = hexxagon.get(neighbour) == hexxagon.notCurrentPlayer;
             }
           });
-          if (hasEnemyNeihbours && !possibleMoves.containsKey(move.to))
+          if (hasEnemyNeihbours && !copyMoves.containsKey(move.to))
           {
-            moves.add(move);
+            jumpMoves.add(move);
           }
         });
       }
     });
-    return moves..addAll(possibleMoves.values);
+    jumpMoves.removeWhere((hexxagonMove) => copyMoves.containsKey(hexxagonMove));
+    return jumpMoves..addAll(copyMoves.values);
   }
 
   /// Calls the given consumer method for each possible copy move from the given location on the given Hexxagon board.

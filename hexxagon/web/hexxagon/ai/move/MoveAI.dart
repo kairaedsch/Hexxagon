@@ -1,6 +1,6 @@
-import '../../../general/Move.dart';
 import '../../../general/Intelligence.dart';
 import '../../../general/TileType.dart';
+import '../../HexxagonMove.dart';
 import '../ArtificialIntelligence.dart';
 import '../../Hexxagon.dart';
 import '../MoveFinder.dart';
@@ -15,17 +15,17 @@ class MoveAI extends ArtificialIntelligence
   /// Coefficient for not leaving own tiles alone.
   final double _goAwayCoef = 0.2;
 
-  String get name
-  => "Move";
+  @override
+  String get name => "Move";
 
-  int get strength
-  => 1;
+  @override
+  int get strength => 2;
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
-    List<Move> allPossibleMoves = MoveFinder.getAllMovesOptimiseAll(hexxagon);
+    List<HexxagonMove> allPossibleMoves = MoveFinder.getAllMovesOptimiseAll(hexxagon);
 
-    Iterable<Tuple2<Move, double>> allPossibleMovesEvaluated = allPossibleMoves.map((move) => new Tuple2(move, evaluateMove(hexxagon, move)));
+    Iterable<Tuple2<HexxagonMove, double>> allPossibleMovesEvaluated = allPossibleMoves.map((move) => new Tuple2(move, evaluateMove(hexxagon, move)));
 
     moveCallback(allPossibleMovesEvaluated
         .reduce((a, b) => a.item2 >= b.item2 ? a : b)
@@ -33,7 +33,7 @@ class MoveAI extends ArtificialIntelligence
   }
 
   /// Calculate the value of a move.
-  double evaluateMove(Hexxagon hexxagon, Move move)
+  double evaluateMove(Hexxagon hexxagon, HexxagonMove move)
   {
     TileType player = hexxagon.currentPlayer;
     TileType enemy = TileTypes.other(player);

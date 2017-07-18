@@ -415,18 +415,18 @@ html, body {
     }
 }
 
-.topInfoOverview.gameIsOver .topInfoBetween {
+.topInfoOverview.gameIsOver .topInfoBetween, .topInfoOverview.gameIsOver .topInfoPart {
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
 
-.topInfoOverview.gameIsOver.PLAYER_ONE .topInfoBetween {
+.topInfoOverview.gameIsOver.PLAYER_ONE .topInfoBetween, .topInfoOverview.gameIsOver.PLAYER_ONE .topInfoPart:nth-child(1) {
     background: #00C2F2;
     animation-name: wonPLAYER_ONE;
 }
 
-.topInfoOverview.gameIsOver.PLAYER_TWO .topInfoBetween {
+.topInfoOverview.gameIsOver.PLAYER_TWO .topInfoBetween, .topInfoOverview.gameIsOver.PLAYER_TWO .topInfoPart:nth-child(3) {
     background: #FF9C00;
     animation-name: wonPLAYER_TWO;
 }

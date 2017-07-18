@@ -39,7 +39,7 @@ class ReactTwoPlayerSelectionComponent extends UiStatefulComponent<ReactTwoPlaye
   void componentWillMount()
   {
     super.componentWillMount();
-    props.gui.addStateChangeListener(()
+    props.gui.addGUIStateChangeListener(()
     => setState(state));
   }
 

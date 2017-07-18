@@ -13,6 +13,7 @@ UiFactory<ReactGameTopInfoProps> ReactGameTopInfo;
 @Props()
 class ReactGameTopInfoProps extends UiProps
 {
+  /// The GUI.
   GUI gui;
 }
 
@@ -21,16 +22,15 @@ class ReactGameTopInfoState extends UiState
 {
 }
 
+/// React Component to display the top info with player and score during the game.
 @Component()
 class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProps, ReactGameTopInfoState>
 {
   void componentWillMount()
   {
     super.componentWillMount();
-    props.gui.addGameChangeListener(()
-    => setState(state));
-    props.gui.addStateChangeListener(()
-    => setState(state));
+    props.gui.addGameChangeListener(() => setState(state));
+    props.gui.addGUIStateChangeListener(() => setState(state));
   }
 
   ReactElement render()

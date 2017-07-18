@@ -12,9 +12,10 @@ import '../../Hexxagon.dart';
 
 class MonteCarloAI extends ArtificialIntelligence
 {
-  String get name
-  => "MonteCarlo Player";
+  @override
+  String get name => "MonteCarlo Player";
 
+  @override
   int get strength => 1;
 
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
