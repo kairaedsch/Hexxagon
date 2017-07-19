@@ -31,7 +31,7 @@ void main()
   react_dom.render(
       (ReactTwoPlayerSelection()
         ..gui = gui
-        ..intelligences = [new HumanIntelligence(), new RandomAI(), new MonteCarloTreeSearchAI(), new MonteCarloAI(), new MoveAI(), new MinMaxAI(2), new MinMaxAI(3), new MinMaxAI(4), new MinMaxAI(5)]
+        ..intelligences = [new HumanIntelligence(), new RandomAI(), new MonteCarloTreeSearchAI(), new MonteCarloAI(), new MoveAI(), new MinMaxAI(1), new MinMaxAI(2), new MinMaxAI(3), new MinMaxAI(4)]
       )(),
       querySelector('.playerSelection')
   );

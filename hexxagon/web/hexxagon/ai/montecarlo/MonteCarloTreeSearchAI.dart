@@ -24,8 +24,8 @@ class MonteCarloTreeSearchAI extends ArtificialIntelligence
     }
     print("AI: $rounds rounds");
 
-    //print(root.toTree("", "", 2));
+    print(root.toTree("", "", 2));
 
-    moveCallback(root.getBestMove());
+    moveCallback(root.bestMove);
   }
 }

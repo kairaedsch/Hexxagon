@@ -31,10 +31,26 @@ class ReactTileProps extends UiProps
 @State()
 class ReactTileState extends UiState
 {
+  /// The last pos, where the mouse was down (If this tile is currently dragged)
   Optional<Point<int>> lastMouseDownPos;
-  Point<int> delta;
-  bool firstTimeUp;
+
+  /// The offset of this tile from its original position, when it is being dragged.
+  Point<int> positionOffset;
+
+  /// If the mouse went up the first time.
+  bool firstTimeMouseUp;
+
+  /// If the mouse is over this tile.
   bool mouseIsOver;
+
+  /// Last value of a ReactTileInfo value.
+  bool currentIsPlayAbleNow;
+
+  /// Last value of a ReactTileInfo value.
+  bool currentIsSelected;
+
+  /// Last value of a ReactTileInfo value.
+  TileType currentTileType;
 }
 
 /// React Component to display a hexagon tile.
@@ -43,15 +59,6 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 {
   /// StreamSubscription to listen to mouse-events.
   StreamSubscription l1, l2, l3;
-
-  /// Last value of a ReactTileInfo value.
-  bool currentIsPlayAbleNow = false;
-
-  /// Last value of a ReactTileInfo value.
-  bool currentIsSelected = false;
-
-  /// Last value of a ReactTileInfo value.
-  TileType currentTileType = null;
 
   /// ReactTileInfo to provide info about this ReactTileComponent.
   ReactTileInfo rti;
@@ -66,9 +73,12 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   {
     return (newState()
       ..lastMouseDownPos = new Optional.empty()
-      ..delta = new Point(0, 0)
-      ..firstTimeUp = false
+      ..positionOffset = new Point(0, 0)
+      ..firstTimeMouseUp = false
       ..mouseIsOver = false
+      ..currentIsPlayAbleNow = false
+      ..currentIsSelected = false
+      ..currentTileType = null
     );
   }
 
@@ -85,25 +95,38 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
 
     props.gui.addGameGUIChangeListener(()
     {
-      if (currentIsPlayAbleNow != rti.isPlayAbleNow || rti.isPlayAbleNow == true)
+      bool update = false;
+      if (state.currentIsPlayAbleNow != rti.isPlayAbleNow || rti.isPlayAbleNow == true)
       {
-        setState(state);
+        update = true;
       }
       else
       {
         bool isSelected = props.gui.currentGameGui.isATileSelected && props.gui.currentGameGui.selectedPosition.equals(props.position);
-        if (currentIsSelected != isSelected)
+        if (state.currentIsSelected != isSelected)
         {
-          setState(state);
+          update = true;
         }
+      }
+      if (update)
+      {
+        setState((newState()
+          ..currentIsSelected = rti.isSelected
+          ..currentIsPlayAbleNow = rti.isPlayAbleNow
+          ..currentTileType = rti.tileType
+        ));
       }
     });
 
     props.gui.addGameChangeListener(()
     {
-      if (!(currentTileType == rti.tileType && rti.tileType == TileType.BLOCKED))
+      if (!(state.currentTileType == rti.tileType && rti.tileType == TileType.BLOCKED))
       {
-        setState(state);
+        setState((newState()
+          ..currentIsSelected = rti.isSelected
+          ..currentIsPlayAbleNow = rti.isPlayAbleNow
+          ..currentTileType = rti.tileType
+        ));
       }
     });
   }
@@ -112,12 +135,6 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
   ReactElement render()
   {
     Optional<Move> move = rti.getMovefromSelectedToHere;
-
-    currentIsSelected = rti.isSelected;
-    currentIsPlayAbleNow = rti.isPlayAbleNow;
-    currentTileType = rti.tileType;
-
-    bool isTranslated = state.delta.x != 0 || state.delta.y != 0;
 
     return (Dom.div()
       ..className = "hexagon "
@@ -132,7 +149,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
           " posy_${props.position.getDistanceTo(TilePosition.get(0, 0))}"
       ..style =
       {
-        "transform": (isTranslated ? "translate(${state.delta.x}px, ${state.delta.y}px)" : "none"),
+        "transform": ((state.positionOffset.x != 0 || state.positionOffset.y != 0) ? "translate(${state.positionOffset.x}px, ${state.positionOffset.y}px)" : "none"),
         "marginLeft": "${props.hexagonGrid.tileMarginLeft}px",
         "marginTop": "${props.hexagonGrid.tileMarginTop}px",
         "width": "${props.hexagonGrid.tileWidth}px",
@@ -212,7 +229,7 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
         Point<int> newMouseDownPos = new Point(screenPos.x, screenPos.y);
         return (newState()
           ..lastMouseDownPos = new Optional.of(newMouseDownPos)
-          ..delta = reactTileState.delta + newMouseDownPos - lastMouseDownPos);
+          ..positionOffset = reactTileState.positionOffset + newMouseDownPos - lastMouseDownPos);
       }
       else
       {
@@ -238,8 +255,8 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
         l2.resume();
         setState((newState()
           ..lastMouseDownPos = new Optional.of(new Point(event.screenX, event.screenY))
-          ..delta = new Point(0, 0)
-          ..firstTimeUp = firstTimeUp
+          ..positionOffset = new Point(0, 0)
+          ..firstTimeMouseUp = firstTimeUp
         ));
       }
     }
@@ -256,14 +273,14 @@ class ReactTileComponent extends UiStatefulComponent<ReactTileProps, ReactTileSt
       {
         ReactTileState reactTileState = newState()
           ..addAll(prevState);
-        if (rti.isDragging || !reactTileState.firstTimeUp)
+        if (rti.isDragging || !reactTileState.firstTimeMouseUp)
         {
           select();
         }
         return (newState()
           ..lastMouseDownPos = new Optional.empty()
-          ..delta = new Point(0, 0)
-          ..firstTimeUp = false);
+          ..positionOffset = new Point(0, 0)
+          ..firstTimeMouseUp = false);
       });
     });
   }

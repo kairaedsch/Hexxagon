@@ -280,6 +280,21 @@ html, body {
     background-position: 100% 0;
 }
 
+.help {
+    width: 7vh;
+    font-size: 4vh;
+    padding: 0.5vh 1vh 1vh 1vh;
+    margin: 2vh 0 -9vh 2vh;
+    transform: rotate(0deg);
+    text-decoration: none;
+    display: block;
+
+    animation-name: show;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
 .start {
     width: 17vh;
     font-size: 4vh;

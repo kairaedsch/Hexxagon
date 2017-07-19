@@ -29,23 +29,6 @@ class TilePosition
     }
   }
 
-  /// TODO Calls the given consumer for each TilePosition on the given board.
-  static void forEachOnBoardWhileTrue(Board board, bool consumer(TilePosition tileposition))
-  {
-    for (int x = 0; x < board.width; x++)
-    {
-      for (int y = 0; y < board.height; y++)
-      {
-        TilePosition pos = TilePosition.get(x, y);
-        bool con = consumer(pos);
-        if (!con)
-        {
-          return;
-        }
-      }
-    }
-  }
-
   /// A new TilePosition at the given position.
   static TilePosition get(int x, int y)
   {

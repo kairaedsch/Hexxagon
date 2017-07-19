@@ -18,7 +18,7 @@ class MinMaxAI extends ArtificialIntelligence
   String get name => "Min Max";
 
   @override
-  int get strength => _treeDepth + 1;
+  int get strength => _treeDepth + 2;
 
   MinMaxAI(this._treeDepth);
 

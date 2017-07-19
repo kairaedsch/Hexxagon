@@ -20,7 +20,7 @@ class ReactTileInfo
         => move.to.equals(_rtc.props.position));
 
   /// If this tile is dragged by the cursor.
-  bool get isDragging => (_rtc.state.delta.x.abs() > 20 || _rtc.state.delta.y.abs() > 20);
+  bool get isDragging => (_rtc.state.positionOffset.x.abs() > 20 || _rtc.state.positionOffset.y.abs() > 20);
 
   /// If there is text to be displayed on this tile.
   bool get isLabeled => _rtc.props.gui.currentGameGui.lastMoveChanges.isPresent && _rtc.props.gui.currentGameGui.lastMoveChanges.value.containsKey(_rtc.props.position);

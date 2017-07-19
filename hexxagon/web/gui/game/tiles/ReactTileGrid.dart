@@ -20,16 +20,17 @@ class ReactTileGridProps extends UiProps
 @State()
 class ReactTileGridState extends UiState
 {
+  /// The current amount of tile rows displayed.
+  int currentRows;
+
+  /// The current amount of tile columns displayed.
+  int currentColumns;
 }
 
 /// React Component to display a grid of hexagon tiles.
 @Component()
 class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, ReactTileGridState>
 {
-  // TODO set as state
-  int currentRows = 0;
-  int currentColumns = 0;
-
   @override
   void componentWillMount()
   {
@@ -38,12 +39,24 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
     {
       GameGUI gameGUI = props.gui.currentGameGui;
 
-      if (currentRows != gameGUI.height || currentColumns != gameGUI.width)
+      if (state.currentRows != gameGUI.height || state.currentColumns != gameGUI.width)
       {
-        setState(state);
+        setState((newState()
+          ..currentRows = gameGUI.height
+          ..currentColumns = gameGUI.width
+        ));
       }
     });
     window.addEventListener("resize", (e) => setState(state));
+  }
+
+  @override
+  getInitialState()
+  {
+    return (newState()
+      ..currentRows = 0
+      ..currentColumns = 0
+    );
   }
 
   @override
@@ -55,9 +68,6 @@ class ReactTileGridComponent extends UiStatefulComponent<ReactTileGridProps, Rea
       return Dom.div()();
     }
     GameGUI gameGUI = props.gui.currentGameGui;
-
-    currentRows = gameGUI.height;
-    currentColumns = gameGUI.width;
 
     var width = container.offsetWidth;
     var height = container.offsetHeight;

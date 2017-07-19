@@ -40,10 +40,10 @@ class GameNode
     GameResult result;
     if (_children.isNotEmpty)
     {
-      GameNode bestChild = _getNextChild();
+      GameNode bestChild = nextChild;
       result = bestChild.playRandom();
     }
-    else if (_shouldExpand())
+    else if (shouldExpand)
     {
       List<Move> possibleMoves = MoveFinder.getAllMovesOptimiseAll(_hexxagon);
       if (possibleMoves.isEmpty)
@@ -58,7 +58,7 @@ class GameNode
           childBoard.move(move);
           _children.add(new GameNode(this, childBoard, move));
         }
-        GameNode bestChild = _getNextChild();
+        GameNode bestChild = nextChild;
         result = bestChild.playRandom();
       }
     }
@@ -91,43 +91,26 @@ class GameNode
     }
   }
 
-  GameNode _getNextChild()
-  {
-    return _children.reduce((gn1, gn2)
-    => gn1.childNextValue > gn2.childNextValue ? gn1 : gn2);
-  }
+  GameNode get nextChild => _children.reduce((gn1, gn2) => gn1.childNextValue > gn2.childNextValue ? gn1 : gn2);
 
-  bool _shouldExpand()
-  {
-    return simulations >= 10;
-  }
+  bool get shouldExpand => simulations >= 10;
 
-  Move getBestMove()
-  {
-    return _children
-        .reduce((gn1, gn2)
-    => gn1.simulations > gn2.simulations ? gn1 : gn2)
-        ._move;
-  }
+  Move get bestMove =>
+      _children
+          .reduce((gn1, gn2) => gn1.simulations > gn2.simulations ? gn1 : gn2)
+          ._move;
 
-  int get simulations
-  {
-    return _looses + _draws + _wins;
-  }
+  int get simulations => _looses + _draws + _wins;
 
-  double get childNextValue
-  {
-    return simulations == 0 ? (_parent.simulations.roundToDouble()) : ((_wins / simulations) + sqrt(2) * sqrt(log(_parent.simulations) / simulations));
-  }
+  double get childNextValue => simulations == 0 ? (_parent.simulations.roundToDouble()) : ((_wins / simulations) + sqrt(2) * sqrt(log(_parent.simulations) / simulations));
 
-  double get winRate
-  {
-    return _wins / simulations;
-  }
+  double get winRate => _wins / simulations;
 
   String toTree(String left, String left2, int maxDepth)
   {
-    String out = left2 + '${(_children.isNotEmpty && maxDepth > 0) ? "┬" : "─"}${winRate.toStringAsFixed(2)}% ($_wins, $_draws, $_looses)${_move != null ? " (${_move.from.x} - ${_move.from.y}) => (${_move.to.x} - ${_move.to.y})" : ""}';
+    String out = left2 +
+        '${(_children.isNotEmpty && maxDepth > 0) ? "┬" : "─"}${(winRate * 100).toStringAsFixed(0)}% ($_wins, $_draws, $_looses)${_move != null ? " (${_move.from.x} - ${_move.from.y}) => (${_move.to
+            .x} - ${_move.to.y})" : ""}';
     if (maxDepth > 0)
     {
       for (int c = 0; c < _children.length; c++)
