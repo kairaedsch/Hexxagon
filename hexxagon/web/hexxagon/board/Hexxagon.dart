@@ -1,10 +1,10 @@
 import 'HexxagonMove.dart';
 
-import '../general/Array2D.dart';
-import '../general/Board.dart';
-import '../general/Move.dart';
-import '../general/TilePosition.dart';
-import '../general/TileType.dart';
+import '../../general/Array2D.dart';
+import '../../general/Board.dart';
+import '../../general/Move.dart';
+import '../../general/TilePosition.dart';
+import '../../general/TileType.dart';
 import 'package:meta/meta.dart';
 
 /// The logical implementation of the two player Game Hexxagon.

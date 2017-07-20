@@ -8,7 +8,7 @@ import 'package:tuple/tuple.dart';
 import '../../../general/Move.dart';
 import '../../../general/Intelligence.dart';
 import '../ArtificialIntelligence.dart';
-import '../../Hexxagon.dart';
+import '../../board/Hexxagon.dart';
 
 class FlatMonteCarloAI extends ArtificialIntelligence
 {

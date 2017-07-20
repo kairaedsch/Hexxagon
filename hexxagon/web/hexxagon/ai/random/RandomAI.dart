@@ -1,11 +1,11 @@
 import '../../../general/Board.dart';
 import '../../../general/TilePosition.dart';
-import '../../HexxagonMove.dart';
+import '../../board/HexxagonMove.dart';
 import 'dart:math';
 
 import '../../../general/Intelligence.dart';
 import '../ArtificialIntelligence.dart';
-import '../../Hexxagon.dart';
+import '../../board/Hexxagon.dart';
 
 /// An artificial intelligence who chooses random moves but never a move which does not rise the score of the current player.
 class RandomAI extends ArtificialIntelligence

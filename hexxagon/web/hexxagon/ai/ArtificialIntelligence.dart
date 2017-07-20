@@ -1,5 +1,5 @@
 import '../../general/Intelligence.dart';
-import '../Hexxagon.dart';
+import '../board/Hexxagon.dart';
 
 /// An artificial intelligence who can make a move on a board by calculating stuff.
 abstract class ArtificialIntelligence extends Intelligence<Hexxagon>

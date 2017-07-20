@@ -1,8 +1,8 @@
 import '../../../general/Intelligence.dart';
 import '../../../general/TileType.dart';
-import '../../HexxagonMove.dart';
+import '../../board/HexxagonMove.dart';
 import '../ArtificialIntelligence.dart';
-import '../../Hexxagon.dart';
+import '../../board/Hexxagon.dart';
 import '../MoveFinder.dart';
 import 'package:tuple/tuple.dart';
 

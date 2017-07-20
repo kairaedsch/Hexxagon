@@ -1,6 +1,6 @@
-import '../general/Move.dart';
-import '../general/TilePosition.dart';
-import '../general/TileType.dart';
+import '../../general/Move.dart';
+import '../../general/TilePosition.dart';
+import '../../general/TileType.dart';
 import 'Hexxagon.dart';
 
 /// A possible Move on a Hexxagon Board

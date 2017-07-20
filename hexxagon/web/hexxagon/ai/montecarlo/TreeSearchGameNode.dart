@@ -4,7 +4,7 @@ import 'dart:math';
 
 import '../../../general/Move.dart';
 import '../../../general/GameResult.dart';
-import '../../Hexxagon.dart';
+import '../../board/Hexxagon.dart';
 
 /// GameNode for the Monte carlo tree search algorithm.
 class TreeSearchGameNode

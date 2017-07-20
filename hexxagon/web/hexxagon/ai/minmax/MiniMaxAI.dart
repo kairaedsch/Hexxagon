@@ -1,9 +1,9 @@
 import '../../../general/Intelligence.dart';
 import '../../../general/TileType.dart';
-import '../../HexxagonHistory.dart';
-import '../../HexxagonMove.dart';
+import '../../board/HexxagonHistory.dart';
+import '../../board/HexxagonMove.dart';
 import '../ArtificialIntelligence.dart';
-import '../../Hexxagon.dart';
+import '../../board/Hexxagon.dart';
 import '../MoveFinder.dart';
 
 /// A AI, which uses the MiniMax algorithm and alpha beta pruning.

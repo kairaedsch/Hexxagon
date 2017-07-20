@@ -1,6 +1,6 @@
-import '../general/Move.dart';
-import '../general/TilePosition.dart';
-import '../general/TileType.dart';
+import '../../general/Move.dart';
+import '../../general/TilePosition.dart';
+import '../../general/TileType.dart';
 import 'Hexxagon.dart';
 
 /// The logical implementation of the two player Game Hexxagon which can undo moves by creating a history.

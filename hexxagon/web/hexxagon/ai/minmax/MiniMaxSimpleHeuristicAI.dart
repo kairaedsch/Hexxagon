@@ -1,5 +1,5 @@
 import '../../../general/TileType.dart';
-import '../../Hexxagon.dart';
+import '../../board/Hexxagon.dart';
 import 'MiniMaxAI.dart';
 
 typedef double Heuristic(Hexxagon hexxagon, TileType player);

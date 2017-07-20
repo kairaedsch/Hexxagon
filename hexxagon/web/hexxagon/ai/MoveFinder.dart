@@ -1,7 +1,7 @@
 import '../../general/TilePosition.dart';
 import '../../general/TileType.dart';
-import '../Hexxagon.dart';
-import '../HexxagonMove.dart';
+import '../board/Hexxagon.dart';
+import '../board/HexxagonMove.dart';
 import 'dart:collection';
 
 /// Helps finding all relevant moves for artificial intelligences.

@@ -1,6 +1,6 @@
 import '../../../general/Intelligence.dart';
 import '../ArtificialIntelligence.dart';
-import '../../Hexxagon.dart';
+import '../../board/Hexxagon.dart';
 import 'TreeSearchGameNode.dart';
 
 class MonteCarloTreeSearchAI extends ArtificialIntelligence
