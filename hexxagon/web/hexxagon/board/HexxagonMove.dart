@@ -25,6 +25,8 @@ class HexxagonMove extends Move<Hexxagon>
     Map<TilePosition, String> changes = new Map<TilePosition, String>();
     changes[from] = kindOf;
     changes[to] = kindOf;
+
+    // Add a dot for all captured tiles.
     to.forEachNeighbour(hexxagonBeforeMove, (neighbour)
     {
       TileType neighbourType = hexxagonBeforeMove.get(neighbour);

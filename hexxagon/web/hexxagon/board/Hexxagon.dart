@@ -37,6 +37,7 @@ class Hexxagon extends Board<Hexxagon>
     _tiles = new Array2D(_width, _height, TileType.EMPTY);
     _currentPlayer = TileType.PLAYER_ONE;
 
+    // Create round field.
     TilePosition center = TilePosition.get((radius / 2).floor(), (_height / 2).floor());
     TilePosition.forEachOnBoard(this, (TilePosition pos)
     {
@@ -47,6 +48,7 @@ class Hexxagon extends Board<Hexxagon>
       }
     });
 
+    // Setup start tiles.
     _setTileAroundTile(radius, center, 0, TileType.PLAYER_ONE);
     _setTileAroundTile(radius, center, 1, TileType.PLAYER_TWO);
     _setTileAroundTile(radius, center, 2, TileType.PLAYER_ONE);
@@ -75,11 +77,10 @@ class Hexxagon extends Board<Hexxagon>
   Hexxagon.clone(Hexxagon hexxagon) {
     _width = hexxagon._width;
     _height = hexxagon._height;
+    _currentPlayer = hexxagon.currentPlayer;
 
     _tiles = new Array2D.empty(_width, _height);
-
     TilePosition.forEachOnBoard(this, (TilePosition pos) => _tiles[pos.x][pos.y] = hexxagon.get(pos));
-    _currentPlayer = hexxagon.currentPlayer;
   }
 
   @override
@@ -97,12 +98,15 @@ class Hexxagon extends Board<Hexxagon>
     }
 
     set(move.to, _currentPlayer);
+
+    // Remove from old TilePosition if move is a jump.
     int distance = move.from.getDistanceTo(move.to);
     if (distance == 2)
     {
       set(move.from, TileType.EMPTY);
     }
 
+    // Capture neighbours.
     move.to.forEachNeighbour(this, (TilePosition neighbour)
     {
       if (get(neighbour) == notCurrentPlayer)
@@ -123,6 +127,7 @@ class Hexxagon extends Board<Hexxagon>
       return false;
     }
 
+    // Must be a jump or a copy.
     int distance = move.from.getDistanceTo(move.to);
     if (distance != 1 && distance != 2)
     {
@@ -140,6 +145,8 @@ class Hexxagon extends Board<Hexxagon>
       return new List(0);
     }
     List<Move> possibleMoves = [];
+
+    // Collect all copy moves.
     from.forEachNeighbour(this, (neighbour)
     {
       if (get(neighbour) == TileType.EMPTY)
@@ -147,6 +154,8 @@ class Hexxagon extends Board<Hexxagon>
         possibleMoves.add(new HexxagonMove(from, neighbour));
       }
     });
+
+    // Collect all jump moves.
     from.forEachNeighbourSecondRing(this, (neighbour)
     {
       if (get(neighbour) == TileType.EMPTY)
@@ -154,6 +163,7 @@ class Hexxagon extends Board<Hexxagon>
         possibleMoves.add(new HexxagonMove(from, neighbour));
       }
     });
+
     return possibleMoves;
   }
 
