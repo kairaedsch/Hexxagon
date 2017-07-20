@@ -18,7 +18,7 @@ class MonteCarloTreeSearchAI extends ArtificialIntelligence
   MonteCarloTreeSearchAI(this._timeBudget);
 
   @override
-  void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
+  void moveAI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
     // Create the root node of our tree.
     TreeSearchGameNode root = new TreeSearchGameNode.root(hexxagon);

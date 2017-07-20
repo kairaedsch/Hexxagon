@@ -17,7 +17,7 @@ class RandomAI extends ArtificialIntelligence
   int get strength => 0;
 
   @override
-  void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
+  void moveAI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
     Random rng = new Random();
     moveCallback(getRandomMove(hexxagon, rng));

@@ -23,7 +23,7 @@ class MoveAI extends ArtificialIntelligence
   int get strength => 2;
 
   @override
-  void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
+  void moveAI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
     List<HexxagonMove> allPossibleMoves = MoveFinder.getAllMovesOptimiseAll(hexxagon);
 

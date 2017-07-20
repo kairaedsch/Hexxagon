@@ -1,7 +1,7 @@
 import 'dart:html';
 
+import 'hexxagon/ai/minimax/MiniMaxSimpleHeuristicAI.dart';
 import 'hexxagon/board/Hexxagon.dart';
-import 'hexxagon/ai/minmax/MiniMaxSimpleHeuristicAI.dart';
 import 'hexxagon/ai/move/MoveAI.dart';
 import 'hexxagon/ai/random/RandomAI.dart';
 import 'hexxagon/ai/montecarlo/FlatMonteCarloAI.dart';

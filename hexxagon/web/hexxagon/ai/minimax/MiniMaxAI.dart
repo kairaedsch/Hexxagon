@@ -25,7 +25,7 @@ abstract class MiniMaxAI extends ArtificialIntelligence
   MiniMaxAI(this._treeDepth);
 
   @override
-  void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
+  void moveAI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
     // The HexxagonHistory is used, to save memory and time wasted for cloning a whole Hexxagon board, by reusing the Hexxagon array by undoing moves.
     HexxagonHistory hexxagonHistory = new HexxagonHistory.clone(hexxagon);

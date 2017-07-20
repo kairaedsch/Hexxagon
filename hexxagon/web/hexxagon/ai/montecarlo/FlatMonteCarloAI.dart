@@ -25,7 +25,7 @@ class FlatMonteCarloAI extends ArtificialIntelligence
   FlatMonteCarloAI(this._timeBudget);
 
   @override
-  void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
+  void moveAI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
     Random rng = new Random();
 

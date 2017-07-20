@@ -14,10 +14,10 @@ abstract class ArtificialIntelligence extends Intelligence<Hexxagon>
   void move(Hexxagon board, MoveCallback moveCallback)
   {
     DateTime start = new DateTime.now();
-    moveKI(board, moveCallback);
+    moveAI(board, moveCallback);
     print("AI $strengthName - $name: ${new DateTime.now().difference(start).inMilliseconds}ms");
   }
 
   /// Let this artificial intelligence calculate a good move for the current player and calls the given moveCallback method, when it has found a good move on the given board.
-  void moveKI(Hexxagon board, MoveCallback moveCallback);
+  void moveAI(Hexxagon board, MoveCallback moveCallback);
 }
