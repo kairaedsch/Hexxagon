@@ -2,8 +2,6 @@ import '../../../general/TileType.dart';
 import '../../board/Hexxagon.dart';
 import 'MiniMaxAI.dart';
 
-typedef double Heuristic(Hexxagon hexxagon, TileType player);
-
 /// A AI, which uses the MiniMax algorithm with a simple heuristic.
 class MiniMaxSimpleHeuristicAI extends MiniMaxAI
 {
