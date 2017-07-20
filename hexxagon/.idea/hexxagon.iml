@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/packages" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/web/fonts/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/general/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/gui/game/gamestate/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/gui/game/logic/packages" />
@@ -20,7 +21,9 @@
       <excludeFolder url="file://$MODULE_DIR$/web/hexxagon/ai/move/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/hexxagon/ai/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/hexxagon/ai/random/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/hexxagon/board/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/hexxagon/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/images/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/packages" />
     </content>
     <orderEntry type="inheritedJdk" />

@@ -40,7 +40,7 @@ class ReactOnePlayerSelectionComponent extends UiComponent<ReactOnePlayerSelecti
               ..className = "playerImage"
               ..style =
               {
-                "backgroundImage": "url('${props.intelligence.isHuman ? "human.png" : "robot-${props.intelligence.strength}.png"}')",
+                "backgroundImage": "url('images/${props.intelligence.isHuman ? "human.png" : "robot-${props.intelligence.strength}.png"}')",
               })(),
             (Dom.div()
               ..className = "playerText"

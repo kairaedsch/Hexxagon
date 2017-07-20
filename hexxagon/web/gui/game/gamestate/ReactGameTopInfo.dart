@@ -69,7 +69,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                   ..className = "topInfoPartImage"
                   ..style =
                   {
-                    "backgroundImage": "url('${intelligenceplayerOne.isHuman ? "human.png" : "robot-${intelligenceplayerOne.strength}.png"}')",
+                    "backgroundImage": "url('images/${intelligenceplayerOne.isHuman ? "human.png" : "robot-${intelligenceplayerOne.strength}.png"}')",
                   }
                   ..title = intelligenceplayerOne.isHuman ? "Human" : "AI ${intelligenceplayerOne.strengthName} - ${intelligenceplayerOne.name}"
                 )()
@@ -94,7 +94,7 @@ class ReactGameTopInfoComponent extends UiStatefulComponent<ReactGameTopInfoProp
                   ..className = "topInfoPartImage"
                   ..style =
                   {
-                    "backgroundImage": "url('${intelligenceplayerTwo.isHuman ? "human.png" : "robot-${intelligenceplayerTwo.strength}.png"}')",
+                    "backgroundImage": "url('images/${intelligenceplayerTwo.isHuman ? "human.png" : "robot-${intelligenceplayerTwo.strength}.png"}')",
                   }
                   ..title = intelligenceplayerTwo.isHuman ? "Human" : "AI ${intelligenceplayerTwo.strengthName} - ${intelligenceplayerTwo.name}"
                 )(),

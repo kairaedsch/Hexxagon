@@ -22,7 +22,7 @@ void main()
   react_client.setClientConfiguration();
 
   // Create a new GUI.
-  GUI<Hexxagon> gui = new GUI<Hexxagon>(() => new Hexxagon(2));
+  GUI<Hexxagon> gui = new GUI<Hexxagon>(() => new Hexxagon(5));
 
   // Init react.
   react_dom.render(

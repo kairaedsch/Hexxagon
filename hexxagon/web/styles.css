@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('fonts/openSans.css');
 
 *, *:before, *:after {
     box-sizing: border-box;
@@ -93,7 +92,7 @@ html, body {
 }
 
 .title {
-    background-image: url("hexxagon-logo.png");
+    background-image: url("images/hexxagon-logo.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -138,7 +137,13 @@ html, body {
 .playerSelection {
     width: 100%;
     height: 60vh;
-    background: -webkit-linear-gradient(-10deg, #01C2F2 50%, #FF9C00 50%);
+    background: -moz-linear-gradient(350deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, rgba(1,194,242,1)), color-stop(50%, rgba(255,156,0,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(350deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(350deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* opera 11.10+ */
+    background: -ms-linear-gradient(350deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* ie10+ */
+    background: linear-gradient(100deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01C2F2', endColorstr='#FF9C00',GradientType=1 ); /* ie6-9 */
 
     animation-name: show;
     animation-duration: 1.5s;
@@ -267,7 +272,13 @@ html, body {
 
 .button {
     text-align: center;
-    background: -webkit-linear-gradient(-20deg, #01C2F2 50%, #FF9C00 50%);
+    background: -moz-linear-gradient(340deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, rgba(1,194,242,1)), color-stop(50%, rgba(255,156,0,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(340deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(340deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* opera 11.10+ */
+    background: -ms-linear-gradient(340deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* ie10+ */
+    background: linear-gradient(110deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01C2F2', endColorstr='#FF9C00',GradientType=1 ); /* ie6-9 */
     background-size: 300% auto;
     background-position: 0 0;
     cursor: pointer;
@@ -319,7 +330,7 @@ html, body {
 .abortInner {
     height: 100%;
     width: 100%;
-    background-image: url("home.svg");
+    background-image: url("images/home.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -397,7 +408,13 @@ html, body {
     text-align: center;
     height: 100%;
     padding: 3.5vh 0 4vh 0;
-    background: -webkit-linear-gradient(-20deg, #01C2F2 50%, #FF9C00 50%);
+    background: -moz-linear-gradient(340deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, rgba(1,194,242,1)), color-stop(50%, rgba(255,156,0,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(340deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(340deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* opera 11.10+ */
+    background: -ms-linear-gradient(340deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* ie10+ */
+    background: linear-gradient(110deg, rgba(1,194,242,1) 50%, rgba(255,156,0,1) 50%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01C2F2', endColorstr='#FF9C00',GradientType=1 ); /* ie6-9 */
 }
 
 .topInfoOverview.gameIsOver .topInfoBetween {
