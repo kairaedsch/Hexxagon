@@ -446,6 +446,11 @@ html, body {
     animation-name: wonPLAYER_TWO;
 }
 
+.topInfoOverview.gameIsOver.EMPTY .topInfoBetween {
+    background: #FF9C00;
+    animation-name: draw;
+}
+
 @keyframes wonPLAYER_ONE {
     0% {
         background: #00C2F2;
@@ -466,6 +471,30 @@ html, body {
         background: #ffde56;
     }
     50% {
+        background: #FF9C00;
+    }
+}
+
+@keyframes draw {
+    0% {
+        background: #FF9C00;
+    }
+    15% {
+        background: #FF9C00;
+    }
+    35% {
+        background: #00C2F2;
+    }
+    50% {
+        background: #00C2F2;
+    }
+    65% {
+        background: #00C2F2;
+    }
+    85% {
+        background: #FF9C00;
+    }
+    100% {
         background: #FF9C00;
     }
 }

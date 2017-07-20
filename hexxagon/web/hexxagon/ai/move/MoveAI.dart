@@ -7,6 +7,7 @@ import '../MoveFinder.dart';
 import 'package:tuple/tuple.dart';
 
 /// An artificial intelligence who chooses moves by evaluating the move and the tiles around it.
+/// The evaluation is done like in Ataxxlet (http://www.linuxonly.nl/docs/4/95_Implementations.html).
 class MoveAI extends ArtificialIntelligence
 {
   /// Coefficient for capturing enemy tiles.
@@ -21,6 +22,7 @@ class MoveAI extends ArtificialIntelligence
   @override
   int get strength => 2;
 
+  @override
   void moveKI(Hexxagon hexxagon, MoveCallback moveCallback)
   {
     List<HexxagonMove> allPossibleMoves = MoveFinder.getAllMovesOptimiseAll(hexxagon);
@@ -32,16 +34,21 @@ class MoveAI extends ArtificialIntelligence
         .item1);
   }
 
-  /// Calculate the value of a move.
+  /// Calculate the value of a move. For more explanation see Ataxxlet (http://www.linuxonly.nl/docs/4/95_Implementations.html).
   double evaluateMove(Hexxagon hexxagon, HexxagonMove move)
   {
     TileType player = hexxagon.currentPlayer;
     TileType enemy = TileTypes.other(player);
+
+    // Number of enemy pieces surrounding the destination of the move.
     int enemyGoNear = 0;
+    // Number of own pieces surrounding the destination of the move.
     int selfGoNear = 0;
-    bool goingToWall = false;
+    // Number of neighbours.
+    int neigbours = 0;
     move.to.forEachNeighbour(hexxagon, (neighbour)
     {
+      neigbours++;
       TileType neighbourTile = hexxagon.get(neighbour);
       if (neighbourTile == enemy)
       {
@@ -51,11 +58,11 @@ class MoveAI extends ArtificialIntelligence
       {
         selfGoNear++;
       }
-      else if (neighbourTile == TileType.OUT_OF_FIELD)
-      {
-        goingToWall = true;
-      }
     });
+    // If there is a Wall at the destination.
+    bool goingToWall = neigbours < 6;
+
+    // Number of own pieces surrounding the origin of the move.
     int selfGoAway = 0;
     move.from.forEachNeighbour(hexxagon, (neighbour)
     {
@@ -66,6 +73,7 @@ class MoveAI extends ArtificialIntelligence
       }
     });
 
+    // Put all together with some coefficients.
     return enemyGoNear + _goNearCoef * selfGoNear + ((move.kindOf == "jump") ? (-selfGoAway * _goAwayCoef) : 1) + (goingToWall ? 0.05 : 0);
   }
 }

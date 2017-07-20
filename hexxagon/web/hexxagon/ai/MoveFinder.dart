@@ -9,13 +9,14 @@ class MoveFinder
 {
   /// Get all possible moves and ignore:
   /// * copies to the same position.
+  /// Please note, that although some bad moves are filtered, this function will always return a Move, if any exists.
   static List<HexxagonMove> getAllMovesOptimiseOnlyCopies(Hexxagon hexxagon)
   {
     Map<TilePosition, HexxagonMove> possibleCopies = new HashMap<TilePosition, HexxagonMove>();
     List<HexxagonMove> moves = new List<HexxagonMove>();
     TilePosition.forEachOnBoard(hexxagon, (TilePosition from)
     {
-      if (hexxagon.get(from) == hexxagon.currentPlayer)
+      if (hexxagon.couldBeMoved(from))
       {
         _forEachCopyMoves(hexxagon, from, (move)
         {
@@ -34,13 +35,14 @@ class MoveFinder
   /// * copies to the same position.
   /// * jumps if you can also copy to the target of the jump.
   /// * ignore jumps if this jump would not capture any enemy tiles.
+  /// Please note, that although some bad moves are filtered, this function will always return a Move, if any exists.
   static List<HexxagonMove> getAllMovesOptimiseAll(Hexxagon hexxagon)
   {
     Map<TilePosition, HexxagonMove> copyMoves = new HashMap<TilePosition, HexxagonMove>();
     List<HexxagonMove> jumpMoves = new List<HexxagonMove>();
     TilePosition.forEachOnBoard(hexxagon, (TilePosition from)
     {
-      if (hexxagon.get(from) == hexxagon.currentPlayer)
+      if (hexxagon.couldBeMoved(from))
       {
         _forEachCopyMoves(hexxagon, from, (move)
         {

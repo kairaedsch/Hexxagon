@@ -1,10 +1,10 @@
 import 'dart:html';
 
 import 'hexxagon/Hexxagon.dart';
+import 'hexxagon/ai/minmax/MiniMaxSimpleHeuristicAI.dart';
 import 'hexxagon/ai/move/MoveAI.dart';
 import 'hexxagon/ai/random/RandomAI.dart';
-import 'hexxagon/ai/minmax/MinMaxAI.dart';
-import 'hexxagon/ai/montecarlo/MonteCarloAI.dart';
+import 'hexxagon/ai/montecarlo/FlatMonteCarloAI.dart';
 import 'hexxagon/ai/montecarlo/MonteCarloTreeSearchAI.dart';
 import 'general/HumanIntelligence.dart';
 import 'package:react/react_client.dart' as react_client;
@@ -15,13 +15,16 @@ import 'gui/mainmenu/ReactTwoPlayerSelection.dart';
 import 'gui/game/gamestate/ReactGameTopInfo.dart';
 import 'gui/game/tiles/ReactTileGrid.dart';
 
+/// The main method of Hexxagon.
 void main()
 {
-  // Initialize React within our Dart app
+  // Initialize React within our Dart app.
   react_client.setClientConfiguration();
 
-  GUI<Hexxagon> gui = new GUI<Hexxagon>(() => new Hexxagon(5));
+  // Create a new GUI.
+  GUI<Hexxagon> gui = new GUI<Hexxagon>(() => new Hexxagon(2));
 
+  // Init react.
   react_dom.render(
       (ReactTileGrid()
         ..gui = gui
@@ -31,7 +34,17 @@ void main()
   react_dom.render(
       (ReactTwoPlayerSelection()
         ..gui = gui
-        ..intelligences = [new HumanIntelligence(), new RandomAI(), new MonteCarloTreeSearchAI(), new MonteCarloAI(), new MoveAI(), new MinMaxAI(1), new MinMaxAI(2), new MinMaxAI(3), new MinMaxAI(4)]
+        ..intelligences = [
+          new HumanIntelligence(),
+          new RandomAI(),
+          new MonteCarloTreeSearchAI(3000),
+          new FlatMonteCarloAI(3000),
+          new MoveAI(),
+          new MiniMaxSimpleHeuristicAI(1),
+          new MiniMaxSimpleHeuristicAI(2),
+          new MiniMaxSimpleHeuristicAI(3),
+          new MiniMaxSimpleHeuristicAI(4)
+        ]
       )(),
       querySelector('.playerSelection')
   );
@@ -41,6 +54,7 @@ void main()
       )(),
       querySelector('.side')
   );
-  querySelector('.start').onClick.listen((e)
-  => gui.startNewGame());
+
+  // Setup the start button.
+  querySelector('.start').onClick.listen((e) => gui.startNewGame());
 }
