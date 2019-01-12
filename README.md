@@ -1,6 +1,12 @@
 <p align="center"><img width="40%" src="hexxagon/web/images/hexxagon-logo.png" /></p>
 
-Das Onlinespiel [Hexxagon](https://hexxagon.de) wurde für das Seminar "Analyse und Implementation mathematischer Spiele" an der Universität Passau erstellt.
-Dabei erstellte Ich eine online Version des Brettspieles "Hexxagon" incl. Implementierung zweier KIs.
+The game [Hexxagon](https://hexxagon.de) was created for the seminar "Analysis and implementation of mathematical games" at the University of Passau.
 
-Verwendete Technologien: Dart und OverReact.
+It is a online version of the board game "Hexxagon" incl. two AIs.
+
+## Technologies used
+- Dart
+- OverReact
+
+## License
+This project is released under the MIT License. See [LICENSE](LICENSE) for details.
