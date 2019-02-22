@@ -8,5 +8,8 @@ It is a online version of the board game "Hexxagon" incl. two AIs.
 - Dart
 - OverReact
 
+## How to play
+The game can be played at [hexxagon.de](https://hexxagon.de).
+
 ## License
 This project is released under the MIT License. See [LICENSE](LICENSE) for details.
