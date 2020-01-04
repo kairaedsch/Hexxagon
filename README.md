@@ -10,14 +10,16 @@ The game can be played at [hexxagon.de](https://hexxagon.de).
 
 <p align="center"><img width="100%" src="images/intro.gif"/></p>
 
-## Supported Artificial intelligences
+## Features
+
+### 🤖 Supported Artificial intelligences
 | Artificial intelligence        | Description |
 | ------------------------------ | - |
 | **Monte Carlo Tree Search AI** | Optimised Monte Carlo method with Tree Search |
 | **Monte Carlo Flat AI**        | The Monte Carlo Method |
 | **MinMax AI**                  | The MinMax Algorithm, also called Minimax |
 
-## Supported Levels
+### 🏝 Supported Levels
 | Level Name          | Description |
 | ------------------- | - |
 | **Hexxagon Island** | Level in form of a big hexagon with 3 blocked tiles in the middle |
