@@ -1,9 +1,9 @@
 <p align="center"><img width="40%" src="hexxagon/web/images/hexxagon-logo.png" /></p>
 
 # Hexxagon
-A online version of the board game "Hexxagon" incl. two AIs with different diffucult levels.
+An online version of the board game "Hexxagon" incl. two AIs with different difficulty levels.
 
-The game was created for the seminar "Analysis and implementation of mathematical games" at the University of Passau.
+The game was created for the seminar "Analysis and Implementation of Mathematical Games" at the University of Passau.
 
 ## How to play
 The game can be played at [hexxagon.de](https://hexxagon.de).
@@ -15,7 +15,7 @@ The game can be played at [hexxagon.de](https://hexxagon.de).
 ### 🤖 Supported Artificial intelligences
 | Artificial intelligence        | Description |
 | ------------------------------ | - |
-| **Monte Carlo Tree Search AI** | Optimised Monte Carlo method with Tree Search |
+| **Monte Carlo Tree Search AI** | Optimised Monte Carlo Method with Tree Search |
 | **Monte Carlo Flat AI**        | The Monte Carlo Method |
 | **MinMax AI**                  | The MinMax Algorithm, also called Minimax |
 
